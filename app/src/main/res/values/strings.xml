@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Gemastik 15</string>
+    <string name="login">Login</string>
+    <string name="register_at_landing">Don’t have an account? <b>Sign Up</b></string>
 </resources>
