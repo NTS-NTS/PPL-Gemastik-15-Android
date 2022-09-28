@@ -28,6 +28,9 @@ class LoginFragment : Fragment() {
             btnRegister.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
+
+            btnLogin.setOnClickListener {
+            }
         }
 
         viewModel.apply {

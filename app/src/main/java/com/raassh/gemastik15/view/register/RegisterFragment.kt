@@ -1,15 +1,11 @@
 package com.raassh.gemastik15.view.register
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.raassh.gemastik15.R
-import com.raassh.gemastik15.databinding.FragmentLoginBinding
+import androidx.fragment.app.Fragment
 import com.raassh.gemastik15.databinding.FragmentRegisterBinding
-import com.raassh.gemastik15.view.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : Fragment() {
@@ -27,7 +23,13 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.apply {
-            //
+            btnRegister.setOnClickListener {
+                viewModel.register(
+                    etName.text.toString(),
+                    etEmail.text.toString(),
+                    etPassword.text.toString(),
+                )
+            }
         }
 
         viewModel.apply {
