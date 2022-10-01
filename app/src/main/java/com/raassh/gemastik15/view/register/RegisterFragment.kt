@@ -5,7 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.raassh.gemastik15.R
+import com.raassh.gemastik15.api.response.UserData
 import com.raassh.gemastik15.databinding.FragmentRegisterBinding
+import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.showSnackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : Fragment() {
@@ -28,12 +33,31 @@ class RegisterFragment : Fragment() {
                     etName.text.toString(),
                     etEmail.text.toString(),
                     etPassword.text.toString(),
-                )
-            }
-        }
+                ).observe(viewLifecycleOwner) { response ->
+                    if (response != null) {
+                        when (response) {
+                            is Resource.Loading -> {
+                                btnRegister.isEnabled = false
+                            }
+                            is Resource.Success -> {
+                                btnRegister.isEnabled = true
 
-        viewModel.apply {
-            //
+                                val action = RegisterFragmentDirections
+                                    .actionRegisterFragmentToLoginFragment()
+                                action.username = (response.data as UserData).email
+
+                                findNavController().navigate(action)
+                            }
+                            is Resource.Error -> {
+                                btnRegister.isEnabled = true
+                                root.showSnackbar(
+                                    response.message ?: getString(R.string.unknown_error)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
