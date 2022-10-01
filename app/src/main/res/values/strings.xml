@@ -9,4 +9,8 @@
     <string name="register_subtitle">Register now to bla bla bla</string>
     <string name="name">Name</string>
     <string name="unknown_error">Unknown error</string>
+    <string name="search_places">Search places</string>
+    <string name="input_empty">%1$s cannot be empty</string>
+    <string name="email_invalid">Email is not valid</string>
+    <string name="password_invalid">Password is not long enough</string>
 </resources>

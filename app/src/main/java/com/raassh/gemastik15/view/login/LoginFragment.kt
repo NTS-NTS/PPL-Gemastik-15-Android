@@ -35,6 +35,8 @@ class LoginFragment : Fragment() {
             }
 
             btnLogin.setOnClickListener {
+                // TODO: implement login later
+                findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
             }
         }
 
