@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.api.response.ErrorResponse
 import com.raassh.gemastik15.api.response.UserData
 import com.raassh.gemastik15.databinding.FragmentRegisterBinding
 import com.raassh.gemastik15.utils.Resource
@@ -50,8 +51,11 @@ class RegisterFragment : Fragment() {
                             }
                             is Resource.Error -> {
                                 btnRegister.isEnabled = true
+
+                                val error = response.data as ErrorResponse?
+
                                 root.showSnackbar(
-                                    response.message ?: getString(R.string.unknown_error)
+                                    error?.data ?: getString(R.string.unknown_error)
                                 )
                             }
                         }
