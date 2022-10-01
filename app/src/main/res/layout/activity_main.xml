@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
@@ -12,6 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/main_nav" />
+        app:navGraph="@navigation/auth_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

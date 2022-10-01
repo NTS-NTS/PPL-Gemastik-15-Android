@@ -13,4 +13,8 @@
     <string name="input_empty">%1$s cannot be empty</string>
     <string name="email_invalid">Email is not valid</string>
     <string name="password_invalid">Password is not long enough</string>
+    <string name="discover">Discover</string>
+    <string name="contribute">Contribute</string>
+    <string name="article">Articles</string>
+    <string name="account">Account</string>
 </resources>

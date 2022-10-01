@@ -1,5 +1,6 @@
 package com.raassh.gemastik15.view.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentLoginBinding
+import com.raassh.gemastik15.view.DashboardActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
@@ -36,7 +38,8 @@ class LoginFragment : Fragment() {
 
             btnLogin.setOnClickListener {
                 // TODO: implement login later
-                findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
+                startActivity(Intent(requireContext(), DashboardActivity::class.java))
+                requireActivity().finish()
             }
         }
 

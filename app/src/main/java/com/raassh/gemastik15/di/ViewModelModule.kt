@@ -1,6 +1,6 @@
 package com.raassh.gemastik15.di
 
-import com.raassh.gemastik15.view.dashboard.DashboardViewModel
+import com.raassh.gemastik15.view.discover.DiscoverViewModel
 import com.raassh.gemastik15.view.landing.LandingViewModel
 import com.raassh.gemastik15.view.login.LoginViewModel
 import com.raassh.gemastik15.view.register.RegisterViewModel
@@ -21,6 +21,6 @@ val viewModelModule = module {
     }
 
     viewModel {
-        DashboardViewModel()
+        DiscoverViewModel()
     }
 }

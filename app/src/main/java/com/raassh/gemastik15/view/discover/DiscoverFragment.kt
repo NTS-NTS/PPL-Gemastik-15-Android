@@ -1,22 +1,22 @@
-package com.raassh.gemastik15.view.dashboard
+package com.raassh.gemastik15.view.discover
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.raassh.gemastik15.databinding.FragmentDashboardBinding
+import com.raassh.gemastik15.databinding.FragmentDiscoverBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DashboardFragment : Fragment() {
-    private val viewModel by viewModel<DashboardViewModel>()
-    private var binding: FragmentDashboardBinding? = null
+class DiscoverFragment : Fragment() {
+    private val viewModel by viewModel<DiscoverViewModel>()
+    private var binding: FragmentDiscoverBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        binding = FragmentDiscoverBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
