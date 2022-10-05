@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.api.response.ErrorResponse
 import com.raassh.gemastik15.databinding.FragmentLoginBinding
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.DashboardActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,14 +39,51 @@ class LoginFragment : Fragment() {
             }
 
             btnLogin.setOnClickListener {
-                // TODO: implement login later
-                startActivity(Intent(requireContext(), DashboardActivity::class.java))
-                requireActivity().finish()
+                tryLogin()
             }
         }
 
         viewModel.apply {
             //
+        }
+    }
+
+    private fun tryLogin() {
+        with(binding ?: return) {
+            val isEmailValid = ilEmail.validate(getString(R.string.email))
+            val isPasswordValid = ilPassword.validate(getString(R.string.password))
+
+            if (!(isEmailValid && isPasswordValid)) return
+
+            viewModel.login(
+                etEmail.text.toString(),
+                etPassword.text.toString()
+            ).observe(viewLifecycleOwner) { response ->
+                if (response != null) {
+                    when (response) {
+                        is Resource.Loading -> {
+                            btnLogin.isEnabled = false
+                        }
+                        is Resource.Success -> {
+                            btnLogin.isEnabled = true
+
+                            // TODO: Save token
+
+                            startActivity(Intent(requireContext(), DashboardActivity::class.java))
+                            requireActivity().finish()
+                        }
+                        is Resource.Error -> {
+                            btnLogin.isEnabled = true
+
+                            val error = response.data as ErrorResponse?
+
+                            root.showSnackbar(
+                                error?.data ?: getString(R.string.unknown_error)
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
 

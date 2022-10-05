@@ -13,7 +13,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        LoginViewModel()
+        LoginViewModel(get())
     }
 
     viewModel {

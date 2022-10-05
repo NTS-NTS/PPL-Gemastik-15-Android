@@ -30,7 +30,7 @@ class DashboardActivity : AppCompatActivity() {
         // temporary
         navView.setOnItemSelectedListener {
             if (it.itemId != R.id.navigation_discover) {
-                binding.root.showSnackbar("Fitur ini belum tersedia")
+                binding.root.showSnackbar(getString(R.string.feature_not_available))
             }
 
             false
