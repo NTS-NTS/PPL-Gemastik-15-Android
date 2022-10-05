@@ -1,4 +1,4 @@
-package com.raassh.gemastik15.view.discover
+package com.raassh.gemastik15.view.fragments.discover
 
 import androidx.lifecycle.ViewModel
 

@@ -6,7 +6,7 @@
     app:startDestination="@id/navigation_discover">
     <fragment
         android:id="@+id/navigation_discover"
-        android:name="com.raassh.gemastik15.view.discover.DiscoverFragment"
+        android:name="com.raassh.gemastik15.view.fragments.discover.DiscoverFragment"
         android:label="fragment_discover"
         tools:layout="@layout/fragment_discover" />
 </navigation>

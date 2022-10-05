@@ -17,4 +17,13 @@
     <string name="contribute">Contribute</string>
     <string name="article">Articles</string>
     <string name="account">Account</string>
+    <string name="feature_not_available">Coming soon</string>
+    <string name="search_by_facility">Search by facility</string>
+    <string name="sign_language">Sign Language</string>
+    <string name="view_all">View All</string>
+    <string name="search">Search</string>
+    <string name="recently_viewed">Recently viewed</string>
+    <string name="image_of_place">Image of place</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="dot">•</string>
 </resources>
