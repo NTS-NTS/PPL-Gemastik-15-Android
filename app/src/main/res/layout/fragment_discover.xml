@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragments.discover.DiscoverFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -33,5 +33,192 @@
 
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tv_discover_title"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/search_by_facility"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
+
+    <GridLayout
+        android:id="@+id/gl_facilities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:columnCount="4"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_discover_title">
+
+        <CheckedTextView
+            android:id="@+id/ctv_sign"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:drawableTop="@drawable/sign_language_selector"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/sign_language"
+            android:textAlignment="gravity"
+            android:textSize="16sp" />
+
+        <CheckedTextView
+            android:id="@+id/ctv_lift"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:drawableTop="@drawable/sign_language_selector"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/sign_language"
+            android:textAlignment="gravity"
+            android:textSize="16sp" />
+
+        <CheckedTextView
+            android:id="@+id/ctv_toilet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:drawableTop="@drawable/sign_language_selector"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/sign_language"
+            android:textAlignment="gravity"
+            android:textSize="16sp" />
+
+        <CheckedTextView
+            android:id="@+id/ctv_guide"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:drawableTop="@drawable/sign_language_selector"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/sign_language"
+            android:textAlignment="gravity"
+            android:textSize="16sp" />
+
+        <CheckedTextView
+            android:id="@+id/ctv_ram"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:drawableTop="@drawable/sign_language_selector"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/sign_language"
+            android:textAlignment="gravity"
+            android:textSize="16sp" />
+
+        <CheckedTextView
+            android:id="@+id/ctv_park"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:drawableTop="@drawable/sign_language_selector"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/sign_language"
+            android:textAlignment="gravity"
+            android:textSize="16sp" />
+
+        <CheckedTextView
+            android:id="@+id/ctv_railing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:drawableTop="@drawable/sign_language_selector"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/sign_language"
+            android:textAlignment="gravity"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:text="@string/view_all"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gl_facilities" />
+
+    <TextView
+        android:id="@+id/tv_recent"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/recently_viewed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_recent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recent"
+        tools:listitem="@layout/place_item"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#E6E0EC"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
