@@ -1,4 +1,4 @@
-package com.raassh.gemastik15.view.landing
+package com.raassh.gemastik15.view.fragments.landing
 
 import androidx.lifecycle.ViewModel
 

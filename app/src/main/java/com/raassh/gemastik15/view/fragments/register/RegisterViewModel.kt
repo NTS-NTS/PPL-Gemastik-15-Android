@@ -1,4 +1,4 @@
-package com.raassh.gemastik15.view.register
+package com.raassh.gemastik15.view.fragments.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

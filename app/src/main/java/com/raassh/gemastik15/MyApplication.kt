@@ -1,6 +1,7 @@
 package com.raassh.gemastik15
 
 import android.app.Application
+import com.raassh.gemastik15.di.localDataModule
 import com.raassh.gemastik15.di.networkModule
 import com.raassh.gemastik15.di.repositoryModule
 import com.raassh.gemastik15.di.viewModelModule
@@ -15,7 +16,11 @@ class MyApplication : Application() {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@MyApplication)
-            modules(listOf(networkModule, repositoryModule, viewModelModule))
+            modules(listOf(
+                localDataModule,
+                networkModule,
+                repositoryModule,
+                viewModelModule))
         }
     }
 }

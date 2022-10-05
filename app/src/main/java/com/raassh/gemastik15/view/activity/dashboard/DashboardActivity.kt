@@ -1,4 +1,4 @@
-package com.raassh.gemastik15.view
+package com.raassh.gemastik15.view.activity.dashboard
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

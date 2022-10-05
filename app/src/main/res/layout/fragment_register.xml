@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.register.RegisterFragment">
+    tools:context=".view.fragments.register.RegisterFragment">
 
     <TextView
         android:id="@+id/title"
