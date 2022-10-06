@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".view.fragments.register.RegisterFragment">
 
     <TextView
@@ -103,7 +104,6 @@
     <Button
         style="@style/Theme.Gemastik15.Button"
         android:id="@+id/btn_register"
-        app:icon="@drawable/accessible_entrance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

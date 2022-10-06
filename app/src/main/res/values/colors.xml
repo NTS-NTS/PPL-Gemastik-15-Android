@@ -60,4 +60,15 @@
     <color name="md_theme_dark_surfaceTint">#CEBDFF</color>
     <color name="md_theme_dark_surfaceTintColor">#CEBDFF</color>
     <color name="Green">#00DD80</color>
+    <color name="md_ref_primary10">#21005E</color>
+    <color name="md_ref_primary20">#390094</color>
+    <color name="md_ref_primary30">#5200CE</color>
+    <color name="md_ref_primary40">#6A32E9</color>
+    <color name="md_ref_primary50">#8454FF</color>
+    <color name="md_ref_primary60">#9C7AFF</color>
+    <color name="md_ref_primary70">#B59CFF</color>
+    <color name="md_ref_primary80">#CEBDFF</color>
+    <color name="md_ref_primary90">#E8DDFF</color>
+    <color name="md_ref_primary95">#F5EEFF</color>
+    <color name="md_ref_primary99">#FFFBFF</color>
 </resources>
