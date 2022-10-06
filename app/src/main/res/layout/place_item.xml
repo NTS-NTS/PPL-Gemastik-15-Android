@@ -32,7 +32,7 @@
         android:src="@drawable/ic_baseline_circle_24"
         app:layout_constraintStart_toEndOf="@+id/tv_place_name"
         app:layout_constraintTop_toBottomOf="@+id/iv_place_image"
-        app:tint="@color/black"
+        app:tint="?colorOnBackground"
         android:contentDescription="@string/dot" />
 
     <TextView
