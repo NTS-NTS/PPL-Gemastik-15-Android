@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false">
+        <layer-list>
+            <item android:drawable="@drawable/unchecked_background"/>
+            <item android:drawable="@drawable/audio_output"/>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <item android:drawable="@drawable/checked_background"/>
+            <item android:drawable="@drawable/audio_output"/>
+        </layer-list>
+    </item>
+</selector>

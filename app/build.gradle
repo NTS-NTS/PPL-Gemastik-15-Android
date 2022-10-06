@@ -39,6 +39,13 @@ android {
         viewBinding true
     }
     namespace 'com.raassh.gemastik15'
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\accessibility_resources'
+            }
+        }
+    }
 }
 
 dependencies {
