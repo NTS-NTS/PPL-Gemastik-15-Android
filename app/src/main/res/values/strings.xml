@@ -19,11 +19,37 @@
     <string name="account">Account</string>
     <string name="feature_not_available">Coming soon</string>
     <string name="search_by_facility">Search by facility</string>
-    <string name="sign_language">Sign Language</string>
     <string name="view_all">View All</string>
     <string name="search">Search</string>
     <string name="recently_viewed">Recently viewed</string>
     <string name="image_of_place">Image of place</string>
     <string name="placeholder">Placeholder</string>
     <string name="dot">•</string>
+
+    <string name="stair_lift">Stair Lift</string>
+    <string name="lift">Lift</string>
+    <string name="wheelchair_area">Wheelchair Area</string>
+    <string name="sitting_toilet">Sitting Toilet</string>
+    <string name="ramp">Ram</string>
+    <string name="accessible_space">Wide Space</string>
+    <string name="railing">Railing</string>
+    <string name="accessible_entrance">Easy Entrance</string>
+    <string name="accessible_furniture">Accessible Furniture</string>
+    <string name="wheelchair_service">Wheelchair Service</string>
+    <string name="parking">Disabled Parking</string>
+
+    <string name="audio_output">Audio Output</string>
+    <string name="audio_wayfinder">Audio Wayfinder</string>
+    <string name="braille_button">Braille Button</string>
+    <string name="guiding_block">Guiding Block</string>
+    <string name="clear_signage">Clear Signage</string>
+    <string name="braille_signage">Braille Signage</string>
+
+    <string name="sign_language">Sign Language</string>
+    <string name="information_display">Information Display</string>
+    <string name="teletype_writer">Teletype Writer</string>
+    <string name="tv_text">TV Text</string>
+    <string name="audio_control">Audio Control</string>
+    <string name="assistive_listening">Assistive Listening Devices</string>
+
 </resources>

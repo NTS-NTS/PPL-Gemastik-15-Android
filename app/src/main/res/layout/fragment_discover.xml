@@ -80,11 +80,11 @@
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             android:clickable="true"
-            android:drawableTop="@drawable/sign_language_selector"
+            android:drawableTop="@drawable/lift_selector"
             android:drawablePadding="8dp"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/sign_language"
+            android:text="@string/lift"
             android:textAlignment="gravity"
             android:textSize="16sp" />
 
@@ -95,11 +95,11 @@
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             android:clickable="true"
-            android:drawableTop="@drawable/sign_language_selector"
+            android:drawableTop="@drawable/sitting_toilet_selector"
             android:drawablePadding="8dp"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/sign_language"
+            android:text="@string/sitting_toilet"
             android:textAlignment="gravity"
             android:textSize="16sp" />
 
@@ -110,11 +110,11 @@
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             android:clickable="true"
-            android:drawableTop="@drawable/sign_language_selector"
+            android:drawableTop="@drawable/guiding_blocks_selector"
             android:drawablePadding="8dp"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/sign_language"
+            android:text="@string/guiding_block"
             android:textAlignment="gravity"
             android:textSize="16sp" />
 
@@ -125,11 +125,11 @@
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             android:clickable="true"
-            android:drawableTop="@drawable/sign_language_selector"
+            android:drawableTop="@drawable/ramp_selector"
             android:drawablePadding="8dp"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/sign_language"
+            android:text="@string/ramp"
             android:textAlignment="gravity"
             android:textSize="16sp" />
 
@@ -140,11 +140,11 @@
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             android:clickable="true"
-            android:drawableTop="@drawable/sign_language_selector"
+            android:drawableTop="@drawable/parking_selector"
             android:drawablePadding="8dp"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/sign_language"
+            android:text="@string/parking"
             android:textAlignment="gravity"
             android:textSize="16sp" />
 
@@ -155,11 +155,11 @@
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             android:clickable="true"
-            android:drawableTop="@drawable/sign_language_selector"
+            android:drawableTop="@drawable/bar_selector"
             android:drawablePadding="8dp"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/sign_language"
+            android:text="@string/railing"
             android:textAlignment="gravity"
             android:textSize="16sp" />
 
