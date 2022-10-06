@@ -4,11 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".view.fragments.register.RegisterFragment">
 
     <TextView
         android:id="@+id/title"
-        style="@style/TextAppearance.AppCompat.Headline"
+        style="@style/TextAppearance.Material3.HeadlineMedium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -101,6 +102,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        style="@style/Theme.Gemastik15.Button"
         android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
