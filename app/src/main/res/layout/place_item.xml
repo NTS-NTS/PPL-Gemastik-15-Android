@@ -24,20 +24,34 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_place_image"
         tools:text="@string/placeholder" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/iv_dot"
+        android:layout_width="5dp"
         android:layout_height="wrap_content"
-        android:text="@string/dot"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/ic_baseline_circle_24"
         app:layout_constraintStart_toEndOf="@+id/tv_place_name"
-        app:layout_constraintTop_toBottomOf="@+id/iv_place_image" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_place_image"
+        app:tint="@color/black"
+        android:contentDescription="@string/dot" />
 
     <TextView
         android:id="@+id/tv_place_distance"
         android:layout_width="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/iv_dot"
         app:layout_constraintTop_toBottomOf="@+id/iv_place_image"
         tools:text="@string/placeholder" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_place_tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/iv_dot"
+        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+        tools:listitem="@layout/place_tag_item"
+        app:flexDirection="row"
+        app:flexWrap="wrap"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

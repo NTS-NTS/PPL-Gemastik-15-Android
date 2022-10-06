@@ -24,7 +24,7 @@
     <string name="recently_viewed">Recently viewed</string>
     <string name="image_of_place">Image of place</string>
     <string name="placeholder">Placeholder</string>
-    <string name="dot">•</string>
+    <string name="dot">dot</string>
 
     <string name="stair_lift">Stair Lift</string>
     <string name="lift">Lift</string>
@@ -51,5 +51,7 @@
     <string name="tv_text">TV Text</string>
     <string name="audio_control">Audio Control</string>
     <string name="assistive_listening">Assistive Listening Devices</string>
+    <string name="empty_recent">No recent places</string>
+    <string name="checkmark">Checkmark</string>
 
 </resources>
