@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/title"
-        style="@style/TextAppearance.Material3.HeadlineMedium"
+        style="@style/TextAppearance.Material3.DisplaySmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/subtitle"
-        style="@style/TextAppearance.AppCompat.Subhead"
+        style="@style/TextAppearance.Material3.BodyLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -38,12 +38,13 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.Gemastik15.TextField"
         android:id="@+id/il_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/name"
         app:layout_constraintBottom_toTopOf="@+id/il_email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,12 +60,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.Gemastik15.TextField"
         android:id="@+id/il_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/email"
         app:layout_constraintBottom_toTopOf="@+id/il_password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,6 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/il_name">
 
         <com.google.android.material.textfield.TextInputEditText
+
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,12 +83,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.Gemastik15.TextField"
         android:id="@+id/il_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/password"
         app:layout_constraintBottom_toTopOf="@+id/btn_register"
         app:layout_constraintEnd_toEndOf="parent"
