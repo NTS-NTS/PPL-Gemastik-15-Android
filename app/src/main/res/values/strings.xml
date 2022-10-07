@@ -55,5 +55,10 @@
     <string name="checkmark">Checkmark</string>
     <string name="no_result">No result</string>
     <string name="go_back">Go back</string>
+    <string name="search_by_facilities">Search by facilities</string>
+    <string name="mobility_facility">Mobility Facility</string>
+    <string name="choose_all">Choose All</string>
+    <string name="visual_facility">Visual impairment</string>
+    <string name="hearing_facility">Hearing Impairment</string>
 
 </resources>

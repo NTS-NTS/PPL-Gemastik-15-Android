@@ -32,6 +32,10 @@ class DiscoverFragment : Fragment() {
                 findNavController().navigate(DiscoverFragmentDirections.actionNavigationDiscoverToSearchResultFragment())
             }
 
+            btnAll.setOnClickListener {
+                findNavController().navigate(DiscoverFragmentDirections.actionNavigationDiscoverToSearchFacilityOptionFragment())
+            }
+
             etSearch.on(EditorInfo.IME_ACTION_DONE) {
                 val action = DiscoverFragmentDirections.actionNavigationDiscoverToSearchResultFragment()
                 action.query = etSearch.text.toString()

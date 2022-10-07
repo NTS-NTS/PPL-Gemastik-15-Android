@@ -24,8 +24,10 @@
                 android:id="@+id/btn_back"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                 android:layout_width="56dp"
-                android:layout_height="0dp"
+                android:layout_height="56dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:contentDescription="@string/go_back"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -33,9 +35,9 @@
                 app:icon="@drawable/ic_baseline_arrow_back_24"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
-                app:layout_constraintBottom_toBottomOf="@+id/il_search"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/il_search" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/il_search"

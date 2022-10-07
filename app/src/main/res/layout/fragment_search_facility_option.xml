@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.searchfacilityoption.SearchFacilityOptionFragment"
+    android:fillViewport="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_back"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:contentDescription="@string/go_back"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_baseline_arrow_back_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/search_by_facilities"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+                app:layout_constraintStart_toEndOf="@+id/btn_back"
+                app:layout_constraintTop_toTopOf="@+id/btn_back" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_mobility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/mobility_facility"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_mobility"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_all"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_mobility" />
+
+            <GridLayout
+                android:id="@+id/gl_mobility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:columnCount="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mobility">
+
+                <CheckBox
+                    android:id="@+id/cb_stair_lift"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/stair_lift_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/stair_lift"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_lift"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/lift_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/lift"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_wheelchair_area"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/wheelchair_area_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/wheelchair_area"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_sitting_toilet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/sitting_toilet_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/sitting_toilet"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_ramp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/ramp_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/ramp"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_accessible_space"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/accessible_space_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/accessible_space"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_railing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/bar_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/railing"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_accessible_entrance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/accessible_entrance_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/accessible_entrance"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_accessible_furniture"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/accessible_furniture_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/accessible_furniture"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_wheelchair_service"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/wheelchair_service_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/wheelchair_service"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_parking"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/parking_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/parking"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/tv_visual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/visual_facility"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gl_mobility" />
+
+            <Button
+                android:id="@+id/btn_visual"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_all"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_visual" />
+
+            <GridLayout
+                android:id="@+id/gl_visual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:columnCount="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_visual">
+
+                <CheckBox
+                    android:id="@+id/cb_audio_output"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/audio_output_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/audio_output"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_audio_wayfinder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/audio_wayfinder_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/audio_wayfinder"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_braille_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/braille_button_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/braille_button"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_guiding_block"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/guiding_blocks_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/guiding_block"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_clear_signage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/clear_signage_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/clear_signage"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_braille_signage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/braille_signage_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/braille_signage"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/tv_hearing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/hearing_facility"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gl_visual" />
+
+            <Button
+                android:id="@+id/btn_hearing"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_all"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_hearing" />
+
+            <GridLayout
+                android:id="@+id/gl_hearing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:columnCount="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hearing">
+
+                <CheckBox
+                    android:id="@+id/cb_information_display"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/display_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/information_display"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_sign_language"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/sign_language_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/sign_language"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_teletype_writer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/tty_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/teletype_writer"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_tv_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/tv_text_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/tv_text"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_audio_control"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/audio_control_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/audio_control"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_assistive_listening_device"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/assistive_listening_device_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/assistive_listening"
+                    android:textAlignment="gravity"
+                    android:textSize="16sp" />
+
+            </GridLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

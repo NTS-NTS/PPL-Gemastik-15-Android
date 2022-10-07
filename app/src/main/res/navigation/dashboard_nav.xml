@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_navigation_discover_to_searchResultFragment"
             app:destination="@id/searchResultFragment" />
+        <action
+            android:id="@+id/action_navigation_discover_to_searchFacilityOptionFragment"
+            app:destination="@id/searchFacilityOptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
@@ -23,4 +26,9 @@
             app:argType="string"
             android:defaultValue=""/>
     </fragment>
+    <fragment
+        android:id="@+id/searchFacilityOptionFragment"
+        android:name="com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionFragment"
+        android:label="fragment_search_facility_option"
+        tools:layout="@layout/fragment_search_facility_option" />
 </navigation>
