@@ -3,6 +3,7 @@ package com.raassh.gemastik15.utils
 import android.content.Context
 import android.content.pm.PackageManager
 import android.view.View
+import android.widget.EditText
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
@@ -31,3 +32,14 @@ fun Context.checkPermission(permission: String) = ContextCompat.checkSelfPermiss
     this,
     permission
 ) == PackageManager.PERMISSION_GRANTED
+
+fun EditText.on(actionId: Int, func: () -> Unit) {
+    setOnEditorActionListener { _, receivedActionId, _ ->
+        if (actionId == receivedActionId) {
+            func()
+            return@setOnEditorActionListener true
+        }
+
+        false
+    }
+}

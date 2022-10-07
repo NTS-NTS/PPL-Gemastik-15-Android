@@ -34,7 +34,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/search_places"
-                    android:paddingTop="8dp" />
+                    android:paddingTop="8dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
 
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.appcompat.widget.Toolbar>

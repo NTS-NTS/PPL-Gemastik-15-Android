@@ -53,5 +53,7 @@
     <string name="assistive_listening">Assistive Listening Devices</string>
     <string name="empty_recent">No recent places</string>
     <string name="checkmark">Checkmark</string>
+    <string name="no_result">No result</string>
+    <string name="go_back">Go back</string>
 
 </resources>

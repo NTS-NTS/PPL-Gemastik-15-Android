@@ -17,5 +17,10 @@
         android:id="@+id/searchResultFragment"
         android:name="com.raassh.gemastik15.view.fragments.searchresult.SearchResultFragment"
         android:label="fragment_search_result"
-        tools:layout="@layout/fragment_search_result" />
+        tools:layout="@layout/fragment_search_result" >
+        <argument
+            android:name="query"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
 </navigation>
