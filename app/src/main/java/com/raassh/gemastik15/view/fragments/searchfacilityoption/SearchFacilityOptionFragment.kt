@@ -40,6 +40,11 @@ class SearchFacilityOptionFragment : Fragment() {
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
+
+            btnSearch.setOnClickListener {
+                val action = SearchFacilityOptionFragmentDirections.actionSearchFacilityOptionFragmentToSearchByFacilityFragment()
+                findNavController().navigate(action)
+            }
         }
 
         viewModel.apply {

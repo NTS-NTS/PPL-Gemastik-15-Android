@@ -1,33 +1,31 @@
-package com.raassh.gemastik15.view.fragments.searchresult
+package com.raassh.gemastik15.view.fragments.searchbyfacility
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.location.Location
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.raassh.gemastik15.databinding.FragmentSearchResultBinding
+import com.raassh.gemastik15.databinding.FragmentSearchByFacilityBinding
 import com.raassh.gemastik15.utils.checkPermission
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchResultFragment : Fragment() {
-    private val viewModel by viewModel<SearchResultViewModel>()
-    private var binding: FragmentSearchResultBinding? = null
+class SearchByFacilityFragment : Fragment() {
+    private val viewModel by viewModel<SearchByFacilityViewModel>()
+    private var binding: FragmentSearchByFacilityBinding? = null
     private var fusedLocationClient: FusedLocationProviderClient? = null
     private var map: GoogleMap? = null
 
@@ -54,11 +52,10 @@ class SearchResultFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSearchResultBinding.inflate(inflater, container, false)
+        binding = FragmentSearchByFacilityBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -67,14 +64,15 @@ class SearchResultFragment : Fragment() {
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
 
-        val query = SearchResultFragmentArgs.fromBundle(requireArguments()).query
-
         binding?.apply {
-            etSearch.setText(query)
-
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
+
+            btnEdit.setOnClickListener {
+                findNavController().navigate(SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToSearchFacilityOptionFragment())
+            }
+
         }
 
         viewModel.apply {
@@ -85,7 +83,6 @@ class SearchResultFragment : Fragment() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         getMyLastLocation()
-        // TODO: implement search
     }
 
     @SuppressLint("MissingPermission")

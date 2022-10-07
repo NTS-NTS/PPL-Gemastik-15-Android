@@ -27,9 +27,9 @@ class DiscoverFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
-            // TODO: Implement search
+            // TODO: pass choosen facility to search by facility fragment
             btnSearch.setOnClickListener {
-                findNavController().navigate(DiscoverFragmentDirections.actionNavigationDiscoverToSearchResultFragment())
+                findNavController().navigate(DiscoverFragmentDirections.actionNavigationDiscoverToSearchByFacilityFragment())
             }
 
             btnAll.setOnClickListener {

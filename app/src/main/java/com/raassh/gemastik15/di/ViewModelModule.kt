@@ -5,6 +5,7 @@ import com.raassh.gemastik15.view.fragments.discover.DiscoverViewModel
 import com.raassh.gemastik15.view.fragments.landing.LandingViewModel
 import com.raassh.gemastik15.view.fragments.login.LoginViewModel
 import com.raassh.gemastik15.view.fragments.register.RegisterViewModel
+import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityViewModel
 import com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionViewModel
 import com.raassh.gemastik15.view.fragments.searchresult.SearchResultViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -37,5 +38,9 @@ val viewModelModule = module {
 
     viewModel {
         SearchFacilityOptionViewModel()
+    }
+
+    viewModel {
+        SearchByFacilityViewModel()
     }
 }

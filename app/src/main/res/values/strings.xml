@@ -61,5 +61,8 @@
     <string name="visual_facility">Visual impairment</string>
     <string name="hearing_facility">Hearing Impairment</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="edit_facility_options">Edit facility options</string>
+    <string name="places_around_you_with">Places around you with</string>
+    <string name="facility_icon">Facility Icon</string>
 
 </resources>
