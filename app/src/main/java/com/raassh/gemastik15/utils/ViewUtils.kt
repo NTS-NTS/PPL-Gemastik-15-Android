@@ -1,6 +1,9 @@
 package com.raassh.gemastik15.utils
 
+import android.content.Context
+import android.content.pm.PackageManager
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.R
@@ -23,3 +26,8 @@ fun TextInputLayout.validate(
 
     return error == null
 }
+
+fun Context.checkPermission(permission: String) = ContextCompat.checkSelfPermission(
+    this,
+    permission
+) == PackageManager.PERMISSION_GRANTED
