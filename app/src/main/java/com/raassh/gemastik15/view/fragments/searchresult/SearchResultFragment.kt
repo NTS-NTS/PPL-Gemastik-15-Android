@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
@@ -72,7 +73,7 @@ class SearchResultFragment : Fragment() {
             etSearch.setText(query)
 
             btnBack.setOnClickListener {
-                requireActivity().onBackPressedDispatcher.onBackPressed()
+                findNavController().navigateUp()
             }
         }
 

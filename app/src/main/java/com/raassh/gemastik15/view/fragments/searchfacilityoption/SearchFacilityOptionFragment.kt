@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.databinding.FragmentSearchFacilityOptionBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,6 +35,10 @@ class SearchFacilityOptionFragment : Fragment() {
 
             btnHearing.setOnClickListener {
                 setCheckedAll(glHearing, true)
+            }
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
 

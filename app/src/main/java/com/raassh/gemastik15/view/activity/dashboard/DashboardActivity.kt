@@ -1,6 +1,7 @@
 package com.raassh.gemastik15.view.activity.dashboard
 
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -34,6 +35,12 @@ class DashboardActivity : AppCompatActivity() {
             }
 
             false
+        }
+
+        onBackPressedDispatcher.addCallback {
+            if (!navController.navigateUp()) {
+                finish()
+            }
         }
     }
 }
