@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.databinding.FragmentDiscoverBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,7 +25,10 @@ class DiscoverFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
-
+            // TODO: Implement search
+            btnSearch.setOnClickListener {
+                findNavController().navigate(DiscoverFragmentDirections.actionNavigationDiscoverToSearchResultFragment())
+            }
         }
 
         viewModel.apply {
