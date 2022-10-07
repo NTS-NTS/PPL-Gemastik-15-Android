@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".view.fragments.login.LoginFragment">
 
     <TextView
         android:id="@+id/title"
-        style="@style/TextAppearance.AppCompat.Headline"
+        style="@style/TextAppearance.Material3.HeadlineMedium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -23,7 +24,7 @@
 
     <TextView
         android:id="@+id/subtitle"
-        style="@style/TextAppearance.AppCompat.Subhead"
+        style="@style/TextAppearance.Material3.BodyLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -37,12 +38,13 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.Gemastik15.TextField"
         android:id="@+id/il_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/email"
         app:layout_constraintBottom_toTopOf="@+id/il_password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,12 +60,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.Gemastik15.TextField"
         android:id="@+id/il_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/password"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,32 +83,52 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        style="@style/Theme.Gemastik15.Button"
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/btn_register"
+        app:layout_constraintBottom_toTopOf="@id/tv_register_cta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/il_password" />
 
+    <TextView
+        android:id="@+id/tv_register_cta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        style="@style/TextAppearance.Material3.BodyLarge"
+        android:text="@string/don_t_have_an_account"
+        app:layout_constraintBottom_toTopOf="@id/btn_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+
+        />
+
     <Button
         android:id="@+id/btn_register"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/Theme.Gemastik15.Button.TonalButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="@string/register_at_landing"
+        android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_register_cta" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

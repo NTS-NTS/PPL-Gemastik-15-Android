@@ -30,7 +30,7 @@
     <string name="lift">Lift</string>
     <string name="wheelchair_area">Wheelchair Area</string>
     <string name="sitting_toilet">Sitting Toilet</string>
-    <string name="ramp">Ram</string>
+    <string name="ramp">Ramp</string>
     <string name="accessible_space">Wide Space</string>
     <string name="railing">Railing</string>
     <string name="accessible_entrance">Easy Entrance</string>
@@ -47,7 +47,7 @@
 
     <string name="sign_language">Sign Language</string>
     <string name="information_display">Information Display</string>
-    <string name="teletype_writer">Teletype Writer</string>
+    <string name="teletype_writer">Teletypewriter</string>
     <string name="tv_text">TV Text</string>
     <string name="audio_control">Audio Control</string>
     <string name="assistive_listening">Assistive Listening Devices</string>
@@ -55,5 +55,6 @@
     <string name="checkmark">Checkmark</string>
     <string name="no_result">No result</string>
     <string name="go_back">Go back</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
 
 </resources>
