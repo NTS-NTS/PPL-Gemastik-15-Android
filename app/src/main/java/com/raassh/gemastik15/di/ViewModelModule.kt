@@ -28,7 +28,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        DiscoverViewModel()
+        DiscoverViewModel(get())
     }
 
     viewModel {
@@ -48,7 +48,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        DashboardViewModel()
+        DashboardViewModel(get())
     }
 
     viewModel {
