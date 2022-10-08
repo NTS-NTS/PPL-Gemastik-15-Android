@@ -1,20 +1,11 @@
 package com.raassh.gemastik15.view.fragments.searchresult
 
-import android.Manifest
-import android.annotation.SuppressLint
-import android.location.Location
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -22,35 +13,24 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.raassh.gemastik15.databinding.FragmentSearchResultBinding
-import com.raassh.gemastik15.utils.checkPermission
+import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchResultFragment : Fragment() {
     private val viewModel by viewModel<SearchResultViewModel>()
+    private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var binding: FragmentSearchResultBinding? = null
-    private var fusedLocationClient: FusedLocationProviderClient? = null
     private var map: GoogleMap? = null
+    private var currentLocation = LatLng(0.0, 0.0)
 
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        when {
-            permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
-                getMyLastLocation()
-            }
-            permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
-                // Only approximate location access granted.
-                getMyLastLocation()
-            }
-            else -> {
-                // No location access granted.
-                Log.d("TAG", "requestPermissionLauncher: Permissions not granted")
-            }
-        }
-    }
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
+
+        map?.addMarker(MarkerOptions().position(currentLocation).title("My Location"))
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
+        showResult(false)
     }
 
     override fun onCreateView(
@@ -81,36 +61,19 @@ class SearchResultFragment : Fragment() {
             //
         }
 
+        sharedViewModel.location.observe(viewLifecycleOwner) {
+            if (it != null) {
+                currentLocation = LatLng(it.latitude, it.longitude)
+
+                map?.addMarker(MarkerOptions().position(currentLocation).title("My Location"))
+                map?.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
+                showResult(false)
+            }
+        }
+
         showResult(true)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        getMyLastLocation()
         // TODO: implement search
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun getMyLastLocation() {
-        if (requireContext().checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
-            requireContext().checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-        ) {
-            fusedLocationClient?.lastLocation?.addOnSuccessListener { location: Location? ->
-                if (location != null) {
-                    val current = LatLng(location.latitude, location.longitude)
-                    map?.addMarker(MarkerOptions().position(current).title("Marker"))
-                    map?.moveCamera(CameraUpdateFactory.newLatLng(current))
-                    showResult(false)
-                } else {
-                    Log.d("TAG", "getMyLastLocation: Location not found")
-                }
-            }
-        } else {
-            requestPermissionLauncher.launch(
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            )
-        }
     }
 
     private fun showResult(loading: Boolean) {
@@ -128,7 +91,6 @@ class SearchResultFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         binding = null
-        fusedLocationClient = null
         map = null
     }
 }
