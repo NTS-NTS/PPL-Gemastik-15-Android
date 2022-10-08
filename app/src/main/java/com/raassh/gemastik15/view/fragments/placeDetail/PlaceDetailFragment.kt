@@ -1,32 +1,39 @@
 package com.raassh.gemastik15.view.fragments.placeDetail
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.raassh.gemastik15.R
+import androidx.fragment.app.Fragment
+import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaceDetailFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = PlaceDetailFragment()
-    }
-
-    private lateinit var viewModel: PlaceDetailViewModel
+    private val viewModel by viewModel<PlaceDetailViewModel>()
+    private var binding: FragmentPlaceDetailBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_place_detail, container, false)
+        binding = FragmentPlaceDetailBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PlaceDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.apply {
+            //
+        }
+
+        viewModel.apply {
+            //
+        }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+    }
 }
