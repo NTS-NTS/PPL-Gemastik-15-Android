@@ -64,6 +64,8 @@ class SearchByFacilityFragment : Fragment() {
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
 
+        val facilities = SearchByFacilityFragmentArgs.fromBundle(requireArguments()).facilities
+
         binding?.apply {
             btnBack.setOnClickListener {
                 findNavController().navigateUp()

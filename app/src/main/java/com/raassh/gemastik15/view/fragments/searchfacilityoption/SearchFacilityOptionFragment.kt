@@ -8,6 +8,7 @@ import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.databinding.FragmentSearchFacilityOptionBinding
+import com.raassh.gemastik15.utils.getCheckedFacilities
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFacilityOptionFragment : Fragment() {
@@ -42,7 +43,10 @@ class SearchFacilityOptionFragment : Fragment() {
             }
 
             btnSearch.setOnClickListener {
-                val action = SearchFacilityOptionFragmentDirections.actionSearchFacilityOptionFragmentToSearchByFacilityFragment()
+                val action = SearchFacilityOptionFragmentDirections
+                    .actionSearchFacilityOptionFragmentToSearchByFacilityFragment(
+                        getAllCheckedFacilities()
+                    )
                 findNavController().navigate(action)
             }
         }
@@ -50,6 +54,18 @@ class SearchFacilityOptionFragment : Fragment() {
         viewModel.apply {
             //
         }
+    }
+
+    private fun getAllCheckedFacilities(): Array<String> {
+        val facilities = mutableListOf<String>()
+
+        binding?.apply {
+            getCheckedFacilities(glMobility, facilities)
+            getCheckedFacilities(glVisual, facilities)
+            getCheckedFacilities(glHearing, facilities)
+        }
+
+        return facilities.toTypedArray()
     }
 
     override fun onDestroy() {

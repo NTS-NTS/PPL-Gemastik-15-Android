@@ -8,6 +8,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.databinding.FragmentDiscoverBinding
+import com.raassh.gemastik15.utils.getCheckedFacilities
 import com.raassh.gemastik15.utils.on
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,9 +28,13 @@ class DiscoverFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
-            // TODO: pass choosen facility to search by facility fragment
             btnSearch.setOnClickListener {
-                findNavController().navigate(DiscoverFragmentDirections.actionNavigationDiscoverToSearchByFacilityFragment())
+                val facilities = mutableListOf<String>()
+                getCheckedFacilities(glFacilities, facilities)
+
+                val action = DiscoverFragmentDirections
+                    .actionNavigationDiscoverToSearchByFacilityFragment(facilities.toTypedArray())
+                findNavController().navigate(action)
             }
 
             btnAll.setOnClickListener {

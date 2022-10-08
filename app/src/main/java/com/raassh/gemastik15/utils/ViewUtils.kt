@@ -3,6 +3,8 @@ package com.raassh.gemastik15.utils
 import android.content.Context
 import android.content.pm.PackageManager
 import android.view.View
+import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.EditText
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
@@ -41,5 +43,17 @@ fun EditText.on(actionId: Int, func: () -> Unit) {
         }
 
         false
+    }
+}
+
+fun getCheckedFacilities(
+    group: ViewGroup,
+    facilities: MutableList<String>
+) {
+    for (i in 0 until group.childCount) {
+        val child = group.getChildAt(i)
+        if (child is CheckBox && child.isChecked) {
+            facilities.add(child.text.toString())
+        }
     }
 }
