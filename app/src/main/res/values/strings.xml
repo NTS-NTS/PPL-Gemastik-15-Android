@@ -56,5 +56,6 @@
     <string name="no_result">No result</string>
     <string name="go_back">Go back</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="btn_maps_text">Open in Maps</string>
 
 </resources>

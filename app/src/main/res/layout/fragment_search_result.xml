@@ -23,7 +23,7 @@
             <Button
                 android:id="@+id/btn_back"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                android:layout_width="56dp"
+                android:layout_width="48dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="20dp"
                 android:contentDescription="@string/go_back"
