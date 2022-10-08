@@ -7,26 +7,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.databinding.FragmentLoginBinding
+import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
+import com.raassh.gemastik15.view.fragments.login.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaceDetailFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = PlaceDetailFragment()
-    }
-
-    private lateinit var viewModel: PlaceDetailViewModel
+    private val viewModel by viewModel<PlaceDetailViewModel>()
+    private var binding: FragmentPlaceDetailBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_place_detail, container, false)
+        binding = FragmentPlaceDetailBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PlaceDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.apply {
+            btnBack.setOnClickListener {
+
+            }
+
+            btnMaps.setOnClickListener {
+                //TODO: implement open map app
+            }
+        }
     }
 
 }
