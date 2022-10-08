@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.R
@@ -56,4 +58,10 @@ fun getCheckedFacilities(
             facilities.add(child.text.toString())
         }
     }
+}
+
+fun ImageView.loadImage(url: String) {
+    Glide.with(this.context)
+        .load(url)
+        .into(this)
 }

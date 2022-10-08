@@ -64,5 +64,7 @@
     <string name="edit_facility_options">Edit facility options</string>
     <string name="places_around_you_with">Places around you with</string>
     <string name="facility_icon">Facility Icon</string>
+    <string name="no_facilities_chosen">Choose at least one facility</string>
+    <string name="distance">%1$s km</string>
 
 </resources>
