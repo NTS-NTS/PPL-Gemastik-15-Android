@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.databinding.FragmentDiscoverBinding
-import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.getCheckedFacilities
 import com.raassh.gemastik15.utils.on
 import com.raassh.gemastik15.utils.showSnackbar
@@ -30,6 +29,8 @@ class DiscoverFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val placesAdapter = PlaceAdapter()
 
         binding?.apply {
             btnSearch.setOnClickListener {
@@ -57,24 +58,19 @@ class DiscoverFragment : Fragment() {
                 findNavController().navigate(action)
             }
 
-            rvRecent.adapter = PlaceAdapter().apply {
-                submitList(
-                    listOf(
-                        PlaceEntity(
-                            id = "1",
-                            name = "Instiut Teknologi Sepuluh Nopember",
-                            type = "Universitas",
-                            image = "https://akcdn.detik.net.id/community/media/visual/2020/11/20/ilustrasi-its-institut-teknologi-sepuluh-nopember.jpeg?w=700&q=90",
-                            distance = 0.1,
-                            facilities = "Toilet,Lift,Ramp"
-                        )
-                    )
-                )
-            }
+            rvRecent.adapter = placesAdapter
         }
 
         viewModel.apply {
-            //
+            recentPlaces.observe(viewLifecycleOwner) {
+                placesAdapter.submitList(it)
+
+                if (it.isEmpty()) {
+                    binding?.tvRecentEmpty?.visibility = View.VISIBLE
+                } else {
+                    binding?.tvRecentEmpty?.visibility = View.GONE
+                }
+            }
         }
     }
 
