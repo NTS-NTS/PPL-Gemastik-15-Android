@@ -12,6 +12,10 @@
         <item name="android:insetTop">0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconSize">20dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingStart">10dp</item>
     </style>
 
     <style name="Theme.Gemastik15.Button.TonalButton" parent="@style/Widget.Material3.Button.TonalButton">
@@ -41,12 +45,18 @@
     <style name="Theme.Gemastik15.Button.OutlinedButton.Icon" parent="Theme.Gemastik15.Button.OutlinedButton">
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="iconTint">?attr/colorOnSurface</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">48dp</item>
     </style>
 
     <style name="Theme.Gemastik15.TextField" parent="">
         <item name="shapeAppearance">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.BodyLarge</item>
+    </style>
+
+    <style name="Theme.Gemastik15.Divider" parent="@style/Widget.Material3.MaterialDivider">
+
     </style>
 
 </resources>

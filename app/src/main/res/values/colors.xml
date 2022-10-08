@@ -59,7 +59,11 @@
     <color name="md_theme_dark_shadow">#000000</color>
     <color name="md_theme_dark_surfaceTint">#CEBDFF</color>
     <color name="md_theme_dark_surfaceTintColor">#CEBDFF</color>
+
     <color name="Green">#00DD80</color>
+    <color name="orange_light">#CC9018</color>
+    <color name="orange_dark">#FFC248</color>
+
     <color name="md_ref_primary10">#21005E</color>
     <color name="md_ref_primary20">#390094</color>
     <color name="md_ref_primary30">#5200CE</color>

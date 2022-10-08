@@ -5,6 +5,7 @@ import com.raassh.gemastik15.view.activity.main.MainActivityViewModel
 import com.raassh.gemastik15.view.fragments.discover.DiscoverViewModel
 import com.raassh.gemastik15.view.fragments.landing.LandingViewModel
 import com.raassh.gemastik15.view.fragments.login.LoginViewModel
+import com.raassh.gemastik15.view.fragments.placeDetail.PlaceDetailViewModel
 import com.raassh.gemastik15.view.fragments.register.RegisterViewModel
 import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityViewModel
 import com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionViewModel
@@ -47,5 +48,9 @@ val viewModelModule = module {
 
     viewModel {
         DashboardViewModel()
+    }
+
+    viewModel {
+        PlaceDetailViewModel()
     }
 }

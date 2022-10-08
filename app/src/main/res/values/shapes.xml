@@ -7,4 +7,9 @@
         <item name="height">48dp</item>
     </style>
 
+    <style name="ShapeAppearance.Gemastik15.Photo" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>
