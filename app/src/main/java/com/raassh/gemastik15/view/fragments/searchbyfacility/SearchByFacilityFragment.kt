@@ -1,4 +1,4 @@
-package com.raassh.gemastik15.view.fragments.searchresult
+package com.raassh.gemastik15.view.fragments.searchbyfacility
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,18 +12,17 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.raassh.gemastik15.databinding.FragmentSearchResultBinding
+import com.raassh.gemastik15.databinding.FragmentSearchByFacilityBinding
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchResultFragment : Fragment() {
-    private val viewModel by viewModel<SearchResultViewModel>()
+class SearchByFacilityFragment : Fragment() {
+    private val viewModel by viewModel<SearchByFacilityViewModel>()
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
-    private var binding: FragmentSearchResultBinding? = null
+    private var binding: FragmentSearchByFacilityBinding? = null
     private var map: GoogleMap? = null
     private var currentLocation = LatLng(0.0, 0.0)
-
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
@@ -34,11 +33,10 @@ class SearchResultFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSearchResultBinding.inflate(inflater, container, false)
+        binding = FragmentSearchByFacilityBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -47,14 +45,17 @@ class SearchResultFragment : Fragment() {
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
 
-        val query = SearchResultFragmentArgs.fromBundle(requireArguments()).query
+        val facilities = SearchByFacilityFragmentArgs.fromBundle(requireArguments()).facilities
 
         binding?.apply {
-            etSearch.setText(query)
-
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
+
+            btnEdit.setOnClickListener {
+                findNavController().navigate(SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToSearchFacilityOptionFragment())
+            }
+
         }
 
         viewModel.apply {
@@ -72,8 +73,6 @@ class SearchResultFragment : Fragment() {
         }
 
         showResult(true)
-
-        // TODO: implement search
     }
 
     private fun showResult(loading: Boolean) {

@@ -12,6 +12,12 @@
         <action
             android:id="@+id/action_navigation_discover_to_searchResultFragment"
             app:destination="@id/searchResultFragment" />
+        <action
+            android:id="@+id/action_navigation_discover_to_searchFacilityOptionFragment"
+            app:destination="@id/searchFacilityOptionFragment" />
+        <action
+            android:id="@+id/action_navigation_discover_to_searchByFacilityFragment"
+            app:destination="@id/searchByFacilityFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
@@ -22,5 +28,26 @@
             android:name="query"
             app:argType="string"
             android:defaultValue=""/>
+    </fragment>
+    <fragment
+        android:id="@+id/searchFacilityOptionFragment"
+        android:name="com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionFragment"
+        android:label="fragment_search_facility_option"
+        tools:layout="@layout/fragment_search_facility_option" >
+        <action
+            android:id="@+id/action_searchFacilityOptionFragment_to_searchByFacilityFragment"
+            app:destination="@id/searchByFacilityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchByFacilityFragment"
+        android:name="com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityFragment"
+        android:label="fragment_search_by_facility"
+        tools:layout="@layout/fragment_search_by_facility" >
+        <action
+            android:id="@+id/action_searchByFacilityFragment_to_searchFacilityOptionFragment"
+            app:destination="@id/searchFacilityOptionFragment" />
+        <argument
+            android:name="facilities"
+            app:argType="string[]" />
     </fragment>
 </navigation>
