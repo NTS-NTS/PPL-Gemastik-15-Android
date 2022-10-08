@@ -67,5 +67,6 @@
     <string name="facility_icon">Facility Icon</string>
     <string name="no_facilities_chosen">Choose at least one facility</string>
     <string name="distance">%1$s km</string>
+    <string name="varying_reviews">Varying reviews</string>
 
 </resources>
