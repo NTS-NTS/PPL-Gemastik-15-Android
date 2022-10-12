@@ -51,6 +51,7 @@
     <string name="tv_text">TV Text</string>
     <string name="audio_control">Audio Control</string>
     <string name="assistive_listening">Assistive Listening Devices</string>
+
     <string name="empty_recent">No recent places</string>
     <string name="checkmark">Checkmark</string>
     <string name="no_result">No result</string>
@@ -68,5 +69,6 @@
     <string name="no_facilities_chosen">Choose at least one facility</string>
     <string name="distance">%1$s km</string>
     <string name="varying_reviews">Varying reviews</string>
+    <string name="search_must_not_empty">Please fill the search field</string>
 
 </resources>

@@ -4,14 +4,22 @@ import android.util.Log
 import com.raassh.gemastik15.api.ApiService
 import com.raassh.gemastik15.local.db.PlaceDao
 import com.raassh.gemastik15.local.db.PlaceEntity
+import com.raassh.gemastik15.utils.callApi
 import java.util.Calendar
 
 class PlaceRepository(private val apiService: ApiService, private val placeDao: PlaceDao) {
-    suspend fun getPlaceDetail(id: String, lat: Double, long: Double) = apiService.getPlaceDetail(id, lat, long)
+    fun getPlaceDetail(id: String, lat: Double, long: Double) = callApi {
+        apiService.getPlaceDetail(id, lat, long).data
+    }
 
-    suspend fun searchPlace(name: String, lat: Double, long: Double) = apiService.searchPlace(name, lat, long)
+    fun searchPlaceByName(name: String, lat: Double, long: Double) = callApi {
+        Log.d("TAG", "searchPlaceWithFacility: $name")
+        apiService.searchPlaceByName(name, lat, long).data
+    }
 
-    suspend fun searchPlaceWithFacility(facilities: List<String>, lat: Double, long: Double) = apiService.searchPlaceWithFacility(facilities, lat, long)
+    fun searchPlaceByFacility(facilities: List<String>, lat: Double, long: Double) = callApi {
+        apiService.searchPlaceByFacility(facilities, lat, long).data
+    }
 
     fun getRecentPlaces() = placeDao.getRecentPlaces()
 
@@ -27,7 +35,7 @@ class PlaceRepository(private val apiService: ApiService, private val placeDao: 
                     type = "Universitas",
                     image = "https://akcdn.detik.net.id/community/media/visual/2020/11/20/ilustrasi-its-institut-teknologi-sepuluh-nopember.jpeg?w=700&q=90",
                     distance = 0.1,
-                    facilities = "Toilet,Lift,Ramp",
+                    facilities = "",
                     accessTime = Calendar.getInstance().timeInMillis,
                 ),
                 PlaceEntity(

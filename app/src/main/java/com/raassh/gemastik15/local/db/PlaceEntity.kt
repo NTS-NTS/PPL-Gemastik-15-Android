@@ -15,5 +15,5 @@ data class PlaceEntity(
     val image: String,
     val distance: Double,
     val facilities: String,
-    val accessTime: Long,
+    var accessTime: Long,
 ) : Parcelable
