@@ -34,16 +34,16 @@ fun Context.translateDBtoViewName(name: String): String {
         "audio_control" -> getString(R.string.audio_control)
         "audio_output" -> getString(R.string.audio_output)
         "audio_wayfinder" -> getString(R.string.audio_wayfinder)
-        "bar" -> getString(R.string.railing)
+        "railing" -> getString(R.string.railing)
         "braille_button" -> getString(R.string.braille_button)
         "braille_signage" -> getString(R.string.braille_signage)
         "clear_signage" -> getString(R.string.clear_signage)
-        "display" -> getString(R.string.information_display)
-        "guiding_blocks" -> getString(R.string.guiding_block)
+        "display" -> getString(R.string.display)
+        "guiding_blocks" -> getString(R.string.guiding_blocks)
         "parking" -> getString(R.string.parking)
         "ramp" -> getString(R.string.ramp)
         "sign_language" -> getString(R.string.sign_language)
-        "tty" -> getString(R.string.teletype_writer)
+        "tty" -> getString(R.string.tty)
         "sitting_toilet" -> getString(R.string.sitting_toilet)
         "tv_text" -> getString(R.string.tv_text)
         "wheelchair_area" -> getString(R.string.wheelchair_area)
@@ -65,14 +65,14 @@ fun Context.translateViewtoDBName(name: String): String {
         getString(R.string.braille_button) -> "braille_button"
         getString(R.string.braille_signage) -> "braille_signage"
         getString(R.string.clear_signage) -> "clear_signage"
-        getString(R.string.information_display) -> "display"
-        getString(R.string.guiding_block) -> "guiding_blocks"
+        getString(R.string.display) -> "display"
+        getString(R.string.guiding_blocks) -> "guiding_blocks"
         getString(R.string.lift) -> "lift"
         getString(R.string.parking) -> "parking"
         getString(R.string.ramp) -> "ramp"
         getString(R.string.sign_language) -> "sign_language"
         getString(R.string.stair_lift) -> "stair_lift"
-        getString(R.string.teletype_writer) -> "tty"
+        getString(R.string.tty) -> "tty"
         getString(R.string.tv_text) -> "tv_text"
         getString(R.string.wheelchair_area) -> "wheelchair_area"
         getString(R.string.wheelchair_service) -> "wheelchair_service"
@@ -90,18 +90,18 @@ fun Context.getFacilityDrawable(name: String) : Drawable? {
         getString(R.string.audio_control) ->  ContextCompat.getDrawable(this, R.drawable.audio_control)
         getString(R.string.audio_output) ->  ContextCompat.getDrawable(this, R.drawable.audio_output)
         getString(R.string.audio_wayfinder) ->  ContextCompat.getDrawable(this, R.drawable.audio_wayfinder)
-        getString(R.string.railing) ->  ContextCompat.getDrawable(this, R.drawable.bar)
+        getString(R.string.railing) ->  ContextCompat.getDrawable(this, R.drawable.railing)
         getString(R.string.braille_button) ->  ContextCompat.getDrawable(this, R.drawable.braille_button)
         getString(R.string.braille_signage) ->  ContextCompat.getDrawable(this, R.drawable.braille_signage)
         getString(R.string.clear_signage) ->  ContextCompat.getDrawable(this, R.drawable.clear_signage)
-        getString(R.string.information_display) ->  ContextCompat.getDrawable(this, R.drawable.display)
-        getString(R.string.guiding_block) ->  ContextCompat.getDrawable(this, R.drawable.guiding_blocks)
+        getString(R.string.display) ->  ContextCompat.getDrawable(this, R.drawable.display)
+        getString(R.string.guiding_blocks) ->  ContextCompat.getDrawable(this, R.drawable.guiding_blocks)
         getString(R.string.lift) ->  ContextCompat.getDrawable(this, R.drawable.lift)
         getString(R.string.parking) ->  ContextCompat.getDrawable(this, R.drawable.parking)
         getString(R.string.ramp) ->  ContextCompat.getDrawable(this, R.drawable.ramp)
         getString(R.string.sign_language) ->  ContextCompat.getDrawable(this, R.drawable.sign_language)
         getString(R.string.stair_lift) ->  ContextCompat.getDrawable(this, R.drawable.stair_lift)
-        getString(R.string.teletype_writer) ->  ContextCompat.getDrawable(this, R.drawable.tty)
+        getString(R.string.tty) ->  ContextCompat.getDrawable(this, R.drawable.tty)
         getString(R.string.tv_text) ->  ContextCompat.getDrawable(this, R.drawable.tv_text)
         getString(R.string.wheelchair_area) ->  ContextCompat.getDrawable(this, R.drawable.wheelchair_area)
         getString(R.string.wheelchair_service) ->  ContextCompat.getDrawable(this, R.drawable.wheelchair_service)
