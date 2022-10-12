@@ -187,7 +187,7 @@
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
                     android:button="@null"
-                    android:drawableTop="@drawable/bar_selector"
+                    android:drawableTop="@drawable/railing_selector"
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/railing"
@@ -334,7 +334,7 @@
                     android:drawableTop="@drawable/guiding_blocks_selector"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:text="@string/guiding_block"
+                    android:text="@string/guiding_blocks"
                     android:textAlignment="gravity"
                     android:textSize="16sp" />
 
@@ -409,7 +409,7 @@
                     android:drawableTop="@drawable/display_selector"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:text="@string/information_display"
+                    android:text="@string/display"
                     android:textAlignment="gravity"
                     android:textSize="16sp" />
 
@@ -437,7 +437,7 @@
                     android:drawableTop="@drawable/tty_selector"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:text="@string/teletype_writer"
+                    android:text="@string/tty"
                     android:textAlignment="gravity"
                     android:textSize="16sp" />
 
@@ -479,7 +479,7 @@
                     android:drawableTop="@drawable/assistive_listening_device_selector"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:text="@string/assistive_listening"
+                    android:text="@string/assistive_listening_device"
                     android:textAlignment="gravity"
                     android:textSize="16sp" />
 

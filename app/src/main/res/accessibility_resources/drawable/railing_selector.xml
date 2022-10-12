@@ -3,13 +3,13 @@
     <item android:state_checked="false">
         <layer-list>
             <item android:drawable="@drawable/unchecked_background"/>
-            <item android:drawable="@drawable/bar"/>
+            <item android:drawable="@drawable/railing"/>
         </layer-list>
     </item>
     <item>
         <layer-list>
             <item android:drawable="@drawable/checked_background"/>
-            <item android:drawable="@drawable/bar"/>
+            <item android:drawable="@drawable/railing"/>
         </layer-list>
     </item>
 </selector>

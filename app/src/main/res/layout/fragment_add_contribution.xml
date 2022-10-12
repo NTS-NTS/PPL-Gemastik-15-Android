@@ -178,7 +178,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
-            style="@style/TextAppearance.Material3.TitleLarge"
+            style="@style/TextAppearance.Material3.TitleMedium"
             android:id="@+id/facility_review_title"
             android:layout_marginBottom="16dp"
             android:text="What do you think about this facility in this place?"
@@ -221,6 +221,70 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_facility_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Button
+                style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                android:id="@+id/btn_facility_review_good"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@string/good"
+                android:layout_marginEnd="8dp"
+                app:icon="@drawable/ic_outline_thumb_up_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_facility_review_bad"
+                app:layout_constraintTop_toTopOf="@id/btn_facility_review_none"
+                app:layout_constraintBottom_toBottomOf="@id/btn_facility_review_none"/>
+
+            <Button
+                style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                android:id="@+id/btn_facility_review_bad"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@string/bad"
+                android:layout_marginEnd="8dp"
+                app:icon="@drawable/ic_outline_thumb_down_20"
+                app:layout_constraintStart_toEndOf="@id/btn_facility_review_good"
+                app:layout_constraintEnd_toStartOf="@id/btn_facility_review_none"
+                app:layout_constraintTop_toTopOf="@id/btn_facility_review_none"
+                app:layout_constraintBottom_toBottomOf="@id/btn_facility_review_none"/>
+
+            <Button
+                style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                android:id="@+id/btn_facility_review_none"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/not_exist"
+                android:layout_marginTop="16dp"
+                app:icon="@drawable/ic_baseline_not_exist_20"
+                app:layout_constraintStart_toEndOf="@id/btn_facility_review_bad"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_facility_description"
+                app:layout_constraintBottom_toTopOf="@id/btn_facility_review_dont_know"/>
+
+            <Button
+                style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                android:id="@+id/btn_facility_review_dont_know"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/don_t_know"
+                android:layout_marginTop="16dp"
+                app:icon="@drawable/ic_baseline_not_exist_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_facility_review_none"/>
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                style="@style/Widget.Material3.CircularProgressIndicator.Medium"
+                android:id="@+id/spn_facility_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btn_facility_review_none"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="invisible"
+                tools:visibility="visible"/>
 
 
 

@@ -41,16 +41,17 @@
     <string name="audio_output">Audio Output</string>
     <string name="audio_wayfinder">Audio Wayfinder</string>
     <string name="braille_button">Braille Button</string>
-    <string name="guiding_block">Guiding Block</string>
+    <string name="guiding_blocks">Guiding Block</string>
     <string name="clear_signage">Clear Signage</string>
     <string name="braille_signage">Braille Signage</string>
 
     <string name="sign_language">Sign Language</string>
-    <string name="information_display">Information Display</string>
-    <string name="teletype_writer">Teletypewriter</string>
+    <string name="display">Information Display</string>
+    <string name="tty">Teletypewriter</string>
     <string name="tv_text">TV Text</string>
     <string name="audio_control">Audio Control</string>
-    <string name="assistive_listening">Assistive Listening Devices</string>
+    <string name="assistive_listening_device">Assistive Listening Devices</string>
+
     <string name="empty_recent">No recent places</string>
     <string name="checkmark">Checkmark</string>
     <string name="no_result">No result</string>
@@ -68,5 +69,9 @@
     <string name="no_facilities_chosen">Choose at least one facility</string>
     <string name="distance">%1$s km</string>
     <string name="varying_reviews">Varying reviews</string>
+    <string name="bad">Bad</string>
+    <string name="good">Good</string>
+    <string name="not_exist">Not exist</string>
+    <string name="don_t_know">Don\'t know</string>
 
 </resources>

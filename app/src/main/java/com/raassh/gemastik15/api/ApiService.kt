@@ -1,11 +1,9 @@
 package com.raassh.gemastik15.api
 
+import com.raassh.gemastik15.api.request.ContributionRequest
 import com.raassh.gemastik15.api.request.LoginRequest
 import com.raassh.gemastik15.api.request.RegisterRequest
-import com.raassh.gemastik15.api.response.PlaceDetailResponse
-import com.raassh.gemastik15.api.response.PlaceSearchResponse
-import com.raassh.gemastik15.api.response.TokenResponse
-import com.raassh.gemastik15.api.response.UserResponse
+import com.raassh.gemastik15.api.response.*
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -43,4 +41,14 @@ interface ApiService {
         @Query("lat") lat: Double,
         @Query("long") long: Double,
     ): PlaceSearchResponse
+
+    @POST("auth/contribution")
+    suspend fun addContribution(
+        @Body body: ContributionRequest
+    ): ContributionResponse
+
+    @POST("auth/contribution/change")
+    suspend fun changeContribution(
+        @Body body: ContributionRequest
+    ): ContributionResponse
 }
