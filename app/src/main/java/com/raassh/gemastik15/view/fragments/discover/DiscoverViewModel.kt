@@ -9,9 +9,13 @@ import kotlinx.coroutines.launch
 class DiscoverViewModel(val placeRepository: PlaceRepository) : ViewModel() {
     val recentPlaces = placeRepository.getRecentPlaces().asLiveData()
 
+    // for testing only, delete later
     init {
         viewModelScope.launch {
             placeRepository.test()
+            placeRepository.getPlaceDetail("63403ccf3446f21468402ee1", 2.3, 1.2)
+            placeRepository.searchPlace("nama", 2.3, 1.2)
+            placeRepository.searchPlaceWithFacility(listOf("fasilitas1", "fasilitas2"), 2.3, 1.2)
         }
     }
 }

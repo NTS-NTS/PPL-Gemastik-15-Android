@@ -10,6 +10,6 @@ val repositoryModule = module {
     }
 
     single {
-        PlaceRepository(get())
+        PlaceRepository(get(), get())
     }
 }

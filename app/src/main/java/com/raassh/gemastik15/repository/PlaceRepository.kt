@@ -1,11 +1,18 @@
 package com.raassh.gemastik15.repository
 
 import android.util.Log
+import com.raassh.gemastik15.api.ApiService
 import com.raassh.gemastik15.local.db.PlaceDao
 import com.raassh.gemastik15.local.db.PlaceEntity
 import java.util.Calendar
 
-class PlaceRepository(private val placeDao: PlaceDao) {
+class PlaceRepository(private val apiService: ApiService, private val placeDao: PlaceDao) {
+    suspend fun getPlaceDetail(id: String, lat: Double, long: Double) = apiService.getPlaceDetail(id, lat, long)
+
+    suspend fun searchPlace(name: String, lat: Double, long: Double) = apiService.searchPlace(name, lat, long)
+
+    suspend fun searchPlaceWithFacility(facilities: List<String>, lat: Double, long: Double) = apiService.searchPlaceWithFacility(facilities, lat, long)
+
     fun getRecentPlaces() = placeDao.getRecentPlaces()
 
     suspend fun insertPlacesToDB(places: List<PlaceEntity>) = placeDao.insertPlaces(places)
