@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_searchFacilityOptionFragment_to_searchByFacilityFragment"
             app:destination="@id/searchByFacilityFragment" />
+        <argument
+            android:name="facilities"
+            app:argType="string[]" />
     </fragment>
     <fragment
         android:id="@+id/searchByFacilityFragment"

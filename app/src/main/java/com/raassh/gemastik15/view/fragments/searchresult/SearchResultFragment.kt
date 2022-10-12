@@ -154,7 +154,7 @@ class SearchResultFragment : Fragment() {
             }
 
             map?.setOnMapLoadedCallback {
-                map?.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), 20))
+                map?.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), 100))
             }
         }
     }

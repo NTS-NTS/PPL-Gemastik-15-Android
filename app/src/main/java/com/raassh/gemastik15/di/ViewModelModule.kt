@@ -44,7 +44,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        SearchByFacilityViewModel()
+        SearchByFacilityViewModel(get())
     }
 
     viewModel {

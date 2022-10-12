@@ -7,28 +7,30 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.databinding.PlaceTagItemBinding
+import com.raassh.gemastik15.databinding.OptionTagItemBinding
+import com.raassh.gemastik15.utils.getFacilityDrawable
 import com.raassh.gemastik15.utils.translateDBtoViewName
 
-class PlaceTagAdapter : ListAdapter<String, PlaceTagAdapter.PlaceTagViewHolder>(DIFF_CALLBACK) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceTagViewHolder {
-        return PlaceTagViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.place_tag_item, parent, false)
+class OptionTagAdapter : ListAdapter<String, OptionTagAdapter.OptionTagViewHolder>(DIFF_CALLBACK) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionTagViewHolder {
+        return OptionTagViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.option_tag_item, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: PlaceTagViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: OptionTagViewHolder, position: Int) {
         val tag = getItem(position)
         holder.bind(tag)
     }
 
-    inner class PlaceTagViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = PlaceTagItemBinding.bind(itemView)
+    inner class OptionTagViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val binding = OptionTagItemBinding.bind(itemView)
         private val context = itemView.context
 
         fun bind(name: String) {
             binding.apply {
-                tvTagName.text = context.translateDBtoViewName(name)
+                tvOptionName.text = context.translateDBtoViewName(name)
+                ivOptionIcon.setImageDrawable(context.getFacilityDrawable(name))
             }
         }
     }
