@@ -29,14 +29,14 @@ interface ApiService {
     ): PlaceDetailResponse
 
     @GET("places/search")
-    suspend fun searchPlace(
+    suspend fun searchPlaceByName(
         @Query("name") name: String,
         @Query("lat") lat: Double,
         @Query("long") long: Double,
     ): PlaceSearchResponse
 
     @GET("places/search/facilities")
-    suspend fun searchPlaceWithFacility(
+    suspend fun searchPlaceByFacility(
         @Query("facility") facilities: List<String>,
         @Query("lat") lat: Double,
         @Query("long") long: Double,

@@ -11,6 +11,7 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentSearchFacilityOptionBinding
 import com.raassh.gemastik15.utils.getCheckedFacilities
 import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityFragmentArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFacilityOptionFragment : Fragment() {
@@ -27,7 +28,14 @@ class SearchFacilityOptionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val facilities = SearchByFacilityFragmentArgs.fromBundle(requireArguments()).facilities.toMutableList()
+
         binding?.apply {
+            setCheckedFromList(glMobility, facilities, true)
+            setCheckedFromList(glVisual, facilities, true)
+            setCheckedFromList(glHearing, facilities, true)
+
             btnMobility.setOnClickListener {
                 setCheckedAll(glMobility, true)
             }
@@ -45,15 +53,15 @@ class SearchFacilityOptionFragment : Fragment() {
             }
 
             btnSearch.setOnClickListener {
-                val facilities = getAllCheckedFacilities()
+                val checkedFacilities = getAllCheckedFacilities()
 
-                if (facilities.isEmpty()) {
+                if (checkedFacilities.isEmpty()) {
                     root.showSnackbar(getString(R.string.no_facilities_chosen))
                     return@setOnClickListener
                 }
 
                 val action = SearchFacilityOptionFragmentDirections
-                    .actionSearchFacilityOptionFragmentToSearchByFacilityFragment(facilities)
+                    .actionSearchFacilityOptionFragmentToSearchByFacilityFragment(checkedFacilities)
                 findNavController().navigate(action)
             }
         }
@@ -78,6 +86,18 @@ class SearchFacilityOptionFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+
+    private fun setCheckedFromList(container: ViewGroup, names: MutableList<String>, state: Boolean) {
+        for (i in 0 until container.childCount) {
+            val child = container.getChildAt(i)
+            if (child is CheckBox) {
+                if (names.contains(child.text.toString())) {
+                    child.isChecked = state
+                    names.remove(child.text.toString())
+                }
+            }
+        }
     }
 
     private fun setCheckedAll(container: ViewGroup, state: Boolean) {

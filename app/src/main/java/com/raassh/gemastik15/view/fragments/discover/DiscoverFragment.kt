@@ -48,7 +48,14 @@ class DiscoverFragment : Fragment() {
             }
 
             btnAll.setOnClickListener {
-                findNavController().navigate(DiscoverFragmentDirections.actionNavigationDiscoverToSearchFacilityOptionFragment())
+                val facilities = mutableListOf<String>()
+                getCheckedFacilities(glFacilities, facilities)
+
+                findNavController().navigate(
+                    DiscoverFragmentDirections.actionNavigationDiscoverToSearchFacilityOptionFragment(
+                        facilities.toTypedArray()
+                    )
+                )
             }
 
             etSearch.on(EditorInfo.IME_ACTION_DONE) {

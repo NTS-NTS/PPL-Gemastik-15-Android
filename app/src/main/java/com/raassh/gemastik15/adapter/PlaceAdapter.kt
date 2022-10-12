@@ -14,6 +14,7 @@ import com.raassh.gemastik15.databinding.PlaceItemBinding
 import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.loadImage
 import com.raassh.gemastik15.utils.rounded
+import com.raassh.gemastik15.utils.splitWithEmptyList
 
 class PlaceAdapter : ListAdapter<PlaceEntity, PlaceAdapter.PlaceViewHolder>(DIFF_CALLBACK) {
     var onItemClickListener: ((PlaceEntity) -> Unit)? = null
@@ -47,7 +48,7 @@ class PlaceAdapter : ListAdapter<PlaceEntity, PlaceAdapter.PlaceViewHolder>(DIFF
                 tvPlaceType.text = place.type
                 ivPlaceImage.loadImage(place.image)
                 rvPlaceTags.adapter = PlaceTagAdapter().apply {
-                    submitList(place.facilities.split(","))
+                    submitList(place.facilities.splitWithEmptyList(","))
                 }
             }
         }

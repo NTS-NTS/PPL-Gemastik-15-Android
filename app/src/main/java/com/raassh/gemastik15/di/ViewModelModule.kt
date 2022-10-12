@@ -36,7 +36,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        SearchResultViewModel()
+        SearchResultViewModel(get())
     }
 
     viewModel {
@@ -44,7 +44,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        SearchByFacilityViewModel()
+        SearchByFacilityViewModel(get())
     }
 
     viewModel {
@@ -52,7 +52,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        PlaceDetailViewModel()
+        PlaceDetailViewModel(get())
     }
 
     viewModel {

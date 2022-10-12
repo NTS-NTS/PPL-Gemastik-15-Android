@@ -31,6 +31,12 @@ data class PlacesItem(
 	@field:SerializedName("id")
 	val id: String,
 
+	@field:SerializedName("latitude")
+	val latitude: Double,
+
+	@field:SerializedName("longitude")
+	val longitude: Double,
+
 	@field:SerializedName("facilities")
 	val facilities: List<FacilitiesItem>
 )

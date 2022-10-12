@@ -11,8 +11,18 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.raassh.gemastik15.R
+import com.raassh.gemastik15.adapter.OptionTagAdapter
+import com.raassh.gemastik15.adapter.PlaceAdapter
+import com.raassh.gemastik15.api.response.ErrorResponse
+import com.raassh.gemastik15.api.response.PlacesItem
 import com.raassh.gemastik15.databinding.FragmentSearchByFacilityBinding
+import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.placeItemToEntity
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateViewtoDBName
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,10 +36,6 @@ class SearchByFacilityFragment : Fragment() {
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
-
-        map?.addMarker(MarkerOptions().position(currentLocation).title("My Location"))
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
-        showResult(false)
     }
 
     override fun onCreateView(
@@ -53,36 +59,97 @@ class SearchByFacilityFragment : Fragment() {
             }
 
             btnEdit.setOnClickListener {
-                findNavController().navigate(SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToSearchFacilityOptionFragment())
+                findNavController().navigate(SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToSearchFacilityOptionFragment(facilities))
             }
 
+            rvResult.adapter = PlaceAdapter()
+
+            rvOptions.adapter = OptionTagAdapter().apply {
+                submitList(facilities.toList())
+            }
         }
 
-        viewModel.apply {
-            //
+        viewModel.places.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it) {
+                    is Resource.Loading -> {
+                        showLoading(true)
+                    }
+                    is Resource.Success -> {
+                        showLoading(false)
+
+                        @Suppress("UNCHECKED_CAST")
+                        showResult(it.data as List<PlacesItem>)
+                    }
+                    is Resource.Error -> {
+                        showLoading(false, error = true)
+
+                        val error = it.data as ErrorResponse?
+
+                        binding?.root?.showSnackbar(
+                            error?.data ?: getString(R.string.unknown_error)
+                        )
+                    }
+                }
+            }
         }
 
         sharedViewModel.location.observe(viewLifecycleOwner) {
             if (it != null) {
                 currentLocation = LatLng(it.latitude, it.longitude)
-
-                map?.addMarker(MarkerOptions().position(currentLocation).title("My Location"))
-                map?.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
-                showResult(false)
+                viewModel.searchPlace(facilities.map { name ->
+                    requireContext().translateViewtoDBName(name)
+                }, it.latitude, it.longitude)
             }
         }
-
-        showResult(true)
     }
 
-    private fun showResult(loading: Boolean) {
+    private fun showLoading(loading: Boolean, error: Boolean = false) {
         binding?.apply {
             if (loading) {
                 pbLoading.visibility = View.VISIBLE
-                groupSearch.visibility = View.GONE
+                rvResult.visibility = View.GONE
+                tvNoResult.visibility = View.GONE
+                fragmentMap.visibility = View.GONE
             } else {
                 pbLoading.visibility = View.GONE
-                groupSearch.visibility = View.VISIBLE
+
+                if (error) {
+                    tvNoResult.visibility = View.VISIBLE
+                    rvResult.visibility = View.GONE
+                    fragmentMap.visibility = View.GONE
+                } else {
+                    tvNoResult.visibility = View.GONE
+                    rvResult.visibility = View.VISIBLE
+                    fragmentMap.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
+
+    private fun showResult(result: List<PlacesItem>) {
+        binding?.apply {
+            if (result.isEmpty()) {
+                tvNoResult.visibility = View.VISIBLE
+                rvResult.visibility = View.GONE
+                fragmentMap.visibility = View.GONE
+                return
+            }
+
+            (rvResult.adapter as PlaceAdapter).submitList(result.map {
+                placeItemToEntity(it)
+            })
+
+            val latLngBounds = LatLngBounds.Builder()
+
+            result.forEach {
+                val latLng = LatLng(it.latitude, it.longitude)
+                map?.addMarker(MarkerOptions().position(latLng).title(it.name))
+                latLngBounds.include(latLng)
+            }
+
+            map?.setOnMapLoadedCallback {
+                map?.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), 20))
             }
         }
     }

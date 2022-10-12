@@ -59,7 +59,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/search_places"
-                    android:paddingTop="8dp" />
+                    android:paddingTop="8dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
 
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -69,7 +72,7 @@
         android:id="@+id/fragment_map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
@@ -87,15 +90,15 @@
         tools:listitem="@layout/place_item" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_no_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_result"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_result"
-        app:layout_constraintEnd_toEndOf="@+id/rv_result"
-        app:layout_constraintStart_toStartOf="@+id/rv_result"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_map" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
 
     <ProgressBar
         android:id="@+id/pb_loading"
@@ -105,11 +108,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="fragment_map,rv_result,textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
