@@ -61,7 +61,12 @@ class SearchResultFragment : Fragment() {
                 findNavController().navigateUp()
             }
 
-            rvResult.adapter = PlaceAdapter()
+            rvResult.adapter = PlaceAdapter().apply {
+                onItemClickListener = { place ->
+                    val action = SearchResultFragmentDirections.actionSearchResultFragmentToPlaceDetailFragment(place.id)
+                    findNavController().navigate(action)
+                }
+            }
 
             etSearch.on(EditorInfo.IME_ACTION_DONE) {
                 if (etSearch.text.toString().isNotEmpty()) {

@@ -52,7 +52,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        PlaceDetailViewModel()
+        PlaceDetailViewModel(get())
     }
 
     viewModel {

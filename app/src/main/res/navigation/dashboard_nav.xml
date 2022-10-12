@@ -68,7 +68,7 @@
         android:label="fragment_place_detail"
         tools:layout="@layout/fragment_place_detail" >
         <argument
-            android:name="place"
-            app:argType="com.raassh.gemastik15.local.db.PlaceEntity" />
+            android:name="placeId"
+            app:argType="string" />
     </fragment>
 </navigation>
