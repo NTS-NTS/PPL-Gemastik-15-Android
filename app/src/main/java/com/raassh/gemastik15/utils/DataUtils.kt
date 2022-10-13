@@ -4,7 +4,9 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlacesItem
+import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.local.db.PlaceEntity
 import java.util.*
 
@@ -22,7 +24,7 @@ fun placeItemToEntity(placesItem: PlacesItem): PlaceEntity {
     )
 }
 
-// this looks bad, should be refactored later if possible
+// this looks bad, should be refactored later if possible. nah... fuck it
 fun Context.translateDBtoViewName(name: String): String {
     return when (name) {
         "stair_lift" -> getString(R.string.stair_lift)
@@ -106,6 +108,56 @@ fun Context.getFacilityDrawable(name: String) : Drawable? {
         getString(R.string.wheelchair_area) ->  ContextCompat.getDrawable(this, R.drawable.wheelchair_area)
         getString(R.string.wheelchair_service) ->  ContextCompat.getDrawable(this, R.drawable.wheelchair_service)
         getString(R.string.sitting_toilet) ->  ContextCompat.getDrawable(this, R.drawable.sitting_toilet)
+        else -> null
+    }
+}
+
+fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<FacilitiesItem>> {
+    val facilitiesGroup = mutableListOf<List<FacilitiesItem>>()
+    val mobilityFacilities = mutableListOf<FacilitiesItem>()
+    val visionFacilities = mutableListOf<FacilitiesItem>()
+    val audioFacilities = mutableListOf<FacilitiesItem>()
+
+    facilities.forEach {
+        when (it.name) {
+            getString(R.string.accessible_entrance),
+            getString(R.string.accessible_furniture),
+            getString(R.string.accessible_space),
+            getString(R.string.parking),
+            getString(R.string.railing),
+            getString(R.string.sitting_toilet),
+            getString(R.string.lift),
+            getString(R.string.ramp),
+            getString(R.string.stair_lift),
+            getString(R.string.wheelchair_area),
+            getString(R.string.wheelchair_service) -> mobilityFacilities.add(it)
+            getString(R.string.braille_button),
+            getString(R.string.braille_signage),
+            getString(R.string.clear_signage),
+            getString(R.string.audio_wayfinder),
+            getString(R.string.audio_output),
+            getString(R.string.guiding_blocks) -> visionFacilities.add(it)
+            getString(R.string.assistive_listening),
+            getString(R.string.audio_control),
+            getString(R.string.sign_language),
+            getString(R.string.display),
+            getString(R.string.tty),
+            getString(R.string.tv_text) -> audioFacilities.add(it)
+        }
+    }
+
+    facilitiesGroup.add(mobilityFacilities)
+    facilitiesGroup.add(visionFacilities)
+    facilitiesGroup.add(audioFacilities)
+
+    return facilitiesGroup
+}
+
+fun Context.getFacilityReviewDrawable(quality: Int) : Drawable? {
+    return when (quality) {
+        0 -> ContextCompat.getDrawable(this, R.drawable.ic_baseline_not_exist_20)
+        1 -> ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_down_20)
+        2 -> ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_up_20)
         else -> null
     }
 }
