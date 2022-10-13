@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.api.response.ErrorResponse
-import com.raassh.gemastik15.api.response.TokenData
 import com.raassh.gemastik15.databinding.FragmentLoginBinding
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.validate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
@@ -62,16 +62,16 @@ class LoginFragment : Fragment() {
                             btnLogin.isEnabled = false
                         }
                         is Resource.Success -> {
-                            val token = (response.data as TokenData).token
+                            btnLogin.isEnabled = true
+
+                            val token = response.data?.token ?: ""
                             viewModel.setToken(token)
                         }
                         is Resource.Error -> {
                             btnLogin.isEnabled = true
 
-                            val error = response.data as ErrorResponse?
-
                             root.showSnackbar(
-                                error?.data ?: getString(R.string.unknown_error)
+                                response.message ?: getString(R.string.unknown_error)
                             )
                         }
                     }

@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.api.response.ErrorResponse
-import com.raassh.gemastik15.api.response.UserData
 import com.raassh.gemastik15.databinding.FragmentRegisterBinding
 import com.raassh.gemastik15.utils.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -59,17 +57,15 @@ class RegisterFragment : Fragment() {
                         is Resource.Success -> {
                             val action =
                                 RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
-                            action.username = (response.data as UserData).email
+                            action.username = response.data?.email ?: ""
 
                             findNavController().navigate(action)
                         }
                         is Resource.Error -> {
                             btnRegister.isEnabled = true
 
-                            val error = response.data as ErrorResponse?
-
                             root.showSnackbar(
-                                error?.data ?: getString(R.string.unknown_error)
+                                response.message ?: getString(R.string.unknown_error)
                             )
                         }
                     }

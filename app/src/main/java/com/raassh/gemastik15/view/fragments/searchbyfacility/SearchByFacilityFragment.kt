@@ -16,7 +16,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.OptionTagAdapter
 import com.raassh.gemastik15.adapter.PlaceAdapter
-import com.raassh.gemastik15.api.response.ErrorResponse
 import com.raassh.gemastik15.api.response.PlacesItem
 import com.raassh.gemastik15.databinding.FragmentSearchByFacilityBinding
 import com.raassh.gemastik15.utils.Resource
@@ -62,7 +61,12 @@ class SearchByFacilityFragment : Fragment() {
                 findNavController().navigate(SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToSearchFacilityOptionFragment(facilities))
             }
 
-            rvResult.adapter = PlaceAdapter()
+            rvResult.adapter = PlaceAdapter().apply {
+                onItemClickListener = { place ->
+                    val action = SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToPlaceDetailFragment(place)
+                    findNavController().navigate(action)
+                }
+            }
 
             rvOptions.adapter = OptionTagAdapter().apply {
                 submitList(facilities.toList())
@@ -78,16 +82,13 @@ class SearchByFacilityFragment : Fragment() {
                     is Resource.Success -> {
                         showLoading(false)
 
-                        @Suppress("UNCHECKED_CAST")
-                        showResult(it.data as List<PlacesItem>)
+                        showResult(it.data)
                     }
                     is Resource.Error -> {
                         showLoading(false, error = true)
 
-                        val error = it.data as ErrorResponse?
-
                         binding?.root?.showSnackbar(
-                            error?.data ?: getString(R.string.unknown_error)
+                            it.message ?: getString(R.string.unknown_error)
                         )
                     }
                 }
@@ -127,9 +128,9 @@ class SearchByFacilityFragment : Fragment() {
         }
     }
 
-    private fun showResult(result: List<PlacesItem>) {
+    private fun showResult(result: List<PlacesItem>?) {
         binding?.apply {
-            if (result.isEmpty()) {
+            if (result.isNullOrEmpty()) {
                 tvNoResult.visibility = View.VISIBLE
                 rvResult.visibility = View.GONE
                 fragmentMap.visibility = View.GONE

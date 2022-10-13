@@ -18,6 +18,8 @@ fun placeItemToEntity(placesItem: PlacesItem): PlaceEntity {
         placesItem.facilities.joinToString(",") {
             it.name
         },
+        placesItem.latitude,
+        placesItem.longitude,
         Calendar.getInstance().timeInMillis
     )
 }

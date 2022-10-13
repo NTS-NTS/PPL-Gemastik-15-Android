@@ -30,7 +30,12 @@ class DiscoverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val placesAdapter = PlaceAdapter()
+        val placesAdapter = PlaceAdapter().apply {
+            onItemClickListener = { place ->
+                val action = DiscoverFragmentDirections.actionNavigationDiscoverToPlaceDetailFragment(place)
+                findNavController().navigate(action)
+            }
+        }
 
         binding?.apply {
             btnSearch.setOnClickListener {

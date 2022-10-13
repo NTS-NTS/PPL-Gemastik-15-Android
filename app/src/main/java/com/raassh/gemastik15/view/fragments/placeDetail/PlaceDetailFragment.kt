@@ -1,16 +1,21 @@
 package com.raassh.gemastik15.view.fragments.placeDetail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
 import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.rounded
+import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,29 +43,63 @@ class PlaceDetailFragment : Fragment() {
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
 
-        val placeId = PlaceDetailFragmentArgs.fromBundle(requireArguments()).placeId
+        val place = PlaceDetailFragmentArgs.fromBundle(requireArguments()).place
+        showLoading(true)
 
         binding?.apply {
-            //
+            tvPlaceName.text = place.name
+            tvPlaceType.text = place.type
+            tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
+
+            btnMaps.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${place.latitude},${place.longitude}"))
+                intent.setPackage("com.google.android.apps.maps")
+
+                if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                    startActivity(intent)
+                }
+            }
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
         }
 
         viewModel.detail.observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.Success -> {
-                    Log.d("TAG", "onViewCreated: ${it}")
-                }
-                is Resource.Error -> {
-                    Log.d("TAG", "onViewCreated: ${it}")
-                }
-                is Resource.Loading -> {
-                    Log.d("TAG", "onViewCreated: ${it}")
+            if (it != null) {
+                when (it) {
+                    is Resource.Loading -> {
+                        showLoading(true)
+                    }
+                    is Resource.Success -> {
+                        showLoading(false)
+                    }
+                    is Resource.Error -> {
+                        binding?.root?.showSnackbar(
+                            it.message ?: getString(R.string.unknown_error)
+                        )
+
+                        findNavController().navigateUp()
+                    }
                 }
             }
         }
 
         sharedViewModel.location.observe(viewLifecycleOwner) {
             if (it != null) {
-                viewModel.setId(placeId, it.latitude, it.longitude)
+                viewModel.getDetail(place, it.latitude, it.longitude)
+            }
+        }
+    }
+
+    private fun showLoading(loading: Boolean) {
+        binding?.apply {
+            if (loading) {
+                pbLoading.visibility = View.VISIBLE
+                content.visibility = View.GONE
+            } else {
+                pbLoading.visibility = View.GONE
+                content.visibility = View.VISIBLE
             }
         }
     }
