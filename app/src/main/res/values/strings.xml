@@ -76,5 +76,9 @@
     <string name="good">Good</string>
     <string name="not_exist">Not exist</string>
     <string name="don_t_know">Don\'t know</string>
+    <string name="permission_denied_warning">Permissions Needed</string>
+    <string name="permissions_denied_warning_message">This app needs location permissions to work properly. Do you want to open setting and grant them??</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>
