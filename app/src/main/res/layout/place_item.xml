@@ -62,4 +62,19 @@
         app:flexDirection="row"
         app:flexWrap="wrap"/>
 
+    <Button
+        style="@style/Theme.Gemastik15.Button.OutlinedButton"
+        android:id="@+id/btn_add_contribution"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_baseline_add_circle_outline_24"
+        android:text="@string/add_contribution"
+        app:layout_constraintTop_toBottomOf="@id/rv_place_tags"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

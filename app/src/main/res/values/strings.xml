@@ -80,5 +80,12 @@
     <string name="permissions_denied_warning_message">This app needs location permissions to work properly. Do you want to open setting and grant them??</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="recently_visited_title">Places you recently visited</string>
+    <string name="read_articles">Read Articles</string>
+    <string name="read_news">Read News</string>
+    <string name="read_guidelines">Read Guidelines</string>
+    <string name="better_contribution_title">Make your contributions better!</string>
+    <string name="better_contribution_subtitle">Read government guidelines, articles, and news about accessibility to strengthen your knowledge</string>
+    <string name="add_contribution">Add Contribution</string>
 
 </resources>
