@@ -62,7 +62,12 @@ class SearchByFacilityFragment : Fragment() {
                 findNavController().navigate(SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToSearchFacilityOptionFragment(facilities))
             }
 
-            rvResult.adapter = PlaceAdapter()
+            rvResult.adapter = PlaceAdapter().apply {
+                onItemClickListener = { place ->
+                    val action = SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToPlaceDetailFragment(place)
+                    findNavController().navigate(action)
+                }
+            }
 
             rvOptions.adapter = OptionTagAdapter().apply {
                 submitList(facilities.toList())

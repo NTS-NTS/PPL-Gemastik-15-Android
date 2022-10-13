@@ -63,7 +63,7 @@ class SearchResultFragment : Fragment() {
 
             rvResult.adapter = PlaceAdapter().apply {
                 onItemClickListener = { place ->
-                    val action = SearchResultFragmentDirections.actionSearchResultFragmentToPlaceDetailFragment(place.id)
+                    val action = SearchResultFragmentDirections.actionSearchResultFragmentToPlaceDetailFragment(place)
                     findNavController().navigate(action)
                 }
             }
