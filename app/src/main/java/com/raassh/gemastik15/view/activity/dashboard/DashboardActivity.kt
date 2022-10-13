@@ -2,11 +2,15 @@ package com.raassh.gemastik15.view.activity.dashboard
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -31,12 +35,27 @@ class DashboardActivity : AppCompatActivity() {
                 getMyLastLocation()
             }
             permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
-                // Only approximate location access granted.
                 getMyLastLocation()
             }
             else -> {
-                // No location access granted.
-                Log.d("TAG", "requestPermissionLauncher: Permissions not granted")
+                AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.permission_denied_warning))
+                    .setMessage(getString(R.string.permissions_denied_warning_message))
+                    .setPositiveButton(getString(R.string.yes)) { dialog, _ ->
+                        dialog.dismiss()
+
+                        val uri = Uri.fromParts("package", packageName, null)
+                        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                            data = uri
+                        }
+                        startActivity(intent)
+
+                        getMyLastLocation()
+                    }
+                    .setNegativeButton(getString(R.string.no)) { _, _ ->
+                        finish()
+                    }
+                    .show()
             }
         }
     }
@@ -46,6 +65,7 @@ class DashboardActivity : AppCompatActivity() {
         if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
             checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
         ) {
+            // TODO: refactor to get current location
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 if (location != null) {
                     viewModel.setLocation(location.latitude, location.longitude)
@@ -69,7 +89,8 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navView = binding.bottomNavView
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
         val navController = navHostFragment.navController
 
 //        val appBarConfiguration = AppBarConfiguration.Builder(
