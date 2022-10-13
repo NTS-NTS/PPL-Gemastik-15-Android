@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.api.response.ErrorResponse
-import com.raassh.gemastik15.api.response.TokenData
 import com.raassh.gemastik15.databinding.FragmentAddContributionBinding
 import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.utils.FacilityDataXmlParser
@@ -123,9 +121,8 @@ class AddContributionFragment : Fragment() {
                     is Resource.Error -> {
                         setLoading(false)
 
-                        val error = response.data as ErrorResponse?
                         binding?.root?.showSnackbar(
-                            error?.data ?: getString(R.string.unknown_error)
+                            response.message ?: getString(R.string.unknown_error)
                         )
                     }
                 }

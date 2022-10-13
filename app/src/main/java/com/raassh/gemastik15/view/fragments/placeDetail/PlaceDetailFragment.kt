@@ -13,7 +13,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.api.response.ErrorResponse
 import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.rounded
@@ -68,23 +67,21 @@ class PlaceDetailFragment : Fragment() {
         }
 
         viewModel.detail.observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.Loading -> {
-                    showLoading(true)
-                }
-                is Resource.Success -> {
-                    showLoading(false)
-                }
-                is Resource.Error -> {
-                    val error = it.data as ErrorResponse?
+            if (it != null) {
+                when (it) {
+                    is Resource.Loading -> {
+                        showLoading(true)
+                    }
+                    is Resource.Success -> {
+                        showLoading(false)
+                    }
+                    is Resource.Error -> {
+                        binding?.root?.showSnackbar(
+                            it.message ?: getString(R.string.unknown_error)
+                        )
 
-                    Log.d("TAG", "onViewCreated: $error")
-
-                    binding?.root?.showSnackbar(
-                        error?.data ?: getString(R.string.unknown_error)
-                    )
-
-                    findNavController().navigateUp()
+                        findNavController().navigateUp()
+                    }
                 }
             }
         }

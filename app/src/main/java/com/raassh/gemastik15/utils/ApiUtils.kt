@@ -13,7 +13,7 @@ fun getErrorResponse(body: ResponseBody?): ErrorResponse = if (body != null) {
     ErrorResponse("Unknown error", true, "Unknown error")
 }
 
-fun <T> callApi(apiCall: suspend () -> T) = flow<Resource<*>> {
+inline fun <T> callApi(crossinline apiCall: suspend () -> T) = flow<Resource<T>> {
     emit(Resource.Loading(null))
 
     val data = apiCall()
@@ -21,7 +21,7 @@ fun <T> callApi(apiCall: suspend () -> T) = flow<Resource<*>> {
 }.catch { e ->
     if (e is HttpException) {
         val error = getErrorResponse(e.response()?.errorBody())
-        emit(Resource.Error(error.message, error))
+        emit(Resource.Error(error.data, null))
     } else {
         emit(Resource.Error(e.message, null))
     }
