@@ -1,20 +1,25 @@
 package com.raassh.gemastik15.view.fragments.placeDetail
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import com.raassh.gemastik15.api.request.PlaceDetailQuery
+import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.repository.PlaceRepository
+import kotlinx.coroutines.launch
+import java.util.*
 
-class PlaceDetailViewModel(placeRepository: PlaceRepository) : ViewModel() {
+class PlaceDetailViewModel(val placeRepository: PlaceRepository) : ViewModel() {
     private val query = MutableLiveData<PlaceDetailQuery>()
 
     val detail = Transformations.switchMap(query) {
         placeRepository.getPlaceDetail(it.id, it.lat, it.long).asLiveData()
     }
 
-    fun setId(id: String, lat: Double, long: Double) {
-        this.query.value = PlaceDetailQuery(id, lat, long)
+    fun getDetail(place: PlaceEntity, lat: Double, long: Double) {
+        this.query.value = PlaceDetailQuery(place.id, lat, long)
+
+        viewModelScope.launch {
+            place.accessTime = Calendar.getInstance().timeInMillis
+            placeRepository.insertPlacesToDB(listOf(place))
+        }
     }
 }

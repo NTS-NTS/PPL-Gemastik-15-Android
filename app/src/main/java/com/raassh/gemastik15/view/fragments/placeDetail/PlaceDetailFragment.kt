@@ -3,7 +3,6 @@ package com.raassh.gemastik15.view.fragments.placeDetail
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -87,9 +86,8 @@ class PlaceDetailFragment : Fragment() {
         }
 
         sharedViewModel.location.observe(viewLifecycleOwner) {
-            Log.d("TAG", "onViewCreated: $it")
             if (it != null) {
-                viewModel.setId(place.id, it.latitude, it.longitude)
+                viewModel.getDetail(place, it.latitude, it.longitude)
             }
         }
     }
