@@ -14,4 +14,8 @@ class LoginViewModel(private val authenticationRepository: AuthenticationReposit
     fun setToken(token: String) = viewModelScope.launch {
         pref.setToken(token)
     }
+
+    fun setUserId(userId: String) = viewModelScope.launch {
+        pref.setUserId(userId)
+    }
 }

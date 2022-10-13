@@ -2,17 +2,18 @@ package com.raassh.gemastik15.view.fragments.AddContribution
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.raassh.gemastik15.api.response.ContributionResponse
+import com.raassh.gemastik15.di.repositoryModule
 import com.raassh.gemastik15.local.db.Facility
+import com.raassh.gemastik15.repository.ContributionRepository
 
-class AddContributionViewModel : ViewModel() {
+class AddContributionViewModel(private val contributionRepository: ContributionRepository) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: MutableLiveData<Boolean> = _isLoading
 
     private val _currentFacility = MutableLiveData<Facility>()
     val currentFacility: MutableLiveData<Facility> = _currentFacility
-
-    private val _isSuccess = MutableLiveData<Boolean>()
-    val isSuccess: MutableLiveData<Boolean> = _isSuccess
 
     private val _isDone = MutableLiveData<Boolean>()
     val isDone: MutableLiveData<Boolean> = _isDone
@@ -23,7 +24,7 @@ class AddContributionViewModel : ViewModel() {
     private val _index = MutableLiveData<Int>()
     val index: MutableLiveData<Int> = _index
 
-    private fun nextFacility() {
+    fun nextFacility() {
         if (index.value!! < facilities.value!!.size - 1) {
             _index.value = index.value!! + 1
             _currentFacility.value = facilities.value!![index.value!!]
@@ -33,14 +34,6 @@ class AddContributionViewModel : ViewModel() {
         }
     }
 
-    suspend fun submitContribution(quality: Int ) {
-        _isLoading.value = true
-//        val response = repository.submitContribution(quality, quantity, currentFacility?.id, location.value?.latitude, location.value?.longitude)
-//        _isSuccess.value = response.isSuccessful
-
-//        if (response.isSuccessful) {
-//            nextFacility()
-//        }
-        _isLoading.value = false
-    }
+    fun submitContribution(userId: String, placeId: String, quality: Int) =
+        contributionRepository.addContribution(userId, placeId, currentFacility.value!!.name, quality).asLiveData()
 }

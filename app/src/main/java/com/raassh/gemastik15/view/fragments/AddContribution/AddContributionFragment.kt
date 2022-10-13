@@ -5,15 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.api.response.ErrorResponse
+import com.raassh.gemastik15.api.response.TokenData
 import com.raassh.gemastik15.databinding.FragmentAddContributionBinding
 import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.utils.FacilityDataXmlParser
+import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.Field
 
 class AddContributionFragment : Fragment() {
     private val viewModel by viewModel<AddContributionViewModel>()
+    private val sharedViewModel by viewModel<DashboardViewModel>()
     private var binding: FragmentAddContributionBinding? = null
 
     override fun onCreateView(
@@ -29,12 +37,40 @@ class AddContributionFragment : Fragment() {
 
         prepareFacilityData()
 
+        val placeId = AddContributionFragmentArgs.fromBundle(requireArguments()).placeId
+        val jwt = JWT(sharedViewModel.getToken().value.toString())
+        val userId = jwt.id
+
         binding?.apply {
             btnBack.setOnClickListener {
-                activity?.onBackPressed()
+                findNavController().navigateUp()
             }
 
+            btnFacilityReviewDone.setOnClickListener {
+                findNavController().navigateUp()
+            }
 
+            btnFacilityReviewGood.setOnClickListener {
+                if (userId != null) {
+                    trySubmitContribution(userId, placeId, 2)
+                }
+            }
+
+            btnFacilityReviewBad.setOnClickListener {
+                if (userId != null) {
+                    trySubmitContribution(userId, placeId, 1)
+                }
+            }
+
+            btnFacilityReviewNone.setOnClickListener {
+                if (userId != null) {
+                    trySubmitContribution(userId, placeId, 0)
+                }
+            }
+
+            btnFacilityReviewDontKnow.setOnClickListener {
+                viewModel.nextFacility()
+            }
         }
 
         viewModel.apply {
@@ -46,28 +82,14 @@ class AddContributionFragment : Fragment() {
                 }
             }
 
-            isLoading.observe(viewLifecycleOwner) {
+            isDone.observe(viewLifecycleOwner) {
                 binding?.apply {
                     if (it) {
-                        btnFacilityReviewBad.isEnabled = false
-                        btnFacilityReviewGood.isEnabled = false
-                        btnFacilityReviewNone.isEnabled = false
-                        btnFacilityReviewDontKnow.isEnabled = false
-
-                        spnFacilityReview.visibility = View.VISIBLE
-                        imgFacilityIcon.visibility = View.GONE
-                        tvFacilityName.visibility = View.GONE
-                        tvFacilityDescription.visibility = View.GONE
+                        llFacilityReviewDone.visibility = View.VISIBLE
+                        llFacilities.visibility = View.GONE
                     } else {
-                        btnFacilityReviewBad.isEnabled = true
-                        btnFacilityReviewGood.isEnabled = true
-                        btnFacilityReviewNone.isEnabled = true
-                        btnFacilityReviewDontKnow.isEnabled = true
-
-                        spnFacilityReview.visibility = View.GONE
-                        imgFacilityIcon.visibility = View.VISIBLE
-                        tvFacilityName.visibility = View.VISIBLE
-                        tvFacilityDescription.visibility = View.VISIBLE
+                        llFacilityReviewDone.visibility = View.GONE
+                        llFacilities.visibility = View.VISIBLE
                     }
                 }
             }
@@ -79,12 +101,50 @@ class AddContributionFragment : Fragment() {
         binding = null
     }
 
-    fun prepareFacilityData() {
-        val stream = resources.openRawResource(R.raw.facility_data)
-        val facilities: List<Facility> = FacilityDataXmlParser().parse(stream) ?: emptyList()
+    private fun prepareFacilityData() {
+        val istream = resources.openRawResource(R.raw.facility_data)
+        val facilities: List<Facility> = FacilityDataXmlParser().parse(istream)
 
         viewModel.facilities.value = facilities
         viewModel.currentFacility.value = facilities[0]
+    }
+
+    private fun trySubmitContribution(userId: String, placeId: String, rating: Int) {
+        viewModel.submitContribution(userId, placeId, rating).observe(viewLifecycleOwner) { response ->
+            if (response != null) {
+                when (response) {
+                    is Resource.Loading -> {
+                        setLoading(true)
+                    }
+                    is Resource.Success -> {
+                        viewModel.nextFacility()
+                        setLoading(false)
+                    }
+                    is Resource.Error -> {
+                        setLoading(false)
+
+                        val error = response.data as ErrorResponse?
+                        binding?.root?.showSnackbar(
+                            error?.data ?: getString(R.string.unknown_error)
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding?.apply {
+            btnFacilityReviewBad.isEnabled = !isLoading
+            btnFacilityReviewGood.isEnabled = !isLoading
+            btnFacilityReviewNone.isEnabled = !isLoading
+            btnFacilityReviewDontKnow.isEnabled = !isLoading
+
+            spnFacilityReview.visibility = if (isLoading) View.VISIBLE else View.GONE
+            imgFacilityIcon.visibility = if (isLoading) View.GONE else View.VISIBLE
+            tvFacilityName.visibility = if (isLoading) View.GONE else View.VISIBLE
+            tvFacilityDescription.visibility = if (isLoading) View.GONE else View.VISIBLE
+        }
     }
 
     private fun getResId(resName: String, c: Class<*>): Int {

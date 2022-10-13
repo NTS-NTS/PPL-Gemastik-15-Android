@@ -48,7 +48,6 @@ class PlaceDetailFragment : Fragment() {
             when (it) {
                 is Resource.Success -> {
                     Log.d("TAG", "onViewCreated: ${it}")
-
                 }
                 is Resource.Error -> {
                     Log.d("TAG", "onViewCreated: ${it}")

@@ -70,5 +70,16 @@
         <argument
             android:name="placeId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_placeDetailFragment_to_addContributionFragment"
+            app:destination="@id/addContributionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addContributionFragment"
+        android:name="com.raassh.gemastik15.view.fragments.AddContribution.AddContributionFragment"
+        android:label="AddContributionFragment" >
+        <argument
+            android:name="placeId"
+            app:argType="string" />
     </fragment>
 </navigation>
