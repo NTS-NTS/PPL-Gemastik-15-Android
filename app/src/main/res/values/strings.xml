@@ -76,5 +76,6 @@
     <string name="good">Good</string>
     <string name="not_exist">Not exist</string>
     <string name="don_t_know">Don\'t know</string>
+    <string name="add_review">Add review</string>
 
 </resources>
