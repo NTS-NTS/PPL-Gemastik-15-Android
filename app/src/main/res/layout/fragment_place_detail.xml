@@ -42,7 +42,7 @@
 
             <Button
                 android:id="@+id/btn_maps"
-                style="@style/Theme.Gemastik15.Button"
+                style="@style/Theme.Gemastik15.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="20dp"
@@ -116,7 +116,7 @@
         tools:listitem="@layout/place_photo_item" />
 
     <com.google.android.material.divider.MaterialDivider
-        style="@style/Widget.Material3.MaterialDivider.Heavy"
+        style="@style/Theme.Gemastik15.Divider.Heavy"
         android:id="@+id/divider_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.divider.MaterialDivider
-        style="@style/Widget.Material3.MaterialDivider.Heavy"
+        style="@style/Theme.Gemastik15.Divider.Heavy"
         android:id="@+id/divider_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -220,12 +220,13 @@
 
         <TextView
             style="@style/TextAppearance.Material3.BodyLarge"
-            android:id="@+id/rv_mobility_facilities_empty"
+            android:id="@+id/tv_mobility_facilities_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="No mobility facilities review."
-            tools:visibility="gone"
+            tools:visibility="visible"
+            android:visibility="gone"
             />
 
         <TextView
@@ -247,12 +248,13 @@
 
         <TextView
             style="@style/TextAppearance.Material3.BodyLarge"
-            android:id="@+id/rv_audio_facilities_empty"
+            android:id="@+id/tv_audio_facilities_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="No hearing impairment facilities review."
             tools:visibility="visible"
+            android:visibility="gone"
             />
 
         <TextView
@@ -270,6 +272,36 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
             tools:listitem="@layout/facility_review_item"/>
+
+        <TextView
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:id="@+id/tv_visual_facilities_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="No visual impairment facilities review."
+            tools:visibility="visible"
+            android:visibility="gone"
+            />
     </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        style="@style/Theme.Gemastik15.Divider.Heavy"
+        android:id="@+id/divider_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/ll_facilities"
+        app:layout_constraintTop_toBottomOf="@id/ll_facilities"/>
+
+    <Button
+        style="@style/Theme.Gemastik15.Button.TonalButton"
+        android:id="@+id/btn_add_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_review"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
 </LinearLayout>
