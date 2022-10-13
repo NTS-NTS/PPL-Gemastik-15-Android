@@ -76,5 +76,12 @@
     <string name="good">Good</string>
     <string name="not_exist">Not exist</string>
     <string name="don_t_know">Don\'t know</string>
+    <string name="recently_visited_title">Places you recently visited</string>
+    <string name="read_articles">Read Articles</string>
+    <string name="read_news">Read News</string>
+    <string name="read_guidelines">Read Guidelines</string>
+    <string name="better_contribution_title">Make your contributions better!</string>
+    <string name="better_contribution_subtitle">Read government guidelines, articles, and news about accessibility to strengthen your knowledge</string>
+    <string name="add_contribution">Add Contribution</string>
 
 </resources>
