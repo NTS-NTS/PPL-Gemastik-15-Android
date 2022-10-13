@@ -2,11 +2,11 @@ package com.raassh.gemastik15.di
 
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import com.raassh.gemastik15.view.activity.main.MainActivityViewModel
-import com.raassh.gemastik15.view.fragments.AddContribution.AddContributionViewModel
+import com.raassh.gemastik15.view.fragments.addcontribution.AddContributionViewModel
 import com.raassh.gemastik15.view.fragments.discover.DiscoverViewModel
 import com.raassh.gemastik15.view.fragments.landing.LandingViewModel
 import com.raassh.gemastik15.view.fragments.login.LoginViewModel
-import com.raassh.gemastik15.view.fragments.placeDetail.PlaceDetailViewModel
+import com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailViewModel
 import com.raassh.gemastik15.view.fragments.register.RegisterViewModel
 import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityViewModel
 import com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionViewModel

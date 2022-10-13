@@ -7,7 +7,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_gradient"
-    tools:context=".view.fragments.Contribution.ContributionFragment">
+    tools:context=".view.fragments.contribution.ContributionFragment">
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Elevated"

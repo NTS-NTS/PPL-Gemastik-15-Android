@@ -83,5 +83,6 @@
     <string name="better_contribution_title">Make your contributions better!</string>
     <string name="better_contribution_subtitle">Read government guidelines, articles, and news about accessibility to strengthen your knowledge</string>
     <string name="add_contribution">Add Contribution</string>
+    <string name="add_review">Add Review</string>
 
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.placeDetail.PlaceDetailFragment">
+    tools:context=".view.fragments.placedetail.PlaceDetailFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_main"
@@ -41,11 +41,10 @@
 
             <Button
                 android:id="@+id/btn_maps"
-                style="@style/Theme.Gemastik15.Button"
+                style="@style/Theme.Gemastik15.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="20dp"
-                android:contentDescription="@string/go_back"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="@string/btn_maps_text"
@@ -248,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:text="No mobility facilities review."
-                    tools:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tv_audio_facilities_title"
@@ -264,8 +263,7 @@
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
-                    tools:listitem="@layout/facility_review_item"
-                    tools:visibility="gone" />
+                    tools:listitem="@layout/facility_review_item" />
 
                 <TextView
                     android:id="@+id/tv_audio_facilities_empty"
@@ -274,7 +272,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:text="No hearing impairment facilities review."
-                    tools:visibility="visible" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tv_vision_facilities_title"
@@ -285,13 +283,42 @@
                     android:text="Visual Impairment Facilities" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/tv_visual_facilities"
+                    android:id="@+id/rv_visual_facilities"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
                     tools:listitem="@layout/facility_review_item" />
+
+                <TextView
+                    style="@style/TextAppearance.Material3.BodyLarge"
+                    android:id="@+id/tv_visual_facilities_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="No visual impairment facilities review."
+                    android:visibility="gone"
+                    />
             </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/Theme.Gemastik15.Divider.Heavy"
+                android:id="@+id/divider_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@id/ll_facilities"
+                app:layout_constraintTop_toBottomOf="@id/ll_facilities"/>
+
+            <Button
+                style="@style/Theme.Gemastik15.Button.TonalButton"
+                android:id="@+id/btn_add_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_review"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

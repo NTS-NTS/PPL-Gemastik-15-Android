@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/placeDetailFragment"
-        android:name="com.raassh.gemastik15.view.fragments.placeDetail.PlaceDetailFragment"
+        android:name="com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailFragment"
         android:label="fragment_place_detail"
         tools:layout="@layout/fragment_place_detail" >
         <action
@@ -76,10 +76,11 @@
     </fragment>
     <fragment
         android:id="@+id/addContributionFragment"
-        android:name="com.raassh.gemastik15.view.fragments.AddContribution.AddContributionFragment"
-        android:label="AddContributionFragment" >
+        android:name="com.raassh.gemastik15.view.fragments.addcontribution.AddContributionFragment"
+        android:label="fragment_add_contribution"
+        tools:layout="@layout/fragment_add_contribution">
         <argument
-            android:name="placeId"
-            app:argType="string" />
+            android:name="place"
+            app:argType="com.raassh.gemastik15.local.db.PlaceEntity" />
     </fragment>
 </navigation>

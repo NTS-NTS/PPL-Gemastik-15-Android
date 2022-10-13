@@ -1,4 +1,4 @@
-package com.raassh.gemastik15.view.fragments.AddContribution
+package com.raassh.gemastik15.view.fragments.addcontribution
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import com.raassh.gemastik15.databinding.FragmentAddContributionBinding
 import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.utils.FacilityDataXmlParser
 import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.rounded
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,11 +36,15 @@ class AddContributionFragment : Fragment() {
 
         prepareFacilityData()
 
-        val placeId = AddContributionFragmentArgs.fromBundle(requireArguments()).placeId
+        val place = AddContributionFragmentArgs.fromBundle(requireArguments()).place
         val jwt = JWT(sharedViewModel.getToken().value.toString())
         val userId = jwt.id
 
         binding?.apply {
+            tvPlaceName.text = place.name
+            tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
+            tvPlaceType.text = place.type
+
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
@@ -50,19 +55,19 @@ class AddContributionFragment : Fragment() {
 
             btnFacilityReviewGood.setOnClickListener {
                 if (userId != null) {
-                    trySubmitContribution(userId, placeId, 2)
+                    trySubmitContribution(userId, place.id, 2)
                 }
             }
 
             btnFacilityReviewBad.setOnClickListener {
                 if (userId != null) {
-                    trySubmitContribution(userId, placeId, 1)
+                    trySubmitContribution(userId, place.id, 1)
                 }
             }
 
             btnFacilityReviewNone.setOnClickListener {
                 if (userId != null) {
-                    trySubmitContribution(userId, placeId, 0)
+                    trySubmitContribution(userId, place.id, 0)
                 }
             }
 

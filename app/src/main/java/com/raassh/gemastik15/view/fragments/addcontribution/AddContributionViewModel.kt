@@ -1,10 +1,8 @@
-package com.raassh.gemastik15.view.fragments.AddContribution
+package com.raassh.gemastik15.view.fragments.addcontribution
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.raassh.gemastik15.api.response.ContributionResponse
-import com.raassh.gemastik15.di.repositoryModule
 import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.repository.ContributionRepository
 

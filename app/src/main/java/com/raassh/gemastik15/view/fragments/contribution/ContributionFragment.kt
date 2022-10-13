@@ -1,4 +1,4 @@
-package com.raassh.gemastik15.view.fragments.Contribution
+package com.raassh.gemastik15.view.fragments.contribution
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

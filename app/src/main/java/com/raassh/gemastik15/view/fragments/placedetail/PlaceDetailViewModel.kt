@@ -1,4 +1,4 @@
-package com.raassh.gemastik15.view.fragments.placeDetail
+package com.raassh.gemastik15.view.fragments.placedetail
 
 import androidx.lifecycle.*
 import com.raassh.gemastik15.api.request.PlaceDetailQuery
