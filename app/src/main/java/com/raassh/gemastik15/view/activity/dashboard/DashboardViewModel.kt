@@ -7,7 +7,7 @@ import androidx.lifecycle.asLiveData
 import com.google.android.gms.maps.model.LatLng
 import com.raassh.gemastik15.local.preferences.UserPreferences
 
-class DashboardViewModel(val pref: UserPreferences) : ViewModel() {
+class DashboardViewModel(private val pref: UserPreferences) : ViewModel() {
     private val _location = MutableLiveData<LatLng>()
     val location: LiveData<LatLng> = _location
 

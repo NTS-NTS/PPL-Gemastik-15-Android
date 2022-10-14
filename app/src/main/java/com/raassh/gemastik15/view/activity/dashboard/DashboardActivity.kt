@@ -100,13 +100,17 @@ class DashboardActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        // temporary
+        // might need to refactor this later
         navView.setOnItemSelectedListener {
-            if (it.itemId != R.id.navigation_discover) {
+            if (it.itemId != R.id.navigation_discover
+                && it.itemId != R.id.navigation_contribute) {
                 binding.root.showSnackbar(getString(R.string.feature_not_available))
+                return@setOnItemSelectedListener false
             }
 
-            false
+            navController.navigate(it.itemId)
+
+            true
         }
 
         onBackPressedDispatcher.addCallback {

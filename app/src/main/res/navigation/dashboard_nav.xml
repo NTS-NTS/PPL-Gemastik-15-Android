@@ -83,4 +83,9 @@
             android:name="place"
             app:argType="com.raassh.gemastik15.local.db.PlaceEntity" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_contribute"
+        android:name="com.raassh.gemastik15.view.fragments.contribution.ContributionFragment"
+        android:label="fragment_contribution"
+        tools:layout="@layout/fragment_contribution" />
 </navigation>
