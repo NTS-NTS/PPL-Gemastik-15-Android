@@ -23,6 +23,8 @@ class AddContributionFragment : Fragment() {
     private val sharedViewModel by viewModel<DashboardViewModel>()
     private var binding: FragmentAddContributionBinding? = null
 
+    private var userId: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,8 +39,6 @@ class AddContributionFragment : Fragment() {
         prepareFacilityData()
 
         val place = AddContributionFragmentArgs.fromBundle(requireArguments()).place
-        val jwt = JWT(sharedViewModel.getToken().value.toString())
-        val userId = jwt.id
 
         binding?.apply {
             tvPlaceName.text = place.name
@@ -54,21 +54,15 @@ class AddContributionFragment : Fragment() {
             }
 
             btnFacilityReviewGood.setOnClickListener {
-                if (userId != null) {
-                    trySubmitContribution(userId, place.id, 2)
-                }
+                trySubmitContribution(userId, place.id, 2)
             }
 
             btnFacilityReviewBad.setOnClickListener {
-                if (userId != null) {
-                    trySubmitContribution(userId, place.id, 1)
-                }
+                trySubmitContribution(userId, place.id, 1)
             }
 
             btnFacilityReviewNone.setOnClickListener {
-                if (userId != null) {
-                    trySubmitContribution(userId, place.id, 0)
-                }
+                trySubmitContribution(userId, place.id, 0)
             }
 
             btnFacilityReviewDontKnow.setOnClickListener {
@@ -97,6 +91,13 @@ class AddContributionFragment : Fragment() {
                 }
             }
         }
+
+        sharedViewModel.getToken().observe(viewLifecycleOwner) {
+            if (!it.isNullOrEmpty()) {
+                val jwt = JWT(it)
+                userId = jwt.id
+            }
+        }
     }
 
     override fun onDestroy() {
@@ -112,23 +113,25 @@ class AddContributionFragment : Fragment() {
         viewModel.currentFacility.value = facilities[0]
     }
 
-    private fun trySubmitContribution(userId: String, placeId: String, rating: Int) {
-        viewModel.submitContribution(userId, placeId, rating).observe(viewLifecycleOwner) { response ->
-            if (response != null) {
-                when (response) {
-                    is Resource.Loading -> {
-                        setLoading(true)
-                    }
-                    is Resource.Success -> {
-                        viewModel.nextFacility()
-                        setLoading(false)
-                    }
-                    is Resource.Error -> {
-                        setLoading(false)
+    private fun trySubmitContribution(userId: String?, placeId: String, rating: Int) {
+        if (!userId.isNullOrEmpty()) {
+            viewModel.submitContribution(userId, placeId, rating).observe(viewLifecycleOwner) { response ->
+                if (response != null) {
+                    when (response) {
+                        is Resource.Loading -> {
+                            setLoading(true)
+                        }
+                        is Resource.Success -> {
+                            viewModel.nextFacility()
+                            setLoading(false)
+                        }
+                        is Resource.Error -> {
+                            setLoading(false)
 
-                        binding?.root?.showSnackbar(
-                            response.message ?: getString(R.string.unknown_error)
-                        )
+                            binding?.root?.showSnackbar(
+                                response.message ?: getString(R.string.unknown_error)
+                            )
+                        }
                     }
                 }
             }
