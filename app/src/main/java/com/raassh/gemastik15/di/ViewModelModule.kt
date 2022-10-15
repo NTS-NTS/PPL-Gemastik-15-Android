@@ -57,7 +57,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        AddContributionViewModel(get())
+        AddContributionViewModel(get(), get())
     }
 
     viewModel {

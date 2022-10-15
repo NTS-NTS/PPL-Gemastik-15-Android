@@ -54,6 +54,32 @@
 
     <string name="assistive_listening">Assistive Listening Devices</string>
 
+    <string name="stair_lift_description">Wheelchair lift that makes travelling through stairs easier for wheelchair users.</string>
+    <string name="lift_descriptipn">Lift for mobility impaired people who can\'t use stairs with enough space for wheelchair, stroller, and walking aid.</string>
+    <string name="wheelchair_area_description">Wheelchair user dedicated area in crowded place that is separated to provide easy travels.</string>
+    <string name="sitting_toilet_description">Sitting toilet for mobility impaired people with limited motion ability.</string>
+    <string name="ramp_description">A slope or inclined plane to provide easy travel for wheelchair, stroller, and walking aid users.</string>
+    <string name="accessible_space_description">Enough and wide spaces without obstacles and barriers for wheelchair, stroller, and walking aid users.</string>
+    <string name="railing_description">Railing and bar in places with risk of falling like toilets and stairs for people to hold to.</string>
+    <string name="accessible_entrance_description">Ease of entering a room or building without obstacles and barriers by providing wide entrance or automated door.</string>
+    <string name="accessible_furniture_description">Easy-to-access and reachable furniture for people with wheelchair and impaired mobility.</string>
+    <string name="wheelchair_service_description">Aid for wheelchair users like wheelchair rental and helper.</string>
+    <string name="parking_description">Dedicated parking area with wide spaces for mobility impaired people.</string>
+
+    <string name="audio_output_description">Audio output devices like earphone jack and speaker to help vision impaired people.</string>
+    <string name="audio_wayfinder_description">Wayfinder and signage with audio to help vision impaired people navigate the place.</string>
+    <string name="braille_button_description">Buttons and controls with braille description.</string>
+    <string name="guiding_blocks_description">Guiding blocks installation to help navigate the place.</string>
+    <string name="clear_signage_description">Easy-to-read and well-lit signage.</string>
+    <string name="braille_signage_description">Signage with braille description.</string>
+
+    <string name="sign_language_description">Provides sign language communication through interpreter for hearing impaired people.</string>
+    <string name="display_description">Display displaying clear information in places like lift, lobby, and cashier.</string>
+    <string name="tty_description">Teletypewriter device to help people with hearing impairment communicate through text.</string>
+    <string name="tv_text_description">TV Text</string>
+    <string name="audio_control_description">Audio Control</string>
+    <string name="assistive_listening_device_description">Assistive Listening Devices</string>
+
     <string name="empty_recent">No recent places</string>
     <string name="checkmark">Checkmark</string>
     <string name="no_result">No result</string>
@@ -88,6 +114,5 @@
     <string name="better_contribution_subtitle">Read government guidelines, articles, and news about accessibility to strengthen your knowledge</string>
     <string name="add_contribution">Add Contribution</string>
     <string name="add_review">Add Review</string>
-
     <string name="varying_review_message">%1$s facility in this place has varying quality reviews.</string>
 </resources>

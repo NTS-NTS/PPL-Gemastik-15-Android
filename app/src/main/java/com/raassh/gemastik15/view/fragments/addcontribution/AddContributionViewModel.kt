@@ -1,15 +1,18 @@
 package com.raassh.gemastik15.view.fragments.addcontribution
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
+import com.raassh.gemastik15.api.request.PlaceDetailQuery
 import com.raassh.gemastik15.local.db.Facility
+import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.repository.ContributionRepository
+import com.raassh.gemastik15.repository.PlaceRepository
+import kotlinx.coroutines.launch
+import java.util.*
 
-class AddContributionViewModel(private val contributionRepository: ContributionRepository) : ViewModel() {
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: MutableLiveData<Boolean> = _isLoading
-
+class AddContributionViewModel(
+    private val contributionRepository: ContributionRepository,
+    private val placeRepository: PlaceRepository,
+) : ViewModel() {
     private val _currentFacility = MutableLiveData<Facility>()
     val currentFacility: MutableLiveData<Facility> = _currentFacility
 
@@ -20,7 +23,17 @@ class AddContributionViewModel(private val contributionRepository: ContributionR
     val facilities: MutableLiveData<List<Facility>> = _facilities
 
     private val _index = MutableLiveData<Int>()
-    val index: MutableLiveData<Int> = _index
+    private val index: MutableLiveData<Int> = _index
+
+    private val query = MutableLiveData<PlaceDetailQuery>()
+
+    val detail = Transformations.switchMap(query) {
+        placeRepository.getPlaceDetail(it.id, it.lat, it.long).asLiveData()
+    }
+
+    fun getDetail(place: PlaceEntity, lat: Double, long: Double) {
+        this.query.value = PlaceDetailQuery(place.id, lat, long)
+    }
 
     fun nextFacility() {
         if (index.value!! < facilities.value!!.size - 1) {
