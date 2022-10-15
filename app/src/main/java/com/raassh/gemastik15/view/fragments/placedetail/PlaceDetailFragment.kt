@@ -1,8 +1,10 @@
 package com.raassh.gemastik15.view.fragments.placedetail
 
 import android.content.Intent
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -124,6 +127,7 @@ class PlaceDetailFragment : Fragment() {
 
     private fun setPlaceDetail(detail: PlaceDetailData) {
         binding?.apply {
+            tvAddress.text = detail.address
 
             val facilitiesGroup = requireContext().getFacilitiesGroup(detail.facilities)
 
@@ -147,6 +151,31 @@ class PlaceDetailFragment : Fragment() {
         if (facilities.isNotEmpty()) {
             val adapter = FacilityReviewAdapter()
             rvReviews.adapter = adapter
+            rvReviews.addItemDecoration(object : ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    val position = parent.getChildAdapterPosition(view)
+                    val spanCount = 2
+                    val spacing = 32
+
+                    outRect.left = 0
+                    outRect.right = 0
+                    outRect.top = 0
+                    outRect.bottom = 0
+
+                    if (position >= 0) {
+                        val column = position % spanCount
+                        outRect.left = spacing * column
+                        if (position >= spanCount) {
+                            outRect.top = spacing / 4
+                        }
+                    }
+                }
+            })
             adapter.submitList(facilities)
         } else {
             rvReviews.visibility = View.GONE

@@ -3,21 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_gravity="top"
     android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_review_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_facility_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@drawable/ic_outline_thumb_up_20" />
 
     <TextView
         android:id="@+id/tv_facility_name"
-        style="@style/TextAppearance.Material3.BodyLarge"
-        android:layout_width="wrap_content"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:drawablePadding="4dp"
+        app:drawableSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/iv_review_warning"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_review_icon"
         app:layout_constraintTop_toTopOf="parent"
-        tools:drawableStartCompat="@drawable/ic_outline_thumb_up_20"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="Wheelchair service" />
 
     <ImageView
@@ -31,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_facility_name"
         app:layout_constraintTop_toTopOf="@id/tv_facility_name"
-        app:tint="?attr/colorOrange"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.0"
+        app:tint="?attr/colorOrange" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

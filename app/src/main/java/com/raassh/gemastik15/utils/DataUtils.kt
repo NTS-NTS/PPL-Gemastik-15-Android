@@ -120,7 +120,7 @@ fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<Fac
     val audioFacilities = mutableListOf<FacilitiesItem>()
 
     facilities.forEach {
-        when (it.name) {
+        when (translateDBtoViewName(it.name)) {
             getString(R.string.accessible_entrance),
             getString(R.string.accessible_furniture),
             getString(R.string.accessible_space),
@@ -146,6 +146,10 @@ fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<Fac
             getString(R.string.tv_text) -> audioFacilities.add(it)
         }
     }
+
+    mobilityFacilities.sortByDescending { it.quality }
+    visionFacilities.sortByDescending { it.quality }
+    audioFacilities.sortByDescending { it.quality }
 
     facilitiesGroup.add(mobilityFacilities)
     facilitiesGroup.add(visionFacilities)
