@@ -4,11 +4,7 @@ import com.raassh.gemastik15.api.request.ContributionRequest
 import com.raassh.gemastik15.api.request.LoginRequest
 import com.raassh.gemastik15.api.request.RegisterRequest
 import com.raassh.gemastik15.api.response.*
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
     @POST("auth/register")
@@ -24,22 +20,22 @@ interface ApiService {
     @GET("places/detail/{id}")
     suspend fun getPlaceDetail(
         @Path("id") id: String,
-        @Query("lat") lat: Double,
-        @Query("long") long: Double
+        @Query("lat") lat: Double?,
+        @Query("long") long: Double?
     ): PlaceDetailResponse
 
     @GET("places/search")
     suspend fun searchPlaceByName(
         @Query("name") name: String,
-        @Query("lat") lat: Double,
-        @Query("long") long: Double,
+        @Query("lat") lat: Double?,
+        @Query("long") long: Double?,
     ): PlaceSearchResponse
 
     @GET("places/search/facilities")
     suspend fun searchPlaceByFacility(
         @Query("facility") facilities: List<String>,
-        @Query("lat") lat: Double,
-        @Query("long") long: Double,
+        @Query("lat") lat: Double?,
+        @Query("long") long: Double?,
     ): PlaceSearchResponse
 
     @POST("auth/contribution")
@@ -51,4 +47,9 @@ interface ApiService {
     suspend fun changeContribution(
         @Body body: ContributionRequest
     ): ContributionResponse
+
+    @GET("auth/contribution/count")
+    suspend fun getContributionCount(
+        @Query("id") user_id: String
+    ): ContributionCountResponse
 }

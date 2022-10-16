@@ -1,7 +1,6 @@
 package com.raassh.gemastik15.view.fragments.placedetail
 
 import android.content.Intent
-import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -57,10 +55,16 @@ class PlaceDetailFragment : Fragment() {
         binding?.apply {
             tvPlaceName.text = place.name
             tvPlaceType.text = place.type
-            tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
+
+            if (place.distance == -1.0) {
+                tvPlaceDistance.visibility = View.INVISIBLE
+                ivDot.visibility = View.INVISIBLE
+            } else {
+                tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
+            }
 
             btnMaps.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${place.latitude},${place.longitude}"))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${place.latitude},${place.longitude}?q=${place.latitude},${place.longitude}"))
                 intent.setPackage("com.google.android.apps.maps")
 
                 if (intent.resolveActivity(requireActivity().packageManager) != null) {
@@ -95,9 +99,7 @@ class PlaceDetailFragment : Fragment() {
         }
 
         sharedViewModel.location.observe(viewLifecycleOwner) {
-            if (it != null) {
-                viewModel.getDetail(place, it.latitude, it.longitude)
-            }
+            viewModel.getDetail(place, it?.latitude, it?.longitude)
         }
     }
 

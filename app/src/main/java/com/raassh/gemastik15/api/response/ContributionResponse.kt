@@ -27,3 +27,21 @@ data class ContributionData(
     @field:SerializedName("quality")
     val quality: Int
 )
+
+data class ContributionCountResponse(
+
+    @field:SerializedName("data")
+    val data: ContributionCountData,
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class ContributionCountData(
+
+    @field:SerializedName("contribution count")
+    val contributionCount: Int
+)

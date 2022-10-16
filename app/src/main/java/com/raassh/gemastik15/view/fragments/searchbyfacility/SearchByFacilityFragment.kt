@@ -31,7 +31,7 @@ class SearchByFacilityFragment : Fragment() {
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var binding: FragmentSearchByFacilityBinding? = null
     private var map: GoogleMap? = null
-    private var currentLocation = LatLng(0.0, 0.0)
+    private var currentLocation: LatLng? = null
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
@@ -96,12 +96,10 @@ class SearchByFacilityFragment : Fragment() {
         }
 
         sharedViewModel.location.observe(viewLifecycleOwner) {
-            if (it != null) {
-                currentLocation = LatLng(it.latitude, it.longitude)
-                viewModel.searchPlace(facilities.map { name ->
-                    requireContext().translateViewtoDBName(name)
-                }, it.latitude, it.longitude)
-            }
+            currentLocation = it
+            viewModel.searchPlace(facilities.map { name ->
+                requireContext().translateViewtoDBName(name)
+            }, currentLocation?.latitude, currentLocation?.longitude)
         }
     }
 
