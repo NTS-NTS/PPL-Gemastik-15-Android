@@ -27,6 +27,10 @@ class DashboardActivity : AppCompatActivity() {
     private val viewModel by viewModel<DashboardViewModel>()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    private val waitSettingIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        getMyLastLocation()
+    }
+
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
@@ -48,9 +52,7 @@ class DashboardActivity : AppCompatActivity() {
                         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
                             data = uri
                         }
-                        startActivity(intent)
-
-                        getMyLastLocation()
+                        waitSettingIntentLauncher.launch(intent)
                     }
                     .setNegativeButton(getString(R.string.no)) { dialog, _ ->
                         dialog.dismiss()

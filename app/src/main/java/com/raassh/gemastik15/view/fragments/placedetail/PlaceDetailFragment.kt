@@ -64,7 +64,7 @@ class PlaceDetailFragment : Fragment() {
             }
 
             btnMaps.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${place.latitude},${place.longitude}"))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${place.latitude},${place.longitude}?q=${place.latitude},${place.longitude}"))
                 intent.setPackage("com.google.android.apps.maps")
 
                 if (intent.resolveActivity(requireActivity().packageManager) != null) {
