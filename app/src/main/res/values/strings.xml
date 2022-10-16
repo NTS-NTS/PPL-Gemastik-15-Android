@@ -115,4 +115,5 @@
     <string name="add_contribution">Add Contribution</string>
     <string name="add_review">Add Review</string>
     <string name="varying_review_message">%1$s facility in this place has varying quality reviews.</string>
+    <string name="turn_on_gps">Turn on your GPS to get better experience</string>
 </resources>
