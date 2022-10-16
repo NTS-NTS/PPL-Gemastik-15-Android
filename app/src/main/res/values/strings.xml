@@ -116,4 +116,7 @@
     <string name="add_review">Add Review</string>
     <string name="varying_review_message">%1$s facility in this place has varying quality reviews.</string>
     <string name="location_not_found">Cannot get your location</string>
+    <string name="total_contribution">%1$d total contributions</string>
+    <string name="nearby_title">Places nearby</string>
+    <string name="no_nearby">No places nearby</string>
 </resources>

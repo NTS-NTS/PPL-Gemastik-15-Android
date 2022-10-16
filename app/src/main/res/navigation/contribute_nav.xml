@@ -8,5 +8,29 @@
         android:id="@+id/navigation_contribute"
         android:name="com.raassh.gemastik15.view.fragments.contribution.ContributionFragment"
         android:label="fragment_contribution"
-        tools:layout="@layout/fragment_contribution" />
+        tools:layout="@layout/fragment_contribution" >
+        <action
+            android:id="@+id/action_navigation_contribute_to_placeDetailFragment2"
+            app:destination="@id/placeDetailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeDetailFragment2"
+        android:name="com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailFragment"
+        android:label="fragment_place_detail"
+        tools:layout="@layout/fragment_place_detail" >
+        <action
+            android:id="@+id/action_placeDetailFragment2_to_addContributionFragment2"
+            app:destination="@id/addContributionFragment2" />
+        <argument
+            android:name="place"
+            app:argType="com.raassh.gemastik15.local.db.PlaceEntity" />
+    </fragment>
+    <fragment
+        android:id="@+id/addContributionFragment2"
+        android:name="com.raassh.gemastik15.view.fragments.addcontribution.AddContributionFragment"
+        android:label="AddContributionFragment">
+        <argument
+            android:name="place"
+            app:argType="com.raassh.gemastik15.api.response.PlaceDetailData" />
+    </fragment>
 </navigation>

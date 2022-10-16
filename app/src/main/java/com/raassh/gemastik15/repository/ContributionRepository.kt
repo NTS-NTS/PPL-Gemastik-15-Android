@@ -14,4 +14,8 @@ class ContributionRepository(private val apiService: ApiService) {
         )
         apiService.addContribution(req)
     }
+
+    fun getContributionCount(userId: String) = callApi {
+        apiService.getContributionCount(userId).data
+    }
 }
