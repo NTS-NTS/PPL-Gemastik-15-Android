@@ -14,7 +14,7 @@ class SearchByFacilityViewModel(val placeRepository: PlaceRepository) : ViewMode
         placeRepository.searchPlaceByFacility(it.facilities, it.lat, it.long).asLiveData()
     }
 
-    fun searchPlace(facilities: List<String>, lat: Double, long: Double) {
+    fun searchPlace(facilities: List<String>, lat: Double?, long: Double?) {
         this.query.value = SearchByFacilitiesQuery(facilities, lat, long)
     }
 }

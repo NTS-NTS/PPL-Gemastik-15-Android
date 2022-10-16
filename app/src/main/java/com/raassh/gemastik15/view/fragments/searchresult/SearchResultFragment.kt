@@ -31,7 +31,7 @@ class SearchResultFragment : Fragment() {
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var binding: FragmentSearchResultBinding? = null
     private var map: GoogleMap? = null
-    private var currentLocation = LatLng(0.0, 0.0)
+    private var currentLocation: LatLng? = null
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
@@ -71,8 +71,8 @@ class SearchResultFragment : Fragment() {
                 if (etSearch.text.toString().isNotEmpty()) {
                     viewModel.searchPlace(
                         etSearch.text.toString(),
-                        currentLocation.latitude,
-                        currentLocation.longitude
+                        currentLocation?.latitude,
+                        currentLocation?.longitude
                     )
                 } else {
                     root.showSnackbar(getString(R.string.search_must_not_empty))
@@ -103,10 +103,8 @@ class SearchResultFragment : Fragment() {
         }
 
         sharedViewModel.location.observe(viewLifecycleOwner) {
-            if (it != null) {
-                currentLocation = LatLng(it.latitude, it.longitude)
-                viewModel.searchPlace(query, it.latitude, it.longitude)
-            }
+            currentLocation = it
+            viewModel.searchPlace(query, currentLocation?.latitude, currentLocation?.longitude)
         }
     }
 

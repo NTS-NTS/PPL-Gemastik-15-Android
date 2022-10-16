@@ -15,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.LatLng
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.ActivityDashboardBinding
 import com.raassh.gemastik15.utils.checkPermission
@@ -51,8 +52,8 @@ class DashboardActivity : AppCompatActivity() {
 
                         getMyLastLocation()
                     }
-                    .setNegativeButton(getString(R.string.no)) { _, _ ->
-                        finish()
+                    .setNegativeButton(getString(R.string.no)) { dialog, _ ->
+                        dialog.dismiss()
                     }
                     .show()
             }
@@ -66,8 +67,9 @@ class DashboardActivity : AppCompatActivity() {
         ) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 if (location != null) {
-                    viewModel.setLocation(location.latitude, location.longitude)
+                    viewModel.setLocation(LatLng(location.latitude, location.longitude))
                 } else {
+                    viewModel.setLocation(null)
                     binding.root.showSnackbar(getString(R.string.location_not_found))
                 }
             }

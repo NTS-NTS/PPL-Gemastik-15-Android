@@ -14,7 +14,7 @@ class PlaceDetailViewModel(val placeRepository: PlaceRepository) : ViewModel() {
         placeRepository.getPlaceDetail(it.id, it.lat, it.long).asLiveData()
     }
 
-    fun getDetail(place: PlaceEntity, lat: Double, long: Double) {
+    fun getDetail(place: PlaceEntity, lat: Double?, long: Double?) {
         this.query.value = PlaceDetailQuery(place.id, lat, long)
 
         viewModelScope.launch {

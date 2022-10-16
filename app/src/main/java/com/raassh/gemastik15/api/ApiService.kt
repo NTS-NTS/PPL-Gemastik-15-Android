@@ -24,22 +24,22 @@ interface ApiService {
     @GET("places/detail/{id}")
     suspend fun getPlaceDetail(
         @Path("id") id: String,
-        @Query("lat") lat: Double,
-        @Query("long") long: Double
+        @Query("lat") lat: Double?,
+        @Query("long") long: Double?
     ): PlaceDetailResponse
 
     @GET("places/search")
     suspend fun searchPlaceByName(
         @Query("name") name: String,
-        @Query("lat") lat: Double,
-        @Query("long") long: Double,
+        @Query("lat") lat: Double?,
+        @Query("long") long: Double?,
     ): PlaceSearchResponse
 
     @GET("places/search/facilities")
     suspend fun searchPlaceByFacility(
         @Query("facility") facilities: List<String>,
-        @Query("lat") lat: Double,
-        @Query("long") long: Double,
+        @Query("lat") lat: Double?,
+        @Query("long") long: Double?,
     ): PlaceSearchResponse
 
     @POST("auth/contribution")

@@ -44,11 +44,17 @@ class PlaceAdapter : ListAdapter<PlaceEntity, PlaceAdapter.PlaceViewHolder>(DIFF
         fun bind(place: PlaceEntity) {
             binding.apply {
                 tvPlaceName.text = place.name
-                tvPlaceDistance.text = context.getString(R.string.distance, place.distance.rounded(2))
                 tvPlaceType.text = place.type
                 ivPlaceImage.loadImage(place.image)
                 rvPlaceTags.adapter = PlaceTagAdapter().apply {
                     submitList(place.facilities.splitWithEmptyList(","))
+                }
+
+                if (place.distance == -1.0) {
+                    tvPlaceDistance.visibility = View.INVISIBLE
+                    ivDot.visibility = View.INVISIBLE
+                } else {
+                    tvPlaceDistance.text = context.getString(R.string.distance, place.distance.rounded(2))
                 }
             }
         }

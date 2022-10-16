@@ -14,7 +14,7 @@ class SearchResultViewModel(val placeRepository: PlaceRepository) : ViewModel() 
         placeRepository.searchPlaceByName(it.name, it.lat, it.long).asLiveData()
     }
 
-    fun searchPlace(query: String, lat: Double, long: Double) {
+    fun searchPlace(query: String, lat: Double?, long: Double?) {
         this.query.value = SearchByNameQuery(query, lat, long)
     }
 }
