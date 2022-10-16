@@ -22,9 +22,7 @@
 
             <Button
                 android:id="@+id/btn_back"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                style="@style/Theme.Gemastik15.Button.OutlinedButton.Icon"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -40,6 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Theme.Gemastik15.TextInputLayout"
                 android:id="@+id/il_search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -55,38 +54,62 @@
                 app:startIconDrawable="@drawable/ic_baseline_search_24">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Theme.Gemastik15.TextInputEditText"
                     android:id="@+id/et_search"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:hint="@string/search_places"
-                    android:paddingTop="8dp"
                     android:inputType="text"
                     android:maxLines="1"
                     android:imeOptions="actionDone"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/Theme.Gemastik15.Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/il_search"
+                app:layout_constraintVertical_bias="1.0" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Outlined"
+        android:id="@+id/cd_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-        tools:layout="@layout/fragment_landing" />
+        app:layout_constraintBottom_toTopOf="@id/rv_result">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            tools:layout="@layout/fragment_landing"/>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_result"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_map"
+        app:layout_constraintTop_toBottomOf="@+id/cd_map"
         tools:listitem="@layout/place_item" />
 
     <TextView

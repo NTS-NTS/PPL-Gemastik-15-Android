@@ -23,9 +23,7 @@
 
             <Button
                 android:id="@+id/btn_back"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                style="@style/Theme.Gemastik15.Button.OutlinedButton.Icon"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -41,22 +39,34 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                style="@style/TextAppearance.Material3.TitleLarge"
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:text="@string/search_by_facilities"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_back"
                 app:layout_constraintStart_toEndOf="@+id/btn_back"
                 app:layout_constraintTop_toTopOf="@+id/btn_back" />
 
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/Theme.Gemastik15.Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:layout_constraintVertical_bias="1.0" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
+        android:id="@+id/sv_option"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main">
@@ -66,20 +76,24 @@
             android:layout_height="wrap_content">
 
             <TextView
+                style="@style/TextAppearance.Material3.TitleMedium"
                 android:id="@+id/tv_mobility"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/mobility_facility"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/btn_mobility"/>
 
             <Button
                 android:id="@+id/btn_mobility"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:text="@string/choose_all"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_mobility" />
@@ -88,15 +102,16 @@
                 android:id="@+id/gl_mobility"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="20dp"
                 android:columnCount="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_mobility">
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_stair_lift"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -107,10 +122,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/stair_lift"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_lift"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -121,10 +136,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/lift"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_wheelchair_area"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -135,10 +150,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/wheelchair_area"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_sitting_toilet"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -149,10 +164,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/sitting_toilet"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_ramp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -163,10 +178,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/ramp"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_accessible_space"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -177,10 +192,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/accessible_space"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_railing"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -191,10 +206,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/railing"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_accessible_entrance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -205,10 +220,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/accessible_entrance"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_accessible_furniture"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -219,10 +234,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/accessible_furniture"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_wheelchair_service"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -233,10 +248,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/wheelchair_service"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_parking"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -247,25 +262,28 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/parking"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
             </GridLayout>
 
             <TextView
+                style="@style/TextAppearance.Material3.TitleMedium"
                 android:id="@+id/tv_visual"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/visual_facility"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gl_mobility" />
+                app:layout_constraintTop_toBottomOf="@+id/gl_mobility"
+                app:layout_constraintBottom_toBottomOf="@id/btn_visual"/>
 
             <Button
                 android:id="@+id/btn_visual"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:text="@string/choose_all"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_visual" />
@@ -274,15 +292,16 @@
                 android:id="@+id/gl_visual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="20dp"
                 android:columnCount="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_visual">
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_audio_output"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -293,10 +312,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/audio_output"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_audio_wayfinder"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -307,10 +326,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/audio_wayfinder"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_braille_button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -321,10 +340,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/braille_button"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_guiding_block"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -335,10 +354,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/guiding_blocks"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_clear_signage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -349,10 +368,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/clear_signage"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_braille_signage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -363,26 +382,29 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/braille_signage"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
             </GridLayout>
 
             <TextView
+                style="@style/TextAppearance.Material3.TitleMedium"
                 android:id="@+id/tv_hearing"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/hearing_facility"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gl_visual" />
+                app:layout_constraintTop_toBottomOf="@+id/gl_visual"
+                app:layout_constraintBottom_toBottomOf="@id/btn_hearing"/>
 
             <Button
                 android:id="@+id/btn_hearing"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:text="@string/choose_all"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_hearing" />
@@ -391,15 +413,16 @@
                 android:id="@+id/gl_hearing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="20dp"
                 android:columnCount="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_hearing">
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_information_display"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -410,10 +433,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/display"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_sign_language"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -424,10 +447,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/sign_language"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_teletype_writer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -438,10 +461,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/tty"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_tv_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -452,10 +475,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/tv_text"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_audio_control"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -466,10 +489,10 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/audio_control"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
                 <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_assistive_listening_device"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -480,25 +503,54 @@
                     android:drawablePadding="8dp"
                     android:gravity="center"
                     android:text="@string/assistive_listening_device"
-                    android:textAlignment="gravity"
-                    android:textSize="16sp" />
+                    android:textAlignment="gravity"/>
 
             </GridLayout>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bottom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetStart="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sv_option">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/Theme.Gemastik15.Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btn_search"/>
+
             <Button
+                style="@style/Theme.Gemastik15.Button"
                 android:id="@+id/btn_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/search"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gl_hearing" />
+                app:layout_constraintEnd_toEndOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
+    </androidx.appcompat.widget.Toolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

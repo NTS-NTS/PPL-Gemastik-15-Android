@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <style name="Theme.Gemastik15.Button" parent="@style/Widget.Material3.Button">
@@ -49,10 +50,19 @@
         <item name="android:layout_width">48dp</item>
     </style>
 
-    <style name="Theme.Gemastik15.TextField" parent="">
+    <style name="Theme.Gemastik15.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="shapeAppearance">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.BodyLarge</item>
+        <item name="boxBackgroundColor">?attr/colorSurface</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="Theme.Gemastik15.TextInputEditText" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColorHint">?attr/colorOnSurfaceVariant</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
     </style>
 
     <style name="Theme.Gemastik15.Divider" parent="@style/Widget.Material3.MaterialDivider">

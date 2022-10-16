@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Theme.Gemastik15.TextField"
+        style="@style/Theme.Gemastik15.TextInputLayout"
         android:id="@+id/il_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -55,12 +55,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Theme.Gemastik15.TextField"
+        style="@style/Theme.Gemastik15.TextInputLayout"
         android:id="@+id/il_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 

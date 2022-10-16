@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -18,10 +19,7 @@ import com.raassh.gemastik15.adapter.OptionTagAdapter
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.api.response.PlacesItem
 import com.raassh.gemastik15.databinding.FragmentSearchByFacilityBinding
-import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.utils.placeItemToEntity
-import com.raassh.gemastik15.utils.showSnackbar
-import com.raassh.gemastik15.utils.translateViewtoDBName
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -61,15 +59,23 @@ class SearchByFacilityFragment : Fragment() {
                 findNavController().navigate(SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToSearchFacilityOptionFragment(facilities))
             }
 
-            rvResult.adapter = PlaceAdapter().apply {
-                onItemClickListener = { place ->
-                    val action = SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToPlaceDetailFragment(place)
-                    findNavController().navigate(action)
+            rvResult.apply {
+                adapter = PlaceAdapter().apply {
+                    onItemClickListener = { place ->
+                        val action = SearchByFacilityFragmentDirections.actionSearchByFacilityFragmentToPlaceDetailFragment(place)
+                        findNavController().navigate(action)
+                    }
                 }
+
+                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.VERTICAL))
             }
 
-            rvOptions.adapter = OptionTagAdapter().apply {
-                submitList(facilities.toList())
+            rvOptions.apply {
+                adapter = OptionTagAdapter().apply {
+                    submitList(facilities.toList())
+                }
+
+                addItemDecoration(LinearSpaceItemDecoration(8, RecyclerView.HORIZONTAL))
             }
         }
 

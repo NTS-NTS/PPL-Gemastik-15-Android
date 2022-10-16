@@ -18,21 +18,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Theme.Gemastik15.TextField"
+            style="@style/Theme.Gemastik15.TextInputLayout"
             android:id="@+id/il_search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:boxBackgroundColor="?attr/colorSurface"
             app:hintEnabled="false"
             app:startIconDrawable="@drawable/ic_baseline_search_24">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/Theme.Gemastik15.TextInputEditText"
                 android:id="@+id/et_search"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:hint="@string/search_places"
-                android:textColorHint="?attr/colorOnSurfaceVariant"
                 android:inputType="text"
                 android:maxLines="1"
                 android:imeOptions="actionDone"/>
