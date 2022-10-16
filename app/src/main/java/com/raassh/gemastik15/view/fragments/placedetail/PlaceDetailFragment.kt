@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.FacilityReviewAdapter
@@ -76,11 +74,6 @@ class PlaceDetailFragment : Fragment() {
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
-
-            btnAddReview.setOnClickListener {
-                val action = PlaceDetailFragmentDirections.actionPlaceDetailFragmentToAddContributionFragment(place)
-                findNavController().navigate(action)
-            }
         }
 
         viewModel.detail.observe(viewLifecycleOwner) {
@@ -91,7 +84,7 @@ class PlaceDetailFragment : Fragment() {
                     }
                     is Resource.Success -> {
                         showLoading(false)
-                        setPlaceDetail(it.data as PlaceDetailData)
+                        setPlaceDetail(it.data)
                     }
                     is Resource.Error -> {
                         binding?.root?.showSnackbar(
@@ -125,7 +118,11 @@ class PlaceDetailFragment : Fragment() {
         }
     }
 
-    private fun setPlaceDetail(detail: PlaceDetailData) {
+    private fun setPlaceDetail(detail: PlaceDetailData?) {
+        if (detail == null) {
+            return
+        }
+
         binding?.apply {
             tvAddress.text = detail.address
 
@@ -134,16 +131,18 @@ class PlaceDetailFragment : Fragment() {
             showFacilityReviews(facilitiesGroup[0], rvMobilityFacilities, tvMobilityFacilitiesEmpty)
             showFacilityReviews(facilitiesGroup[1], rvVisualFacilities, tvVisualFacilitiesEmpty)
             showFacilityReviews(facilitiesGroup[2], rvAudioFacilities, tvAudioFacilitiesEmpty)
-        }
 
-        val latLngBounds = LatLngBounds.Builder()
+            btnAddReview.setOnClickListener {
+                val action = PlaceDetailFragmentDirections.actionPlaceDetailFragmentToAddContributionFragment(detail)
+                findNavController().navigate(action)
+            }
+        }
 
         val latLng = LatLng(detail.latitude, detail.longitude)
         map?.addMarker(MarkerOptions().position(latLng).title(detail.name))
-        latLngBounds.include(latLng)
 
         map?.setOnMapLoadedCallback {
-            map?.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), 100))
+            map?.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
         }
     }
 

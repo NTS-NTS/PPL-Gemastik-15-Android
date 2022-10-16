@@ -1,6 +1,8 @@
 package com.raassh.gemastik15.api.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class PlaceDetailResponse(
 
@@ -14,6 +16,7 @@ data class PlaceDetailResponse(
 	val message: String
 )
 
+@Parcelize
 data class PlaceDetailData(
 
 	@field:SerializedName("address")
@@ -42,8 +45,9 @@ data class PlaceDetailData(
 
 	@field:SerializedName("longitude")
 	val longitude: Double
-)
+) : Parcelable
 
+@Parcelize
 data class FacilitiesItem(
 
 	@field:SerializedName("name")
@@ -54,4 +58,4 @@ data class FacilitiesItem(
 
 	@field:SerializedName("quality")
 	val quality: Double
-)
+) : Parcelable

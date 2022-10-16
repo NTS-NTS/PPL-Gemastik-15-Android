@@ -81,7 +81,7 @@
         tools:layout="@layout/fragment_add_contribution">
         <argument
             android:name="place"
-            app:argType="com.raassh.gemastik15.local.db.PlaceEntity" />
+            app:argType="com.raassh.gemastik15.api.response.PlaceDetailData" />
     </fragment>
     <fragment
         android:id="@+id/navigation_contribute"
