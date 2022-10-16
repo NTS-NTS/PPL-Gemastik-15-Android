@@ -185,5 +185,6 @@ class PlaceDetailFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+        map = null
     }
 }

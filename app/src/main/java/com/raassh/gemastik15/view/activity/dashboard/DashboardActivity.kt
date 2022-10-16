@@ -93,17 +93,12 @@ class DashboardActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
         val navController = navHostFragment.navController
 
-//        val appBarConfiguration = AppBarConfiguration.Builder(
-//            R.id.navigation_discover
-//        ).build()
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-
         navView.setupWithNavController(navController)
 
         // might need to refactor this later
         navView.setOnItemSelectedListener {
-            if (it.itemId != R.id.navigation_discover
-                && it.itemId != R.id.navigation_contribute) {
+            if (it.itemId != R.id.discover_nav
+                && it.itemId != R.id.contribute_nav) {
                 binding.root.showSnackbar(getString(R.string.feature_not_available))
                 return@setOnItemSelectedListener false
             }

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_discover"
+        android:id="@+id/discover_nav"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/discover" />
     <item
-        android:id="@+id/navigation_contribute"
+        android:id="@+id/contribute_nav"
         android:icon="@drawable/ic_baseline_add_circle_outline_24"
         android:title="@string/contribute" />
     <item
-        android:id="@+id/navigation_articles"
+        android:id="@+id/articles_nav"
         android:icon="@drawable/ic_outline_feed_24"
         android:title="@string/article" />
     <item
-        android:id="@+id/navigation_account"
+        android:id="@+id/account_nav"
         android:icon="@drawable/ic_outline_person_24"
         android:title="@string/account" />
 </menu>

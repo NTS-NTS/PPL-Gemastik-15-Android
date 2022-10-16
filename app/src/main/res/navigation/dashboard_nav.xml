@@ -3,89 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_nav"
-    app:startDestination="@id/navigation_discover">
-    <fragment
-        android:id="@+id/navigation_discover"
-        android:name="com.raassh.gemastik15.view.fragments.discover.DiscoverFragment"
-        android:label="fragment_discover"
-        tools:layout="@layout/fragment_discover" >
-        <action
-            android:id="@+id/action_navigation_discover_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
-        <action
-            android:id="@+id/action_navigation_discover_to_searchFacilityOptionFragment"
-            app:destination="@id/searchFacilityOptionFragment" />
-        <action
-            android:id="@+id/action_navigation_discover_to_searchByFacilityFragment"
-            app:destination="@id/searchByFacilityFragment" />
-        <action
-            android:id="@+id/action_navigation_discover_to_placeDetailFragment"
-            app:destination="@id/placeDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchResultFragment"
-        android:name="com.raassh.gemastik15.view.fragments.searchresult.SearchResultFragment"
-        android:label="fragment_search_result"
-        tools:layout="@layout/fragment_search_result" >
-        <argument
-            android:name="query"
-            app:argType="string"
-            android:defaultValue=""/>
-        <action
-            android:id="@+id/action_searchResultFragment_to_placeDetailFragment"
-            app:destination="@id/placeDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchFacilityOptionFragment"
-        android:name="com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionFragment"
-        android:label="fragment_search_facility_option"
-        tools:layout="@layout/fragment_search_facility_option" >
-        <action
-            android:id="@+id/action_searchFacilityOptionFragment_to_searchByFacilityFragment"
-            app:destination="@id/searchByFacilityFragment" />
-        <argument
-            android:name="facilities"
-            app:argType="string[]" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchByFacilityFragment"
-        android:name="com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityFragment"
-        android:label="fragment_search_by_facility"
-        tools:layout="@layout/fragment_search_by_facility" >
-        <action
-            android:id="@+id/action_searchByFacilityFragment_to_searchFacilityOptionFragment"
-            app:destination="@id/searchFacilityOptionFragment" />
-        <argument
-            android:name="facilities"
-            app:argType="string[]" />
-        <action
-            android:id="@+id/action_searchByFacilityFragment_to_placeDetailFragment"
-            app:destination="@id/placeDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/placeDetailFragment"
-        android:name="com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailFragment"
-        android:label="fragment_place_detail"
-        tools:layout="@layout/fragment_place_detail" >
-        <action
-            android:id="@+id/action_placeDetailFragment_to_addContributionFragment"
-            app:destination="@id/addContributionFragment" />
-        <argument
-            android:name="place"
-            app:argType="com.raassh.gemastik15.local.db.PlaceEntity" />
-    </fragment>
-    <fragment
-        android:id="@+id/addContributionFragment"
-        android:name="com.raassh.gemastik15.view.fragments.addcontribution.AddContributionFragment"
-        android:label="fragment_add_contribution"
-        tools:layout="@layout/fragment_add_contribution">
-        <argument
-            android:name="place"
-            app:argType="com.raassh.gemastik15.api.response.PlaceDetailData" />
-    </fragment>
-    <fragment
-        android:id="@+id/navigation_contribute"
-        android:name="com.raassh.gemastik15.view.fragments.contribution.ContributionFragment"
-        android:label="fragment_contribution"
-        tools:layout="@layout/fragment_contribution" />
+    app:startDestination="@id/discover_nav">
+
+    <include app:graph="@navigation/discover_nav"/>
+    <include app:graph="@navigation/contribute_nav"/>
+
 </navigation>
