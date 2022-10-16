@@ -23,10 +23,7 @@ import com.raassh.gemastik15.adapter.FacilityReviewAdapter
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlaceDetailData
 import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
-import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.utils.getFacilitiesGroup
-import com.raassh.gemastik15.utils.rounded
-import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -150,31 +147,7 @@ class PlaceDetailFragment : Fragment() {
         if (facilities.isNotEmpty()) {
             val adapter = FacilityReviewAdapter()
             rvReviews.adapter = adapter
-            rvReviews.addItemDecoration(object : ItemDecoration() {
-                override fun getItemOffsets(
-                    outRect: Rect,
-                    view: View,
-                    parent: RecyclerView,
-                    state: RecyclerView.State
-                ) {
-                    val position = parent.getChildAdapterPosition(view)
-                    val spanCount = 2
-                    val spacing = 32
-
-                    outRect.left = 0
-                    outRect.right = 0
-                    outRect.top = 0
-                    outRect.bottom = 0
-
-                    if (position >= 0) {
-                        val column = position % spanCount
-                        outRect.left = spacing * column
-                        if (position >= spanCount) {
-                            outRect.top = spacing / 4
-                        }
-                    }
-                }
-            })
+            rvReviews.addItemDecoration(GridSpaceItemDecoration(2, 8))
             adapter.submitList(facilities)
         } else {
             rvReviews.visibility = View.GONE

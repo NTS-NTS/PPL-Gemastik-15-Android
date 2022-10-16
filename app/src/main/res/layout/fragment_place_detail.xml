@@ -283,7 +283,7 @@
                     style="@style/TextAppearance.Material3.TitleMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="8dp"
                     android:text="Visual Impairment Facilities" />
 
                 <androidx.recyclerview.widget.RecyclerView

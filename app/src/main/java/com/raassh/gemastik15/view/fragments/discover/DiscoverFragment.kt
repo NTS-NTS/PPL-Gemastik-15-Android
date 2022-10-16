@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.databinding.FragmentDiscoverBinding
+import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
 import com.raassh.gemastik15.utils.getCheckedFacilities
 import com.raassh.gemastik15.utils.on
 import com.raassh.gemastik15.utils.showSnackbar
@@ -70,7 +72,10 @@ class DiscoverFragment : Fragment() {
                 findNavController().navigate(action)
             }
 
-            rvRecent.adapter = placesAdapter
+            rvRecent.apply {
+                adapter = placesAdapter
+                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.VERTICAL))
+            }
         }
 
         viewModel.apply {

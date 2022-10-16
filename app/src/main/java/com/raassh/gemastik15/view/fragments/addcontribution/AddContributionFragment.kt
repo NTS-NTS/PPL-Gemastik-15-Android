@@ -53,10 +53,13 @@ class AddContributionFragment : Fragment() {
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
 
+        prepareFacilityReviewData()
+
         binding?.apply {
             tvPlaceName.text = place.name
             tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
             tvPlaceType.text = place.kind
+            tvAddress.text = place.address
 
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
@@ -83,27 +86,27 @@ class AddContributionFragment : Fragment() {
             }
         }
 
-//        viewModel.apply {
-//            currentFacility.observe(viewLifecycleOwner) {
-//                binding?.apply {
-//                    tvFacilityName.text = getString(getResId(it.name, R.string::class.java))
-//                    tvFacilityDescription.text = getString(getResId(it.description, R.string::class.java))
-//                    imgFacilityIcon.setImageResource(getResId(it.icon, R.drawable::class.java))
-//                }
-//            }
-//
-//            isDone.observe(viewLifecycleOwner) {
-//                binding?.apply {
-//                    if (it) {
-//                        llFacilityReviewDone.visibility = View.VISIBLE
-//                        llFacilities.visibility = View.GONE
-//                    } else {
-//                        llFacilityReviewDone.visibility = View.GONE
-//                        llFacilities.visibility = View.VISIBLE
-//                    }
-//                }
-//            }
-//        }
+        viewModel.apply {
+            currentFacility.observe(viewLifecycleOwner) {
+                binding?.apply {
+                    tvFacilityName.text = getString(getResId(it.name, R.string::class.java))
+                    tvFacilityDescription.text = getString(getResId(it.description, R.string::class.java))
+                    imgFacilityIcon.setImageResource(getResId(it.icon, R.drawable::class.java))
+                }
+            }
+
+            isDone.observe(viewLifecycleOwner) {
+                binding?.apply {
+                    if (it) {
+                        llFacilityReviewDone.visibility = View.VISIBLE
+                        llFacilities.visibility = View.GONE
+                    } else {
+                        llFacilityReviewDone.visibility = View.GONE
+                        llFacilities.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
 
         sharedViewModel.apply {
             getToken().observe(viewLifecycleOwner) {
@@ -158,8 +161,6 @@ class AddContributionFragment : Fragment() {
     }
 
     private fun setPlaceDetail(detail: PlaceDetailData, map: GoogleMap) {
-        binding?.tvAddress?.text = detail.address
-
         val latLng = LatLng(detail.latitude, detail.longitude)
         map.addMarker(MarkerOptions().position(latLng).title(detail.name))
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))

@@ -3,7 +3,7 @@
     <item android:state_checked="false">
         <layer-list>
             <item android:drawable="@drawable/unchecked_background"/>
-            <item android:drawable="@drawable/braille_signage"/>
+            <item android:drawable="@drawable/braille_signage" />
         </layer-list>
     </item>
     <item>
