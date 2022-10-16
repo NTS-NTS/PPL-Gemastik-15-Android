@@ -55,7 +55,7 @@
     <string name="assistive_listening">Assistive Listening Devices</string>
 
     <string name="stair_lift_description">Wheelchair lift that makes travelling through stairs easier for wheelchair users.</string>
-    <string name="lift_descriptipn">Lift for mobility impaired people who can\'t use stairs with enough space for wheelchair, stroller, and walking aid.</string>
+    <string name="lift_description">Lift for mobility impaired people who can\'t use stairs with enough space for wheelchair, stroller, and walking aid.</string>
     <string name="wheelchair_area_description">Wheelchair user dedicated area in crowded place that is separated to provide easy travels.</string>
     <string name="sitting_toilet_description">Sitting toilet for mobility impaired people with limited motion ability.</string>
     <string name="ramp_description">A slope or inclined plane to provide easy travel for wheelchair, stroller, and walking aid users.</string>

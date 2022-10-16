@@ -1,6 +1,7 @@
 package com.raassh.gemastik15.view.fragments.addcontribution
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,7 +54,7 @@ class AddContributionFragment : Fragment() {
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
 
-        prepareFacilityReviewData()
+        showReviewLoading(true)
 
         binding?.apply {
             tvPlaceName.text = place.name
@@ -88,10 +89,12 @@ class AddContributionFragment : Fragment() {
 
         viewModel.apply {
             currentFacility.observe(viewLifecycleOwner) {
-                binding?.apply {
-                    tvFacilityName.text = getString(getResId(it.name, R.string::class.java))
-                    tvFacilityDescription.text = getString(getResId(it.description, R.string::class.java))
-                    imgFacilityIcon.setImageResource(getResId(it.icon, R.drawable::class.java))
+                if (it != null) {
+                    binding?.apply {
+                        tvFacilityName.text = getString(getResId(it.name, R.string::class.java))
+                        tvFacilityDescription.text = getString(getResId(it.description, R.string::class.java))
+                        imgFacilityIcon.setImageResource(getResId(it.icon, R.drawable::class.java))
+                    }
                 }
             }
 
@@ -112,7 +115,9 @@ class AddContributionFragment : Fragment() {
             getToken().observe(viewLifecycleOwner) {
                 if (!it.isNullOrEmpty()) {
                     val jwt = JWT(it)
-                    userId = jwt.id
+                    userId = jwt.getClaim("id").asString()
+                    prepareFacilityReviewData()
+                    showReviewLoading(false)
                 }
             }
         }
@@ -171,7 +176,7 @@ class AddContributionFragment : Fragment() {
         val facilities: List<Facility> = FacilityDataXmlParser().parse(istream)
 
         viewModel.facilities.value = facilities
-        viewModel.currentFacility.value = facilities[0]
+        viewModel.setCurrentFacility()
     }
 
     private fun getResId(resName: String, c: Class<*>): Int {

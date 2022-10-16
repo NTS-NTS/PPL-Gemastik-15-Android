@@ -1,10 +1,13 @@
 package com.raassh.gemastik15.view.fragments.addcontribution
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.repository.ContributionRepository
+import com.raassh.gemastik15.utils.FacilityDataXmlParser
 
 class AddContributionViewModel(
     private val contributionRepository: ContributionRepository
@@ -19,9 +22,15 @@ class AddContributionViewModel(
     val facilities: MutableLiveData<List<Facility>> = _facilities
 
     private val _index = MutableLiveData<Int>()
-    private val index: MutableLiveData<Int> = _index
+    val index: MutableLiveData<Int> = _index
+
+    init {
+        index.value = 0
+    }
 
     fun nextFacility() {
+        Log.d("index", index.value.toString())
+        Log.d("currentFacility", _currentFacility.value.toString())
         if (index.value!! < facilities.value!!.size - 1) {
             _index.value = index.value!! + 1
             _currentFacility.value = facilities.value!![index.value!!]
@@ -33,4 +42,8 @@ class AddContributionViewModel(
 
     fun submitContribution(userId: String, placeId: String, quality: Int) =
         contributionRepository.addContribution(userId, placeId, currentFacility.value!!.name, quality).asLiveData()
+
+    fun setCurrentFacility() {
+        _currentFacility.value = facilities.value!![index.value!!]
+    }
 }
