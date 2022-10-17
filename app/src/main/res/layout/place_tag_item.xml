@@ -6,25 +6,28 @@
 
     <ImageView
         android:id="@+id/iv_tag_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:contentDescription="@string/checkmark"
+        app:tint="?attr/colorGreen"
         android:src="@drawable/ic_baseline_check_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="?colorOnBackground" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/TextAppearance.Material3.LabelMedium"
         android:id="@+id/tv_tag_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/placeholder"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/iv_tag_icon"
         app:layout_constraintStart_toEndOf="@+id/iv_tag_icon"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/iv_tag_icon"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

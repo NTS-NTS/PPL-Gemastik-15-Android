@@ -22,35 +22,39 @@
             android:contentDescription="@string/image_of_place" />
 
         <TextView
-            style="@style/TextAppearance.Material3.TitleMedium"
             android:id="@+id/tv_place_name"
+            style="@style/TextAppearance.Material3.TitleMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_place_type"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_place_image"
+            app:layout_constraintVertical_bias="1.0"
             tools:text="Kantin Informatika ITS" />
 
         <TextView
             android:id="@+id/tv_place_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_place_name"
+            app:layout_constraintBottom_toTopOf="@id/rv_place_tags"
             tools:text="Kantin" />
 
         <ImageView
             android:id="@+id/iv_dot"
             android:layout_width="5dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="4dp"
             android:focusable="false"
             android:src="@drawable/ic_baseline_circle_24"
             app:layout_constraintStart_toEndOf="@+id/tv_place_type"
-            app:layout_constraintTop_toBottomOf="@+id/tv_place_name"
+            app:layout_constraintTop_toTopOf="@id/tv_place_type"
+            app:layout_constraintBottom_toBottomOf="@id/tv_place_type"
             app:tint="?attr/colorOnSurfaceVariant"
             android:contentDescription="@string/dot" />
 
@@ -60,38 +64,44 @@
             android:layout_marginStart="4dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/iv_dot"
-            app:layout_constraintTop_toBottomOf="@+id/tv_place_name"
+            app:layout_constraintTop_toTopOf="@id/tv_place_type"
+            app:layout_constraintBottom_toBottomOf="@id/tv_place_type"
             tools:text="12,5km" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_place_tags"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/iv_dot"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_place_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_add_contribution"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             tools:listitem="@layout/place_tag_item"
             app:flexDirection="row"
             app:flexWrap="wrap"/>
 
         <Button
-            style="@style/Theme.Gemastik15.Button.OutlinedButton"
             android:id="@+id/btn_add_contribution"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            style="@style/Theme.Gemastik15.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_baseline_add_circle_outline_24"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
             android:text="@string/add_contribution"
-            app:layout_constraintTop_toBottomOf="@id/rv_place_tags"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:visibility="gone"
-            tools:visibility="visible"/>
+            app:icon="@drawable/ic_baseline_add_circle_outline_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_place_tags"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
