@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/discover_nav"
+    android:label="@string/discover"
     app:startDestination="@id/navigation_discover">
     <fragment
         android:id="@+id/navigation_discover"
         android:name="com.raassh.gemastik15.view.fragments.discover.DiscoverFragment"
         android:label="fragment_discover"
-        tools:layout="@layout/fragment_discover" >
+        tools:layout="@layout/fragment_discover">
         <action
             android:id="@+id/action_navigation_discover_to_searchResultFragment"
             app:destination="@id/searchResultFragment" />
@@ -26,11 +27,11 @@
         android:id="@+id/searchResultFragment"
         android:name="com.raassh.gemastik15.view.fragments.searchresult.SearchResultFragment"
         android:label="fragment_search_result"
-        tools:layout="@layout/fragment_search_result" >
+        tools:layout="@layout/fragment_search_result">
         <argument
             android:name="query"
-            app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_searchResultFragment_to_placeDetailFragment"
             app:destination="@id/placeDetailFragment" />
@@ -39,7 +40,7 @@
         android:id="@+id/searchFacilityOptionFragment"
         android:name="com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionFragment"
         android:label="fragment_search_facility_option"
-        tools:layout="@layout/fragment_search_facility_option" >
+        tools:layout="@layout/fragment_search_facility_option">
         <action
             android:id="@+id/action_searchFacilityOptionFragment_to_searchByFacilityFragment"
             app:destination="@id/searchByFacilityFragment" />
@@ -51,7 +52,7 @@
         android:id="@+id/searchByFacilityFragment"
         android:name="com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityFragment"
         android:label="fragment_search_by_facility"
-        tools:layout="@layout/fragment_search_by_facility" >
+        tools:layout="@layout/fragment_search_by_facility">
         <action
             android:id="@+id/action_searchByFacilityFragment_to_searchFacilityOptionFragment"
             app:destination="@id/searchFacilityOptionFragment" />
@@ -66,7 +67,7 @@
         android:id="@+id/placeDetailFragment"
         android:name="com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailFragment"
         android:label="fragment_place_detail"
-        tools:layout="@layout/fragment_place_detail" >
+        tools:layout="@layout/fragment_place_detail">
         <action
             android:id="@+id/action_placeDetailFragment_to_addContributionFragment"
             app:destination="@id/addContributionFragment" />

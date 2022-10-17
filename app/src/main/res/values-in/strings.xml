@@ -124,5 +124,7 @@
     <string name="close_contribution_page">Tutup halaman kontribusi</string>
     <string name="no_facilities_chosen">Pilih paling sedikit satu fasilitas</string>
     <string name="permission_denied_warning">Membutuhkan Izin</string>
+    <string name="logout">Keluar</string>
+    <string name="logging_out">Memproses keluar</string>
 
 </resources>

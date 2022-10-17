@@ -17,6 +17,12 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
         }
     }
 
+    suspend fun clearToken() {
+        dataStore.edit { preferences ->
+            preferences.remove(TOKEN_KEY)
+        }
+    }
+
     fun getUserId() = dataStore.data.map { preferences ->
         preferences[USER_ID_KEY]
     }

@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contribute_nav"
+    android:label="@string/contribute"
     app:startDestination="@id/navigation_contribute">
     <fragment
         android:id="@+id/navigation_contribute"
         android:name="com.raassh.gemastik15.view.fragments.contribution.ContributionFragment"
         android:label="fragment_contribution"
-        tools:layout="@layout/fragment_contribution" >
+        tools:layout="@layout/fragment_contribution">
         <action
             android:id="@+id/action_navigation_contribute_to_placeDetailFragment2"
             app:destination="@id/placeDetailFragment2" />
@@ -17,7 +18,7 @@
         android:id="@+id/placeDetailFragment2"
         android:name="com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailFragment"
         android:label="fragment_place_detail"
-        tools:layout="@layout/fragment_place_detail" >
+        tools:layout="@layout/fragment_place_detail">
         <action
             android:id="@+id/action_placeDetailFragment2_to_addContributionFragment2"
             app:destination="@id/addContributionFragment2" />

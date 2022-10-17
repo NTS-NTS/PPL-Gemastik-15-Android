@@ -9,7 +9,6 @@ import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -30,13 +29,13 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.ActivityDashboardBinding
 import com.raassh.gemastik15.utils.checkPermission
 import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.view.activity.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private val viewModel by viewModel<DashboardViewModel>()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var editText: TextInputEditText? = null
 
     private val waitSettingIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         getMyLastLocation()
@@ -108,10 +107,9 @@ class DashboardActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        // might need to refactor this later
+        // delete this when article fragment is done
         navView.setOnItemSelectedListener {
-            if (it.itemId != R.id.discover_nav
-                && it.itemId != R.id.contribute_nav) {
+            if (it.itemId == R.id.articles_nav) {
                 binding.root.showSnackbar(getString(R.string.feature_not_available))
                 return@setOnItemSelectedListener false
             }
@@ -123,6 +121,14 @@ class DashboardActivity : AppCompatActivity() {
 
         onBackPressedDispatcher.addCallback {
             if (!navController.navigateUp()) {
+                finish()
+            }
+        }
+
+        viewModel.getToken().observe(this) {
+            if (it == null) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
                 finish()
             }
         }

@@ -125,4 +125,6 @@
     <string name="review_title">What do you think about this facility in this place?</string>
     <string name="review_done_message">Thank you for your review!</string>
     <string name="close_contribution_page">Close contribution page</string>
+    <string name="logout">Logout</string>
+    <string name="logging_out">Logging out</string>
 </resources>
