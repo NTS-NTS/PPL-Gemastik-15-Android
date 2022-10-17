@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.FacilityReviewAdapter
+import com.raassh.gemastik15.adapter.PlacePhotoAdapter
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlaceDetailData
 import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
@@ -134,6 +135,13 @@ class PlaceDetailFragment : Fragment() {
             btnAddReview.setOnClickListener {
                 val action = PlaceDetailFragmentDirections.actionPlaceDetailFragmentToAddContributionFragment(detail)
                 findNavController().navigate(action)
+            }
+
+            rvPhoto.apply {
+                adapter = PlacePhotoAdapter().apply {
+                    submitList(detail.photos)
+                }
+                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
             }
         }
 
