@@ -109,7 +109,8 @@ class LinearSpaceItemDecoration(
         state: State
     ) {
         val position = parent.getChildAdapterPosition(view)
-        val spacing = convertDpToPixel(spacingInDp, parent.context)
+        val spacing = convertDpToPixel(spacingInDp, parent.context).toInt()
+        val screenMargin = convertDpToPixel(20, parent.context).toInt()
 
         outRect.left = 0
         outRect.right = 0
@@ -118,10 +119,14 @@ class LinearSpaceItemDecoration(
 
         when(orientation) {
             HORIZONTAL -> {
-                if (position >= 0) outRect.left = spacing.toInt()
-                if (position == state.itemCount - 1) outRect.right = spacing.toInt()
+                if (position > 0) {
+                    outRect.left = spacing
+                } else if (position == 0) {
+                    outRect.left = screenMargin
+                }
+                if (position == state.itemCount - 1) outRect.right = screenMargin
             }
-            VERTICAL -> if (position > 0) outRect.top = spacing.toInt()
+            VERTICAL -> if (position > 0) outRect.top = spacing
         }
     }
 }
