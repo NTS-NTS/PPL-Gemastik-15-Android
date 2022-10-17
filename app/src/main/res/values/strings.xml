@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gemastik 15</string>
+    <string name="app_name" translatable="false">Gemastik 15</string>
     <string name="login">Login</string>
     <string name="register_at_landing">Don’t have an account? <b>Sign Up</b></string>
     <string name="email">Email Address</string>
@@ -23,7 +23,7 @@
     <string name="search">Search</string>
     <string name="recently_viewed">Recently viewed</string>
     <string name="image_of_place">Image of place</string>
-    <string name="placeholder">Placeholder</string>
+    <string name="placeholder" translatable="false">Placeholder</string>
     <string name="dot">dot</string>
 
     <string name="stair_lift">Stair Lift</string>
@@ -51,8 +51,6 @@
     <string name="tv_text">TV Text</string>
     <string name="audio_control">Audio Control</string>
     <string name="assistive_listening_device">Assistive Listening Devices</string>
-
-    <string name="assistive_listening">Assistive Listening Devices</string>
 
     <string name="stair_lift_description">Wheelchair lift that makes travelling through stairs easier for wheelchair users.</string>
     <string name="lift_description">Lift for mobility impaired people who can\'t use stairs with enough space for wheelchair, stroller, and walking aid.</string>
@@ -103,7 +101,7 @@
     <string name="not_exist">Not exist</string>
     <string name="don_t_know">Don\'t know</string>
     <string name="permission_denied_warning">Permissions Needed</string>
-    <string name="permissions_denied_warning_message">This app needs location permissions to work properly. Do you want to open setting and grant them??</string>
+    <string name="permissions_denied_warning_message">This app needs location permissions to work properly. Do you want to open setting and grant them?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="recently_visited_title">Places you recently visited</string>

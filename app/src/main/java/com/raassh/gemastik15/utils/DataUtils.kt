@@ -33,7 +33,7 @@ fun Context.translateDBtoViewName(name: String): String {
         "accessible_furniture" -> getString(R.string.accessible_furniture)
         "lift" -> getString(R.string.lift)
         "accessible_space" -> getString(R.string.accessible_space)
-        "assistive_listening_device" -> getString(R.string.assistive_listening)
+        "assistive_listening_device" -> getString(R.string.assistive_listening_device)
         "audio_control" -> getString(R.string.audio_control)
         "audio_output" -> getString(R.string.audio_output)
         "audio_wayfinder" -> getString(R.string.audio_wayfinder)
@@ -60,7 +60,7 @@ fun Context.translateViewtoDBName(name: String): String {
         getString(R.string.accessible_entrance) -> "accessible_entrance"
         getString(R.string.accessible_furniture) -> "accessible_furniture"
         getString(R.string.accessible_space) -> "accessible_space"
-        getString(R.string.assistive_listening) -> "assistive_listening_device"
+        getString(R.string.assistive_listening_device) -> "assistive_listening_device"
         getString(R.string.audio_control) -> "audio_control"
         getString(R.string.audio_output) -> "audio_output"
         getString(R.string.audio_wayfinder) -> "audio_wayfinder"
@@ -89,7 +89,7 @@ fun Context.getFacilityDrawable(name: String) : Drawable? {
         getString(R.string.accessible_entrance) -> ContextCompat.getDrawable(this, R.drawable.accessible_entrance)
         getString(R.string.accessible_furniture) ->  ContextCompat.getDrawable(this, R.drawable.accessible_furniture)
         getString(R.string.accessible_space) ->  ContextCompat.getDrawable(this, R.drawable.accessible_space)
-        getString(R.string.assistive_listening) ->  ContextCompat.getDrawable(this, R.drawable.assistive_listening_device)
+        getString(R.string.assistive_listening_device) ->  ContextCompat.getDrawable(this, R.drawable.assistive_listening_device)
         getString(R.string.audio_control) ->  ContextCompat.getDrawable(this, R.drawable.audio_control)
         getString(R.string.audio_output) ->  ContextCompat.getDrawable(this, R.drawable.audio_output)
         getString(R.string.audio_wayfinder) ->  ContextCompat.getDrawable(this, R.drawable.audio_wayfinder)
@@ -138,7 +138,7 @@ fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<Fac
             getString(R.string.audio_wayfinder),
             getString(R.string.audio_output),
             getString(R.string.guiding_blocks) -> visionFacilities.add(it)
-            getString(R.string.assistive_listening),
+            getString(R.string.assistive_listening_device),
             getString(R.string.audio_control),
             getString(R.string.sign_language),
             getString(R.string.display),
