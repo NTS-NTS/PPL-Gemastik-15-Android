@@ -103,6 +103,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
+                            app:tint="?attr/colorOnSurface"
                             android:src="@drawable/ic_outline_guideline_28" />
 
                         <TextView
@@ -140,6 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
+                            app:tint="?attr/colorOnSurface"
                             android:src="@drawable/ic_baseline_news_28" />
 
                         <TextView
@@ -176,6 +178,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
+                            app:tint="?attr/colorOnSurface"
                             android:src="@drawable/ic_outline_article_28" />
 
                         <TextView
@@ -204,8 +207,6 @@
             android:id="@+id/ll_recently_visited"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -214,6 +215,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="@string/recently_visited_title" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -236,9 +239,8 @@
             android:id="@+id/ll_nearby"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -246,6 +248,8 @@
                 style="@style/TextAppearance.Material3.TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/nearby_title" />
 

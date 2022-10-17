@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.databinding.FragmentContributionBinding
+import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.placeItemToEntity
 import com.raassh.gemastik15.utils.showSnackbar
@@ -32,14 +34,14 @@ class ContributionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recentAdapter = PlaceAdapter().apply {
+        val recentAdapter = PlaceAdapter(RecyclerView.HORIZONTAL).apply {
             onItemClickListener = { place ->
                 val action = ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(place)
                 findNavController().navigate(action)
             }
         }
 
-        val nearbyAdapter = PlaceAdapter().apply {
+        val nearbyAdapter = PlaceAdapter(RecyclerView.HORIZONTAL).apply {
             onItemClickListener = { place ->
                 val action = ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(place)
                 findNavController().navigate(action)
@@ -48,7 +50,10 @@ class ContributionFragment : Fragment() {
 
         binding?.apply {
             rvRecentlyVisited.adapter = recentAdapter
+            rvRecentlyVisited.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+
             rvNearby.adapter = nearbyAdapter
+            rvNearby.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
 
             val comingSoonHandler = View.OnClickListener {
                 root.showSnackbar(getString(R.string.feature_not_available))

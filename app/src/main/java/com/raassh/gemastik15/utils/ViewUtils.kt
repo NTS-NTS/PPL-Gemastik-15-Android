@@ -116,15 +116,16 @@ class LinearSpaceItemDecoration(
         outRect.top = 0
         outRect.bottom = 0
 
-        if (position > 0) {
-            when(orientation) {
-                HORIZONTAL -> outRect.left = spacing.toInt()
-                VERTICAL -> outRect.top = spacing.toInt()
+        when(orientation) {
+            HORIZONTAL -> {
+                if (position >= 0) outRect.left = spacing.toInt()
+                if (position == state.itemCount - 1) outRect.right = spacing.toInt()
             }
+            VERTICAL -> if (position > 0) outRect.top = spacing.toInt()
         }
     }
 }
 
-private fun convertDpToPixel(dp: Int, context: Context): Float {
+fun convertDpToPixel(dp: Int, context: Context): Float {
     return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
 }

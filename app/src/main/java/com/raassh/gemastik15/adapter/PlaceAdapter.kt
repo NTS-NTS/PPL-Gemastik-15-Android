@@ -6,23 +6,37 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Orientation
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.PlaceItemBinding
 import com.raassh.gemastik15.local.db.PlaceEntity
+import com.raassh.gemastik15.utils.convertDpToPixel
 import com.raassh.gemastik15.utils.loadImage
 import com.raassh.gemastik15.utils.rounded
 import com.raassh.gemastik15.utils.splitWithEmptyList
 
-class PlaceAdapter : ListAdapter<PlaceEntity, PlaceAdapter.PlaceViewHolder>(DIFF_CALLBACK) {
+class PlaceAdapter(private val orientation: Int = RecyclerView.VERTICAL)
+    : ListAdapter<PlaceEntity, PlaceAdapter.PlaceViewHolder>(DIFF_CALLBACK) {
     var onItemClickListener: ((PlaceEntity) -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PlaceViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.place_item, parent, false)
-    )
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : PlaceViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.place_item, parent, false)
+        if (orientation == RecyclerView.VERTICAL) {
+            view.layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        } else {
+            view.layoutParams = ViewGroup.LayoutParams(
+                convertDpToPixel(330, parent.context).toInt(),
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+        return PlaceViewHolder(view)
+    }
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
         val place = getItem(position)
         holder.bind(place)
