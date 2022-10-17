@@ -73,6 +73,14 @@ class DiscoverFragment : Fragment() {
                 findNavController().navigate(action)
             }
 
+            etSearch.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    ivBackdrop.visibility = View.VISIBLE
+                } else {
+                    ivBackdrop.visibility = View.GONE
+                }
+            }
+
             rvRecent.apply {
                 adapter = placesAdapter
                 addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.VERTICAL))

@@ -9,7 +9,11 @@ import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -20,6 +24,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.ActivityDashboardBinding
@@ -31,6 +36,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private val viewModel by viewModel<DashboardViewModel>()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var editText: TextInputEditText? = null
 
     private val waitSettingIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         getMyLastLocation()
@@ -123,5 +129,44 @@ class DashboardActivity : AppCompatActivity() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getMyLastLocation()
+
+        binding.root.accessibilityDelegate = object : View.AccessibilityDelegate() {
+            override fun onRequestSendAccessibilityEvent(
+                host: ViewGroup,
+                child: View,
+                event: AccessibilityEvent
+            ): Boolean {
+//                Log.d("DashboardActivity", "onRequestSendAccessibilityEvent: ${event.eventType}")
+                if (event.eventType == AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
+                    val v = currentFocus
+//                    Log.d("DashboardActivity", "onRequestSendAccessibilityEvent host: $host")
+//                    Log.d("DashboardActivity", "onRequestSendAccessibilityEvent child: $child")
+//                    Log.d("DashboardActivity", "onRequestSendAccessibilityEvent v: $v")
+                    if (v is TextInputEditText && child !is TextInputLayout) {
+                        v.clearFocus()
+                        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+                    }
+                }
+                return super.onRequestSendAccessibilityEvent(host, child, event)
+            }
+        }
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            val v = currentFocus
+            if (v is TextInputEditText) {
+                val outRect = Rect()
+                v.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    v.clearFocus()
+                    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+                }
+            }
+        }
+
+        return super.dispatchTouchEvent(event)
     }
 }
