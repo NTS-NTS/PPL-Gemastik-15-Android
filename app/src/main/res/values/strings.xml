@@ -119,4 +119,12 @@
     <string name="total_contribution">%1$d total contributions</string>
     <string name="nearby_title">Places nearby</string>
     <string name="no_nearby">No places nearby</string>
+    <string name="address">Address</string>
+    <string name="accessibility_facilities">Accessibility Facilities</string>
+    <string name="empty_mobility_facility_review">No mobility facilities review.</string>
+    <string name="empty_hearing_facilities_review">No hearing impairment facilities review.</string>
+    <string name="empty_visual_facilities_review">No visual impairment facilities review.</string>
+    <string name="review_title">What do you think about this facility in this place?</string>
+    <string name="review_done_message">Thank you for your review!</string>
+    <string name="close_contribution_page">Close contribution page</string>
 </resources>

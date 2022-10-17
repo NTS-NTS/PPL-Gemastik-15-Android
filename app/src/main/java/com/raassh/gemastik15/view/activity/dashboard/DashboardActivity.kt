@@ -2,11 +2,15 @@ package com.raassh.gemastik15.view.activity.dashboard
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.graphics.Rect
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -16,6 +20,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.ActivityDashboardBinding
 import com.raassh.gemastik15.utils.checkPermission

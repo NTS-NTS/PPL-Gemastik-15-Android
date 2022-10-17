@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/divider_4"
                 app:layout_constraintStart_toStartOf="@id/tv_place_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_place_name">
 
@@ -102,6 +102,15 @@
 
             </LinearLayout>
 
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/Theme.Gemastik15.Divider"
+                android:id="@+id/divider_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -120,7 +129,9 @@
         android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_main">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,6 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toTopOf="@id/divider_1"
@@ -141,49 +153,59 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider_1"
-                style="@style/Widget.Material3.MaterialDivider.Heavy"
+                style="@style/Theme.Gemastik15.Divider.Heavy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toTopOf="@id/fragment_map"
+                app:layout_constraintBottom_toTopOf="@id/cd_map"
                 app:layout_constraintTop_toBottomOf="@id/rv_photo" />
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragment_map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Outlined"
+                android:id="@+id/cd_map"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintBottom_toTopOf="@id/cl_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider_1"
-                tools:layout="@layout/fragment_landing" />
+                app:layout_constraintTop_toBottomOf="@id/divider_1">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragment_map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    tools:layout="@layout/fragment_landing" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/divider_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_map">
+                app:layout_constraintTop_toBottomOf="@id/cd_map">
 
                 <ImageView
                     android:id="@+id/img_ic_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/address"
                     android:src="@drawable/ic_outline_place_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/tv_address"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    app:tint="?attr/colorOnSurface" />
 
                 <TextView
                     android:id="@+id/tv_address"
@@ -200,7 +222,7 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider_2"
-                style="@style/Widget.Material3.MaterialDivider.Heavy"
+                style="@style/Theme.Gemastik15.Divider.Heavy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -224,7 +246,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="Accessibility Facilities" />
+                    android:text="@string/accessibility_facilities" />
 
                 <TextView
                     android:id="@+id/tv_mobility_facilities_title"
@@ -232,7 +254,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Mobility Facilities" />
+                    android:text="@string/mobility_facility" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_mobility_facilities"
@@ -249,8 +271,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="No mobility facilities review."
-                    android:visibility="gone"/>
+                    android:text="@string/empty_mobility_facility_review"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_audio_facilities_title"
@@ -258,15 +280,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Hearing Impairment Facilities" />
+                    android:text="@string/hearing_facility" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_audio_facilities"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
-                    android:layout_marginBottom="16dp"
                     tools:listitem="@layout/facility_review_item" />
 
                 <TextView
@@ -275,8 +297,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="No hearing impairment facilities review."
-                    android:visibility="gone"/>
+                    android:text="@string/empty_hearing_facilities_review"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_vision_facilities_title"
@@ -284,7 +306,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Visual Impairment Facilities" />
+                    android:text="@string/visual_facility" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_visual_facilities"
@@ -295,34 +317,35 @@
                     tools:listitem="@layout/facility_review_item" />
 
                 <TextView
-                    style="@style/TextAppearance.Material3.BodyLarge"
                     android:id="@+id/tv_visual_facilities_empty"
+                    style="@style/TextAppearance.Material3.BodyLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="No visual impairment facilities review."
-                    android:visibility="gone"
-                    />
+                    android:text="@string/empty_visual_facilities_review"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
-                style="@style/Theme.Gemastik15.Divider.Heavy"
                 android:id="@+id/divider_3"
+                style="@style/Theme.Gemastik15.Divider.Heavy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toTopOf="@id/ll_facilities"
-                app:layout_constraintTop_toBottomOf="@id/ll_facilities"/>
+                app:layout_constraintTop_toBottomOf="@id/ll_facilities" />
 
             <Button
-                style="@style/Theme.Gemastik15.Button.TonalButton"
                 android:id="@+id/btn_add_review"
+                style="@style/Theme.Gemastik15.Button.TonalButton"
                 android:layout_width="match_parent"
+                app:icon="@drawable/ic_baseline_add_circle_outline_24"
                 android:layout_height="wrap_content"
-                android:text="@string/add_review"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"/>
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/add_review" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

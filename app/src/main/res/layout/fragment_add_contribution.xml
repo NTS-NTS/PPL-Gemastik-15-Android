@@ -46,7 +46,7 @@
                 android:id="@+id/tv_add_contribution_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Add Contribution"
+                android:text="@string/add_contribution"
                 app:layout_constraintStart_toEndOf="@id/btn_back"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/btn_back"
@@ -114,18 +114,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragment_map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Outlined"
+                android:id="@+id/cd_maps"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintBottom_toTopOf="@id/cl_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout="@layout/fragment_landing" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragment_map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    tools:layout="@layout/fragment_landing" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_address"
@@ -137,13 +145,15 @@
                 app:layout_constraintBottom_toTopOf="@+id/divider_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_map">
+                app:layout_constraintTop_toBottomOf="@id/cd_maps">
 
                 <ImageView
                     android:id="@+id/img_ic_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/address"
+                    app:tint="?colorOnSurface"
                     android:src="@drawable/ic_outline_place_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/tv_address"
@@ -166,7 +176,7 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider_2"
-                style="@style/Widget.Material3.MaterialDivider.Heavy"
+                style="@style/Theme.Gemastik15.Divider.Heavy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -190,7 +200,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="What do you think about this facility in this place?" />
+                    android:text="@string/review_title" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_facility_review"
@@ -202,6 +212,7 @@
                         android:id="@+id/img_facility_icon"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
+                        android:focusable="false"
                         app:layout_constraintBottom_toTopOf="@id/tv_facility_name"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -317,7 +328,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="Thank you for your review!"
+                    android:text="@string/review_done_message"
                     app:layout_constraintBottom_toTopOf="@id/btn_facility_review_done"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -328,7 +339,7 @@
                     style="@style/Theme.Gemastik15.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Close contribution page"
+                    android:text="@string/close_contribution_page"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
