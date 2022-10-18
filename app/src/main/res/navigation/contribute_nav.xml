@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_contribute_to_placeDetailFragment2"
             app:destination="@id/placeDetailFragment2" />
+        <action
+            android:id="@+id/action_navigation_contribute_to_addContributionFragment2"
+            app:destination="@id/addContributionFragment2" />
     </fragment>
     <fragment
         android:id="@+id/placeDetailFragment2"

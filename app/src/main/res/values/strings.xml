@@ -127,4 +127,6 @@
     <string name="close_contribution_page">Close contribution page</string>
     <string name="logout">Logout</string>
     <string name="logging_out">Logging out</string>
+    <string name="loading">Loading...</string>
+    <string name="your_contribution">Your contributions</string>
 </resources>

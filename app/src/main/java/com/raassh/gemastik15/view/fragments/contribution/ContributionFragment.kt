@@ -1,6 +1,7 @@
 package com.raassh.gemastik15.view.fragments.contribution
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.databinding.FragmentContributionBinding
+import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.placeItemToEntity
@@ -34,17 +36,23 @@ class ContributionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recentAdapter = PlaceAdapter(RecyclerView.HORIZONTAL).apply {
+        val recentAdapter = PlaceAdapter(RecyclerView.HORIZONTAL, true).apply {
             onItemClickListener = { place ->
                 val action = ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(place)
                 findNavController().navigate(action)
             }
+            btnOnItemClickListener = { place ->
+                goToAddContribution(place)
+            }
         }
 
-        val nearbyAdapter = PlaceAdapter(RecyclerView.HORIZONTAL).apply {
+        val nearbyAdapter = PlaceAdapter(RecyclerView.HORIZONTAL, true).apply {
             onItemClickListener = { place ->
                 val action = ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(place)
                 findNavController().navigate(action)
+            }
+            btnOnItemClickListener = { place ->
+                goToAddContribution(place)
             }
         }
 
@@ -112,12 +120,33 @@ class ContributionFragment : Fragment() {
                     val username = jwt.getClaim("name").asString()
 
                     viewModel.setUserId(userId)
-                    binding?.tvName?.text = username
+                    binding?.tvName?.text =
+                        if (username.isNullOrEmpty()) resources.getString(R.string.your_contribution)
+                        else username
                 }
             }
 
             location.observe(viewLifecycleOwner) {
                 viewModel.setLocation(it)
+            }
+        }
+    }
+
+    private fun goToAddContribution(place: PlaceEntity) {
+        viewModel.getDetail(place).observe(viewLifecycleOwner) {
+            if (it != null) {
+                when(it) {
+                    is Resource.Error -> {
+                        binding?.root?.showSnackbar(it.message ?: getString(R.string.unknown_error))
+                    }
+                    is Resource.Loading -> {
+                        binding?.root?.showSnackbar(getString(R.string.loading))
+                    }
+                    is Resource.Success -> {
+                        val action = ContributionFragmentDirections.actionNavigationContributeToAddContributionFragment2(it.data!!)
+                        findNavController().navigate(action)
+                    }
+                }
             }
         }
     }

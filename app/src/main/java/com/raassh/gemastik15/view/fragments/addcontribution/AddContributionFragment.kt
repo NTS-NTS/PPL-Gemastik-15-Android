@@ -58,7 +58,12 @@ class AddContributionFragment : Fragment() {
 
         binding?.apply {
             tvPlaceName.text = place.name
-            tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
+            if (place.distance == -1.0) {
+                tvPlaceDistance.visibility = View.INVISIBLE
+                ivDot.visibility = View.INVISIBLE
+            } else {
+                tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
+            }
             tvPlaceType.text = place.kind
             tvAddress.text = place.address
 

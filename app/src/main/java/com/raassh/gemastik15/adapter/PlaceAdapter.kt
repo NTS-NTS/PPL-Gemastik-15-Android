@@ -18,9 +18,12 @@ import com.raassh.gemastik15.utils.loadImage
 import com.raassh.gemastik15.utils.rounded
 import com.raassh.gemastik15.utils.splitWithEmptyList
 
-class PlaceAdapter(private val orientation: Int = RecyclerView.VERTICAL)
-    : ListAdapter<PlaceEntity, PlaceAdapter.PlaceViewHolder>(DIFF_CALLBACK) {
+class PlaceAdapter(
+    private val orientation: Int = RecyclerView.VERTICAL,
+    private val inContribution: Boolean = false,
+) : ListAdapter<PlaceEntity, PlaceAdapter.PlaceViewHolder>(DIFF_CALLBACK) {
     var onItemClickListener: ((PlaceEntity) -> Unit)? = null
+    var btnOnItemClickListener: ((PlaceEntity) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : PlaceViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.place_item, parent, false)
@@ -32,7 +35,7 @@ class PlaceAdapter(private val orientation: Int = RecyclerView.VERTICAL)
         } else {
             view.layoutParams = ViewGroup.LayoutParams(
                 convertDpToPixel(330, parent.context).toInt(),
-                ViewGroup.LayoutParams.WRAP_CONTENT
+                convertDpToPixel(280, parent.context).toInt()
             )
         }
         return PlaceViewHolder(view)
@@ -69,6 +72,13 @@ class PlaceAdapter(private val orientation: Int = RecyclerView.VERTICAL)
                     ivDot.visibility = View.INVISIBLE
                 } else {
                     tvPlaceDistance.text = context.getString(R.string.distance, place.distance.rounded(2))
+                }
+
+                if (inContribution) {
+                    btnAddContribution.visibility = View.VISIBLE
+                    btnAddContribution.setOnClickListener {
+                        btnOnItemClickListener?.invoke(getItem(adapterPosition))
+                    }
                 }
             }
         }

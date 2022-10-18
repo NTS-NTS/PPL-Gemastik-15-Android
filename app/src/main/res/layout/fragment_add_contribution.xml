@@ -285,7 +285,7 @@
                         style="@style/Theme.Gemastik15.Button.OutlinedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
                         android:text="@string/don_t_know"
                         app:icon="@drawable/ic_baseline_not_exist_20"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -297,6 +297,8 @@
                         style="@style/Widget.Material3.CircularProgressIndicator.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="8dp"
                         android:indeterminate="true"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toTopOf="@id/btn_facility_review_none"
@@ -304,7 +306,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:visibility="visible" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
