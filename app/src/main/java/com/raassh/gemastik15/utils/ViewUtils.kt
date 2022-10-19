@@ -64,9 +64,10 @@ fun getCheckedFacilities(
     }
 }
 
-fun ImageView.loadImage(url: String) {
+fun ImageView.loadImage(url: String, placeholder: Int = R.drawable.place_photo_placeholder) {
     Glide.with(this.context)
         .load(url)
+        .placeholder(placeholder)
         .into(this)
 }
 
