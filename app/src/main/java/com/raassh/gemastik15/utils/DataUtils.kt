@@ -31,6 +31,7 @@ fun Context.translateDBtoViewName(name: String): String {
         "stair_lift" -> getString(R.string.stair_lift)
         "accessible_entrance" -> getString(R.string.accessible_entrance)
         "accessible_furniture" -> getString(R.string.accessible_furniture)
+        "escalator" -> getString(R.string.escalator)
         "lift" -> getString(R.string.lift)
         "accessible_space" -> getString(R.string.accessible_space)
         "assistive_listening_device" -> getString(R.string.assistive_listening_device)
@@ -59,6 +60,7 @@ fun Context.translateViewtoDBName(name: String): String {
     return when (name) {
         getString(R.string.accessible_entrance) -> "accessible_entrance"
         getString(R.string.accessible_furniture) -> "accessible_furniture"
+        getString(R.string.escalator) -> "escalator"
         getString(R.string.accessible_space) -> "accessible_space"
         getString(R.string.assistive_listening_device) -> "assistive_listening_device"
         getString(R.string.audio_control) -> "audio_control"
@@ -93,6 +95,7 @@ fun Context.getFacilityDrawable(name: String) : Drawable? {
         getString(R.string.audio_control) ->  ContextCompat.getDrawable(this, R.drawable.audio_control)
         getString(R.string.audio_output) ->  ContextCompat.getDrawable(this, R.drawable.audio_output)
         getString(R.string.audio_wayfinder) ->  ContextCompat.getDrawable(this, R.drawable.audio_wayfinder)
+        getString(R.string.escalator) ->  ContextCompat.getDrawable(this, R.drawable.escalator)
         getString(R.string.railing) ->  ContextCompat.getDrawable(this, R.drawable.railing)
         getString(R.string.braille_button) ->  ContextCompat.getDrawable(this, R.drawable.braille_button)
         getString(R.string.braille_signage) ->  ContextCompat.getDrawable(this, R.drawable.braille_signage)
@@ -125,6 +128,7 @@ fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<Fac
             getString(R.string.accessible_furniture),
             getString(R.string.accessible_space),
             getString(R.string.disabled_parking),
+            getString(R.string.escalator),
             getString(R.string.railing),
             getString(R.string.sitting_toilet),
             getString(R.string.lift),

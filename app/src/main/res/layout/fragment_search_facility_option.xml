@@ -126,6 +126,20 @@
 
                 <CheckBox
                     style="@style/Theme.Gemastik15.CheckBox.Facility"
+                    android:id="@+id/cb_escalator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/escalator_selector"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/escalator"
+                    android:textAlignment="gravity"/>
+
+                <CheckBox
+                    style="@style/Theme.Gemastik15.CheckBox.Facility"
                     android:id="@+id/cb_lift"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

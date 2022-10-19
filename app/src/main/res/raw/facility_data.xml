@@ -56,6 +56,11 @@
         <icon>display</icon>
     </facility>
     <facility>
+        <name>escalator</name>
+        <description>escalator_description</description>
+        <icon>escalator</icon>
+    </facility>
+    <facility>
         <name>guiding_blocks</name>
         <description>guiding_blocks_description</description>
         <icon>guiding_blocks</icon>

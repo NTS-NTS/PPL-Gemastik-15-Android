@@ -49,7 +49,7 @@
     <string name="tty">Teletypewriter</string>
     <string name="tv_text">TV Teks</string>
     <string name="audio_control">Kontrol Audio</string>
-    <string name="assistive_listening_device">Alat Dengar</string>
+    <string name="assistive_listening_device">Alat Bantu Dengar</string>
 
     <string name="stair_lift_description">Lift kursi roda yang memudahkan perjalanan melalui tangga bagi pengguna kursi roda.</string>
     <string name="lift_description">Lift untuk orang dengan gangguan mobilitas yang tidak dapat menggunakan tangga dengan ruang yang cukup untuk kursi roda, kereta dorong, dan alat bantu jalan.</string>
@@ -226,4 +226,6 @@
     <string name="university">Universitas</string>
     <string name="veterinary_care">Perawatan Hewan</string>
     <string name="zoo">Kebun Binatang</string>
+    <string name="escalator">Eskalator</string>
+    <string name="escalator_description">Tangga berjalan yang membantu orang dengan gangguan gerak berpindah lantai dalam gedung.</string>
 </resources>

@@ -37,6 +37,7 @@
     <string name="accessible_furniture">Accessible Furniture</string>
     <string name="wheelchair_service">Wheelchair Service</string>
     <string name="disabled_parking">Disabled Parking</string>
+    <string name="escalator">Escalator</string>
 
     <string name="audio_output">Audio Output</string>
     <string name="audio_wayfinder">Audio Wayfinder</string>
@@ -63,6 +64,7 @@
     <string name="accessible_furniture_description">Easy-to-access and reachable furniture for people with wheelchair and impaired mobility.</string>
     <string name="wheelchair_service_description">Aid for wheelchair users like wheelchair rental and helper.</string>
     <string name="parking_description">Dedicated parking area with wide spaces for mobility impaired people.</string>
+    <string name="escalator_description">A moving staircase that helps mobility impaired people moves between floors of a building.</string>
 
     <string name="audio_output_description">Audio output devices like earphone jack and speaker to help vision impaired people.</string>
     <string name="audio_wayfinder_description">Wayfinder and signage with audio to help vision impaired people navigate the place.</string>
