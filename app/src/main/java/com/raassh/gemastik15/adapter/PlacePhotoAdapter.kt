@@ -33,7 +33,7 @@ class PlacePhotoAdapter : ListAdapter<String, PlacePhotoAdapter.PlacePhotoViewHo
         private val binding = PlacePhotoItemBinding.bind(itemView)
 
         fun bind(photoUrl: String) {
-            binding.imgPlacePhoto.loadImage(photoUrl)
+            binding.imgPlacePhoto.loadImage(photoUrl, isGmpRequest = true)
         }
     }
 

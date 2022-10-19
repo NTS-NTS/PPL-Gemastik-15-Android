@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView.*
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import com.raassh.gemastik15.BuildConfig
 import com.raassh.gemastik15.R
 
 fun View.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT) {
@@ -64,10 +65,18 @@ fun getCheckedFacilities(
     }
 }
 
-fun ImageView.loadImage(url: String, placeholder: Int = R.drawable.place_photo_placeholder) {
+fun ImageView.loadImage(ref: String, placeholder: Int = R.drawable.place_photo_placeholder, isGmpRequest: Boolean = false) {
+    var url = ref
+    if (isGmpRequest) {
+        url = StringBuilder("https://maps.googleapis.com/maps/api/place/photo")
+            .append("?maxwidth=400")
+            .append("&photoreference=$ref")
+            .append("&key=${BuildConfig.MAPS_API_KEY}").toString()
+    }
     Glide.with(this.context)
         .load(url)
         .placeholder(placeholder)
+        .error(placeholder)
         .into(this)
 }
 

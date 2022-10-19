@@ -62,7 +62,7 @@ class PlaceAdapter(
             binding.apply {
                 tvPlaceName.text = place.name
                 tvPlaceType.text = place.type
-                ivPlaceImage.loadImage(place.image, R.drawable.place_photo_placeholder_landscape)
+                ivPlaceImage.loadImage(place.image, R.drawable.place_photo_placeholder_landscape, true)
                 rvPlaceTags.adapter = PlaceTagAdapter().apply {
                     submitList(place.facilities.splitWithEmptyList(","))
                 }
