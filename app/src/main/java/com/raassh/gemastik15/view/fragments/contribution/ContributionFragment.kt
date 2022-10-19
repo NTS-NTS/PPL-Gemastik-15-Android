@@ -1,7 +1,6 @@
 package com.raassh.gemastik15.view.fragments.contribution
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,12 +17,13 @@ import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.placeItemToEntity
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContributionFragment : Fragment() {
     private val viewModel by viewModel<ContributionViewModel>()
     private var binding: FragmentContributionBinding? = null
-    private val sharedViewModel by viewModel<DashboardViewModel>()
+    private val sharedViewModel by sharedViewModel<DashboardViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -108,6 +108,9 @@ class ContributionFragment : Fragment() {
                             }
                         }
                     }
+                } else {
+                    binding?.tvNearbyEmpty?.visibility = View.VISIBLE
+                    binding?.rvNearby?.visibility = View.GONE
                 }
             }
         }

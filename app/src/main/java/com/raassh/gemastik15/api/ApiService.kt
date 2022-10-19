@@ -38,6 +38,12 @@ interface ApiService {
         @Query("long") long: Double?,
     ): PlaceSearchResponse
 
+    @GET("places/nearby")
+    suspend fun searchPlaceNearby(
+        @Query("lat") lat: Double,
+        @Query("long") long: Double,
+    ): PlaceSearchResponse
+
     @POST("auth/contribution")
     suspend fun addContribution(
         @Body body: ContributionRequest

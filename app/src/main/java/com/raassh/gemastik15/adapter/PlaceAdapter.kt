@@ -6,17 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Orientation
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.PlaceItemBinding
 import com.raassh.gemastik15.local.db.PlaceEntity
-import com.raassh.gemastik15.utils.convertDpToPixel
-import com.raassh.gemastik15.utils.loadImage
-import com.raassh.gemastik15.utils.rounded
-import com.raassh.gemastik15.utils.splitWithEmptyList
+import com.raassh.gemastik15.utils.*
 
 class PlaceAdapter(
     private val orientation: Int = RecyclerView.VERTICAL,
@@ -61,7 +57,7 @@ class PlaceAdapter(
         fun bind(place: PlaceEntity) {
             binding.apply {
                 tvPlaceName.text = place.name
-                tvPlaceType.text = place.type
+                tvPlaceType.text = context.translateTypeName(place.type)
                 ivPlaceImage.loadImage(place.image, R.drawable.place_photo_placeholder_landscape, true)
                 rvPlaceTags.adapter = PlaceTagAdapter().apply {
                     submitList(place.facilities.splitWithEmptyList(","))

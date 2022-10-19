@@ -18,6 +18,10 @@ class PlaceRepository(private val apiService: ApiService, private val placeDao: 
         apiService.searchPlaceByFacility(facilities, lat, long).data
     }
 
+    fun searchPlaceNearby(lat: Double, long: Double) = callApi {
+        apiService.searchPlaceNearby(lat, long).data
+    }
+
     fun getRecentPlaces() = placeDao.getRecentPlaces()
 
     suspend fun insertPlacesToDB(places: List<PlaceEntity>) = placeDao.insertPlaces(places)

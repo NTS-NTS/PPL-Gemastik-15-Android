@@ -1,7 +1,6 @@
 package com.raassh.gemastik15.view.fragments.addcontribution
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,17 +17,15 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.PlaceDetailData
 import com.raassh.gemastik15.databinding.FragmentAddContributionBinding
 import com.raassh.gemastik15.local.db.Facility
-import com.raassh.gemastik15.utils.FacilityDataXmlParser
-import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.utils.rounded
-import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.Field
 
 class AddContributionFragment : Fragment() {
     private val viewModel by viewModel<AddContributionViewModel>()
-    private val sharedViewModel by viewModel<DashboardViewModel>()
+    private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var binding: FragmentAddContributionBinding? = null
 
     private val callback = OnMapReadyCallback { googleMap ->
@@ -64,7 +61,7 @@ class AddContributionFragment : Fragment() {
             } else {
                 tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
             }
-            tvPlaceType.text = place.kind
+            tvPlaceType.text = requireContext().translateTypeName(place.kind)
             tvAddress.text = place.address
 
             btnBack.setOnClickListener {

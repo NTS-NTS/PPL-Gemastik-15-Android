@@ -43,7 +43,7 @@ fun Context.translateDBtoViewName(name: String): String {
         "clear_signage" -> getString(R.string.clear_signage)
         "display" -> getString(R.string.display)
         "guiding_blocks" -> getString(R.string.guiding_blocks)
-        "parking" -> getString(R.string.parking)
+        "parking" -> getString(R.string.disabled_parking)
         "ramp" -> getString(R.string.ramp)
         "sign_language" -> getString(R.string.sign_language)
         "tty" -> getString(R.string.tty)
@@ -71,7 +71,7 @@ fun Context.translateViewtoDBName(name: String): String {
         getString(R.string.display) -> "display"
         getString(R.string.guiding_blocks) -> "guiding_blocks"
         getString(R.string.lift) -> "lift"
-        getString(R.string.parking) -> "parking"
+        getString(R.string.disabled_parking) -> "parking"
         getString(R.string.ramp) -> "ramp"
         getString(R.string.sign_language) -> "sign_language"
         getString(R.string.stair_lift) -> "stair_lift"
@@ -100,7 +100,7 @@ fun Context.getFacilityDrawable(name: String) : Drawable? {
         getString(R.string.display) ->  ContextCompat.getDrawable(this, R.drawable.display)
         getString(R.string.guiding_blocks) ->  ContextCompat.getDrawable(this, R.drawable.guiding_blocks)
         getString(R.string.lift) ->  ContextCompat.getDrawable(this, R.drawable.lift)
-        getString(R.string.parking) ->  ContextCompat.getDrawable(this, R.drawable.parking)
+        getString(R.string.disabled_parking) ->  ContextCompat.getDrawable(this, R.drawable.parking)
         getString(R.string.ramp) ->  ContextCompat.getDrawable(this, R.drawable.ramp)
         getString(R.string.sign_language) ->  ContextCompat.getDrawable(this, R.drawable.sign_language)
         getString(R.string.stair_lift) ->  ContextCompat.getDrawable(this, R.drawable.stair_lift)
@@ -124,7 +124,7 @@ fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<Fac
             getString(R.string.accessible_entrance),
             getString(R.string.accessible_furniture),
             getString(R.string.accessible_space),
-            getString(R.string.parking),
+            getString(R.string.disabled_parking),
             getString(R.string.railing),
             getString(R.string.sitting_toilet),
             getString(R.string.lift),
@@ -164,5 +164,107 @@ fun Context.getFacilityReviewDrawable(quality: Int) : Drawable? {
         1 -> ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_down_20)
         2 -> ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_up_20)
         else -> null
+    }
+}
+
+fun Context.translateTypeName(type: String) : String {
+    return when (type) {
+        "accounting" -> getString(R.string.accounting)
+        "airport" -> getString(R.string.airport)
+        "amusement_park" -> getString(R.string.amusement_park)
+        "aquarium" -> getString(R.string.aquarium)
+        "art_gallery" -> getString(R.string.art_gallery)
+        "atm" -> getString(R.string.atm)
+        "bakery" -> getString(R.string.bakery)
+        "bank" -> getString(R.string.bank)
+        "bar" -> getString(R.string.bar)
+        "beauty_salon" -> getString(R.string.beauty_salon)
+        "bicycle_store" -> getString(R.string.bicycle_store)
+        "book_store" -> getString(R.string.book_store)
+        "bowling_alley" -> getString(R.string.bowling_alley)
+        "bus_station" -> getString(R.string.bus_station)
+        "cafe" -> getString(R.string.cafe)
+        "campground" -> getString(R.string.campground)
+        "car_dealer" -> getString(R.string.car_dealer)
+        "car_rental" -> getString(R.string.car_rental)
+        "car_repair" -> getString(R.string.car_repair)
+        "car_wash" -> getString(R.string.car_wash)
+        "casino" -> getString(R.string.casino)
+        "cemetery" -> getString(R.string.cemetery)
+        "church" -> getString(R.string.church)
+        "city_hall" -> getString(R.string.city_hall)
+        "clothing_store" -> getString(R.string.clothing_store)
+        "convenience_store" -> getString(R.string.convenience_store)
+        "courthouse" -> getString(R.string.courthouse)
+        "dentist" -> getString(R.string.dentist)
+        "department_store" -> getString(R.string.department_store)
+        "doctor" -> getString(R.string.doctor)
+        "drugstore" -> getString(R.string.drugstore)
+        "electrician" -> getString(R.string.electrician)
+        "electronics_store" -> getString(R.string.electronics_store)
+        "embassy" -> getString(R.string.embassy)
+        "fire_station" -> getString(R.string.fire_station)
+        "florist" -> getString(R.string.florist)
+        "funeral_home" -> getString(R.string.funeral_home)
+        "furniture_store" -> getString(R.string.furniture_store)
+        "gas_station" -> getString(R.string.gas_station)
+        "gym" -> getString(R.string.gym)
+        "hair_care" -> getString(R.string.hair_care)
+        "hardware_store" -> getString(R.string.hardware_store)
+        "hindu_temple" -> getString(R.string.hindu_temple)
+        "home_goods_store" -> getString(R.string.home_goods_store)
+        "hospital" -> getString(R.string.hospital)
+        "insurance_agency" -> getString(R.string.insurance_agency)
+        "jewelry_store" -> getString(R.string.jewelry_store)
+        "laundry" -> getString(R.string.laundry)
+        "lawyer" -> getString(R.string.lawyer)
+        "library" -> getString(R.string.library)
+        "light_rail_station" -> getString(R.string.light_rail_station)
+        "liquor_store" -> getString(R.string.liquor_store)
+        "local_government_office" -> getString(R.string.local_government_office)
+        "locksmith" -> getString(R.string.locksmith)
+        "lodging" -> getString(R.string.lodging)
+        "meal_delivery" -> getString(R.string.meal_delivery)
+        "meal_takeaway" -> getString(R.string.meal_takeaway)
+        "mosque" -> getString(R.string.mosque)
+        "movie_rental" -> getString(R.string.movie_rental)
+        "movie_theater" -> getString(R.string.movie_theater)
+        "moving_company" -> getString(R.string.moving_company)
+        "museum" -> getString(R.string.museum)
+        "night_club" -> getString(R.string.night_club)
+        "painter" -> getString(R.string.painter)
+        "park" -> getString(R.string.park)
+        "parking" -> getString(R.string.parking)
+        "pet_store" -> getString(R.string.pet_store)
+        "pharmacy" -> getString(R.string.pharmacy)
+        "physiotherapist" -> getString(R.string.physiotherapist)
+        "plumber" -> getString(R.string.plumber)
+        "police" -> getString(R.string.police)
+        "post_office" -> getString(R.string.post_office)
+        "primary_school" -> getString(R.string.primary_school)
+        "real_estate_agency" -> getString(R.string.real_estate_agency)
+        "restaurant" -> getString(R.string.restaurant)
+        "roofing_contractor" -> getString(R.string.roofing_contractor)
+        "rv_park" -> getString(R.string.rv_park)
+        "school" -> getString(R.string.school)
+        "secondary_school" -> getString(R.string.secondary_school)
+        "shoe_store" -> getString(R.string.shoe_store)
+        "shopping_mall" -> getString(R.string.shopping_mall)
+        "spa" -> getString(R.string.spa)
+        "stadium" -> getString(R.string.stadium)
+        "storage" -> getString(R.string.storage)
+        "store" -> getString(R.string.store)
+        "subway_station" -> getString(R.string.subway_station)
+        "supermarket" -> getString(R.string.supermarket)
+        "synagogue" -> getString(R.string.synagogue)
+        "taxi_stand" -> getString(R.string.taxi_stand)
+        "tourist_attraction" -> getString(R.string.tourist_attraction)
+        "train_station" -> getString(R.string.train_station)
+        "transit_station" -> getString(R.string.transit_station)
+        "travel_agency" -> getString(R.string.travel_agency)
+        "university" -> getString(R.string.university)
+        "veterinary_care" -> getString(R.string.veterinary_care)
+        "zoo" -> getString(R.string.zoo)
+        else -> type
     }
 }

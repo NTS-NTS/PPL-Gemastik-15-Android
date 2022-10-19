@@ -261,7 +261,7 @@
                     android:drawableTop="@drawable/parking_selector"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:text="@string/parking"
+                    android:text="@string/disabled_parking"
                     android:textAlignment="gravity"/>
             </GridLayout>
 

@@ -55,7 +55,7 @@ class PlaceDetailFragment : Fragment() {
 
         binding?.apply {
             tvPlaceName.text = place.name
-            tvPlaceType.text = place.type
+            tvPlaceType.text = requireContext().translateTypeName(place.type)
 
             if (place.distance == -1.0) {
                 tvPlaceDistance.visibility = View.INVISIBLE
