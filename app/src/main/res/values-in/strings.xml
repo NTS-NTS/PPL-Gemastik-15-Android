@@ -128,5 +128,6 @@
     <string name="logging_out">Memproses keluar</string>
     <string name="loading">Memuat data...</string>
     <string name="your_contribution">Kontribusimu</string>
+    <string name="already_have_an_account">Sudah punya akun?</string>
 
 </resources>

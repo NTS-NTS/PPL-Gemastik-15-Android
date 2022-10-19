@@ -29,6 +29,11 @@ class RegisterFragment : Fragment() {
             btnRegister.setOnClickListener {
                 tryRegister()
             }
+
+            btnLogin.setOnClickListener {
+                val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+                findNavController().navigate(action)
+            }
         }
     }
 

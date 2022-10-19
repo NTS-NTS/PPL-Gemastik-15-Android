@@ -75,7 +75,6 @@
 
     <style name="Theme.Gemastik15.CheckBox.Facility" parent="Widget.Material3.CompoundButton.CheckBox">
         <item name="android:textAppearance">@style/TextAppearance.Material3.BodySmall</item>
-<!--        <item name="drawableTint">?attr/colorOnSurface</item>-->
     </style>
 
 </resources>

@@ -228,9 +228,12 @@
                 tools:listitem="@layout/place_item" />
 
             <TextView
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:id="@+id/tv_recent_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="@string/empty_recent"/>
 
         </LinearLayout>
@@ -262,9 +265,12 @@
                 tools:listitem="@layout/place_item" />
 
             <TextView
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:id="@+id/tv_nearby_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="@string/no_nearby"/>
 
         </LinearLayout>

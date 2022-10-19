@@ -115,8 +115,8 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.Material3.CardView.Outlined"
                 android:id="@+id/cd_maps"
+                style="@style/Widget.Material3.CardView.Outlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -181,18 +181,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toTopOf="@id/ll_facilities"
                 app:layout_constraintTop_toBottomOf="@id/cl_address" />
 
             <LinearLayout
                 android:id="@+id/ll_facilities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider_2">
+                app:layout_constraintTop_toBottomOf="@id/divider_2"
+                tools:layout_editor_absoluteX="20dp">
 
                 <TextView
                     android:id="@+id/facility_review_title"
@@ -248,6 +248,8 @@
                         android:layout_height="0dp"
                         android:layout_marginEnd="8dp"
                         android:text="@string/good"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
                         app:icon="@drawable/ic_outline_thumb_up_20"
                         app:layout_constraintBottom_toBottomOf="@id/btn_facility_review_none"
                         app:layout_constraintEnd_toStartOf="@id/btn_facility_review_bad"
@@ -261,6 +263,8 @@
                         android:layout_height="0dp"
                         android:layout_marginEnd="8dp"
                         android:text="@string/bad"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
                         app:icon="@drawable/ic_outline_thumb_down_20"
                         app:layout_constraintBottom_toBottomOf="@id/btn_facility_review_none"
                         app:layout_constraintEnd_toStartOf="@id/btn_facility_review_none"
@@ -274,6 +278,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="@string/not_exist"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
                         app:icon="@drawable/ic_baseline_not_exist_20"
                         app:layout_constraintBottom_toTopOf="@id/btn_facility_review_dont_know"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -297,8 +303,8 @@
                         style="@style/Widget.Material3.CircularProgressIndicator.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
                         android:indeterminate="true"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toTopOf="@id/btn_facility_review_none"
@@ -321,13 +327,17 @@
                 android:orientation="vertical"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider_2">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_2"
+                app:layout_constraintVertical_bias="0.0">
 
                 <TextView
                     android:id="@+id/tv_facility_review_done"
                     style="@style/TextAppearance.Material3.TitleMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:text="@string/review_done_message"
                     app:layout_constraintBottom_toTopOf="@id/btn_facility_review_done"
