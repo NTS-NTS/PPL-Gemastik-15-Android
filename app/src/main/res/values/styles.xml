@@ -19,6 +19,11 @@
         <item name="android:paddingStart">10dp</item>
     </style>
 
+    <style name="Theme.Gemastik15.Button.Error" parent="Theme.Gemastik15.Button">
+        <item name="backgroundTint">?attr/colorError</item>
+        <item name="android:textColor">?attr/colorOnError</item>
+    </style>
+
     <style name="Theme.Gemastik15.Button.TonalButton" parent="@style/Widget.Material3.Button.TonalButton">
         <item name="shapeAppearance">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
@@ -43,6 +48,11 @@
         <item name="iconSize">20dp</item>
     </style>
 
+    <style name="Theme.Gemastik15.Button.OutlinedButton.Error" parent="Theme.Gemastik15.Button.OutlinedButton">
+        <item name="backgroundTint">?attr/colorErrorContainer</item>
+        <item name="android:textColor">?attr/colorOnErrorContainer</item>
+    </style>
+
     <style name="Theme.Gemastik15.Button.OutlinedButton.Icon" parent="Theme.Gemastik15.Button.OutlinedButton">
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="iconTint">?attr/colorOnSurface</item>
@@ -51,6 +61,14 @@
     </style>
 
     <style name="Theme.Gemastik15.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearance">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.BodyLarge</item>
+        <item name="boxBackgroundColor">?attr/colorSurface</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="Theme.Gemastik15.TextInputLayout.ExposedDropdownMenu" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="shapeAppearance">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Gemastik15.SmallComponent</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.BodyLarge</item>

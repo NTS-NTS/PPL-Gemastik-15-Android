@@ -228,4 +228,11 @@
     <string name="zoo">Kebun Binatang</string>
     <string name="escalator">Eskalator</string>
     <string name="escalator_description">Tangga berjalan yang membantu orang dengan gangguan gerak berpindah lantai dalam gedung.</string>
+    <string name="dark_mode">Mode gelap</string>
+    <string name="dark_mode_yes">Mode gelap</string>
+    <string name="dark_mode_no">Mode terang</string>
+    <string name="dark_mode_system">Bawaan sistem</string>
+    <string name="dark_mode_battery">Hemat baterai</string>
+    <string name="application_theme">Tema aplikasi</string>
+    <string name="appearance_setting_title">Pengaturan Tampilan</string>
 </resources>

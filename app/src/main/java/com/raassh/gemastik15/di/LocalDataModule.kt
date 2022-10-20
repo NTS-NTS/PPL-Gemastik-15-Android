@@ -4,6 +4,7 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
 import com.raassh.gemastik15.local.db.PlaceDatabase
+import com.raassh.gemastik15.local.preferences.SettingPreferences
 import com.raassh.gemastik15.local.preferences.UserPreferences
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -18,7 +19,19 @@ val localDataModule = module {
     }
 
     single {
+
+    }
+
+    single {
         UserPreferences(get())
+    }
+
+    single {
+        SettingPreferences(PreferenceDataStoreFactory.create(
+            produceFile = {
+                androidContext().preferencesDataStoreFile("setting_preferences")
+            }
+        ))
     }
 
     factory {

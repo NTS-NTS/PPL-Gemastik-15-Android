@@ -229,4 +229,17 @@
     <string name="university">University</string>
     <string name="veterinary_care">Veterinary Care</string>
     <string name="zoo">Zoo</string>
+
+    <string name="dark_mode_yes">Dark mode</string>
+    <string name="dark_mode_no">Light mode</string>
+    <string name="dark_mode_system">System default</string>
+    <string name="dark_mode_battery">Battery saver</string>
+    <string name="dark_mode_yes_key" translatable="false">MODE_NIGHT_YES</string>
+    <string name="dark_mode_no_key" translatable="false">MODE_NIGHT_NO</string>
+    <string name="dark_mode_system_key" translatable="false">MODE_NIGHT_FOLLOW_SYSTEM</string>
+    <string name="dark_mode_battery_key" translatable="false">MODE_NIGHT_AUTO_BATTERY</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="application_theme">Application theme</string>
+    <string name="appearance_setting_title">Appearance Settings</string>
+
 </resources>

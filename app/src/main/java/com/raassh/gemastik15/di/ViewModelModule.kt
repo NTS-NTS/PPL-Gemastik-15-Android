@@ -34,7 +34,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        MainActivityViewModel(get())
+        MainActivityViewModel(get(), get())
     }
 
     viewModel {
@@ -66,6 +66,6 @@ val viewModelModule = module {
     }
 
     viewModel {
-        AccountViewModel(get())
+        AccountViewModel(get(), get())
     }
 }
