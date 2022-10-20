@@ -1,5 +1,6 @@
 package com.raassh.gemastik15.utils
 
+import android.util.Log
 import com.google.gson.Gson
 import com.raassh.gemastik15.api.response.ErrorResponse
 import kotlinx.coroutines.flow.catch
@@ -22,7 +23,9 @@ inline fun <T> callApi(crossinline apiCall: suspend () -> T) = flow<Resource<T>>
     if (e is HttpException) {
         val error = getErrorResponse(e.response()?.errorBody())
         emit(Resource.Error(error.data, null))
+        Log.e("CallApi", error.data, e)
     } else {
         emit(Resource.Error(e.message, null))
+        Log.e("CallApi", e.message, e)
     }
 }

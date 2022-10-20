@@ -12,10 +12,7 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.databinding.FragmentContributionBinding
 import com.raassh.gemastik15.local.db.PlaceEntity
-import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
-import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.utils.placeItemToEntity
-import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,7 +35,10 @@ class ContributionFragment : Fragment() {
 
         val recentAdapter = PlaceAdapter(RecyclerView.HORIZONTAL, true).apply {
             onItemClickListener = { place ->
-                val action = ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(place)
+                val action =
+                    ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(
+                        place
+                    )
                 findNavController().navigate(action)
             }
             btnOnItemClickListener = { place ->
@@ -48,7 +48,10 @@ class ContributionFragment : Fragment() {
 
         val nearbyAdapter = PlaceAdapter(RecyclerView.HORIZONTAL, true).apply {
             onItemClickListener = { place ->
-                val action = ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(place)
+                val action =
+                    ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(
+                        place
+                    )
                 findNavController().navigate(action)
             }
             btnOnItemClickListener = { place ->
@@ -58,7 +61,12 @@ class ContributionFragment : Fragment() {
 
         binding?.apply {
             rvRecentlyVisited.adapter = recentAdapter
-            rvRecentlyVisited.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+            rvRecentlyVisited.addItemDecoration(
+                LinearSpaceItemDecoration(
+                    16,
+                    RecyclerView.HORIZONTAL
+                )
+            )
 
             rvNearby.adapter = nearbyAdapter
             rvNearby.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
@@ -74,7 +82,8 @@ class ContributionFragment : Fragment() {
 
         viewModel.apply {
             contributionCount.observe(viewLifecycleOwner) {
-                binding?.tvTotalContribution?.text = getString(R.string.total_contribution, it.data?.contributionCount ?: 0)
+                binding?.tvTotalContribution?.text =
+                    getString(R.string.total_contribution, it.data?.contributionCount ?: 0)
             }
 
             recent.observe(viewLifecycleOwner) {
@@ -90,7 +99,7 @@ class ContributionFragment : Fragment() {
 
             nearby.observe(viewLifecycleOwner) {
                 if (it != null) {
-                    when(it) {
+                    when (it) {
                         is Resource.Error, is Resource.Loading -> {
                             binding?.tvNearbyEmpty?.visibility = View.VISIBLE
                             binding?.rvNearby?.visibility = View.GONE
@@ -138,15 +147,20 @@ class ContributionFragment : Fragment() {
     private fun goToAddContribution(place: PlaceEntity) {
         viewModel.getDetail(place).observe(viewLifecycleOwner) {
             if (it != null) {
-                when(it) {
+                when (it) {
                     is Resource.Error -> {
-                        binding?.root?.showSnackbar(it.message ?: getString(R.string.unknown_error))
+                        binding?.root?.showSnackbar(
+                            requireContext().translateErrorMessage(it.message)
+                        )
                     }
                     is Resource.Loading -> {
                         binding?.root?.showSnackbar(getString(R.string.loading))
                     }
                     is Resource.Success -> {
-                        val action = ContributionFragmentDirections.actionNavigationContributeToAddContributionFragment2(it.data!!)
+                        val action =
+                            ContributionFragmentDirections.actionNavigationContributeToAddContributionFragment2(
+                                it.data!!
+                            )
                         findNavController().navigate(action)
                     }
                 }

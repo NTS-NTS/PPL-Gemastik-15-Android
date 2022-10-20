@@ -241,4 +241,9 @@
     <string name="view_all_facilities">Lihat semua fasilitas</string>
     <string name="choose_all_visual_impairment_facilities">Pilih semua fasilitas gangguan lihat</string>
     <string name="choose_all_hearing_impairment_facilities">Pilih semua fasilitas gangguan dengar</string>
+
+    <string name="user_not_found">Email ini belum terdaftar</string>
+    <string name="incorrect_password">Password anda salah</string>
+    <string name="email_already_exists">Email ini sudah terdaftar</string>
+
 </resources>

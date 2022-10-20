@@ -145,7 +145,7 @@ class AddContributionFragment : Fragment() {
                             showReviewLoading(false)
 
                             binding?.root?.showSnackbar(
-                                response.message ?: getString(R.string.unknown_error)
+                                requireContext().translateErrorMessage(response.message)
                             )
                         }
                     }

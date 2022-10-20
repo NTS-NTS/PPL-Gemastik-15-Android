@@ -142,12 +142,9 @@ class DashboardActivity : AppCompatActivity() {
                 child: View,
                 event: AccessibilityEvent
             ): Boolean {
-//                Log.d("DashboardActivity", "onRequestSendAccessibilityEvent: ${event.eventType}")
                 if (event.eventType == AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
                     val v = currentFocus
-//                    Log.d("DashboardActivity", "onRequestSendAccessibilityEvent host: $host")
-//                    Log.d("DashboardActivity", "onRequestSendAccessibilityEvent child: $child")
-//                    Log.d("DashboardActivity", "onRequestSendAccessibilityEvent v: $v")
+
                     if (v is TextInputEditText && child !is TextInputLayout) {
                         v.clearFocus()
                         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

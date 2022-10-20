@@ -11,19 +11,11 @@ import org.koin.dsl.module
 
 val localDataModule = module {
     single {
-        PreferenceDataStoreFactory.create(
+        UserPreferences(PreferenceDataStoreFactory.create(
             produceFile = {
                 androidContext().preferencesDataStoreFile("user_preferences")
             }
-        )
-    }
-
-    single {
-
-    }
-
-    single {
-        UserPreferences(get())
+        ))
     }
 
     single {

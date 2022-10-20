@@ -248,4 +248,8 @@
     <string name="choose_all_visual_impairment_facilities">Choose all visual impairment facilities</string>
     <string name="choose_all_hearing_impairment_facilities">Choose all hearing impairment facilities</string>
 
+    <string name="user_not_found">This email is not registered</string>
+    <string name="incorrect_password">Your password is incorrect</string>
+    <string name="email_already_exists">This email is already registered</string>
+
 </resources>

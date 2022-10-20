@@ -272,3 +272,12 @@ fun Context.translateTypeName(type: String) : String {
         else -> type
     }
 }
+
+fun Context.translateErrorMessage(message: String?): String {
+    return when(message) {
+        "User not found!" -> getString(R.string.user_not_found)
+        "Incorrect password!" -> getString(R.string.incorrect_password)
+        "Email already exists" -> getString(R.string.email_already_exists)
+        else -> getString(R.string.unknown_error)
+    }
+}
