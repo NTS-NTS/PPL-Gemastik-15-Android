@@ -235,4 +235,9 @@
     <string name="dark_mode_battery">Hemat baterai</string>
     <string name="application_theme">Tema aplikasi</string>
     <string name="appearance_setting_title">Pengaturan Tampilan</string>
+
+    <string name="user_not_found">Email ini belum terdaftar</string>
+    <string name="incorrect_password">Password anda salah</string>
+    <string name="email_already_exists">Email ini sudah terdaftar</string>
+
 </resources>

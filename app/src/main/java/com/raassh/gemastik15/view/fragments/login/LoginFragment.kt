@@ -10,6 +10,7 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentLoginBinding
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateErrorMessage
 import com.raassh.gemastik15.utils.validate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -71,7 +72,7 @@ class LoginFragment : Fragment() {
                             btnLogin.isEnabled = true
 
                             root.showSnackbar(
-                                response.message ?: getString(R.string.unknown_error)
+                                requireContext().translateErrorMessage(response.message)
                             )
                         }
                     }

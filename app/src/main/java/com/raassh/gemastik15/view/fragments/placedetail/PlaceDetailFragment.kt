@@ -90,7 +90,7 @@ class PlaceDetailFragment : Fragment() {
                     }
                     is Resource.Error -> {
                         binding?.root?.showSnackbar(
-                            it.message ?: getString(R.string.unknown_error)
+                            requireContext().translateErrorMessage(it.message)
                         )
 
                         findNavController().navigateUp()

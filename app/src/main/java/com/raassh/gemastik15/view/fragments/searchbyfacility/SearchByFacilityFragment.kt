@@ -14,7 +14,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
-import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.OptionTagAdapter
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.api.response.PlacesItem
@@ -94,7 +93,7 @@ class SearchByFacilityFragment : Fragment() {
                         showLoading(false, error = true)
 
                         binding?.root?.showSnackbar(
-                            it.message ?: getString(R.string.unknown_error)
+                            requireContext().translateErrorMessage(it.message)
                         )
                     }
                 }

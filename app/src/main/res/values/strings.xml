@@ -8,7 +8,7 @@
     <string name="register">Register</string>
     <string name="register_subtitle">Register now to bla bla bla</string>
     <string name="name">Name</string>
-    <string name="unknown_error">Unknown error</string>
+    <string name="unknown_error">Something went wrong</string>
     <string name="search_places">Search places</string>
     <string name="input_empty">%1$s cannot be empty</string>
     <string name="email_invalid">Email is not valid</string>
@@ -241,5 +241,9 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="application_theme">Application theme</string>
     <string name="appearance_setting_title">Appearance Settings</string>
+
+    <string name="user_not_found">This email is not registered</string>
+    <string name="incorrect_password">Your password is incorrect</string>
+    <string name="email_already_exists">This email is already registered</string>
 
 </resources>

@@ -100,7 +100,7 @@ class SearchResultFragment : Fragment() {
                         showLoading(false, error = true)
 
                         binding?.root?.showSnackbar(
-                            it.message ?: getString(R.string.unknown_error)
+                            requireContext().translateErrorMessage(it.message)
                         )
                     }
                 }
