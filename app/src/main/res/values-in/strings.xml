@@ -249,5 +249,7 @@
     <string name="unselect_all_mobility">Batalkan pilih semua fasilitas mobilitas</string>
     <string name="unselect_all_visual">Batalkan pilih semua fasilitas gangguan lihat</string>
     <string name="unselect_all_hearing">Batalkan pilih semua fasilitas gangguan dengar</string>
+    <string name="select_all_announcement">Semua %1$s dipilih</string>
+    <string name="unselect_all_announcement">Semua %1$s batal dipilih</string>
 
 </resources>

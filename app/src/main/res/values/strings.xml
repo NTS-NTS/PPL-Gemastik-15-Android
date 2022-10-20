@@ -85,10 +85,10 @@
     <string name="no_result">No result</string>
     <string name="go_back">Go back</string>
     <string name="search_by_facilities">Search facilities</string>
-    <string name="mobility_facility">Mobility Facility</string>
+    <string name="mobility_facility">Mobility Facilities</string>
     <string name="select_all">Select All</string>
-    <string name="visual_facility">Visual Impairment Facility</string>
-    <string name="hearing_facility">Hearing Impairment Facility</string>
+    <string name="visual_facility">Visual Impairment Facilities</string>
+    <string name="hearing_facility">Hearing Impairment Facilities</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="btn_maps_text">Open in Maps</string>
     <string name="edit_facility_options">Edit facility options</string>
@@ -255,5 +255,7 @@
     <string name="unselect_all_mobility">Unselect all mobility facilities</string>
     <string name="unselect_all_visual">Unselect all visual impairment facilities</string>
     <string name="unselect_all_hearing">Unselect all hearing impairment facilities</string>
+    <string name="select_all_announcement">All %1$s selected</string>
+    <string name="unselect_all_announcement">All %1$s unselected</string>
 
 </resources>

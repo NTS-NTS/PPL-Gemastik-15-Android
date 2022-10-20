@@ -148,25 +148,31 @@ class SearchFacilityOptionFragment : Fragment() {
         isAll: Boolean,
         stringResName: String
     ) {
+        val facilityType = getString(resources.getIdentifier(
+            "${stringResName}_facility",
+            "string",
+            requireContext().packageName
+        ))
         val conDescResId = if (isAll) {
-            resources.getIdentifier("select_all_$stringResName", "string", requireContext().packageName)
-        } else {
             resources.getIdentifier("unselect_all_$stringResName", "string", requireContext().packageName)
+        } else {
+            resources.getIdentifier("select_all_$stringResName", "string", requireContext().packageName)
         }
 
         if (isAll) {
             button.setOnClickListener {
+                button.announceForAccessibility(getString(R.string.unselect_all_announcement, facilityType))
                 setCheckedAll(cbGroup, false)
             }
-            button.text = getString(R.string.unselect_all)
             button.contentDescription = getString(conDescResId)
+            button.text = getString(R.string.unselect_all)
         } else {
             button.setOnClickListener {
-                Log.d("mobility", "setFacilitiesButtonState: ${cbGroup.childCount}")
+                button.announceForAccessibility(getString(R.string.select_all_announcement, facilityType))
                 setCheckedAll(cbGroup, true)
             }
-            button.text = getString(R.string.select_all)
             button.contentDescription = getString(conDescResId)
+            button.text = getString(R.string.select_all)
         }
     }
 
