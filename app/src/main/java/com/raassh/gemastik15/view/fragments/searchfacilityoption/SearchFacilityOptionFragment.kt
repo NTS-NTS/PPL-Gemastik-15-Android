@@ -1,9 +1,11 @@
 package com.raassh.gemastik15.view.fragments.searchfacilityoption
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -30,11 +32,22 @@ class SearchFacilityOptionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val facilities = SearchByFacilityFragmentArgs.fromBundle(requireArguments()).facilities.toMutableList()
+        val mobilityFacilities = mutableListOf<String>()
+        val visualFacilities = mutableListOf<String>()
+        val hearingFacilities = mutableListOf<String>()
 
         binding?.apply {
             setCheckedFromList(glMobility, facilities, true)
             setCheckedFromList(glVisual, facilities, true)
             setCheckedFromList(glHearing, facilities, true)
+
+            getCheckedFacilities(glMobility, mobilityFacilities)
+            getCheckedFacilities(glVisual, visualFacilities)
+            getCheckedFacilities(glHearing, hearingFacilities)
+
+            setCheckBoxUpdate(glMobility)
+            setCheckBoxUpdate(glVisual)
+            setCheckBoxUpdate(glHearing)
 
             btnMobility.setOnClickListener {
                 setCheckedAll(glMobility, true)
@@ -67,7 +80,93 @@ class SearchFacilityOptionFragment : Fragment() {
         }
 
         viewModel.apply {
-            //
+
+            checkedMobility.value = mobilityFacilities
+            checkedVisual.value = visualFacilities
+            checkedHearing.value = hearingFacilities
+
+            binding?.apply {
+                checkedMobility.observe(viewLifecycleOwner) {
+                    if (!it.isNullOrEmpty() && it.size == glMobility.childCount) {
+                        setFacilitiesButtonState(btnMobility, glMobility, true, "mobility")
+                    } else {
+                        setFacilitiesButtonState(btnMobility, glMobility, false, "mobility")
+                    }
+                }
+
+                checkedVisual.observe(viewLifecycleOwner) {
+                    if (!it.isNullOrEmpty() && it.size == glVisual.childCount) {
+                        setFacilitiesButtonState(btnVisual, glVisual, true, "visual")
+                    } else {
+                        setFacilitiesButtonState(btnVisual, glVisual, false, "visual")
+                    }
+                }
+
+                checkedHearing.observe(viewLifecycleOwner) {
+                    if (!it.isNullOrEmpty() && it.size == glHearing.childCount) {
+                        setFacilitiesButtonState(btnHearing, glHearing, true, "hearing")
+                    } else {
+                        setFacilitiesButtonState(btnHearing, glHearing, false, "hearing")
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setCheckBoxUpdate(container: ViewGroup) {
+
+        for (i in 0 until container.childCount) {
+            val child = container.getChildAt(i)
+            if (child is CheckBox) {
+                child.setOnCheckedChangeListener { _, _ ->
+                    val checkedFacilities = mutableListOf<String>()
+
+                    binding?.apply {
+                        when (container.id) {
+                            R.id.gl_mobility -> {
+                                getCheckedFacilities(glMobility, checkedFacilities)
+                                viewModel.checkedMobility.value = checkedFacilities
+                            }
+                            R.id.gl_visual -> {
+                                getCheckedFacilities(glVisual, checkedFacilities)
+                                viewModel.checkedVisual.value = checkedFacilities
+                            }
+                            R.id.gl_hearing -> {
+                                getCheckedFacilities(glHearing, checkedFacilities)
+                                viewModel.checkedHearing.value = checkedFacilities
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setFacilitiesButtonState(
+        button: Button,
+        cbGroup: ViewGroup,
+        isAll: Boolean,
+        stringResName: String
+    ) {
+        val conDescResId = if (isAll) {
+            resources.getIdentifier("select_all_$stringResName", "string", requireContext().packageName)
+        } else {
+            resources.getIdentifier("unselect_all_$stringResName", "string", requireContext().packageName)
+        }
+
+        if (isAll) {
+            button.setOnClickListener {
+                setCheckedAll(cbGroup, false)
+            }
+            button.text = getString(R.string.unselect_all)
+            button.contentDescription = getString(conDescResId)
+        } else {
+            button.setOnClickListener {
+                Log.d("mobility", "setFacilitiesButtonState: ${cbGroup.childCount}")
+                setCheckedAll(cbGroup, true)
+            }
+            button.text = getString(R.string.select_all)
+            button.contentDescription = getString(conDescResId)
         }
     }
 

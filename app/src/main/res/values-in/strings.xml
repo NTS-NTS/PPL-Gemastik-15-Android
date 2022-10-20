@@ -82,9 +82,9 @@
     <string name="go_back">Kembali</string>
     <string name="search_by_facilities">Cari fasilitas</string>
     <string name="mobility_facility">Fasilitas Mobilitas</string>
-    <string name="choose_all">Pilih Semua</string>
-    <string name="visual_facility">Fasilitas Gangguan Penglihatan</string>
-    <string name="hearing_facility">Fasilitas Gangguan Pendengaran</string>
+    <string name="select_all">Pilih Semua</string>
+    <string name="visual_facility">Fasilitas Gangguan Lihat</string>
+    <string name="hearing_facility">Fasilitas Gangguan Dengar</string>
     <string name="don_t_have_an_account">Belum punya akun?</string>
     <string name="btn_maps_text">Buka di Maps</string>
     <string name="edit_facility_options">Ubah pilihan fasilitas</string>
@@ -237,13 +237,17 @@
     <string name="login_subtitle">Dapatkan informasi fasilitas aksesibilitas dengan mudah</string>
     <string name="logging_in">Sedang masuk</string>
     <string name="registering">Mendaftar akun</string>
-    <string name="choose_all_mobility_facility">Pilih semua fasilitas mobilitas</string>
+    <string name="select_all_mobility">Pilih semua fasilitas mobilitas</string>
     <string name="view_all_facilities">Lihat semua fasilitas</string>
-    <string name="choose_all_visual_impairment_facilities">Pilih semua fasilitas gangguan lihat</string>
-    <string name="choose_all_hearing_impairment_facilities">Pilih semua fasilitas gangguan dengar</string>
+    <string name="select_all_visual">Pilih semua fasilitas gangguan lihat</string>
+    <string name="select_all_hearing">Pilih semua fasilitas gangguan dengar</string>
 
     <string name="user_not_found">Email ini belum terdaftar</string>
     <string name="incorrect_password">Password anda salah</string>
     <string name="email_already_exists">Email ini sudah terdaftar</string>
+    <string name="unselect_all">Batalkan pilihan</string>
+    <string name="unselect_all_mobility">Batalkan pilih semua fasilitas mobilitas</string>
+    <string name="unselect_all_visual">Batalkan pilih semua fasilitas gangguan lihat</string>
+    <string name="unselect_all_hearing">Batalkan pilih semua fasilitas gangguan dengar</string>
 
 </resources>

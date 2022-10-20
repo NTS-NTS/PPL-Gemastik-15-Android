@@ -57,7 +57,7 @@
     <string name="lift_description">Lift for mobility impaired people who can\'t use stairs with enough space for wheelchair, stroller, and walking aid.</string>
     <string name="wheelchair_area_description">Wheelchair user dedicated area in crowded place that is separated to provide easy travels.</string>
     <string name="sitting_toilet_description">Sitting toilet for mobility impaired people with limited motion ability.</string>
-    <string name="ramp_description">A slope or inclined plane to provide easy travel for wheelchair, stroller, and walking aid users.</string>
+    <string name="ramp_description">Visual Impairment Facility</string>
     <string name="accessible_space_description">Enough and wide spaces without obstacles and barriers for wheelchair, stroller, and walking aid users.</string>
     <string name="railing_description">Railing and bar in places with risk of falling like toilets and stairs for people to hold to.</string>
     <string name="accessible_entrance_description">Ease of entering a room or building without obstacles and barriers by providing wide entrance or automated door.</string>
@@ -86,7 +86,7 @@
     <string name="go_back">Go back</string>
     <string name="search_by_facilities">Search facilities</string>
     <string name="mobility_facility">Mobility Facility</string>
-    <string name="choose_all">Choose All</string>
+    <string name="select_all">Select All</string>
     <string name="visual_facility">Visual Impairment Facility</string>
     <string name="hearing_facility">Hearing Impairment Facility</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
@@ -243,13 +243,17 @@
     <string name="appearance_setting_title">Appearance Settings</string>
     <string name="logging_in">Logging in</string>
     <string name="registering">Registering account</string>
-    <string name="choose_all_mobility_facility">Choose all mobility facility</string>
+    <string name="select_all_mobility">Select all mobility facility</string>
     <string name="view_all_facilities">View all facilities</string>
-    <string name="choose_all_visual_impairment_facilities">Choose all visual impairment facilities</string>
-    <string name="choose_all_hearing_impairment_facilities">Choose all hearing impairment facilities</string>
+    <string name="select_all_visual">Select all visual impairment facilities</string>
+    <string name="select_all_hearing">Select all hearing impairment facilities</string>
 
     <string name="user_not_found">This email is not registered</string>
     <string name="incorrect_password">Your password is incorrect</string>
     <string name="email_already_exists">This email is already registered</string>
+    <string name="unselect_all">Unselect all</string>
+    <string name="unselect_all_mobility">Unselect all mobility facilities</string>
+    <string name="unselect_all_visual">Unselect all visual impairment facilities</string>
+    <string name="unselect_all_hearing">Unselect all hearing impairment facilities</string>
 
 </resources>
