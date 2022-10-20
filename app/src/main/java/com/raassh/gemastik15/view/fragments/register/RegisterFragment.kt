@@ -57,6 +57,7 @@ class RegisterFragment : Fragment() {
                 if (response != null) {
                     when (response) {
                         is Resource.Loading -> {
+                            btnRegister.text = getString(R.string.registering)
                             btnRegister.isEnabled = false
                         }
                         is Resource.Success -> {
@@ -67,6 +68,7 @@ class RegisterFragment : Fragment() {
                             findNavController().navigate(action)
                         }
                         is Resource.Error -> {
+                            btnRegister.text = getString(R.string.register)
                             btnRegister.isEnabled = true
 
                             root.showSnackbar(

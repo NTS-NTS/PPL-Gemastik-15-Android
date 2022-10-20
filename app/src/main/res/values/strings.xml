@@ -4,24 +4,24 @@
     <string name="register_at_landing">Don’t have an account? <b>Sign Up</b></string>
     <string name="email">Email Address</string>
     <string name="password">Password</string>
-    <string name="login_subtitle">Login now to bla bla bla</string>
+    <string name="login_subtitle">Get informations on accessiblity facility at ease</string>
     <string name="register">Register</string>
-    <string name="register_subtitle">Register now to bla bla bla</string>
+    <string name="register_subtitle">Get informations on accessiblity facility at ease</string>
     <string name="name">Name</string>
-    <string name="unknown_error">Unknown error</string>
+    <string name="unknown_error">There is an error on our side. Try again in a moment.</string>
     <string name="search_places">Search places</string>
     <string name="input_empty">%1$s cannot be empty</string>
     <string name="email_invalid">Email is not valid</string>
-    <string name="password_invalid">Password is not long enough</string>
+    <string name="password_invalid">Password\'s length must be at least 8 characters</string>
     <string name="discover">Discover</string>
     <string name="contribute">Contribute</string>
     <string name="article">Articles</string>
     <string name="account">Account</string>
-    <string name="feature_not_available">Coming soon</string>
-    <string name="search_by_facility">Search by facility</string>
+    <string name="feature_not_available">Feature\'s in development. Coming soon.</string>
+    <string name="search_by_facility">Search places by facilities</string>
     <string name="view_all">View All</string>
-    <string name="search">Search</string>
-    <string name="recently_viewed">Recently viewed</string>
+    <string name="search">Search Place</string>
+    <string name="recently_viewed">Your recently viewed places</string>
     <string name="image_of_place">Image of place</string>
     <string name="placeholder" translatable="false">Placeholder</string>
     <string name="dot">dot</string>
@@ -30,7 +30,7 @@
     <string name="lift">Lift</string>
     <string name="wheelchair_area">Wheelchair Area</string>
     <string name="sitting_toilet">Sitting Toilet</string>
-    <string name="ramp">Ramp</string>
+    <string name="ramp">Ramp and Curb</string>
     <string name="accessible_space">Wide Space</string>
     <string name="railing">Railing</string>
     <string name="accessible_entrance">Easy Entrance</string>
@@ -84,7 +84,7 @@
     <string name="checkmark">Checkmark</string>
     <string name="no_result">No result</string>
     <string name="go_back">Go back</string>
-    <string name="search_by_facilities">Search by facilities</string>
+    <string name="search_by_facilities">Search facilities</string>
     <string name="mobility_facility">Mobility Facility</string>
     <string name="choose_all">Choose All</string>
     <string name="visual_facility">Visual Impairment Facility</string>
@@ -101,7 +101,7 @@
     <string name="bad">Bad</string>
     <string name="good">Good</string>
     <string name="not_exist">Not exist</string>
-    <string name="don_t_know">Don\'t know</string>
+    <string name="don_t_know">Not sure</string>
     <string name="permission_denied_warning">Permissions Needed</string>
     <string name="permissions_denied_warning_message">This app needs location permissions to work properly. Do you want to open setting and grant them?</string>
     <string name="yes">Yes</string>
@@ -129,7 +129,7 @@
     <string name="close_contribution_page">Close contribution page</string>
     <string name="logout">Logout</string>
     <string name="logging_out">Logging out</string>
-    <string name="loading">Loading…</string>
+    <string name="loading">Loading</string>
     <string name="your_contribution">Your contributions</string>
     <string name="already_have_an_account">Already have an account?</string>
 
@@ -241,5 +241,11 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="application_theme">Application theme</string>
     <string name="appearance_setting_title">Appearance Settings</string>
+    <string name="logging_in">Logging in</string>
+    <string name="registering">Registering account</string>
+    <string name="choose_all_mobility_facility">Choose all mobility facility</string>
+    <string name="view_all_facilities">View all facilities</string>
+    <string name="choose_all_visual_impairment_facilities">Choose all visual impairment facilities</string>
+    <string name="choose_all_hearing_impairment_facilities">Choose all hearing impairment facilities</string>
 
 </resources>

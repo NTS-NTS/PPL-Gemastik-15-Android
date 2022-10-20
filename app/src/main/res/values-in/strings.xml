@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="login">Masuk</string>
+    <string name="login">Masuk ke Akun</string>
     <string name="register_at_landing">Belum punya akun? <b>Daftar</b></string>
     <string name="email">Alamat Email</string>
     <string name="password">Kata Sandi</string>
-    <string name="login_subtitle">Masuk sekarang untuk bla bla bla</string>
-    <string name="register">Daftar</string>
-    <string name="register_subtitle">Daftar sekarang untuk bla bla bla</string>
+    <string name="register">Daftar Akun</string>
+    <string name="register_subtitle">Dapatkan informasi fasilitas aksesibilitas dengan mudah</string>
     <string name="name">Nama</string>
-    <string name="unknown_error">Terjadi kesalahan</string>
+    <string name="unknown_error">Terdapat kesalahan pada aplikasi. Coba lagi dalam beberapa saat.</string>
     <string name="search_places">Cari tempat</string>
     <string name="input_empty">%1$s tidak boleh kosong</string>
-    <string name="email_invalid">Email tidak valid</string>
-    <string name="password_invalid">Kata sandi kurang panjang</string>
+    <string name="email_invalid">Email tidak sesuai</string>
+    <string name="password_invalid">Kata sandi minimal 8 karakter</string>
     <string name="discover">Temukan</string>
     <string name="contribute">Kontribusi</string>
     <string name="article">Artikel</string>
     <string name="account">Akun</string>
-    <string name="feature_not_available">Segera hadir</string>
-    <string name="search_by_facility">Cari berdasarkan fasilitas</string>
+    <string name="feature_not_available">Fitur dalam pengembangan. Segera hadir.</string>
+    <string name="search_by_facility">Cari tempat berdasarkan fasilitas</string>
     <string name="view_all">Lihat Semua</string>
-    <string name="search">Cari</string>
-    <string name="recently_viewed">Baru dilihat</string>
+    <string name="search">Cari Tempat</string>
+    <string name="recently_viewed">Tempat yang baru kamu lihat</string>
     <string name="image_of_place">Gambar dari tempat</string>
     <string name="dot">titik</string>
 
-    <string name="stair_lift">Lift Tangga</string>
-    <string name="lift">Lift</string>
+    <string name="stair_lift">Lif Tangga</string>
+    <string name="lift">Lif</string>
     <string name="wheelchair_area">Area Kursi Roda</string>
     <string name="sitting_toilet">Toilet Duduk</string>
-    <string name="ramp">Ram</string>
+    <string name="ramp">Ram dan Kerb</string>
     <string name="accessible_space">Area Luas</string>
     <string name="railing">Pegangan</string>
     <string name="accessible_entrance">Mudah Masuk</string>
@@ -44,7 +43,7 @@
     <string name="clear_signage">Penanda Jelas</string>
     <string name="braille_signage">Penanda Braille</string>
 
-    <string name="sign_language">Bahasa isyarat</string>
+    <string name="sign_language">Bahasa Isyarat</string>
     <string name="display">Layar Informasi</string>
     <string name="tty">Teletypewriter</string>
     <string name="tv_text">TV Teks</string>
@@ -81,23 +80,23 @@
     <string name="checkmark">Tanda centang</string>
     <string name="no_result">Tidak ada hasil</string>
     <string name="go_back">Kembali</string>
-    <string name="search_by_facilities">Cari berdasarkan fasilitas</string>
+    <string name="search_by_facilities">Cari fasilitas</string>
     <string name="mobility_facility">Fasilitas Mobilitas</string>
     <string name="choose_all">Pilih Semua</string>
     <string name="visual_facility">Fasilitas Gangguan Penglihatan</string>
     <string name="hearing_facility">Fasilitas Gangguan Pendengaran</string>
-    <string name="don_t_have_an_account">Tidak punya akun?</string>
+    <string name="don_t_have_an_account">Belum punya akun?</string>
     <string name="btn_maps_text">Buka di Maps</string>
-    <string name="edit_facility_options">Edit opsi fasilitas</string>
+    <string name="edit_facility_options">Ubah pilihan fasilitas</string>
     <string name="places_around_you_with">Tempat di sekitarmu dengan</string>
     <string name="facility_icon">Ikon Fasilitas</string>
     <string name="distance">%1$s km</string>
-    <string name="varying_reviews">Ulasan yang bervariasi</string>
+    <string name="varying_reviews">Ulasan bervariasi</string>
     <string name="search_must_not_empty">Harap isi kolom pencarian</string>
     <string name="bad">Buruk</string>
     <string name="good">Baik</string>
     <string name="not_exist">Tidak ada</string>
-    <string name="don_t_know">Tidak tahu</string>
+    <string name="don_t_know">Tidak yakin</string>
     <string name="permissions_denied_warning_message">Aplikasi ini membutuhkan izin lokasi untuk bekerja dengan baik. Apakah Anda ingin membuka pengaturan dan memberikannya?</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
@@ -105,12 +104,12 @@
     <string name="read_articles">Artikel</string>
     <string name="read_news">Berita</string>
     <string name="read_guidelines">Pedoman</string>
-    <string name="better_contribution_title">Buat kontribusi Anda lebih baik!</string>
+    <string name="better_contribution_title">Buat kontribusimu lebih baik!</string>
     <string name="better_contribution_subtitle">Baca pedoman pemerintah, artikel, dan berita tentang aksesibilitas untuk memperkuat pengetahuan Anda</string>
     <string name="add_contribution">Tambah Kontribusi</string>
     <string name="add_review">Tambah Ulasan</string>
     <string name="varying_review_message">%1$s fasilitas di tempat ini memiliki ulasan kualitas yang bervariasi.</string>
-    <string name="location_not_found">Tidak bisa menemukan lokasi anda</string>
+    <string name="location_not_found">Tidak bisa menemukan lokasimu</string>
     <string name="total_contribution">%1$d total kontribusi</string>
     <string name="nearby_title">Tempat di sekitar</string>
     <string name="no_nearby">Tidak ada tempat di sekitar</string>
@@ -126,7 +125,7 @@
     <string name="permission_denied_warning">Membutuhkan Izin</string>
     <string name="logout">Keluar</string>
     <string name="logging_out">Memproses keluar</string>
-    <string name="loading">Memuat data…</string>
+    <string name="loading">Sedang mengambil data</string>
     <string name="your_contribution">Kontribusimu</string>
     <string name="already_have_an_account">Sudah punya akun?</string>
 
@@ -171,7 +170,7 @@
     <string name="gas_station">Pom Bensin</string>
     <string name="gym">Gym</string>
     <string name="hair_care">Perawatan Rambut</string>
-    <string name="hardware_store">Toko Perangkat Keras</string>
+    <string name="hardware_store">Toko Perkakas</string>
     <string name="hindu_temple">Kuil Hindu</string>
     <string name="home_goods_store">Toko Perlengkapan Rumah Tangga</string>
     <string name="hospital">Rumah Sakit</string>
@@ -183,7 +182,7 @@
     <string name="light_rail_station">Stasiun LRT</string>
     <string name="liquor_store">Toko Minuman Keras</string>
     <string name="local_government_office">Kantor Pemerintah Daerah</string>
-    <string name="locksmith">Pengrajin Kunci</string>
+    <string name="locksmith">Tukang Kunci</string>
     <string name="lodging">Penginapan</string>
     <string name="meal_delivery">Pengiriman Makanan</string>
     <string name="meal_takeaway">Makanan Bawa Pulang</string>
@@ -213,7 +212,7 @@
     <string name="shopping_mall">Pusat Perbelanjaan</string>
     <string name="spa">Spa</string>
     <string name="stadium">Stadion</string>
-    <string name="storage">Tempat Penyimpanan</string>
+    <string name="storage">Gudang</string>
     <string name="store">Toko</string>
     <string name="subway_station">Stasiun Kereta Bawah Tanah</string>
     <string name="supermarket">Supermarket</string>
@@ -235,4 +234,11 @@
     <string name="dark_mode_battery">Hemat baterai</string>
     <string name="application_theme">Tema aplikasi</string>
     <string name="appearance_setting_title">Pengaturan Tampilan</string>
+    <string name="login_subtitle">Dapatkan informasi fasilitas aksesibilitas dengan mudah</string>
+    <string name="logging_in">Sedang masuk</string>
+    <string name="registering">Mendaftar akun</string>
+    <string name="choose_all_mobility_facility">Pilih semua fasilitas mobilitas</string>
+    <string name="view_all_facilities">Lihat semua fasilitas</string>
+    <string name="choose_all_visual_impairment_facilities">Pilih semua fasilitas gangguan lihat</string>
+    <string name="choose_all_hearing_impairment_facilities">Pilih semua fasilitas gangguan dengar</string>
 </resources>

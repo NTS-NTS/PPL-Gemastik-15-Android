@@ -59,6 +59,7 @@ class LoginFragment : Fragment() {
                 if (response != null) {
                     when (response) {
                         is Resource.Loading -> {
+                            btnLogin.text = getString(R.string.logging_in)
                             btnLogin.isEnabled = false
                         }
                         is Resource.Success -> {
@@ -68,6 +69,7 @@ class LoginFragment : Fragment() {
                             viewModel.setToken(token)
                         }
                         is Resource.Error -> {
+                            btnLogin.text = getString(R.string.login)
                             btnLogin.isEnabled = true
 
                             root.showSnackbar(

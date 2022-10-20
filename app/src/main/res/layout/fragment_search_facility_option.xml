@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:accessibilityHeading="true"
                 android:text="@string/search_by_facilities"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_back"
                 app:layout_constraintStart_toEndOf="@+id/btn_back"
@@ -84,6 +85,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/mobility_facility"
+                android:accessibilityHeading="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/btn_mobility"/>
@@ -95,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:text="@string/choose_all"
+                android:contentDescription="@string/choose_all_mobility_facility"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_mobility" />
 
@@ -287,6 +290,7 @@
                 android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
+                android:accessibilityHeading="true"
                 android:text="@string/visual_facility"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/gl_mobility"
@@ -299,6 +303,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:text="@string/choose_all"
+                android:contentDescription="@string/choose_all_visual_impairment_facilities"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_visual" />
 
@@ -408,6 +413,7 @@
                 android:gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
+                android:accessibilityHeading="true"
                 android:text="@string/hearing_facility"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/gl_visual"
@@ -420,6 +426,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:text="@string/choose_all"
+                android:contentDescription="@string/choose_all_hearing_impairment_facilities"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_hearing" />
 
