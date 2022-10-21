@@ -123,8 +123,8 @@
     <string name="close_contribution_page">Tutup halaman kontribusi</string>
     <string name="no_facilities_chosen">Pilih paling sedikit satu fasilitas</string>
     <string name="permission_denied_warning">Membutuhkan Izin</string>
-    <string name="logout">Keluar</string>
-    <string name="logging_out">Memproses keluar</string>
+    <string name="logout">Keluar dari Akun</string>
+    <string name="logging_out">Sedang keluar</string>
     <string name="loading">Sedang mengambil data</string>
     <string name="your_contribution">Kontribusimu</string>
     <string name="already_have_an_account">Sudah punya akun?</string>
@@ -262,5 +262,6 @@
     <string name="guidelines">Pedoman</string>
     <string name="news">Berita</string>
     <string name="articles">Artikel</string>
+    <string name="theme_changed_message">Tema diubah ke %1$s</string>
 
 </resources>

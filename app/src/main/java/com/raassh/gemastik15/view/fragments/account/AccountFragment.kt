@@ -38,8 +38,8 @@ class AccountFragment : Fragment() {
             etDarkMode.apply {
                 setOnItemClickListener { parent, _, position, _ ->
                     val theme = parent.getItemAtPosition(position).toString()
+                    showSnackbar(getString(R.string.theme_changed_message, theme))
                     viewModel.setTheme(getThemeKey(theme))
-                    showSnackbar("Theme changed to $theme")
                 }
             }
 

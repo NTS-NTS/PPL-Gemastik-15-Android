@@ -269,4 +269,6 @@
     <string name="guidelines">Guidelines</string>
     <string name="news">News</string>
     <string name="articles">Articles</string>
+
+    <string name="theme_changed_message">Theme changed to %1$s</string>
 </resources>

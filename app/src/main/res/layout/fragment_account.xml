@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
+        android:accessibilityHeading="true"
         android:text="@string/appearance_setting_title"
         app:layout_constraintTop_toBottomOf="@id/divider_1"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +87,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Theme.Gemastik15.TextInputLayout.ExposedDropdownMenu"
             android:id="@+id/ti_dark_mode"
-            android:layout_width="190dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:hintEnabled="false"
