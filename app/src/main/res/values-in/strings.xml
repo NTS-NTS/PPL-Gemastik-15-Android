@@ -118,7 +118,7 @@
     <string name="empty_mobility_facility_review">Tidak ada ulasan fasilitas mobilitas.</string>
     <string name="empty_hearing_facilities_review">Tidak ada ulasan fasilitas gangguan pendengaran.</string>
     <string name="empty_visual_facilities_review">Tidak ada ulasan fasilitas gangguan penglihatan.</string>
-    <string name="review_title">Apa pendapat Anda tentang fasilitas di tempat ini?</string>
+    <string name="review_title">Apa pendapatmu tentang fasilitas ini di tempat ini?</string>
     <string name="review_done_message">Terima kasih atas ulasan Anda!</string>
     <string name="close_contribution_page">Tutup halaman kontribusi</string>
     <string name="no_facilities_chosen">Pilih paling sedikit satu fasilitas</string>
@@ -254,5 +254,10 @@
     <string name="quality">Kualitas</string>
     <string name="see_place_detail">Lihat detail tempat</string>
     <string name="overflow_count">+%1$d lainnya</string>
+    <string name="facility_counter">Fasilitas %1$d dari %2$d</string>
+    <string name="review_good_cta">Kirim ulasan kualitas baik</string>
+    <string name="review_bad_cta">Kirim ulasan kualitas buruk</string>
+    <string name="review_not_exist_cta">Kirim ulasan tidak ada</string>
+    <string name="review_dont_know_cta">Kirim ulasan tidak yakin</string>
 
 </resources>

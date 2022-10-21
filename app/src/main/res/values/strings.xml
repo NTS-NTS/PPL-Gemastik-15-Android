@@ -261,4 +261,9 @@
     <string name="unselect_all_announcement">All %1$s unselected</string>
 
     <string name="overflow_count">+%1$d more</string>
+    <string name="facility_counter">Facility %1$d from %2$d</string>
+    <string name="review_good_cta">Send good quality review</string>
+    <string name="review_bad_cta">Send bad quality review</string>
+    <string name="review_not_exist_cta">Send not exist review</string>
+    <string name="review_dont_know_cta">Send not sure review</string>
 </resources>

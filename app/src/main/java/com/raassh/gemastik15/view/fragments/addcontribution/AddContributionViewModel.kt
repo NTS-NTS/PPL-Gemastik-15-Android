@@ -22,7 +22,7 @@ class AddContributionViewModel(
     val facilities: MutableLiveData<List<Facility>> = _facilities
 
     private val _index = MutableLiveData<Int>()
-    private val index: MutableLiveData<Int> = _index
+    val index: MutableLiveData<Int> = _index
 
     init {
         index.value = 0

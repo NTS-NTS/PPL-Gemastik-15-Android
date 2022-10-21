@@ -4,6 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityNodeInfo
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.jwt.JWT
@@ -50,8 +54,13 @@ class AddContributionFragment : Fragment() {
 
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
+        mapFragment?.view?.apply {
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
+            isFocusable = false
+        }
 
         showReviewLoading(true)
+        prepareFacilityReviewData()
 
         binding?.apply {
             tvPlaceName.text = place.name
@@ -100,11 +109,28 @@ class AddContributionFragment : Fragment() {
                 }
             }
 
+            index.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    binding?.apply {
+                        tvFacilityCounter.text = getString(
+                            R.string.facility_counter,
+                            it + 1,
+                            facilities.value?.size
+                        )
+                    }
+                }
+            }
+
             isDone.observe(viewLifecycleOwner) {
                 binding?.apply {
                     if (it) {
                         llFacilityReviewDone.visibility = View.VISIBLE
                         llFacilities.visibility = View.GONE
+
+                        tvFacilityReviewDone.performAccessibilityAction(
+                            AccessibilityNodeInfoCompat.ACTION_ACCESSIBILITY_FOCUS,
+                            null
+                        )
                     } else {
                         llFacilityReviewDone.visibility = View.GONE
                         llFacilities.visibility = View.VISIBLE
@@ -118,7 +144,6 @@ class AddContributionFragment : Fragment() {
                 if (!it.isNullOrEmpty()) {
                     val jwt = JWT(it)
                     userId = jwt.getClaim("id").asString()
-                    prepareFacilityReviewData()
                     showReviewLoading(false)
                 }
             }
@@ -140,6 +165,13 @@ class AddContributionFragment : Fragment() {
                         is Resource.Success -> {
                             showReviewLoading(false)
                             viewModel.nextFacility()
+
+                            if (viewModel.index.value!! < viewModel.facilities.value!!.size) {
+                                binding?.llFacilityReviewTitle?.performAccessibilityAction(
+                                    AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS,
+                                    null
+                                )
+                            }
                         }
                         is Resource.Error -> {
                             showReviewLoading(false)
@@ -171,6 +203,7 @@ class AddContributionFragment : Fragment() {
         val latLng = LatLng(detail.latitude, detail.longitude)
         map.addMarker(MarkerOptions().position(latLng).title(detail.name))
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+        map.setContentDescription(null)
     }
 
     private fun prepareFacilityReviewData() {
