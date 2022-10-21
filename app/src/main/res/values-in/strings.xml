@@ -101,11 +101,11 @@
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="recently_visited_title">Tempat yang baru kamu kunjungi</string>
-    <string name="read_articles">Artikel</string>
-    <string name="read_news">Berita</string>
-    <string name="read_guidelines">Pedoman</string>
+    <string name="read_articles">Baca artikel</string>
+    <string name="read_news">Baca berita</string>
+    <string name="read_guidelines">Baca pedoman</string>
     <string name="better_contribution_title">Buat kontribusimu lebih baik!</string>
-    <string name="better_contribution_subtitle">Baca pedoman pemerintah, artikel, dan berita tentang aksesibilitas untuk memperkuat pengetahuan Anda</string>
+    <string name="better_contribution_subtitle">Baca pedoman resmi, artikel, dan berita tentang aksesibilitas untuk memperkuat pengetahuan Anda</string>
     <string name="add_contribution">Tambah Kontribusi</string>
     <string name="add_review">Tambah Ulasan</string>
     <string name="varying_review_message">Fasilitas %1$s di tempat ini memiliki ulasan kualitas yang bervariasi.</string>
@@ -259,5 +259,8 @@
     <string name="review_bad_cta">Kirim ulasan kualitas buruk</string>
     <string name="review_not_exist_cta">Kirim ulasan tidak ada</string>
     <string name="review_dont_know_cta">Kirim ulasan tidak yakin</string>
+    <string name="guidelines">Pedoman</string>
+    <string name="news">Berita</string>
+    <string name="articles">Artikel</string>
 
 </resources>

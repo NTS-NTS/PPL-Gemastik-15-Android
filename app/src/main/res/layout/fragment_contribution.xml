@@ -30,21 +30,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:focusable="true"
+                android:screenReaderFocusable="true">
 
                 <TextView
                     android:id="@+id/tv_name"
                     style="@style/TextAppearance.Material3.HeadlineSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Daanii Kusnanta" />
+                    tools:text="Daanii Kusnanta"
+                    android:focusable="false"/>
 
                 <TextView
                     android:id="@+id/tv_total_contribution"
                     style="@style/TextAppearance.Material3.HeadlineLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="1234 total contribution" />
+                    tools:text="1234 total contribution"
+                    android:focusable="false"/>
 
             </LinearLayout>
 
@@ -66,7 +70,8 @@
                 style="@style/TextAppearance.Material3.TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/better_contribution_title" />
+                android:text="@string/better_contribution_title"
+                android:accessibilityHeading="true"/>
 
             <TextView
                 style="@style/TextAppearance.Material3.BodySmall"
@@ -103,6 +108,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
+                            android:contentDescription="@null"
                             app:tint="?attr/colorOnSurface"
                             android:src="@drawable/ic_outline_guideline_28" />
 
@@ -111,7 +117,8 @@
                             style="@style/TextAppearance.Material3.TitleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/read_guidelines" />
+                            android:text="@string/guidelines"
+                            android:contentDescription="@string/read_guidelines"/>
 
                     </LinearLayout>
 
@@ -141,6 +148,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
+                            android:contentDescription="@null"
                             app:tint="?attr/colorOnSurface"
                             android:src="@drawable/ic_baseline_news_28" />
 
@@ -149,7 +157,8 @@
                             style="@style/TextAppearance.Material3.TitleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/read_news" />
+                            android:text="@string/news"
+                            android:contentDescription="@string/read_news"/>
 
                     </LinearLayout>
 
@@ -178,6 +187,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
+                            android:contentDescription="@null"
                             app:tint="?attr/colorOnSurface"
                             android:src="@drawable/ic_outline_article_28" />
 
@@ -186,7 +196,8 @@
                             style="@style/TextAppearance.Material3.TitleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/read_articles" />
+                            android:text="@string/articles"
+                            android:contentDescription="@string/read_articles"/>
 
                     </LinearLayout>
 
@@ -217,7 +228,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="@string/recently_visited_title" />
+                android:accessibilityHeading="true"
+                android:text="@string/recently_viewed" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recently_visited"
@@ -254,7 +266,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/nearby_title" />
+                android:text="@string/nearby_title"
+                android:accessibilityHeading="true"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_nearby"

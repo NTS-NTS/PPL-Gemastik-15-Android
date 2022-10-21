@@ -109,11 +109,11 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="recently_visited_title">Places you recently visited</string>
-    <string name="read_articles">Articles</string>
-    <string name="read_news">News</string>
-    <string name="read_guidelines">Guidelines</string>
+    <string name="read_articles">Read articles</string>
+    <string name="read_news">Read news</string>
+    <string name="read_guidelines">Read guidelines</string>
     <string name="better_contribution_title">Make your contributions better!</string>
-    <string name="better_contribution_subtitle">Read government guidelines, articles, and news about accessibility to strengthen your knowledge</string>
+    <string name="better_contribution_subtitle">Read official guidelines, articles, and news about accessibility to strengthen your knowledge</string>
     <string name="add_contribution">Add Contribution</string>
     <string name="add_review">Add Review</string>
     <string name="varying_review_message">%1$s facility in this place has varying quality reviews.</string>
@@ -266,4 +266,7 @@
     <string name="review_bad_cta">Send bad quality review</string>
     <string name="review_not_exist_cta">Send not exist review</string>
     <string name="review_dont_know_cta">Send not sure review</string>
+    <string name="guidelines">Guidelines</string>
+    <string name="news">News</string>
+    <string name="articles">Articles</string>
 </resources>
