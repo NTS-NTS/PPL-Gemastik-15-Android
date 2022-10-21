@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_landingFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_landingFragment_to_testSocketFragment"
+            app:destination="@id/testSocketFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -39,4 +42,9 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/testSocketFragment"
+        android:name="com.raassh.gemastik15.view.fragments.testsocketio.TestSocketFragment"
+        android:label="fragment_test_socket"
+        tools:layout="@layout/fragment_test_socket" />
 </navigation>

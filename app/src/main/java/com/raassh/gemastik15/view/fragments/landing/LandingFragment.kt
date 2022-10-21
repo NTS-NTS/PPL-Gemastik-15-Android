@@ -33,6 +33,10 @@ class LandingFragment : Fragment() {
             btnRegister.setOnClickListener {
                 findNavController().navigate(R.id.action_landingFragment_to_registerFragment)
             }
+
+            btnTest.setOnClickListener {
+                findNavController().navigate(R.id.action_landingFragment_to_testSocketFragment)
+            }
         }
 
         viewModel.apply {
