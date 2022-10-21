@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.PlaceAdapter
+import com.raassh.gemastik15.api.response.PlaceDetailData
 import com.raassh.gemastik15.databinding.FragmentContributionBinding
 import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.*
@@ -36,7 +37,7 @@ class ContributionFragment : Fragment() {
         val recentAdapter = PlaceAdapter(RecyclerView.HORIZONTAL, true).apply {
             onItemClickListener = { place ->
                 val action =
-                    ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(
+                    ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment(
                         place
                     )
                 findNavController().navigate(action)
@@ -49,7 +50,7 @@ class ContributionFragment : Fragment() {
         val nearbyAdapter = PlaceAdapter(RecyclerView.HORIZONTAL, true).apply {
             onItemClickListener = { place ->
                 val action =
-                    ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment2(
+                    ContributionFragmentDirections.actionNavigationContributeToPlaceDetailFragment(
                         place
                     )
                 findNavController().navigate(action)
@@ -111,8 +112,8 @@ class ContributionFragment : Fragment() {
                             } else {
                                 binding?.tvNearbyEmpty?.visibility = View.GONE
                                 binding?.rvNearby?.visibility = View.VISIBLE
-                                nearbyAdapter.submitList(it.data.map {
-                                    placeItemToEntity(it)
+                                nearbyAdapter.submitList(it.data.map { item ->
+                                    placeItemToEntity(item)
                                 })
                             }
                         }
@@ -158,8 +159,8 @@ class ContributionFragment : Fragment() {
                     }
                     is Resource.Success -> {
                         val action =
-                            ContributionFragmentDirections.actionNavigationContributeToAddContributionFragment2(
-                                it.data!!
+                            ContributionFragmentDirections.actionNavigationContributeToAddContributionFragment(
+                                it.data as PlaceDetailData
                             )
                         findNavController().navigate(action)
                     }

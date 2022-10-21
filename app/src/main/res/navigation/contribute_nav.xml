@@ -11,26 +11,26 @@
         android:label="fragment_contribution"
         tools:layout="@layout/fragment_contribution">
         <action
-            android:id="@+id/action_navigation_contribute_to_placeDetailFragment2"
-            app:destination="@id/placeDetailFragment2" />
+            android:id="@+id/action_navigation_contribute_to_placeDetailFragment"
+            app:destination="@id/placeDetailFragment" />
         <action
-            android:id="@+id/action_navigation_contribute_to_addContributionFragment2"
-            app:destination="@id/addContributionFragment2" />
+            android:id="@+id/action_navigation_contribute_to_addContributionFragment"
+            app:destination="@id/addContributionFragment" />
     </fragment>
     <fragment
-        android:id="@+id/placeDetailFragment2"
+        android:id="@+id/placeDetailFragment"
         android:name="com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailFragment"
         android:label="fragment_place_detail"
         tools:layout="@layout/fragment_place_detail">
         <action
-            android:id="@+id/action_placeDetailFragment2_to_addContributionFragment2"
-            app:destination="@id/addContributionFragment2" />
+            android:id="@+id/action_placeDetailFragment_to_addContributionFragment"
+            app:destination="@id/addContributionFragment" />
         <argument
             android:name="place"
             app:argType="com.raassh.gemastik15.local.db.PlaceEntity" />
     </fragment>
     <fragment
-        android:id="@+id/addContributionFragment2"
+        android:id="@+id/addContributionFragment"
         android:name="com.raassh.gemastik15.view.fragments.addcontribution.AddContributionFragment"
         android:label="AddContributionFragment">
         <argument
