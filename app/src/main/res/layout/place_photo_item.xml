@@ -11,7 +11,7 @@
         android:scaleType="centerCrop"
         android:layout_height="128dp"
         app:shapeAppearance="@style/ShapeAppearance.Gemastik15.Photo"
-        android:contentDescription="TODO"
+        android:contentDescription="@null"
         tools:src="@tools:sample/backgrounds/scenic"/>
 
 </FrameLayout>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_gravity="top"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/img_review_icon"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
+        android:focusable="false"
         tools:src="@drawable/ic_outline_thumb_up_20" />
 
     <TextView
@@ -34,6 +36,8 @@
         app:layout_constraintStart_toEndOf="@id/img_review_icon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
+        android:focusable="false"
+        android:contentDescription="@null"
         tools:text="Wheelchair service" />
 
     <ImageView
@@ -48,6 +52,7 @@
         app:layout_constraintStart_toEndOf="@id/tv_facility_name"
         app:layout_constraintTop_toTopOf="@id/tv_facility_name"
         app:layout_constraintVertical_bias="0.0"
+        android:focusable="false"
         app:tint="?attr/colorOrange" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

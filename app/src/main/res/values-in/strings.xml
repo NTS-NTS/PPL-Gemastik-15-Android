@@ -108,7 +108,7 @@
     <string name="better_contribution_subtitle">Baca pedoman pemerintah, artikel, dan berita tentang aksesibilitas untuk memperkuat pengetahuan Anda</string>
     <string name="add_contribution">Tambah Kontribusi</string>
     <string name="add_review">Tambah Ulasan</string>
-    <string name="varying_review_message">%1$s fasilitas di tempat ini memiliki ulasan kualitas yang bervariasi.</string>
+    <string name="varying_review_message">Fasilitas %1$s di tempat ini memiliki ulasan kualitas yang bervariasi.</string>
     <string name="location_not_found">Tidak bisa menemukan lokasimu</string>
     <string name="total_contribution">%1$d total kontribusi</string>
     <string name="nearby_title">Tempat di sekitar</string>

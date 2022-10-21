@@ -54,9 +54,17 @@ class FacilityReviewAdapter : ListAdapter<FacilitiesItem, FacilityReviewAdapter.
 
                 imgReviewIcon.setImageDrawable(qualityDrawable)
                 ivReviewWarning.visibility = if (facility.isTrusted) View.VISIBLE else View.GONE
+                ivReviewWarning.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
                 ivReviewWarning.setOnClickListener {
                     binding.root.showSnackbar(context.getString(R.string.varying_review_message, facilityName))
                 }
+
+                itemView.contentDescription =
+                    StringBuilder()
+                        .append(facilityName).append(", ")
+                        .append(context.getFacilityReviewDescription(facility.quality.toInt())).append(", ")
+                        .append(if (facility.isTrusted) context.getString(R.string.varying_reviews) else "")
+                        .toString()
             }
         }
     }

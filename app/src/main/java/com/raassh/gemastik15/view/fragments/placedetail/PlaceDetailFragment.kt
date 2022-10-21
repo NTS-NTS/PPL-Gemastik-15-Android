@@ -49,6 +49,10 @@ class PlaceDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
+        mapFragment?.view?.apply {
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
+            isFocusable = false
+        }
 
         val place = PlaceDetailFragmentArgs.fromBundle(requireArguments()).place
         showLoading(true)
@@ -151,6 +155,8 @@ class PlaceDetailFragment : Fragment() {
         map?.setOnMapLoadedCallback {
             map?.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
         }
+
+        map?.setContentDescription(null)
     }
 
     private fun showFacilityReviews(facilities: List<FacilitiesItem>, rvReviews: RecyclerView, tvEmpty: TextView) {
