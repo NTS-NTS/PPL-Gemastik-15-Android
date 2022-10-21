@@ -1,8 +1,10 @@
 package com.raassh.gemastik15.utils
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
+import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlacesItem
@@ -17,7 +19,7 @@ fun placeItemToEntity(placesItem: PlacesItem): PlaceEntity {
         placesItem.image,
         placesItem.distance,
         placesItem.facilities.joinToString(",") {
-            it.name
+            StringBuilder().append(it.name).append(":").append(it.quality.toInt()).toString()
         },
         placesItem.latitude,
         placesItem.longitude,
@@ -163,11 +165,31 @@ fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<Fac
 }
 
 fun Context.getFacilityReviewDrawable(quality: Int) : Drawable? {
+    var drawable: Drawable? = null
+    when (quality) {
+        0 -> {
+            drawable = ContextCompat.getDrawable(this, R.drawable.ic_baseline_not_exist_20)
+            drawable?.setTint(MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurfaceVariant, Color.BLACK))
+        }
+        1 -> {
+            drawable = ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_down_20)
+            drawable?.setTint(MaterialColors.getColor(this, com.google.android.material.R.attr.colorError, Color.BLACK))
+        }
+        2 -> {
+            drawable = ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_up_20)
+            drawable?.setTint(MaterialColors.getColor(this, R.attr.colorGreen, Color.BLACK))
+        }
+    }
+
+    return drawable
+}
+
+fun Context.getFacilityReviewDescription(quality: Int) : String {
     return when (quality) {
-        0 -> ContextCompat.getDrawable(this, R.drawable.ic_baseline_not_exist_20)
-        1 -> ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_down_20)
-        2 -> ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_up_20)
-        else -> null
+        0 -> getString(R.string.not_exist)
+        1 -> getString(R.string.quality) + " " + getString(R.string.bad)
+        2 -> getString(R.string.quality) + " " + getString(R.string.good)
+        else -> ""
     }
 }
 

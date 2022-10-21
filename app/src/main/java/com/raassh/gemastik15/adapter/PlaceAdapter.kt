@@ -3,12 +3,15 @@ package com.raassh.gemastik15.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
+import com.raassh.gemastik15.BuildConfig
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.PlaceItemBinding
 import com.raassh.gemastik15.local.db.PlaceEntity
@@ -52,15 +55,36 @@ class PlaceAdapter(
                     onItemClickListener?.invoke(getItem(adapterPosition))
                 }
             }
+
+            ViewCompat.replaceAccessibilityAction(
+                itemView,
+                AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK,
+                context.getString(R.string.see_place_detail),
+                null
+            )
         }
 
         fun bind(place: PlaceEntity) {
             binding.apply {
+                val facilityList = place.facilities.splitWithEmptyList(",")
+                val facilitiesInfo = facilityList.map { it.splitWithEmptyList(":") }
+                val facilities = facilitiesInfo.map {
+                    StringBuilder().append(", ")
+                        .append(context.translateDBtoViewName(it[0])).append(", ")
+                        .append(context.getFacilityReviewDescription(it[1].toInt()))
+                        .toString()
+                }
+
+                root.contentDescription = StringBuilder(place.name).append(", ")
+                    .append(context.translateTypeName(place.type)).append(", ")
+                    .append(context.getString(R.string.distance, place.distance.rounded(2)))
+                    .append(facilities).toString()
+
                 tvPlaceName.text = place.name
                 tvPlaceType.text = context.translateTypeName(place.type)
                 ivPlaceImage.loadImage(place.image, R.drawable.place_photo_placeholder_landscape, true)
                 rvPlaceTags.adapter = PlaceTagAdapter().apply {
-                    submitList(place.facilities.splitWithEmptyList(","))
+                    submitList(facilityList)
                 }
 
                 if (place.distance == -1.0) {
@@ -74,6 +98,14 @@ class PlaceAdapter(
                     btnAddContribution.visibility = View.VISIBLE
                     btnAddContribution.setOnClickListener {
                         btnOnItemClickListener?.invoke(getItem(adapterPosition))
+                    }
+
+                    ViewCompat.addAccessibilityAction(
+                        itemView,
+                        btnAddContribution.text
+                    ) { _, _ ->
+                        btnOnItemClickListener?.invoke(getItem(adapterPosition))
+                        true
                     }
                 }
             }

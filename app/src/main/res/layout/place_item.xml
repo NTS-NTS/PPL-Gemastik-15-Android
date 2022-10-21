@@ -30,6 +30,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:importantForAccessibility="no"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
@@ -63,6 +64,7 @@
                 android:layout_marginStart="4dp"
                 android:contentDescription="@string/dot"
                 android:focusable="false"
+                android:importantForAccessibility="no"
                 android:src="@drawable/ic_baseline_circle_24"
                 app:layout_constraintBottom_toBottomOf="@id/tv_place_type"
                 app:layout_constraintStart_toEndOf="@+id/tv_place_type"
@@ -87,6 +89,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="8dp"
                 app:flexDirection="row"
+                android:importantForAccessibility="no"
                 app:flexWrap="wrap"
                 app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"

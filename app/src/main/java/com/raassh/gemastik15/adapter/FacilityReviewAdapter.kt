@@ -47,22 +47,11 @@ class FacilityReviewAdapter : ListAdapter<FacilitiesItem, FacilityReviewAdapter.
                 //quality is still double when it should be integer
                 val qualityDrawable = context.getFacilityReviewDrawable(facility.quality.toInt())
 
-                with(tvFacilityName) {
-                    when(facility.quality.toInt()) {
-                        0 -> {
-                            val grey = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSurfaceVariant, Color.BLACK)
-                            setTextColor(grey)
-                            qualityDrawable?.setTint(grey)
-                        }
-                        1 -> {
-                            qualityDrawable?.setTint(MaterialColors.getColor(context, com.google.android.material.R.attr.colorError, Color.BLACK))
-                        }
-                        2 -> {
-                            qualityDrawable?.setTint(MaterialColors.getColor(context, R.attr.colorGreen, Color.BLACK))
-                        }
-                        else -> null
-                    }
+                if (facility.quality.toInt() == 0) {
+                    val grey = MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSurfaceVariant, Color.BLACK)
+                    tvFacilityName.setTextColor(grey)
                 }
+
                 imgReviewIcon.setImageDrawable(qualityDrawable)
                 ivReviewWarning.visibility = if (facility.isTrusted) View.VISIBLE else View.GONE
                 ivReviewWarning.setOnClickListener {

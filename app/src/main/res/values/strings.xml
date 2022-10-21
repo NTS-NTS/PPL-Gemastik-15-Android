@@ -98,6 +98,8 @@
     <string name="distance">%1$s km</string>
     <string name="varying_reviews">Varying reviews</string>
     <string name="search_must_not_empty">Please fill the search field</string>
+    <string name="see_place_detail">See place\'s details</string>
+    <string name="quality">Quality</string>
     <string name="bad">Bad</string>
     <string name="good">Good</string>
     <string name="not_exist">Not exist</string>

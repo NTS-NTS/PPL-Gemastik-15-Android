@@ -251,5 +251,7 @@
     <string name="unselect_all_hearing">Batalkan pilih semua fasilitas gangguan dengar</string>
     <string name="select_all_announcement">Semua %1$s dipilih</string>
     <string name="unselect_all_announcement">Semua %1$s batal dipilih</string>
+    <string name="quality">Kualitas</string>
+    <string name="see_place_detail">Lihat detail tempat</string>
 
 </resources>

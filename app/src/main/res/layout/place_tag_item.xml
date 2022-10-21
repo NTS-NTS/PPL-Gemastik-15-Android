@@ -10,9 +10,7 @@
         android:layout_height="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:contentDescription="@string/checkmark"
-        app:tint="?attr/colorGreen"
-        android:src="@drawable/ic_baseline_check_24"
+        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
