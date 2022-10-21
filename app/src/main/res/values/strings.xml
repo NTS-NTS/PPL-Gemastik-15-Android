@@ -260,4 +260,5 @@
     <string name="select_all_announcement">All %1$s selected</string>
     <string name="unselect_all_announcement">All %1$s unselected</string>
 
+    <string name="overflow_count">+%1$d more</string>
 </resources>

@@ -33,7 +33,7 @@
                 app:icon="@drawable/ic_baseline_arrow_back_24"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
-                app:layout_constraintBottom_toTopOf="@id/tv_options_title"
+                app:layout_constraintBottom_toTopOf="@id/ll_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,34 +47,45 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/edit_facility_options"
                 app:icon="@drawable/ic_baseline_edit_24"
-                app:layout_constraintBottom_toTopOf="@id/tv_options_title"
+                app:layout_constraintBottom_toTopOf="@id/ll_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                style="@style/TextAppearance.Material3.TitleLarge"
-                android:id="@+id/tv_options_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="4dp"
-                android:text="@string/places_around_you_with"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_back"
-                app:layout_constraintBottom_toTopOf="@id/rv_options"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_options"
+            <LinearLayout
+                android:id="@+id/ll_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_marginBottom="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_options_title"
+                app:layout_constraintTop_toBottomOf="@+id/btn_back"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:listitem="@layout/option_tag_item"/>
+                android:focusable="true"
+                android:screenReaderFocusable="true">
+
+                <TextView
+                    style="@style/TextAppearance.Material3.TitleLarge"
+                    android:id="@+id/tv_options_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/places_around_you_with"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:importantForAccessibility="no"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/option_tag_item"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+            </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
                 style="@style/Theme.Gemastik15.Divider"
@@ -83,7 +94,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_options"
+                app:layout_constraintTop_toBottomOf="@id/ll_title"
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

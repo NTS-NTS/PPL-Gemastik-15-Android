@@ -14,6 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.OptionTagAdapter
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.api.response.PlacesItem
@@ -74,9 +75,36 @@ class SearchByFacilityFragment : Fragment() {
             }
 
             rvOptions.apply {
-                adapter = OptionTagAdapter().apply {
-                    submitList(facilities.toList())
+
+                val trimmedFacilities =
+                    if (facilities.size > 7) facilities.copyOfRange(0, 8)
+                    else facilities
+
+                adapter = OptionTagAdapter(facilities.size).apply {
+                    submitList(trimmedFacilities.toList())
                 }
+
+                val facilityConDesc =
+                    if (facilities.size > 7) {
+                        StringBuilder()
+                            .append(
+                                facilities.copyOfRange(0, 7).joinToString(", ") {
+                                        context.translateDBtoViewName(it)
+                                    }
+                            )
+                            .append(", ")
+                            .append(getString(R.string.overflow_count, facilities.size - 7))
+                            .toString()
+                    } else {
+                        facilities.joinToString(", ") { context.translateDBtoViewName(it) }
+                    }
+
+                llTitle.contentDescription =
+                    StringBuilder()
+                        .append(tvOptionsTitle.text)
+                        .append(", ")
+                        .append(facilityConDesc)
+                        .toString()
 
                 addItemDecoration(LinearSpaceItemDecoration(8, RecyclerView.HORIZONTAL))
             }
@@ -159,6 +187,8 @@ class SearchByFacilityFragment : Fragment() {
             map?.setOnMapLoadedCallback {
                 map?.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), 20))
             }
+
+            map?.setContentDescription(null)
 
             fragmentMap.apply {
                 for (i in 0 until childCount) {

@@ -11,7 +11,7 @@ import com.raassh.gemastik15.databinding.OptionTagItemBinding
 import com.raassh.gemastik15.utils.getFacilityDrawable
 import com.raassh.gemastik15.utils.translateDBtoViewName
 
-class OptionTagAdapter : ListAdapter<String, OptionTagAdapter.OptionTagViewHolder>(DIFF_CALLBACK) {
+class OptionTagAdapter(private val size: Int) : ListAdapter<String, OptionTagAdapter.OptionTagViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionTagViewHolder {
         return OptionTagViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.option_tag_item, parent, false)
@@ -20,17 +20,36 @@ class OptionTagAdapter : ListAdapter<String, OptionTagAdapter.OptionTagViewHolde
 
     override fun onBindViewHolder(holder: OptionTagViewHolder, position: Int) {
         val tag = getItem(position)
-        holder.bind(tag)
+
+        if (position < 7) {
+            holder.bind(tag)
+        } else if (position == 7) {
+            holder.bind("others")
+        } else {
+            holder.itemView.visibility = View.GONE
+        }
     }
 
     inner class OptionTagViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = OptionTagItemBinding.bind(itemView)
         private val context = itemView.context
 
+        init {
+            binding.root.isFocusable = false
+        }
+
         fun bind(name: String) {
             binding.apply {
-                tvOptionName.text = context.translateDBtoViewName(name)
-                ivOptionIcon.setImageDrawable(context.getFacilityDrawable(name))
+
+                if (name == "others") {
+                    ivOptionIcon.visibility = View.GONE
+
+                    val restCount = size - 7
+                    tvOptionName.text = context.getString(R.string.overflow_count, restCount)
+                } else {
+                    ivOptionIcon.setImageDrawable(context.getFacilityDrawable(name))
+                    tvOptionName.text = context.translateDBtoViewName(name)
+                }
             }
         }
     }

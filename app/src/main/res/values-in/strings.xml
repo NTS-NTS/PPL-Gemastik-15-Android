@@ -253,5 +253,6 @@
     <string name="unselect_all_announcement">Semua %1$s batal dipilih</string>
     <string name="quality">Kualitas</string>
     <string name="see_place_detail">Lihat detail tempat</string>
+    <string name="overflow_count">+%1$d lainnya</string>
 
 </resources>
