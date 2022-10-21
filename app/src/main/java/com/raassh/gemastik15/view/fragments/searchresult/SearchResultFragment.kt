@@ -48,6 +48,11 @@ class SearchResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
+        mapFragment?.view?.apply {
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+            isFocusable = false
+            isFocusableInTouchMode = false
+        }
 
         val query = SearchResultFragmentArgs.fromBundle(requireArguments()).query
 
@@ -156,9 +161,21 @@ class SearchResultFragment : Fragment() {
                 map?.addMarker(MarkerOptions().position(latLng).title(it.name))
                 latLngBounds.include(latLng)
             }
+            map?.setContentDescription(null)
 
             map?.setOnMapLoadedCallback {
                 map?.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), 100))
+            }
+
+            fragmentMap.apply {
+                for (i in 0 until childCount) {
+                    val child = getChildAt(i)
+                    child.apply {
+                        importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+                        isFocusable = false
+                        contentDescription = null
+                    }
+                }
             }
         }
     }

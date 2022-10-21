@@ -81,7 +81,11 @@
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Outlined"
         android:id="@+id/cd_map"
+        android:screenReaderFocusable="false"
         android:importantForAccessibility="no"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:contentDescription="@null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -95,6 +99,11 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_map"
+            android:importantForAccessibility="no"
+            android:screenReaderFocusable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:contentDescription="@null"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="200dp"

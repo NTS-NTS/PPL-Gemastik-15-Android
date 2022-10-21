@@ -105,6 +105,28 @@ class DashboardActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
         val navController = navHostFragment.navController
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.searchByFacilityFragment,
+                R.id.searchFacilityOptionFragment,
+                R.id.searchResultFragment,
+                R.id.placeDetailFragment,
+                R.id.placeDetailFragment2,
+                R.id.addContributionFragment,
+                R.id.addContributionFragment2 -> {
+                    binding.bottomNavView.visibility = View.GONE
+                }
+                R.id.accountFragment,
+                R.id.navigation_contribute,
+                R.id.navigation_discover -> {
+                    binding.bottomNavView.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.bottomNavView.visibility = View.VISIBLE
+                }
+            }
+        }
+
         navView.setupWithNavController(navController)
 
         // delete this when article fragment is done
