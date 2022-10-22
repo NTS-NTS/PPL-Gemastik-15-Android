@@ -47,7 +47,9 @@
         tools:layout="@layout/fragment_search_facility_option">
         <action
             android:id="@+id/action_searchFacilityOptionFragment_to_searchByFacilityFragment"
-            app:destination="@id/searchByFacilityFragment" />
+            app:destination="@id/searchByFacilityFragment"
+            app:popUpTo="@id/searchByFacilityFragment"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="facilities"
             app:argType="string[]" />
@@ -59,7 +61,7 @@
         tools:layout="@layout/fragment_search_by_facility">
         <action
             android:id="@+id/action_searchByFacilityFragment_to_searchFacilityOptionFragment"
-            app:destination="@id/searchFacilityOptionFragment" />
+            app:destination="@id/searchFacilityOptionFragment"/>
         <argument
             android:name="facilities"
             app:argType="string[]" />
