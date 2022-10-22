@@ -23,6 +23,7 @@ import com.raassh.gemastik15.databinding.FragmentAddContributionBinding
 import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.Field
@@ -63,6 +64,8 @@ class AddContributionFragment : Fragment() {
         prepareFacilityReviewData()
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
+
             tvPlaceName.text = place.name
             if (place.distance == -1.0) {
                 tvPlaceDistance.visibility = View.INVISIBLE

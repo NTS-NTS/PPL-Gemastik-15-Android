@@ -16,6 +16,7 @@ import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
 import com.raassh.gemastik15.utils.getCheckedFacilities
 import com.raassh.gemastik15.utils.on
 import com.raassh.gemastik15.utils.showSnackbar
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DiscoverFragment : Fragment() {
@@ -40,7 +41,11 @@ class DiscoverFragment : Fragment() {
             }
         }
 
+
+
         binding?.apply {
+            root.applyInsetter { type(statusBars = true) { padding() } }
+
             btnSearch.setOnClickListener {
                 val facilities = mutableListOf<String>()
                 getCheckedFacilities(glFacilities, facilities)

@@ -11,6 +11,7 @@ import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentAccountBinding
 import com.raassh.gemastik15.utils.showSnackbar
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountFragment : Fragment() {
@@ -35,6 +36,8 @@ class AccountFragment : Fragment() {
         viewModel.arrayAdapter.value = arrayAdapter
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true) { padding() } }
+
             etDarkMode.apply {
                 setOnItemClickListener { parent, _, position, _ ->
                     val theme = parent.getItemAtPosition(position).toString()

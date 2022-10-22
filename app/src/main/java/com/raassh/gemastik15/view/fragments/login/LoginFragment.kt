@@ -12,6 +12,7 @@ import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
 import com.raassh.gemastik15.utils.validate
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
@@ -34,6 +35,8 @@ class LoginFragment : Fragment() {
         ).username
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
+
             etEmail.setText(username)
 
             btnRegister.setOnClickListener {

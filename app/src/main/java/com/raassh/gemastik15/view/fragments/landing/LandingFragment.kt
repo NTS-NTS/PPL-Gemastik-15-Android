@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentLandingBinding
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LandingFragment : Fragment() {
@@ -26,6 +27,8 @@ class LandingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
+
             btnLogin.setOnClickListener {
                 findNavController().navigate(R.id.action_landingFragment_to_loginFragment)
             }

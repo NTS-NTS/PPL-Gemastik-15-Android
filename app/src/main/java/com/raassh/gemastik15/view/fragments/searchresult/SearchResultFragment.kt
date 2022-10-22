@@ -21,6 +21,7 @@ import com.raassh.gemastik15.api.response.PlacesItem
 import com.raassh.gemastik15.databinding.FragmentSearchResultBinding
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -57,6 +58,8 @@ class SearchResultFragment : Fragment() {
         val query = SearchResultFragmentArgs.fromBundle(requireArguments()).query
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
+
             etSearch.setText(query)
 
             btnBack.setOnClickListener {

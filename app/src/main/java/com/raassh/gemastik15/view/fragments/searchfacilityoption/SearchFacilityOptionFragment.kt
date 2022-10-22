@@ -14,6 +14,7 @@ import com.raassh.gemastik15.databinding.FragmentSearchFacilityOptionBinding
 import com.raassh.gemastik15.utils.getCheckedFacilities
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityFragmentArgs
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFacilityOptionFragment : Fragment() {
@@ -37,6 +38,8 @@ class SearchFacilityOptionFragment : Fragment() {
         val hearingFacilities = mutableListOf<String>()
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true) { padding() } }
+
             setCheckedFromList(glMobility, facilities, true)
             setCheckedFromList(glVisual, facilities, true)
             setCheckedFromList(glHearing, facilities, true)

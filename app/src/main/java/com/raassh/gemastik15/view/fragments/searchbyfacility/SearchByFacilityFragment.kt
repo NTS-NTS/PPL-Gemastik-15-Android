@@ -21,6 +21,7 @@ import com.raassh.gemastik15.api.response.PlacesItem
 import com.raassh.gemastik15.databinding.FragmentSearchByFacilityBinding
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -55,6 +56,8 @@ class SearchByFacilityFragment : Fragment() {
         val facilities = SearchByFacilityFragmentArgs.fromBundle(requireArguments()).facilities
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
+
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }

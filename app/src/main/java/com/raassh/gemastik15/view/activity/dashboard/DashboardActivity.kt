@@ -12,12 +12,14 @@ import android.provider.Settings
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
 import android.view.accessibility.AccessibilityEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.*
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -30,6 +32,7 @@ import com.raassh.gemastik15.databinding.ActivityDashboardBinding
 import com.raassh.gemastik15.utils.checkPermission
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.view.activity.main.MainActivity
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
@@ -104,6 +107,46 @@ class DashboardActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
         val navController = navHostFragment.navController
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+//        binding.container.rootView.setPadding(0, 56, 0, 0)
+//        binding.container.rootView.applyInsetter {
+//            type(statusBars = true) {
+//                padding()
+//            }
+//        }
+
+//        ViewCompat.setOnApplyWindowInsetsListener(binding.container.rootView) { view, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+//            val bottomNavHeight = navView.measuredHeight
+//            val bottomNavMargin = (navView.layoutParams as MarginLayoutParams).bottomMargin
+//            val bottomNavPadding = navView.paddingBottom
+//            val bottomNavTotalHeight = bottomNavHeight + bottomNavMargin + bottomNavPadding
+
+//            view.setPadding(
+//                systemBars.left,
+//                systemBars.top,
+//                systemBars.right,
+//                systemBars.bottom
+//            )
+
+//            binding.container.updatePadding(
+//                systemBars.left,
+//                systemBars.top,
+//                systemBars.right,
+//                systemBars.bottom
+//            )
+
+//            view.updateLayoutParams<MarginLayoutParams> {
+//                bottomMargin = systemBars.bottom
+//                leftMargin = systemBars.left
+//                rightMargin = systemBars.right
+//                topMargin = systemBars.top
+//            }
+
+//            WindowInsetsCompat.CONSUMED
+//        }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {

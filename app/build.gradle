@@ -97,4 +97,5 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.3"
 
     implementation 'com.auth0.android:jwtdecode:2.0.1'
+    implementation 'dev.chrisbanes.insetter:insetter:0.6.1'
 }

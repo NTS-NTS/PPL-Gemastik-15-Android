@@ -24,6 +24,7 @@ import com.raassh.gemastik15.api.response.PlaceDetailData
 import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -58,6 +59,8 @@ class PlaceDetailFragment : Fragment() {
         showLoading(true)
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
+
             tvPlaceName.text = place.name
             tvPlaceType.text = requireContext().translateTypeName(place.type)
 

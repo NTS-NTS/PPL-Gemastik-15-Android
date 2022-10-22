@@ -15,6 +15,7 @@ import com.raassh.gemastik15.databinding.FragmentContributionBinding
 import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -61,6 +62,8 @@ class ContributionFragment : Fragment() {
         }
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true) { padding() } }
+
             rvRecentlyVisited.adapter = recentAdapter
             rvRecentlyVisited.addItemDecoration(
                 LinearSpaceItemDecoration(
