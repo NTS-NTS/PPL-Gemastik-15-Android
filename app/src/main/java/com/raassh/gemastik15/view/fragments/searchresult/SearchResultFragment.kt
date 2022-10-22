@@ -82,11 +82,11 @@ class SearchResultFragment : Fragment() {
 
             etSearch.on(EditorInfo.IME_ACTION_DONE) {
                 if (etSearch.text.toString().isNotEmpty()) {
-                    viewModel.searchPlace(
-                        etSearch.text.toString(),
-                        currentLocation?.latitude,
-                        currentLocation?.longitude
-                    )
+                    val action =
+                        SearchResultFragmentDirections.actionSearchResultFragmentSelf()
+                    action.query = etSearch.text.toString()
+
+                    findNavController().navigate(action)
                 } else {
                     root.showSnackbar(getString(R.string.search_must_not_empty))
                 }
@@ -158,6 +158,7 @@ class SearchResultFragment : Fragment() {
             })
 
             val latLngBounds = LatLngBounds.Builder()
+            map?.clear()
 
             result.forEach {
                 val latLng = LatLng(it.latitude, it.longitude)

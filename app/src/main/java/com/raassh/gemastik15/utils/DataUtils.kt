@@ -234,6 +234,7 @@ fun Context.translateTypeName(type: String) : String {
         "funeral_home" -> getString(R.string.funeral_home)
         "furniture_store" -> getString(R.string.furniture_store)
         "gas_station" -> getString(R.string.gas_station)
+        "grocery", "grocery_or_supermarket" -> getString(R.string.grocery_or_supermarket)
         "gym" -> getString(R.string.gym)
         "hair_care" -> getString(R.string.hair_care)
         "hardware_store" -> getString(R.string.hardware_store)

@@ -11,7 +11,11 @@ class SearchResultViewModel(val placeRepository: PlaceRepository) : ViewModel() 
     private var query = MutableLiveData<SearchByNameQuery>()
 
     val places = Transformations.switchMap(query) {
-        placeRepository.searchPlaceByName(it.name, it.lat, it.long).asLiveData()
+        if (it.name.isNotEmpty()) {
+            placeRepository.searchPlaceByName(it.name, it.lat, it.long).asLiveData()
+        } else {
+            null
+        }
     }
 
     fun searchPlace(query: String, lat: Double?, long: Double?) {

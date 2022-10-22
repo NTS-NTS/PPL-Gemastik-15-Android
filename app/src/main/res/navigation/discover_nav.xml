@@ -35,6 +35,10 @@
         <action
             android:id="@+id/action_searchResultFragment_to_placeDetailFragment"
             app:destination="@id/placeDetailFragment" />
+        <action
+            android:id="@+id/action_searchResultFragment_self"
+            app:destination="@id/searchResultFragment"
+            app:launchSingleTop="true"/>
     </fragment>
     <fragment
         android:id="@+id/searchFacilityOptionFragment"
