@@ -285,7 +285,7 @@
 
                 <TextView
                     android:id="@+id/tv_mobility_facilities_empty"
-                    style="@style/TextAppearance.Material3.BodyLarge"
+                    style="@style/TextAppearance.Material3.BodySmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -312,7 +312,7 @@
 
                 <TextView
                     android:id="@+id/tv_audio_facilities_empty"
-                    style="@style/TextAppearance.Material3.BodyLarge"
+                    style="@style/TextAppearance.Material3.BodySmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -338,7 +338,7 @@
 
                 <TextView
                     android:id="@+id/tv_visual_facilities_empty"
-                    style="@style/TextAppearance.Material3.BodyLarge"
+                    style="@style/TextAppearance.Material3.BodySmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"

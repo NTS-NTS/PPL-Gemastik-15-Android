@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="150dp"
         android:src="@drawable/logo_light"
         android:contentDescription="@string/desc_logo"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
