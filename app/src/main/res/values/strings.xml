@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Dian</string>
+    <string name="app_name" translatable="false">kiad</string>
     <string name="login">Login</string>
     <string name="register_at_landing">Don’t have an account? <b>Sign Up</b></string>
     <string name="email">Email Address</string>

@@ -12,7 +12,6 @@ import android.provider.Settings
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.MarginLayoutParams
 import android.view.accessibility.AccessibilityEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.addCallback
@@ -32,7 +31,6 @@ import com.raassh.gemastik15.databinding.ActivityDashboardBinding
 import com.raassh.gemastik15.utils.checkPermission
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.view.activity.main.MainActivity
-import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardActivity : AppCompatActivity() {
@@ -199,6 +197,7 @@ class DashboardActivity : AppCompatActivity() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getMyLastLocation()
 
+        // might contain bugs, need to test more later
         binding.root.accessibilityDelegate = object : View.AccessibilityDelegate() {
             override fun onRequestSendAccessibilityEvent(
                 host: ViewGroup,
