@@ -38,8 +38,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Theme.Gemastik15.TextInputLayout"
                 android:id="@+id/il_search"
+                style="@style/Theme.Gemastik15.TextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -54,13 +54,13 @@
                 app:startIconDrawable="@drawable/ic_baseline_search_24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    style="@style/Theme.Gemastik15.TextInputEditText"
                     android:id="@+id/et_search"
+                    style="@style/Theme.Gemastik15.TextInputEditText"
                     android:layout_width="match_parent"
                     android:hint="@string/search_places"
+                    android:imeOptions="actionDone"
                     android:inputType="text"
-                    android:maxLines="1"
-                    android:imeOptions="actionDone"/>
+                    android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,35 +79,35 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Outlined"
         android:id="@+id/cd_map"
-        android:screenReaderFocusable="false"
-        android:importantForAccessibility="no"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:contentDescription="@null"
+        style="@style/Widget.Material3.CardView.Outlined"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
+        android:contentDescription="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:importantForAccessibility="no"
+        android:screenReaderFocusable="false"
+        app:layout_constraintBottom_toTopOf="@id/rv_result"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-        app:layout_constraintBottom_toTopOf="@id/rv_result">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_map"
-            android:importantForAccessibility="no"
-            android:screenReaderFocusable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:contentDescription="@null"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            tools:layout="@layout/fragment_landing"/>
+            android:contentDescription="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAccessibility="noHideDescendants"
+            android:screenReaderFocusable="false"
+            tools:layout="@layout/fragment_landing" />
 
     </com.google.android.material.card.MaterialCardView>
 

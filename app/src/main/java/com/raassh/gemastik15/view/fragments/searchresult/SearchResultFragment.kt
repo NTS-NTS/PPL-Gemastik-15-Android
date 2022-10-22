@@ -49,11 +49,6 @@ class SearchResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
-        mapFragment?.view?.apply {
-            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
-            isFocusable = false
-            isFocusableInTouchMode = false
-        }
 
         val query = SearchResultFragmentArgs.fromBundle(requireArguments()).query
 
@@ -169,6 +164,9 @@ class SearchResultFragment : Fragment() {
 
             map?.setOnMapLoadedCallback {
                 map?.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), 100))
+            }
+            map?.setOnMarkerClickListener {
+                true
             }
 
             fragmentMap.apply {

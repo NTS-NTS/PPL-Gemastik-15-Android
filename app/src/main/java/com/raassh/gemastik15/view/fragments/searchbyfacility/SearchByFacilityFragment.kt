@@ -48,10 +48,6 @@ class SearchByFacilityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = binding?.fragmentMap?.getFragment<SupportMapFragment?>()
         mapFragment?.getMapAsync(callback)
-        mapFragment?.view?.apply {
-            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
-            isFocusable = false
-        }
 
         val facilities = SearchByFacilityFragmentArgs.fromBundle(requireArguments()).facilities
 
