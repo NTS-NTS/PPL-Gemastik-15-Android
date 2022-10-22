@@ -272,4 +272,5 @@
     <string name="articles">Articles</string>
 
     <string name="theme_changed_message">Theme changed to %1$s</string>
+    <string name="desc_logo">Kiad\'s Logo</string>
 </resources>

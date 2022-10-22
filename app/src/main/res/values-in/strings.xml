@@ -264,5 +264,6 @@
     <string name="news">Berita</string>
     <string name="articles">Artikel</string>
     <string name="theme_changed_message">Tema diubah ke %1$s</string>
+    <string name="desc_logo">Logo Kiad</string>
 
 </resources>
