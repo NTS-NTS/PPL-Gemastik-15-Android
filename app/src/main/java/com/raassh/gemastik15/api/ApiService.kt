@@ -44,17 +44,17 @@ interface ApiService {
         @Query("long") long: Double,
     ): PlaceSearchResponse
 
-    @POST("auth/contribution")
+    @POST("contributions/")
     suspend fun addContribution(
         @Body body: ContributionRequest
     ): ContributionResponse
 
-    @POST("auth/contribution/change")
+    @POST("contributions/change")
     suspend fun changeContribution(
         @Body body: ContributionRequest
     ): ContributionResponse
 
-    @GET("auth/contribution/count")
+    @GET("contributions/count")
     suspend fun getContributionCount(
         @Query("id") user_id: String
     ): ContributionCountResponse
