@@ -1,6 +1,5 @@
 package com.raassh.gemastik15.view.fragments.landing
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,11 +26,6 @@ class LandingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val logo = when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-            Configuration.UI_MODE_NIGHT_YES -> R.drawable.logo_dark
-            else -> R.drawable.logo_light
-        }
-
         binding?.apply {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
 
@@ -42,8 +36,6 @@ class LandingFragment : Fragment() {
             btnRegister.setOnClickListener {
                 findNavController().navigate(R.id.action_landingFragment_to_registerFragment)
             }
-
-            ivLogo.setImageResource(logo)
         }
 
         viewModel.apply {

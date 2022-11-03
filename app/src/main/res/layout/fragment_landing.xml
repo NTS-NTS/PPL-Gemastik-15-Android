@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:contentDescription="@string/desc_logo"
-        android:src="@drawable/logo_light"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
