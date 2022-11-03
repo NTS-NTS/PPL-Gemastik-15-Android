@@ -8,8 +8,8 @@ import com.raassh.gemastik15.repository.AuthenticationRepository
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val authenticationRepository: AuthenticationRepository, private val pref: UserPreferences) : ViewModel() {
-    fun login(email: String, password: String) =
-        authenticationRepository.login(email, password).asLiveData()
+    fun login(username: String, password: String) =
+        authenticationRepository.login(username, password).asLiveData()
 
     fun setToken(token: String) = viewModelScope.launch {
         pref.setToken(token)

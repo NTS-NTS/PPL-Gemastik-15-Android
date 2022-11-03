@@ -273,4 +273,7 @@
 
     <string name="theme_changed_message">Theme changed to %1$s</string>
     <string name="desc_logo">Kiad\'s Logo</string>
+    <string name="email_or_username">Email or Username</string>
+    <string name="username">Username</string>
+    <string name="username_invalid">Username cannot contain spaces</string>
 </resources>

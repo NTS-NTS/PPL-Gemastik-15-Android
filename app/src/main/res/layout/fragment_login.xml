@@ -31,7 +31,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/login_subtitle"
-        app:layout_constraintBottom_toTopOf="@+id/il_email"
+        app:layout_constraintBottom_toTopOf="@+id/il_email_or_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,13 +39,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Theme.Gemastik15.TextInputLayout"
-        android:id="@+id/il_email"
+        android:id="@+id/il_email_or_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:hint="@string/email"
+        android:hint="@string/email_or_username"
         app:layout_constraintBottom_toTopOf="@+id/il_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -54,7 +54,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Theme.Gemastik15.TextInputEditText"
-            android:id="@+id/et_email"
+            android:id="@+id/et_email_or_username"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:inputType="text" />
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/il_email"
+        app:layout_constraintTop_toBottomOf="@+id/il_email_or_username"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText

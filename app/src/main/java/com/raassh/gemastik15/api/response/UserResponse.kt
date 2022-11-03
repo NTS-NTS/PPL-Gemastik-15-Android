@@ -25,6 +25,9 @@ data class UserData(
 	@field:SerializedName("name")
 	val name: String,
 
+	@field:SerializedName("username")
+	val username: String,
+
 	@field:SerializedName("id")
 	val id: String,
 

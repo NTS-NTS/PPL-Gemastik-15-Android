@@ -6,19 +6,20 @@ import com.raassh.gemastik15.utils.callApi
 import com.raassh.gemastik15.api.request.RegisterRequest
 
 class AuthenticationRepository(private val apiService: ApiService) {
-    fun register(name: String, email: String, password: String) = callApi {
+    fun register(name: String, username: String, email: String, password: String) = callApi {
         val req = RegisterRequest(
             name=name,
             email=email,
+            username=username,
             password=password
         )
 
         apiService.register(req).data
     }
 
-    fun login(email: String, password: String) = callApi {
+    fun login(username: String, password: String) = callApi {
         val req = LoginRequest(
-            email=email,
+            username=username,
             password=password
         )
 

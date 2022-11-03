@@ -265,5 +265,7 @@
     <string name="articles">Artikel</string>
     <string name="theme_changed_message">Tema diubah ke %1$s</string>
     <string name="desc_logo">Logo Kiad</string>
-
+    <string name="email_or_username">Email atau Nama Pengguna</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="username_invalid">Nama pengguna tidak boleh mengandung spasi</string>
 </resources>

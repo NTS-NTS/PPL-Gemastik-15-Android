@@ -46,14 +46,18 @@ class RegisterFragment : Fragment() {
                 if (it.isValidEmail()) null else getString(R.string.email_invalid)
             }
             val isNameValid = ilName.validate(getString(R.string.name))
+            val isUsernameValid = ilUsername.validate(getString(R.string.username)) {
+                if (it.contains(" ")) getString(R.string.username_invalid) else null
+            }
             val isPasswordValid = ilPassword.validate(getString(R.string.password)) {
                 if (it.isValidPassword()) null else getString(R.string.password_invalid)
             }
 
-            if (!(isEmailValid && isNameValid && isPasswordValid)) return
+            if (!(isEmailValid && isNameValid && isPasswordValid && isUsernameValid)) return
 
             viewModel.register(
                 etName.text.toString(),
+                etUsername.text.toString(),
                 etEmail.text.toString(),
                 etPassword.text.toString(),
             ).observe(viewLifecycleOwner) { response ->
@@ -66,7 +70,7 @@ class RegisterFragment : Fragment() {
                         is Resource.Success -> {
                             val action =
                                 RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
-                            action.username = response.data?.email ?: ""
+                            action.username = response.data?.username ?: ""
 
                             findNavController().navigate(action)
                         }

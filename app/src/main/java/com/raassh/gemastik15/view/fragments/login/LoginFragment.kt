@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
         binding?.apply {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
 
-            etEmail.setText(username)
+            etEmailOrUsername.setText(username)
 
             btnRegister.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
@@ -51,13 +51,13 @@ class LoginFragment : Fragment() {
 
     private fun tryLogin() {
         with(binding ?: return) {
-            val isEmailValid = ilEmail.validate(getString(R.string.email))
+            val isUsernameValid = ilEmailOrUsername.validate(getString(R.string.email_or_username))
             val isPasswordValid = ilPassword.validate(getString(R.string.password))
 
-            if (!(isEmailValid && isPasswordValid)) return
+            if (!(isUsernameValid && isPasswordValid)) return
 
             viewModel.login(
-                etEmail.text.toString(),
+                etEmailOrUsername.text.toString(),
                 etPassword.text.toString()
             ).observe(viewLifecycleOwner) { response ->
                 if (response != null) {

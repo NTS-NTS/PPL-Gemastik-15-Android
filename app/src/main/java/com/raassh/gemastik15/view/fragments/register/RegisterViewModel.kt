@@ -5,6 +5,6 @@ import androidx.lifecycle.asLiveData
 import com.raassh.gemastik15.repository.AuthenticationRepository
 
 class RegisterViewModel(val authenticationRepository: AuthenticationRepository) : ViewModel() {
-    fun register(name: String, email: String, password: String) =
-        authenticationRepository.register(name, email, password).asLiveData()
+    fun register(name: String, username: String, email: String, password: String) =
+        authenticationRepository.register(name, username, email, password).asLiveData()
 }
