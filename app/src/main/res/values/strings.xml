@@ -276,4 +276,6 @@
     <string name="email_or_username">Email or Username</string>
     <string name="username">Username</string>
     <string name="username_invalid">Username cannot contain spaces</string>
+
+    <string name="invalid_token">There was a problem with your session. Please login again.</string>
 </resources>

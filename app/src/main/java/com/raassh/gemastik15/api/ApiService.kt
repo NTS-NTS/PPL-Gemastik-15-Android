@@ -46,16 +46,18 @@ interface ApiService {
 
     @POST("contributions/")
     suspend fun addContribution(
+        @Header("Authorization") authorization: String,
         @Body body: ContributionRequest
     ): ContributionResponse
 
     @POST("contributions/change")
     suspend fun changeContribution(
+        @Header("Authorization") authorization: String,
         @Body body: ContributionRequest
     ): ContributionResponse
 
     @GET("contributions/count")
     suspend fun getContributionCount(
-        @Query("id") user_id: String
+        @Header("Authorization") authorization: String
     ): ContributionCountResponse
 }

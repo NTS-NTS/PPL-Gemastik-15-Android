@@ -11,15 +11,15 @@ import com.raassh.gemastik15.repository.ContributionRepository
 import com.raassh.gemastik15.repository.PlaceRepository
 
 class ContributionViewModel(private val contributionRepository: ContributionRepository, private val placeRepository: PlaceRepository) : ViewModel() {
-    private val userId = MutableLiveData<String>()
+    private val token = MutableLiveData<String>()
     private var location = MutableLiveData<LatLng?>()
 
-    val contributionCount = Transformations.switchMap(userId) {
+    val contributionCount = Transformations.switchMap(token) {
         contributionRepository.getContributionCount(it).asLiveData()
     }
 
-    fun setUserId(userId: String) {
-        this.userId.value = userId
+    fun setToken(token: String) {
+        this.token.value = token
     }
 
     val recent = placeRepository.getRecentPlaces().asLiveData()

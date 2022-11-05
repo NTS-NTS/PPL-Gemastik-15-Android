@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.WindowCompat
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.ActivityMainBinding
+import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.view.activity.dashboard.DashboardActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,11 +20,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val needRelogin = intent.getBooleanExtra(NEED_RELOGIN, false)
+
+        if (needRelogin) {
+            binding.root.showSnackbar(getString(R.string.invalid_token))
+        }
+
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         viewModel.apply {
             getToken().observe(this@MainActivity) {
-                if (!it.isNullOrBlank()) {
+                if (!it.isNullOrBlank() && !needRelogin) {
                     startActivity(Intent(this@MainActivity, DashboardActivity::class.java))
                     finish()
                 }
@@ -54,5 +62,9 @@ class MainActivity : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
             }
         }
+    }
+
+    companion object {
+        const val NEED_RELOGIN = "NEED_RELOGIN"
     }
 }

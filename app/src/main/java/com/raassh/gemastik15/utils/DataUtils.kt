@@ -301,6 +301,7 @@ fun Context.translateErrorMessage(message: String?): String {
         "User not found!" -> getString(R.string.user_not_found)
         "Incorrect password!" -> getString(R.string.incorrect_password)
         "Email already exists" -> getString(R.string.email_already_exists)
+        "Invalid token" -> getString(R.string.invalid_token)
         else -> getString(R.string.unknown_error)
     }
 }

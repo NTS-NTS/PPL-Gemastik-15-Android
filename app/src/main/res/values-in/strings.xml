@@ -268,4 +268,6 @@
     <string name="email_or_username">Email atau Nama Pengguna</string>
     <string name="username">Nama Pengguna</string>
     <string name="username_invalid">Nama pengguna tidak boleh mengandung spasi</string>
+
+    <string name="invalid_token">Ada masalah dengan sesi anda. Silahkan masuk kembali</string>
 </resources>

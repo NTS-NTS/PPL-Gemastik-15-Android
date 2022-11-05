@@ -86,8 +86,22 @@ class ContributionFragment : Fragment() {
 
         viewModel.apply {
             contributionCount.observe(viewLifecycleOwner) {
-                binding?.tvTotalContribution?.text =
-                    getString(R.string.total_contribution, it.data?.contributionCount ?: 0)
+                when (it) {
+                    is Resource.Error -> {
+                        binding?.tvTotalContribution?.text =
+                            getString(R.string.total_contribution,  0)
+
+                        requireContext().checkAuthError(it.message)
+                    }
+                    is Resource.Loading -> {
+                        binding?.tvTotalContribution?.text =
+                            getString(R.string.total_contribution,  0)
+                    }
+                    is Resource.Success -> {
+                        binding?.tvTotalContribution?.text =
+                            getString(R.string.total_contribution,  it.data?.contributionCount ?: 0)
+                    }
+                }
             }
 
             recent.observe(viewLifecycleOwner) {
@@ -132,10 +146,9 @@ class ContributionFragment : Fragment() {
             getToken().observe(viewLifecycleOwner) {
                 if (!it.isNullOrEmpty()) {
                     val jwt = JWT(it)
-                    val userId = jwt.getClaim("id").asString() ?: ""
                     val username = jwt.getClaim("name").asString()
 
-                    viewModel.setUserId(userId)
+                    viewModel.setToken(it)
                     binding?.tvName?.text =
                         if (username.isNullOrEmpty()) resources.getString(R.string.your_contribution)
                         else username

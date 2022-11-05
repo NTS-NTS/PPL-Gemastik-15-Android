@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
-import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.auth0.android.jwt.JWT
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -37,7 +34,7 @@ class AddContributionFragment : Fragment() {
         setPlaceDetail(place, googleMap)
     }
 
-    private var userId: String? = null
+    private var token: String? = null
     private lateinit var place: PlaceDetailData
 
     override fun onCreateView(
@@ -85,15 +82,15 @@ class AddContributionFragment : Fragment() {
             }
 
             btnFacilityReviewGood.setOnClickListener {
-                trySubmitContribution(userId, place.id, 2)
+                trySubmitContribution(token, place.id, 2)
             }
 
             btnFacilityReviewBad.setOnClickListener {
-                trySubmitContribution(userId, place.id, 1)
+                trySubmitContribution(token, place.id, 1)
             }
 
             btnFacilityReviewNone.setOnClickListener {
-                trySubmitContribution(userId, place.id, 0)
+                trySubmitContribution(token, place.id, 0)
             }
 
             btnFacilityReviewDontKnow.setOnClickListener {
@@ -145,20 +142,19 @@ class AddContributionFragment : Fragment() {
         sharedViewModel.apply {
             getToken().observe(viewLifecycleOwner) {
                 if (!it.isNullOrEmpty()) {
-                    val jwt = JWT(it)
-                    userId = jwt.getClaim("id").asString()
+                    token = it
                     showReviewLoading(false)
                 }
             }
         }
     }
 
-    private fun trySubmitContribution(userId: String?, placeId: String, rating: Int) {
-        if (userId.isNullOrEmpty()) {
+    private fun trySubmitContribution(token: String?, placeId: String, rating: Int) {
+        if (token.isNullOrEmpty()) {
             return
         }
 
-        viewModel.submitContribution(userId, placeId, rating)
+        viewModel.submitContribution(token, placeId, rating)
             .observe(viewLifecycleOwner) { response ->
                 if (response != null) {
                     when (response) {
@@ -182,6 +178,8 @@ class AddContributionFragment : Fragment() {
                             binding?.root?.showSnackbar(
                                 requireContext().translateErrorMessage(response.message)
                             )
+
+                            requireContext().checkAuthError(response.message)
                         }
                     }
                 }
