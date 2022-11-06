@@ -18,10 +18,6 @@ data class UserResponse(
 
 @Parcelize
 data class UserData(
-
-	@field:SerializedName("password")
-	val password: String,
-
 	@field:SerializedName("name")
 	val name: String,
 
@@ -32,5 +28,8 @@ data class UserData(
 	val id: String,
 
 	@field:SerializedName("email")
-	val email: String
+	val email: String,
+
+	@field:SerializedName("profile_pic")
+	val photo: String
 ) : Parcelable

@@ -23,18 +23,7 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    fun getUserId() = dataStore.data.map { preferences ->
-        preferences[USER_ID_KEY]
-    }
-
-    suspend fun setUserId(userId: String) {
-        dataStore.edit { preferences ->
-            preferences[USER_ID_KEY] = userId
-        }
-    }
-
     companion object {
         val TOKEN_KEY = stringPreferencesKey("token")
-        val USER_ID_KEY = stringPreferencesKey("user_id")
     }
 }

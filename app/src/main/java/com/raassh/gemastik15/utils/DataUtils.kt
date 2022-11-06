@@ -302,6 +302,7 @@ fun Context.translateErrorMessage(message: String?): String {
         "Incorrect password!" -> getString(R.string.incorrect_password)
         "Email already exists" -> getString(R.string.email_already_exists)
         "Invalid token" -> getString(R.string.invalid_token)
+        "Username already exists" -> getString(R.string.username_already_exists)
         else -> getString(R.string.unknown_error)
     }
 }

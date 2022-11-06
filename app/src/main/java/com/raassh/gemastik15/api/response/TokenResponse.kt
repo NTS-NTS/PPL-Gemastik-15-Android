@@ -11,11 +11,14 @@ data class TokenResponse(
 	val error: Boolean,
 
 	@field:SerializedName("message")
-	val message: String
+	val message: String,
 )
 
 data class TokenData(
 
 	@field:SerializedName("token")
-	val token: String
+	val token: String,
+
+	@field:SerializedName("has_disability_types")
+	val hasDisabilityTypes: Boolean,
 )
