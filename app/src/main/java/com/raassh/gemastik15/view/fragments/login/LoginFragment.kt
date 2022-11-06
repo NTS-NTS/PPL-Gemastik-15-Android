@@ -69,8 +69,8 @@ class LoginFragment : Fragment() {
                         is Resource.Success -> {
                             btnLogin.isEnabled = true
 
-                            val token = response.data?.token ?: ""
-                            viewModel.setToken(token)
+                            viewModel.setHasDisabilityTypes(response.data?.hasDisabilityTypes ?: false)
+                            viewModel.setToken(response.data?.token ?: "")
                         }
                         is Resource.Error -> {
                             btnLogin.text = getString(R.string.login)

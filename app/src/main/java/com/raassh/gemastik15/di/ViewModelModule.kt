@@ -2,6 +2,7 @@ package com.raassh.gemastik15.di
 
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import com.raassh.gemastik15.view.activity.main.MainActivityViewModel
+import com.raassh.gemastik15.view.dialogs.ChooseDisabilityDialogViewModel
 import com.raassh.gemastik15.view.fragments.account.AccountViewModel
 import com.raassh.gemastik15.view.fragments.addcontribution.AddContributionViewModel
 import com.raassh.gemastik15.view.fragments.contribution.ContributionViewModel
@@ -30,7 +31,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        DiscoverViewModel(get())
+        DiscoverViewModel(get(), get())
     }
 
     viewModel {
@@ -67,5 +68,9 @@ val viewModelModule = module {
 
     viewModel {
         AccountViewModel(get(), get())
+    }
+
+    viewModel {
+        ChooseDisabilityDialogViewModel(get(), get())
     }
 }

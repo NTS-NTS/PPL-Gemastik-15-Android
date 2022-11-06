@@ -1,26 +1,16 @@
 package com.raassh.gemastik15.adapter
 
-import android.content.Context
 import android.graphics.Color
-import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.databinding.FacilityReviewItemBinding
-import com.raassh.gemastik15.databinding.PlaceItemBinding
-import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.*
 
 class FacilityReviewAdapter : ListAdapter<FacilitiesItem, FacilityReviewAdapter.FacilityReviewViewHolder>(DIFF_CALLBACK) {
@@ -41,7 +31,7 @@ class FacilityReviewAdapter : ListAdapter<FacilitiesItem, FacilityReviewAdapter.
 
         fun bind(facility: FacilitiesItem) {
             binding.apply {
-                val facilityName = context.translateDBtoViewName(facility.name)
+                val facilityName = context.translateFacilitytoView(facility.name)
                 tvFacilityName.text = facilityName
 
                 //quality is still double when it should be integer

@@ -1,5 +1,6 @@
 package com.raassh.gemastik15.api
 
+import com.raassh.gemastik15.api.request.AddDisabilitiesRequest
 import com.raassh.gemastik15.api.request.ContributionRequest
 import com.raassh.gemastik15.api.request.LoginRequest
 import com.raassh.gemastik15.api.request.RegisterRequest
@@ -60,4 +61,10 @@ interface ApiService {
     suspend fun getContributionCount(
         @Header("Authorization") authorization: String
     ): ContributionCountResponse
+
+    @POST("auth/disabilities")
+    suspend fun setDisabilities(
+        @Header("Authorization") authorization: String,
+        @Body body: AddDisabilitiesRequest
+    ): GeneralResponse
 }

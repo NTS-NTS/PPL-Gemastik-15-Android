@@ -62,7 +62,7 @@ class PlaceDetailFragment : Fragment() {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
 
             tvPlaceName.text = place.name
-            tvPlaceType.text = requireContext().translateTypeName(place.type)
+            tvPlaceType.text = requireContext().translatePlaceTypeNameToView(place.type)
 
             if (place.distance == -1.0) {
                 tvPlaceDistance.visibility = View.INVISIBLE

@@ -1,6 +1,7 @@
 package com.raassh.gemastik15.repository
 
 import com.raassh.gemastik15.api.ApiService
+import com.raassh.gemastik15.api.request.AddDisabilitiesRequest
 import com.raassh.gemastik15.api.request.LoginRequest
 import com.raassh.gemastik15.utils.callApi
 import com.raassh.gemastik15.api.request.RegisterRequest
@@ -24,5 +25,13 @@ class AuthenticationRepository(private val apiService: ApiService) {
         )
 
         apiService.login(req).data
+    }
+
+    fun setDisabilities(token: String, disabilities: List<String>) = callApi {
+        val req = AddDisabilitiesRequest(
+            disabilities=disabilities
+        )
+
+        apiService.setDisabilities("Bearer $token", req)
     }
 }

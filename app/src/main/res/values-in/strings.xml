@@ -243,7 +243,7 @@
     <string name="select_all_visual">Pilih semua fasilitas gangguan lihat</string>
     <string name="select_all_hearing">Pilih semua fasilitas gangguan dengar</string>
 
-    <string name="user_not_found">Email ini belum terdaftar</string>
+    <string name="user_not_found">Email atau nama pengguna ini belum terdaftar</string>
     <string name="incorrect_password">Password anda salah</string>
     <string name="email_already_exists">Email ini sudah terdaftar</string>
     <string name="unselect_all">Batalkan pilihan</string>
@@ -271,4 +271,18 @@
 
     <string name="invalid_token">Ada masalah dengan sesi anda. Silahkan masuk kembali</string>
     <string name="username_already_exists">Nama pengguna ini sudah ada, silahkan pilih nama pengguna lain</string>
+
+    <string name="set_disability_types">Pilih disabilitas</string>
+    <string name="set_disability_types_message">Kami tanya untuk ...</string>
+    <string name="save">Simpan</string>
+
+    <string name="wheelchair_user">Wheelchair user</string>
+    <string name="limited_walking">Limited walking</string>
+    <string name="limited_hand">Limited hand</string>
+    <string name="limited_physical">Limited physical</string>
+    <string name="blindness">Blindness</string>
+    <string name="low_vision">Low vision</string>
+    <string name="deafness">Deafness</string>
+    <string name="hard_hearing">Hard hearing</string>
+    <string name="speech_impairment">Speech impairment</string>
 </resources>

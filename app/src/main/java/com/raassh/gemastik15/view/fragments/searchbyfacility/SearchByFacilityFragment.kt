@@ -88,14 +88,14 @@ class SearchByFacilityFragment : Fragment() {
                         StringBuilder()
                             .append(
                                 facilities.copyOfRange(0, 7).joinToString(", ") {
-                                        context.translateDBtoViewName(it)
+                                        context.translateFacilitytoView(it)
                                     }
                             )
                             .append(", ")
                             .append(getString(R.string.overflow_count, facilities.size - 7))
                             .toString()
                     } else {
-                        facilities.joinToString(", ") { context.translateDBtoViewName(it) }
+                        facilities.joinToString(", ") { context.translateFacilitytoView(it) }
                     }
 
                 llTitle.contentDescription =
@@ -134,7 +134,7 @@ class SearchByFacilityFragment : Fragment() {
         sharedViewModel.location.observe(viewLifecycleOwner) {
             currentLocation = it
             viewModel.searchPlace(facilities.map { name ->
-                requireContext().translateViewtoDBName(name)
+                requireContext().translateFacilityFromView(name)
             }, currentLocation?.latitude, currentLocation?.longitude)
         }
     }

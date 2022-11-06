@@ -70,7 +70,7 @@ class AddContributionFragment : Fragment() {
             } else {
                 tvPlaceDistance.text = getString(R.string.distance, place.distance.rounded(2))
             }
-            tvPlaceType.text = requireContext().translateTypeName(place.kind)
+            tvPlaceType.text = requireContext().translatePlaceTypeNameToView(place.kind)
             tvAddress.text = place.address
 
             btnBack.setOnClickListener {

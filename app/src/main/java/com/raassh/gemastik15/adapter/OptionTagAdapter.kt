@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.OptionTagItemBinding
 import com.raassh.gemastik15.utils.getFacilityDrawable
-import com.raassh.gemastik15.utils.translateDBtoViewName
+import com.raassh.gemastik15.utils.translateFacilitytoView
 
 class OptionTagAdapter(private val size: Int) : ListAdapter<String, OptionTagAdapter.OptionTagViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionTagViewHolder {
@@ -48,7 +48,7 @@ class OptionTagAdapter(private val size: Int) : ListAdapter<String, OptionTagAda
                     tvOptionName.text = context.getString(R.string.overflow_count, restCount)
                 } else {
                     ivOptionIcon.setImageDrawable(context.getFacilityDrawable(name))
-                    tvOptionName.text = context.translateDBtoViewName(name)
+                    tvOptionName.text = context.translateFacilitytoView(name)
                 }
             }
         }

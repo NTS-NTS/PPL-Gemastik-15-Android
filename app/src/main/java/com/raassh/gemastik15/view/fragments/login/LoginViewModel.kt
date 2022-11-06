@@ -14,4 +14,8 @@ class LoginViewModel(private val authenticationRepository: AuthenticationReposit
     fun setToken(token: String) = viewModelScope.launch {
         pref.setToken(token)
     }
+
+    fun setHasDisabilityTypes(hasDisabilityTypes: Boolean) = viewModelScope.launch {
+        pref.setHasDisabilityTypes(hasDisabilityTypes)
+    }
 }

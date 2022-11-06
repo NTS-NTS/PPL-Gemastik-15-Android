@@ -11,10 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.PlaceAdapter
 import com.raassh.gemastik15.databinding.FragmentDiscoverBinding
-import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
-import com.raassh.gemastik15.utils.getCheckedFacilities
-import com.raassh.gemastik15.utils.on
-import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.view.dialogs.ChooseDisabilityDialog
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -97,6 +95,12 @@ class DiscoverFragment : Fragment() {
                     binding?.tvRecentEmpty?.visibility = View.VISIBLE
                 } else {
                     binding?.tvRecentEmpty?.visibility = View.GONE
+                }
+            }
+
+            hasDisabilityTypes.observe(viewLifecycleOwner) {
+                if (it is Resource.Success && it.getIfNotHandled() == false) {
+                    ChooseDisabilityDialog().show(childFragmentManager, "ChooseDisabilityDialog")
                 }
             }
         }

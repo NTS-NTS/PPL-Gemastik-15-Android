@@ -29,14 +29,14 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         viewModel.apply {
-            getToken().observe(this@MainActivity) {
+            token.observe(this@MainActivity) {
                 if (!it.isNullOrBlank() && !needRelogin) {
                     startActivity(Intent(this@MainActivity, DashboardActivity::class.java))
                     finish()
                 }
             }
 
-            getTheme().observe(this@MainActivity) {
+            theme.observe(this@MainActivity) {
                 if (it != null) {
                     setTheme(it)
                 }

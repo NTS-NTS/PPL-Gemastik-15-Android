@@ -28,7 +28,9 @@ fun placeItemToEntity(placesItem: PlacesItem): PlaceEntity {
 }
 
 // this looks bad, should be refactored later if possible
-fun Context.translateDBtoViewName(name: String): String {
+// update: this can use Context.resources.getIdentifier but that method is discouraged
+// so I'll leave it as is for now
+fun Context.translateFacilitytoView(name: String): String {
     return when (name) {
         "stair_lift" -> getString(R.string.stair_lift)
         "accessible_entrance" -> getString(R.string.accessible_entrance)
@@ -58,7 +60,7 @@ fun Context.translateDBtoViewName(name: String): String {
     }
 }
 
-fun Context.translateViewtoDBName(name: String): String {
+fun Context.translateFacilityFromView(name: String): String {
     return when (name) {
         getString(R.string.accessible_entrance) -> "accessible_entrance"
         getString(R.string.accessible_furniture) -> "accessible_furniture"
@@ -125,7 +127,7 @@ fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<Fac
     val audioFacilities = mutableListOf<FacilitiesItem>()
 
     facilities.forEach {
-        when (translateDBtoViewName(it.name)) {
+        when (translateFacilitytoView(it.name)) {
             getString(R.string.accessible_entrance),
             getString(R.string.accessible_furniture),
             getString(R.string.accessible_space),
@@ -193,7 +195,7 @@ fun Context.getFacilityReviewDescription(quality: Int) : String {
     }
 }
 
-fun Context.translateTypeName(type: String) : String {
+fun Context.translatePlaceTypeNameToView(type: String) : String {
     return when (type) {
         "accounting" -> getString(R.string.accounting)
         "airport" -> getString(R.string.airport)
@@ -305,4 +307,30 @@ fun Context.translateErrorMessage(message: String?): String {
         "Username already exists" -> getString(R.string.username_already_exists)
         else -> getString(R.string.unknown_error)
     }
+}
+
+fun Context.translateDisabilityToView(disabilityType: String) = when(disabilityType) {
+    "wheelchair_user" -> getString(R.string.wheelchair_user)
+    "limited_walking" -> getString(R.string.limited_walking)
+    "limited_hand" -> getString(R.string.limited_hand)
+    "limited_physical" -> getString(R.string.limited_physical)
+    "blindness" -> getString(R.string.blindness)
+    "low_vision" -> getString(R.string.low_vision)
+    "deafness" -> getString(R.string.deafness)
+    "hard_hearing" -> getString(R.string.hard_hearing)
+    "speech_impairment" -> getString(R.string.speech_impairment)
+    else -> disabilityType
+}
+
+fun Context.translateDisabilityFromView(disabilityType: String) = when(disabilityType) {
+    getString(R.string.wheelchair_user) -> "wheelchair_user"
+    getString(R.string.limited_walking) -> "limited_walking"
+    getString(R.string.limited_hand) -> "limited_hand"
+    getString(R.string.limited_physical) -> "limited_physical"
+    getString(R.string.blindness) -> "blindness"
+    getString(R.string.low_vision) -> "low_vision"
+    getString(R.string.deafness) -> "deafness"
+    getString(R.string.hard_hearing) -> "hard_hearing"
+    getString(R.string.speech_impairment) -> "speech_impairment"
+    else -> disabilityType
 }

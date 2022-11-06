@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.PlaceTagItemBinding
 import com.raassh.gemastik15.utils.getFacilityReviewDrawable
-import com.raassh.gemastik15.utils.translateDBtoViewName
+import com.raassh.gemastik15.utils.translateFacilitytoView
 
 class PlaceTagAdapter : ListAdapter<String, PlaceTagAdapter.PlaceTagViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceTagViewHolder {
@@ -30,7 +30,7 @@ class PlaceTagAdapter : ListAdapter<String, PlaceTagAdapter.PlaceTagViewHolder>(
         fun bind(place: String) {
             val placeInfo = place.split(":").toTypedArray()
             binding.apply {
-                tvTagName.text = context.translateDBtoViewName(placeInfo[0])
+                tvTagName.text = context.translateFacilitytoView(placeInfo[0])
                 ivTagIcon.setImageDrawable(context.getFacilityReviewDrawable(placeInfo[1].toInt()))
             }
         }

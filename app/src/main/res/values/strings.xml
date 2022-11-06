@@ -251,7 +251,7 @@
     <string name="select_all_visual">Select all visual impairment facilities</string>
     <string name="select_all_hearing">Select all hearing impairment facilities</string>
 
-    <string name="user_not_found">This email is not registered</string>
+    <string name="user_not_found">This email or username is not registered</string>
     <string name="incorrect_password">Your password is incorrect</string>
     <string name="email_already_exists">This email is already registered</string>
     <string name="unselect_all">Unselect all</string>
@@ -279,4 +279,18 @@
 
     <string name="invalid_token">There was a problem with your session. Please login again.</string>
     <string name="username_already_exists">This username already exists, please choose another one</string>
+
+    <string name="set_disability_types">Choose your disability</string>
+    <string name="set_disability_types_message">We ask this for bla bla</string>
+    <string name="save">Save</string>
+
+    <string name="wheelchair_user">Wheelchair user</string>
+    <string name="limited_walking">Limited walking</string>
+    <string name="limited_hand">Limited hand</string>
+    <string name="limited_physical">Limited physical</string>
+    <string name="blindness">Blindness</string>
+    <string name="low_vision">Low vision</string>
+    <string name="deafness">Deafness</string>
+    <string name="hard_hearing">Hard hearing</string>
+    <string name="speech_impairment">Speech impairment</string>
 </resources>

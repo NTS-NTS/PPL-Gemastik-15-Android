@@ -9,7 +9,7 @@ sealed class Resource<T>(val data: T? = null, val message: String? = null) {
 
     fun getIfNotHandled() = if (isNotHandled) {
         isNotHandled = false
-        this
+        this.data
     } else {
         null
     }
