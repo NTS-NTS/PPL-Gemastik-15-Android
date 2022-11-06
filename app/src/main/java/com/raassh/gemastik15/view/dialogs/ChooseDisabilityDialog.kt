@@ -26,7 +26,6 @@ class ChooseDisabilityDialog() : DialogFragment() {
         val dialog = AlertDialog.Builder(requireContext())
             .setView(binding?.root)
             .setTitle(R.string.set_disability_types)
-            .setCancelable(false)
             .setPositiveButton(R.string.save) { _, _ ->
                 // intentionally left blank
                 // see https://stackoverflow.com/questions/2620444/how-to-prevent-a-dialog-from-closing-when-a-button-is-clicked
@@ -34,6 +33,8 @@ class ChooseDisabilityDialog() : DialogFragment() {
             .create()
 
         dialog.setCanceledOnTouchOutside(false)
+        isCancelable = false
+
         dialog.setOnShowListener {
             val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
 
@@ -47,7 +48,7 @@ class ChooseDisabilityDialog() : DialogFragment() {
                             dialog.dismiss()
                         }
                         is Resource.Error -> {
-                            requireContext().checkAuthError(it.message)
+                            requireActivity().checkAuthError(it.message)
 
                             dialog.dismiss()
                         }

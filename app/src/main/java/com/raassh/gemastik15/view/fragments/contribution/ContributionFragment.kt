@@ -91,7 +91,7 @@ class ContributionFragment : Fragment() {
                         binding?.tvTotalContribution?.text =
                             getString(R.string.total_contribution,  0)
 
-                        requireContext().checkAuthError(it.message)
+                        requireActivity().checkAuthError(it.message)
                     }
                     is Resource.Loading -> {
                         binding?.tvTotalContribution?.text =

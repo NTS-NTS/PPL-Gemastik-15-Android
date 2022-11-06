@@ -9,6 +9,7 @@ import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -188,6 +189,7 @@ class DashboardActivity : AppCompatActivity() {
 
         viewModel.getToken().observe(this) {
             if (it == null) {
+                Log.d("TAG", "dafuq: ")
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()

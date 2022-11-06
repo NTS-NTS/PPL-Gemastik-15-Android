@@ -1,6 +1,6 @@
 package com.raassh.gemastik15.utils
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import android.util.Log
 import com.google.gson.Gson
@@ -34,9 +34,11 @@ inline fun <T> callApi(crossinline apiCall: suspend () -> T) = flow<Resource<T>>
 }
 
 // Not the ideal way to check error, but it'll do for now
-fun Context.checkAuthError(errorMessage: String?) {
+fun Activity.checkAuthError(errorMessage: String?) {
     if (errorMessage != "Invalid token")
         return
+
+    finish()
 
     val intent = Intent(this, MainActivity::class.java).apply {
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

@@ -20,10 +20,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val needRelogin = intent.getBooleanExtra(NEED_RELOGIN, false)
+        var needRelogin = intent.getBooleanExtra(NEED_RELOGIN, false)
 
         if (needRelogin) {
             binding.root.showSnackbar(getString(R.string.invalid_token))
+            viewModel.clearToken()
         }
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -33,6 +34,8 @@ class MainActivity : AppCompatActivity() {
                 if (!it.isNullOrBlank() && !needRelogin) {
                     startActivity(Intent(this@MainActivity, DashboardActivity::class.java))
                     finish()
+                } else if (it.isNullOrBlank()) {
+                    needRelogin = false
                 }
             }
 

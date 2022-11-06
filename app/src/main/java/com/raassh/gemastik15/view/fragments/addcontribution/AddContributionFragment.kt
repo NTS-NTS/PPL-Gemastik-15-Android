@@ -179,7 +179,7 @@ class AddContributionFragment : Fragment() {
                                 requireContext().translateErrorMessage(response.message)
                             )
 
-                            requireContext().checkAuthError(response.message)
+                            requireActivity().checkAuthError(response.message)
                         }
                     }
                 }
