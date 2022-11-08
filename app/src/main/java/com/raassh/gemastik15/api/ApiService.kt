@@ -1,9 +1,6 @@
 package com.raassh.gemastik15.api
 
-import com.raassh.gemastik15.api.request.AddDisabilitiesRequest
-import com.raassh.gemastik15.api.request.ContributionRequest
-import com.raassh.gemastik15.api.request.LoginRequest
-import com.raassh.gemastik15.api.request.RegisterRequest
+import com.raassh.gemastik15.api.request.*
 import com.raassh.gemastik15.api.response.*
 import retrofit2.http.*
 
@@ -67,4 +64,21 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Body body: AddDisabilitiesRequest
     ): GeneralResponse
+
+    @POST("auth/password/change")
+    suspend fun changePassword(
+        @Header("Authorization") authorization: String,
+        @Body body: ChangePasswordRequest
+    ): GeneralResponse
+
+    @GET("auth/detail")
+    suspend fun getUserDetail(
+        @Header("Authorization") authorization: String
+    ): ProfileResponse
+
+    @POST("auth/detail")
+    suspend fun editUserDetail(
+        @Header("Authorization") authorization: String,
+        @Body body: EditProfileRequest
+    ): ProfileResponse
 }
