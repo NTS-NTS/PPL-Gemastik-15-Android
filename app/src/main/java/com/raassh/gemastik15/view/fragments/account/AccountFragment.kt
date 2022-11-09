@@ -52,6 +52,10 @@ class AccountFragment : Fragment() {
                 viewModel.logout()
             }
 
+            btnEditProfile.setOnClickListener {
+                findNavController().navigate(R.id.action_accountFragment_to_editProfileFragment)
+            }
+
             btnChangePassword.setOnClickListener {
                 findNavController().navigate(R.id.action_accountFragment_to_changePasswordFragment)
             }

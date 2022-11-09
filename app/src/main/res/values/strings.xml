@@ -297,4 +297,8 @@
     <string name="old_password">Old Password</string>
     <string name="new_password">New Password</string>
     <string name="password_changed">Password has been changed</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="profile_pic_desc">User\'s Profile Picture</string>
+    <string name="city">City</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
 </resources>

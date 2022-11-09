@@ -8,6 +8,7 @@ import com.raassh.gemastik15.view.fragments.addcontribution.AddContributionViewM
 import com.raassh.gemastik15.view.fragments.changepassword.ChangePasswordViewModel
 import com.raassh.gemastik15.view.fragments.contribution.ContributionViewModel
 import com.raassh.gemastik15.view.fragments.discover.DiscoverViewModel
+import com.raassh.gemastik15.view.fragments.editprofile.EditProfileViewModel
 import com.raassh.gemastik15.view.fragments.landing.LandingViewModel
 import com.raassh.gemastik15.view.fragments.login.LoginViewModel
 import com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailViewModel
@@ -77,5 +78,9 @@ val viewModelModule = module {
 
     viewModel {
         ChangePasswordViewModel(get())
+    }
+
+    viewModel {
+        EditProfileViewModel(get())
     }
 }

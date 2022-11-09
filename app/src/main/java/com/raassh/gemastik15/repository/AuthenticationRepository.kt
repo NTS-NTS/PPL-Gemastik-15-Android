@@ -45,7 +45,7 @@ class AuthenticationRepository(private val apiService: ApiService) {
     }
 
     fun getUserDetail(token: String) = callApi {
-        apiService.getUserDetail("Bearer $token")
+        apiService.getUserDetail("Bearer $token").data
     }
 
     fun editUserDetail(
@@ -62,6 +62,6 @@ class AuthenticationRepository(private val apiService: ApiService) {
             profilePicture = "jpeg;${profilePicture?.toBase64()}"
         )
 
-        apiService.editUserDetail("Bearer $token", req)
+        apiService.editUserDetail("Bearer $token", req).data
     }
 }
