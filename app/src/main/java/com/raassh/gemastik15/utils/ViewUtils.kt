@@ -2,7 +2,12 @@ package com.raassh.gemastik15.utils
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.graphics.Rect
+import android.net.Uri
+import android.os.Build
+import android.provider.MediaStore
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewGroup
@@ -24,10 +29,11 @@ fun View.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT) {
 
 fun TextInputLayout.validate(
     name: String,
+    optional: Boolean = false,
     validation: ((String) -> String?)? = null
 ): Boolean {
     val inputted = editText?.text.toString()
-    if (inputted.isBlank()) {
+    if (!optional && inputted.isBlank()) {
         error = this.context.getString(R.string.input_empty, name)
         return false
     }
@@ -143,4 +149,14 @@ class LinearSpaceItemDecoration(
 
 fun convertDpToPixel(dp: Int, context: Context): Float {
     return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+}
+
+fun Context.uriToBitmap(uri: Uri): Bitmap {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        val source = ImageDecoder.createSource(contentResolver, uri)
+        return ImageDecoder.decodeBitmap(source)
+    } else {
+        @Suppress("DEPRECATION")
+        return MediaStore.Images.Media.getBitmap(contentResolver, uri)
+    }
 }

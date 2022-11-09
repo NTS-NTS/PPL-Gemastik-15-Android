@@ -59,7 +59,7 @@ class AuthenticationRepository(private val apiService: ApiService) {
             name = name,
             username = username,
             city = city,
-            profilePicture = "jpeg;${profilePicture?.toBase64()}"
+            profilePicture = if (profilePicture != null) "jpeg;${profilePicture.toBase64()}" else null
         )
 
         apiService.editUserDetail("Bearer $token", req).data

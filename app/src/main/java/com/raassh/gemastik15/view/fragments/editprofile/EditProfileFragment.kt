@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.UserProfile
 import com.raassh.gemastik15.databinding.FragmentEditProfileBinding
 import com.raassh.gemastik15.utils.*
@@ -17,6 +20,15 @@ class EditProfileFragment : Fragment() {
     private val viewModel by viewModel<EditProfileViewModel>()
     private var binding: FragmentEditProfileBinding? = null
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
+    private lateinit var cities: Array<String>
+
+    private val launcherImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        it?.let { uri ->
+            val bitmap = requireContext().uriToBitmap(uri)
+            binding?.ivProfilePicture?.setImageBitmap(bitmap)
+            viewModel.setSelectedPicture(bitmap)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,10 +43,20 @@ class EditProfileFragment : Fragment() {
 
         showLoading(true)
 
+        cities = requireContext().getCities()
+
         binding?.apply {
             tvCity.apply {
-                setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, requireContext().getCities()))
+                setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, cities))
                 threshold = 1
+            }
+
+            btnEditProfile.setOnClickListener {
+                tryEditProfile()
+            }
+
+            btnChangeProfilePicture.setOnClickListener {
+                launcherImage.launch("image/*")
             }
         }
 
@@ -56,6 +78,51 @@ class EditProfileFragment : Fragment() {
                         )
 
                         requireActivity().checkAuthError(response.message)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun tryEditProfile() {
+        with(binding ?: return) {
+            val isNameValid = ilName.validate(getString(R.string.name))
+            val isUsernameValid = ilUsername.validate(getString(R.string.username)) {
+                if (it.contains(" ")) getString(R.string.username_invalid) else null
+            }
+            val isCityValid = ilCity.validate(getString(R.string.city), optional = true) {
+                if (it.isNotBlank() && it !in cities) {
+                    getString(R.string.city_not_valid)
+                } else {
+                    null
+                }
+            }
+
+            if (!(isNameValid && isUsernameValid && isCityValid))
+                return
+
+            viewModel.editProfile(
+                etName.text.toString(),
+                etUsername.text.toString(),
+                tvCity.text.toString()
+            ).observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Loading -> btnEditProfile.isEnabled = false
+                    is Resource.Success -> {
+                        btnEditProfile.isEnabled = true
+
+                        binding?.root?.showSnackbar(getString(R.string.profile_updated))
+
+                        findNavController().navigateUp()
+                    }
+                    is Resource.Error -> {
+                        btnEditProfile.isEnabled = true
+
+                        binding?.root?.showSnackbar(
+                            requireContext().translateErrorMessage(it.message)
+                        )
+
+                        requireActivity().checkAuthError(it.message)
                     }
                 }
             }

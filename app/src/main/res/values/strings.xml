@@ -301,4 +301,6 @@
     <string name="profile_pic_desc">User\'s Profile Picture</string>
     <string name="city">City</string>
     <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="city_not_valid">Not a valid city</string>
+    <string name="profile_updated">Profile has been updated</string>
 </resources>
