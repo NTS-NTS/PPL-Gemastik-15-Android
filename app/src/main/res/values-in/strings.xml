@@ -285,4 +285,8 @@
     <string name="deafness">Deafness</string>
     <string name="hard_hearing">Hard hearing</string>
     <string name="speech_impairment">Speech impairment</string>
+    <string name="change_password">Ubah Kata Sandi</string>
+    <string name="old_password">Kata Sandi Lama</string>
+    <string name="new_password">Kata Sandi Baru</string>
+    <string name="password_changed">Kata sandi telah diubah</string>
 </resources>

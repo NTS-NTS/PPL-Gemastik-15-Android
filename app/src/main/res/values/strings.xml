@@ -293,4 +293,8 @@
     <string name="deafness">Deafness</string>
     <string name="hard_hearing">Hard hearing</string>
     <string name="speech_impairment">Speech impairment</string>
+    <string name="change_password">Change Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="password_changed">Password has been changed</string>
 </resources>
