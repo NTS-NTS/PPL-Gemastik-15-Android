@@ -305,6 +305,7 @@ fun Context.translateErrorMessage(message: String?): String {
         "Email already exists" -> getString(R.string.email_already_exists)
         "Invalid token" -> getString(R.string.invalid_token)
         "Username already exists" -> getString(R.string.username_already_exists)
+        "User is not verified" -> getString(R.string.user_is_not_verified)
         else -> getString(R.string.unknown_error)
     }
 }

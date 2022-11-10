@@ -303,4 +303,5 @@
     <string name="change_profile_picture">Change Profile Picture</string>
     <string name="city_not_valid">Not a valid city</string>
     <string name="profile_updated">Profile has been updated</string>
+    <string name="user_is_not_verified">User is not verified, check your email or resend verification email</string>
 </resources>
