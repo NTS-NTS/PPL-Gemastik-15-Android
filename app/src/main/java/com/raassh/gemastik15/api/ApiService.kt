@@ -81,4 +81,9 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Body body: EditProfileRequest
     ): ProfileResponse
+
+    @POST("auth/verify/resend")
+    suspend fun resendVerification(
+        @Body body: ResendVerificationRequest
+    ): GeneralResponse
 }

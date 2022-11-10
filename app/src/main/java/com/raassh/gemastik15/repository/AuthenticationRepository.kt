@@ -64,4 +64,12 @@ class AuthenticationRepository(private val apiService: ApiService) {
 
         apiService.editUserDetail("Bearer $token", req).data
     }
+
+    fun resendVerification(email: String) = callApi {
+        val req = ResendVerificationRequest(
+            email = email
+        )
+
+        apiService.resendVerification(req)
+    }
 }
