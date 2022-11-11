@@ -5,10 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp">
+    android:padding="20dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_article_image"
@@ -26,17 +26,18 @@
 
     <TextView
         android:id="@+id/tv_article_type"
-        style="@style/TextAppearance.Material3.LabelLarge"
+        style="@style/TextAppearance.Material3.LabelMedium"
         android:textColor="?attr/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        app:layout_goneMarginTop="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_article_image"
         tools:text="ARTIKEL" />
 
     <TextView
-        style="@style/TextAppearance.Material3.TitleLarge"
+        style="@style/TextAppearance.Material3.BodyLarge"
         android:id="@+id/tv_article_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +66,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                style="@style/TextAppearance.Material3.BodyLarge"
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:textColor="?attr/colorOutline"
                 android:id="@+id/tv_article_source"
                 android:layout_width="wrap_content"
@@ -73,7 +74,7 @@
                 tools:text="Tirto"/>
 
             <TextView
-                style="@style/TextAppearance.Material3.BodyLarge"
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:textColor="?attr/colorOutline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,7 +84,7 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
-                style="@style/TextAppearance.Material3.BodyLarge"
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:textColor="?attr/colorOutline"
                 android:id="@+id/tv_article_date"
                 android:layout_width="wrap_content"

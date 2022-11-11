@@ -1,5 +1,6 @@
 package com.raassh.gemastik15.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import com.raassh.gemastik15.utils.loadImage
 import com.raassh.gemastik15.utils.translateArticleTypeFromDB
 
 class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(DIFF_CALLBACK) {
-    var onItemClickListener: ((PlaceEntity) -> Unit)? = null
+    var onItemClickListener: ((Article) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ArticleViewHolder (
         LayoutInflater.from(parent.context).inflate(R.layout.article_item, parent, false)
@@ -29,6 +30,14 @@ class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(DI
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ArticleItemBinding.bind(itemView)
         private val context = itemView.context
+
+        init {
+            binding.apply {
+                root.setOnClickListener {
+                    onItemClickListener?.invoke(getItem(adapterPosition))
+                }
+            }
+        }
 
         fun bind(article: Article) {
             binding.apply {

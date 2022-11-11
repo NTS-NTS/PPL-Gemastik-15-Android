@@ -114,7 +114,8 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.searchFacilityOptionFragment,
                 R.id.searchResultFragment,
                 R.id.placeDetailFragment,
-                R.id.addContributionFragment -> {
+                R.id.addContributionFragment,
+                R.id.webViewerFragment -> {
                     binding.bottomNavView.visibility = View.GONE
                 }
                 R.id.accountFragment,

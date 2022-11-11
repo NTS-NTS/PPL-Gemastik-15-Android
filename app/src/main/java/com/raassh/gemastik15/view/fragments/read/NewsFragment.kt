@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.tabs.TabLayoutMediator
 import com.raassh.gemastik15.R
@@ -15,6 +16,7 @@ import com.raassh.gemastik15.databinding.FragmentReadBinding
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
+import com.raassh.gemastik15.view.fragments.searchresult.SearchResultFragmentDirections
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,7 +35,15 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val newsAdapter = ArticleAdapter()
+        val newsAdapter = ArticleAdapter().apply {
+            onItemClickListener = { article ->
+                val action =
+                    ReadFragmentDirections.actionNavigationReadToWebViewerFragment(
+                        article.url
+                    )
+                findNavController().navigate(action)
+            }
+        }
 
         binding?.apply {
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL).let {

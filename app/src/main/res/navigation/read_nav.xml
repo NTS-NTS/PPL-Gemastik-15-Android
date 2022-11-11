@@ -8,6 +8,19 @@
     <fragment
         android:id="@+id/navigation_read"
         android:name="com.raassh.gemastik15.view.fragments.read.ReadFragment"
-        android:label="fragment_read"
-        tools:layout="@layout/fragment_read" />
+        android:label="navigation_read"
+        tools:layout="@layout/fragment_read" >
+        <action
+            android:id="@+id/action_navigation_read_to_webViewerFragment"
+            app:destination="@id/webViewerFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/webViewerFragment"
+        android:name="com.raassh.gemastik15.view.fragments.webviewer.WebViewerFragment"
+        android:label="fragment_web_viewer"
+        tools:layout="@layout/fragment_web_viewer">
+        <argument
+            android:name="url"
+            app:argType="string"/>
+    </fragment>
 </navigation>
