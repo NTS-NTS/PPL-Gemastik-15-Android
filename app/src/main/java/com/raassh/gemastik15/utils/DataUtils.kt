@@ -9,6 +9,7 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlacesItem
 import com.raassh.gemastik15.local.db.PlaceEntity
+import java.text.SimpleDateFormat
 import java.util.*
 
 fun placeItemToEntity(placesItem: PlacesItem): PlaceEntity {
@@ -333,4 +334,32 @@ fun Context.translateDisabilityFromView(disabilityType: String) = when(disabilit
     getString(R.string.hard_hearing) -> "hard_hearing"
     getString(R.string.speech_impairment) -> "speech_impairment"
     else -> disabilityType
+}
+
+fun Context.translateArticleTypeFromDB(articleType: String) = when(articleType) {
+    "news" -> getString(R.string.news).uppercase()
+    "article" -> getString(R.string.articles).uppercase()
+    "guideline" -> getString(R.string.guidelines).uppercase()
+    else -> getString(R.string.articles).uppercase()
+}
+
+fun Context.getElapsedTime(startingTime: String): String {
+    val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+    val date = sdf.parse(startingTime)
+    val now = Date()
+    val diff = now.time - (date?.time ?: 0)
+
+    val seconds = diff / 1000
+    val minutes = seconds / 60
+    val hours = minutes / 60
+    val days = hours / 24
+
+    return when {
+        seconds < 0 -> date?.let { SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(it) } ?: ""
+        seconds < 60 -> resources.getQuantityString(R.plurals.seconds_ago, seconds.toInt(), seconds.toInt())
+        minutes < 60 -> resources.getQuantityString(R.plurals.minutes_ago, minutes.toInt(), minutes.toInt())
+        hours < 24 -> resources.getQuantityString(R.plurals.hours_ago, hours.toInt(), hours.toInt())
+        days < 8 -> if (days == 1L) getString(R.string.yesterday) else getString(R.string.days_ago, days)
+        else -> date?.let { SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(it) } ?: ""
+    }
 }

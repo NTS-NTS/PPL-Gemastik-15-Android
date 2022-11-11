@@ -303,4 +303,19 @@
     <string name="change_profile_picture">Change Profile Picture</string>
     <string name="city_not_valid">Not a valid city</string>
     <string name="profile_updated">Profile has been updated</string>
+
+    <plurals name="seconds_ago">
+        <item quantity="one">%d second ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
+    <plurals name="minutes_ago">
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+    <plurals name="hours_ago">
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+    <string name="yesterday">Yesterday</string>
+    <string name="days_ago">%d days ago</string>
 </resources>

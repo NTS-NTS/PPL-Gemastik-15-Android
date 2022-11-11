@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_baseline_add_circle_outline_24"
         android:title="@string/contribute" />
     <item
-        android:id="@+id/articles_nav"
+        android:id="@+id/read_nav"
         android:icon="@drawable/ic_outline_feed_24"
         android:title="@string/article" />
     <item

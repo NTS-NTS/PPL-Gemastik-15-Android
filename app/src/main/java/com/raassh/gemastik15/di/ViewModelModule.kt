@@ -12,6 +12,7 @@ import com.raassh.gemastik15.view.fragments.editprofile.EditProfileViewModel
 import com.raassh.gemastik15.view.fragments.landing.LandingViewModel
 import com.raassh.gemastik15.view.fragments.login.LoginViewModel
 import com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailViewModel
+import com.raassh.gemastik15.view.fragments.read.ReadViewModel
 import com.raassh.gemastik15.view.fragments.register.RegisterViewModel
 import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityViewModel
 import com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionViewModel
@@ -82,5 +83,9 @@ val viewModelModule = module {
 
     viewModel {
         EditProfileViewModel(get())
+    }
+
+    viewModel {
+        ReadViewModel(get())
     }
 }

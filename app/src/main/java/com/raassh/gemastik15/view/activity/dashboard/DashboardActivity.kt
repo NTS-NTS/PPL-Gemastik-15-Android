@@ -108,55 +108,18 @@ class DashboardActivity : AppCompatActivity() {
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
-//        binding.container.rootView.setPadding(0, 56, 0, 0)
-//        binding.container.rootView.applyInsetter {
-//            type(statusBars = true) {
-//                padding()
-//            }
-//        }
-
-//        ViewCompat.setOnApplyWindowInsetsListener(binding.container.rootView) { view, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.statusBars())
-//            val bottomNavHeight = navView.measuredHeight
-//            val bottomNavMargin = (navView.layoutParams as MarginLayoutParams).bottomMargin
-//            val bottomNavPadding = navView.paddingBottom
-//            val bottomNavTotalHeight = bottomNavHeight + bottomNavMargin + bottomNavPadding
-
-//            view.setPadding(
-//                systemBars.left,
-//                systemBars.top,
-//                systemBars.right,
-//                systemBars.bottom
-//            )
-
-//            binding.container.updatePadding(
-//                systemBars.left,
-//                systemBars.top,
-//                systemBars.right,
-//                systemBars.bottom
-//            )
-
-//            view.updateLayoutParams<MarginLayoutParams> {
-//                bottomMargin = systemBars.bottom
-//                leftMargin = systemBars.left
-//                rightMargin = systemBars.right
-//                topMargin = systemBars.top
-//            }
-
-//            WindowInsetsCompat.CONSUMED
-//        }
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.searchByFacilityFragment,
                 R.id.searchFacilityOptionFragment,
                 R.id.searchResultFragment,
                 R.id.placeDetailFragment,
-                R.id.addContributionFragment-> {
+                R.id.addContributionFragment -> {
                     binding.bottomNavView.visibility = View.GONE
                 }
                 R.id.accountFragment,
                 R.id.navigation_contribute,
+                R.id.navigation_read,
                 R.id.navigation_discover -> {
                     binding.bottomNavView.visibility = View.VISIBLE
                 }
@@ -169,16 +132,16 @@ class DashboardActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         // delete this when article fragment is done
-        navView.setOnItemSelectedListener {
-            if (it.itemId == R.id.articles_nav) {
-                binding.root.showSnackbar(getString(R.string.feature_not_available))
-                return@setOnItemSelectedListener false
-            }
-
-            navController.navigate(it.itemId)
-
-            true
-        }
+//        navView.setOnItemSelectedListener {
+//            if (it.itemId == R.id.articles_nav) {
+//                binding.root.showSnackbar(getString(R.string.feature_not_available))
+//                return@setOnItemSelectedListener false
+//            }
+//
+//            navController.navigate(it.itemId)
+//
+//            true
+//        }
 
         onBackPressedDispatcher.addCallback {
             if (!navController.navigateUp()) {

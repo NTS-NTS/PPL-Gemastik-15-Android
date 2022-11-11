@@ -81,4 +81,14 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Body body: EditProfileRequest
     ): ProfileResponse
+
+    @GET("readings/news")
+    suspend fun getNews(
+        @Query("limit") limit: Int
+    ): ArticleResponse
+
+    @GET("readings/articles")
+    suspend fun getArticles(
+        @Query("limit") limit: Int
+    ): ArticleResponse
 }
