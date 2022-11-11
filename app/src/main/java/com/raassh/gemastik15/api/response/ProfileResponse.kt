@@ -35,5 +35,8 @@ data class UserProfile(
 	val email: String,
 
 	@field:SerializedName("username")
-	val username: String
+	val username: String,
+
+	@field:SerializedName("is_verified")
+	val isVerified: Boolean,
 )

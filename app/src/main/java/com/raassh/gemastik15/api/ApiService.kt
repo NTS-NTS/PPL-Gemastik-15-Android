@@ -82,6 +82,11 @@ interface ApiService {
         @Body body: EditProfileRequest
     ): ProfileResponse
 
+    @POST("auth/verify/resend")
+    suspend fun resendVerification(
+        @Body body: ResendVerificationRequest
+    ): GeneralResponse
+
     @GET("readings/news")
     suspend fun getNews(
         @Query("limit") limit: Int
