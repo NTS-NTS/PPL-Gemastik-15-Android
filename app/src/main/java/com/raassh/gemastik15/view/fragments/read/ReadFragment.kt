@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import com.google.android.material.tabs.TabLayoutMediator
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ViewPagerAdapter
 import com.raassh.gemastik15.databinding.FragmentReadBinding
 import dev.chrisbanes.insetter.applyInsetter
@@ -33,8 +35,14 @@ class ReadFragment : Fragment() {
 
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 when (position) {
-                    0 -> tab.text = "News"
-                    1 -> tab.text = "Article"
+                    0 -> {
+                        tab.text = getString(R.string.news)
+                        tab.icon = getDrawable(requireContext(), R.drawable.ic_baseline_news_28)
+                    }
+                    1 -> {
+                        tab.text = getString(R.string.articles)
+                        tab.icon = getDrawable(requireContext(), R.drawable.ic_outline_article_28)
+                    }
                 }
             }.attach()
         }

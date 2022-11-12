@@ -11,3 +11,11 @@ fun Double.rounded(places: Int) = String.format("%.${places}f", this)
 fun String.splitWithEmptyList(separator: String) = split(separator)
     .takeIf { it.size > 1 || it[0].isNotEmpty() }
     ?: emptyList()
+
+fun String.getUrlDomain(): String {
+    val url = this
+    return url.replace("http://", "")
+        .replace("https://", "")
+        .replace("www.", "")
+        .split("/")[0]
+}

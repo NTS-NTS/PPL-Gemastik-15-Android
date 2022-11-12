@@ -308,4 +308,8 @@
     </plurals>
     <string name="yesterday">Kemarin</string>
     <string name="days_ago">%d hari yang lalu</string>
+    <string name="open_in_browser">Buka di browser</string>
+    <string name="share">Bagikan</string>
+    <string name="read">Baca</string>
+    <string name="guideline">Pedoman</string>
 </resources>

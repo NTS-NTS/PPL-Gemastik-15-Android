@@ -339,9 +339,9 @@ fun Context.translateDisabilityFromView(disabilityType: String) = when(disabilit
 
 fun Context.translateArticleTypeFromDB(articleType: String) = when(articleType) {
     "news" -> getString(R.string.news).uppercase()
-    "article" -> getString(R.string.articles).uppercase()
-    "guideline" -> getString(R.string.guidelines).uppercase()
-    else -> getString(R.string.articles).uppercase()
+    "article" -> getString(R.string.article).uppercase()
+    "guideline" -> getString(R.string.guideline).uppercase()
+    else -> getString(R.string.article).uppercase()
 }
 
 fun Context.getElapsedTime(startingTime: String): String {

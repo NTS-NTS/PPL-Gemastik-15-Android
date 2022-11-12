@@ -15,8 +15,8 @@
     <string name="password_invalid">Password\'s length must be at least 8 characters</string>
     <string name="discover">Discover</string>
     <string name="contribute">Contribute</string>
-    <string name="article">Articles</string>
     <string name="account">Account</string>
+    <string name="read">Read</string>
     <string name="feature_not_available">Feature\'s in development. Coming soon.</string>
     <string name="search_by_facility">Search places by facilities</string>
     <string name="view_all">View All</string>
@@ -267,9 +267,12 @@
     <string name="review_bad_cta">Send bad quality review</string>
     <string name="review_not_exist_cta">Send not exist review</string>
     <string name="review_dont_know_cta">Send not sure review</string>
+
     <string name="guidelines">Guidelines</string>
+    <string name="guideline">Guideline</string>
     <string name="news">News</string>
     <string name="articles">Articles</string>
+    <string name="article">Article</string>
 
     <string name="theme_changed_message">Theme changed to %1$s</string>
     <string name="desc_logo">Kiad\'s Logo</string>
@@ -319,4 +322,6 @@
     </plurals>
     <string name="yesterday">Yesterday</string>
     <string name="days_ago">%d days ago</string>
+    <string name="open_in_browser">Open in browser</string>
+    <string name="share">Share</string>
 </resources>
