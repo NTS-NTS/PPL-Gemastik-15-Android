@@ -96,4 +96,63 @@ interface ApiService {
     suspend fun getArticles(
         @Query("limit") limit: Int
     ): ArticleResponse
+
+    @POST("reports/contributions")
+    suspend fun reportContribution(
+        @Header("Authorization") authorization: String,
+        @Body body: ReportContributionRequest
+    ): GeneralResponse
+
+    @GET("reports/contributions")
+    suspend fun getContributionReports(
+        @Header("Authorization") authorization: String
+    ): ListReportContributionResponse
+
+    @GET("reports/contributions/details/{place_id}/users/{user_id}")
+    suspend fun getContributionReportDetails(
+        @Header("Authorization") authorization: String,
+        @Path("place_id") placeId: String,
+        @Path("user_id") userId: String
+    ): DetailReportContributionResponse
+
+    @POST("reports/contributions/dismiss")
+    suspend fun dismissContributionReport(
+        @Header("Authorization") authorization: String,
+        @Body body: DismissContributionReportRequest
+    ): GeneralResponse
+
+    @POST("reports/contributions/moderate")
+    suspend fun moderateContributionReport(
+        @Header("Authorization") authorization: String,
+        @Body body: ReportContributionRequest
+    ): GeneralResponse
+
+    @POST("reports/users")
+    suspend fun reportUser(
+        @Header("Authorization") authorization: String,
+        @Body body: ReportUserRequest
+    ): GeneralResponse
+
+    @GET("reports/users")
+    suspend fun getUserReports(
+        @Header("Authorization") authorization: String
+    ): ListReportUserResponse
+
+    @GET("reports/users/details/{user_id}")
+    suspend fun getUserReportDetails(
+        @Header("Authorization") authorization: String,
+        @Path("user_id") userId: String
+    ): DetailReportUserResponse
+
+    @POST("reports/users/dismiss")
+    suspend fun dismissUserReport(
+        @Header("Authorization") authorization: String,
+        @Body body: DismissUserReportRequest
+    ): GeneralResponse
+
+    @POST("reports/users/moderate")
+    suspend fun moderateUserReport(
+        @Header("Authorization") authorization: String,
+        @Body body: ReportUserRequest
+    ): GeneralResponse
 }

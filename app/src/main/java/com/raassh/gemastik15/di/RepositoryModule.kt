@@ -1,9 +1,6 @@
 package com.raassh.gemastik15.di
 
-import com.raassh.gemastik15.repository.AuthenticationRepository
-import com.raassh.gemastik15.repository.ContributionRepository
-import com.raassh.gemastik15.repository.PlaceRepository
-import com.raassh.gemastik15.repository.ReadRepository
+import com.raassh.gemastik15.repository.*
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -21,5 +18,9 @@ val repositoryModule = module {
 
     single {
         ReadRepository(get())
+    }
+
+    single {
+        ReportRepository(get())
     }
 }
