@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ViewPagerAdapter
 import com.raassh.gemastik15.databinding.FragmentReadBinding
+import com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailFragmentArgs
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,6 +30,8 @@ class ReadFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val tabIndex = ReadFragmentArgs.fromBundle(requireArguments()).tabIndex
+
         binding?.apply {
             root.applyInsetter { type(statusBars = true) { padding() } }
 
@@ -43,8 +47,14 @@ class ReadFragment : Fragment() {
                         tab.text = getString(R.string.articles)
                         tab.icon = getDrawable(requireContext(), R.drawable.ic_outline_article_28)
                     }
+                    2 -> {
+                        tab.text = getString(R.string.guidelines)
+                        tab.icon = getDrawable(requireContext(), R.drawable.ic_outline_guideline_28)
+                    }
                 }
             }.attach()
+
+            viewPager.currentItem = tabIndex
         }
     }
 }

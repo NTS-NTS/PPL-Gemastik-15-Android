@@ -132,18 +132,6 @@ class DashboardActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        // delete this when article fragment is done
-//        navView.setOnItemSelectedListener {
-//            if (it.itemId == R.id.articles_nav) {
-//                binding.root.showSnackbar(getString(R.string.feature_not_available))
-//                return@setOnItemSelectedListener false
-//            }
-//
-//            navController.navigate(it.itemId)
-//
-//            true
-//        }
-
         onBackPressedDispatcher.addCallback {
             if (!navController.navigateUp()) {
                 finish()

@@ -75,13 +75,20 @@ class ContributionFragment : Fragment() {
             rvNearby.adapter = nearbyAdapter
             rvNearby.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
 
-            val comingSoonHandler = View.OnClickListener {
-                root.showSnackbar(getString(R.string.feature_not_available))
+            cdGuidelines.setOnClickListener {
+                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(2)
+                findNavController().navigate(action)
             }
 
-            cdGuidelines.setOnClickListener(comingSoonHandler)
-            cdArticles.setOnClickListener(comingSoonHandler)
-            cdNews.setOnClickListener(comingSoonHandler)
+            cdArticles.setOnClickListener {
+                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(1)
+                findNavController().navigate(action)
+            }
+
+            cdNews.setOnClickListener {
+                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(0)
+                findNavController().navigate(action)
+            }
         }
 
         viewModel.apply {

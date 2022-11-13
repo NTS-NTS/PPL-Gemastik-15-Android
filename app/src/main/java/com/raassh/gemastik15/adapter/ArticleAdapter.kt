@@ -1,6 +1,5 @@
 package com.raassh.gemastik15.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.Article
 import com.raassh.gemastik15.databinding.ArticleItemBinding
-import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.getElapsedTime
 import com.raassh.gemastik15.utils.loadImage
 import com.raassh.gemastik15.utils.translateArticleTypeFromDB

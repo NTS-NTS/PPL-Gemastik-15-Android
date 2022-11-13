@@ -9,10 +9,14 @@
         android:id="@+id/navigation_read"
         android:name="com.raassh.gemastik15.view.fragments.read.ReadFragment"
         android:label="navigation_read"
-        tools:layout="@layout/fragment_read" >
+        tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_navigation_read_to_webViewerFragment"
             app:destination="@id/webViewerFragment"/>
+        <argument
+            android:name="tabIndex"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/webViewerFragment"
