@@ -312,4 +312,7 @@
     <string name="share">Bagikan</string>
     <string name="read">Baca</string>
     <string name="guideline">Pedoman</string>
+    <string name="reviews">Ulasan</string>
+    <string name="see_all_reviews">Lihat semua (%d) ulasan</string>
+    <string name="no_reviews">Belum ada ulasan</string>
 </resources>

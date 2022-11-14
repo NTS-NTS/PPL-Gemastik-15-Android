@@ -58,7 +58,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        PlaceDetailViewModel(get())
+        PlaceDetailViewModel(get(), get())
     }
 
     viewModel {

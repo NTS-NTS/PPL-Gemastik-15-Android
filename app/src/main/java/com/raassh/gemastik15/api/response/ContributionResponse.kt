@@ -13,7 +13,6 @@ data class ContributionResponse(
     val message: String
 )
 
-
 data class ContributionData(
     @field:SerializedName("id")
     val id: String,
@@ -44,4 +43,40 @@ data class ContributionCountData(
 
     @field:SerializedName("contribution count")
     val contributionCount: Int
+)
+
+data class ContributionsPlaceResponse(
+
+    @field:SerializedName("data")
+    val data: List<ReviewData>,
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class ReviewData(
+
+    @field:SerializedName("user")
+    val user: UserData,
+
+    @field:SerializedName("place_id")
+    val place_id: String,
+
+    @field:SerializedName("facilities")
+    val facilities: List<FacilityQualityItem>,
+
+    @field:SerializedName("review")
+    val review: String?
+)
+
+data class FacilityQualityItem(
+
+    @field:SerializedName("facility")
+    val facility: String,
+
+    @field:SerializedName("quality")
+    val quality: Int,
 )

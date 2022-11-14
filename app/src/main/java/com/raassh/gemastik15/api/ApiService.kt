@@ -59,6 +59,11 @@ interface ApiService {
         @Header("Authorization") authorization: String
     ): ContributionCountResponse
 
+    @GET("contributions/{place_id}")
+    suspend fun getContributionsofPlace(
+        @Path("place_id") placeId: String
+    ): ContributionsPlaceResponse
+
     @POST("auth/disabilities")
     suspend fun setDisabilities(
         @Header("Authorization") authorization: String,

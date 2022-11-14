@@ -167,24 +167,24 @@ fun Context.getFacilitiesGroup(facilities: List<FacilitiesItem>) : List<List<Fac
     return facilitiesGroup
 }
 
-fun Context.getFacilityReviewDrawable(quality: Int) : Drawable? {
+fun Context.getFacilityReviewDrawable(quality: Int, isColored: Boolean = true) : Drawable? {
     var drawable: Drawable? = null
     when (quality) {
-        0 -> {
-            drawable = ContextCompat.getDrawable(this, R.drawable.ic_baseline_not_exist_20)
-            drawable?.setTint(MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurfaceVariant, Color.BLACK))
-        }
-        1 -> {
-            drawable = ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_down_20)
-            drawable?.setTint(MaterialColors.getColor(this, com.google.android.material.R.attr.colorError, Color.BLACK))
-        }
-        2 -> {
-            drawable = ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_up_20)
-            drawable?.setTint(MaterialColors.getColor(this, R.attr.colorGreen, Color.BLACK))
-        }
+        0 -> drawable = ContextCompat.getDrawable(this, R.drawable.ic_baseline_not_exist_20)
+        1 -> drawable = ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_down_20)
+        2 -> drawable = ContextCompat.getDrawable(this, R.drawable.ic_outline_thumb_up_20)
     }
 
+    if (isColored) drawable?.setTint(getFacilityReviewColor(quality))
+
     return drawable
+}
+
+fun Context.getFacilityReviewColor(quality: Int) = when (quality) {
+    0 -> MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurfaceVariant, Color.BLACK)
+    1 -> MaterialColors.getColor(this, com.google.android.material.R.attr.colorError, Color.BLACK)
+    2 -> MaterialColors.getColor(this, R.attr.colorGreen, Color.BLACK)
+    else -> MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurfaceVariant, Color.BLACK)
 }
 
 fun Context.getFacilityReviewDescription(quality: Int) : String {

@@ -18,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="@null"
         android:focusable="false"
         tools:src="@drawable/ic_outline_thumb_up_20" />
 
