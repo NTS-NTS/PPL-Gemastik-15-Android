@@ -340,4 +340,6 @@
     <string name="moderate_contribution_reason">Pilih alasan</string>
     <string name="reported_email">Email: %1$s</string>
     <string name="ban_user">Ban pengguna</string>
+    <string name="edit_review">Ubah Ulasan</string>
+    <string name="moderated_warning_message">Ulasan Anda melanggar peraturan layanan kami dan sementara tidak ditampilkan. Ubah ulasan Anda untuk membalikkan ini!</string>
 </resources>
