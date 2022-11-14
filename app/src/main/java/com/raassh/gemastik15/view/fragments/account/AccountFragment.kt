@@ -12,12 +12,14 @@ import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentAccountBinding
 import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountFragment : Fragment() {
     private val viewModel by viewModel<AccountViewModel>()
     private var binding: FragmentAccountBinding? = null
+    private val sharedViewModel by viewModel<DashboardViewModel>()
 
     private var arrayAdapter: ArrayAdapter<String>? = null
 
@@ -58,6 +60,10 @@ class AccountFragment : Fragment() {
 
             btnChangePassword.setOnClickListener {
                 findNavController().navigate(R.id.action_accountFragment_to_changePasswordFragment)
+            }
+
+            btnModeration.setOnClickListener {
+                findNavController().navigate(R.id.action_accountFragment_to_moderationFragment)
             }
         }
 
@@ -100,6 +106,14 @@ class AccountFragment : Fragment() {
                     binding?.tvName?.text = name
                     binding?.tvEmail?.text = email
                 }
+            }
+        }
+
+        sharedViewModel.getIsModerator().observe(viewLifecycleOwner) {
+            if (it == true) {
+                binding?.btnModeration?.visibility = View.VISIBLE
+            } else {
+                binding?.btnModeration?.visibility = View.GONE
             }
         }
     }
