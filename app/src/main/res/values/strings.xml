@@ -340,4 +340,6 @@
 
     <string name="reported_name">Name: %1$s</string>
     <string name="reported_username">Username: %1$s</string>
+    <string name="resend_verification">Resend Verification</string>
+    <string name="verification_email_sent">Verification email has been sent</string>
 </resources>

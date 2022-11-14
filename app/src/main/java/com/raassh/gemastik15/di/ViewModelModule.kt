@@ -71,7 +71,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        AccountViewModel(get(), get())
+        AccountViewModel(get(), get(), get())
     }
 
     viewModel {
