@@ -30,7 +30,7 @@ import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-private val REVIEW_LIMIT = 7
+private const val REVIEW_LIMIT = 7
 
 class PlaceDetailFragment : Fragment() {
     private val viewModel by viewModel<PlaceDetailViewModel>()
@@ -207,24 +207,20 @@ class PlaceDetailFragment : Fragment() {
 //        this.reviews = reviews?.filter { it.user.id != sharedViewModel.user.value?.id }
         this.reviews = reviews
 
-        if (this.reviews == null) {
+        if (reviews == null) {
             showEmptyReviews()
             return
         }
 
-        if (this.reviews?.size!! <= REVIEW_LIMIT) {
-            binding?.apply {
-                btnSeeAllReviews.visibility = View.GONE
-            }
-        } else {
-            binding?.apply {
-                btnSeeAllReviews.visibility = View.VISIBLE
-                btnSeeAllReviews.text = getString(R.string.see_all_reviews, this@PlaceDetailFragment.reviews?.size)
-            }
+        binding?.btnSeeAllReviews?.setOnClickListener {
+            findNavController().navigate(PlaceDetailFragmentDirections.actionPlaceDetailFragmentToReviewsFragment(
+                reviews.toTypedArray()
+            ))
         }
+        binding?.btnSeeAllReviews?.text = getString(R.string.see_all_reviews, this@PlaceDetailFragment.reviews?.size)
 
         binding?.rvReviews?.apply {
-            adapter = ReviewAdapter().apply {
+            adapter = ReviewAdapter(true).apply {
                 submitList(this@PlaceDetailFragment.reviews!!.take(REVIEW_LIMIT))
             }
             addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))

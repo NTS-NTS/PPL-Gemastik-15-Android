@@ -35,6 +35,9 @@
         <argument
             android:name="place"
             app:argType="com.raassh.gemastik15.local.db.PlaceEntity" />
+        <action
+            android:id="@+id/action_placeDetailFragment_to_reviewsFragment2"
+            app:destination="@id/reviewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addContributionFragment"
@@ -46,4 +49,13 @@
             app:argType="com.raassh.gemastik15.api.response.PlaceDetailData" />
     </fragment>
     <include app:graph="@navigation/read_nav" />
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.raassh.gemastik15.view.fragments.placedetail.ReviewsFragment"
+        android:label="fragment_reviews"
+        tools:layout="@layout/fragment_reviews">
+        <argument
+            android:name="reviews"
+            app:argType="com.raassh.gemastik15.api.response.ReviewData[]"/>
+    </fragment>
 </navigation>

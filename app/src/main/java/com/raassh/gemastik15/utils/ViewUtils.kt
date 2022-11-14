@@ -78,7 +78,7 @@ fun getCheckedFacilities(
 }
 
 fun ImageView.loadImage(
-    ref: String,
+    ref: String?,
     placeholder: Int = R.drawable.place_photo_placeholder,
     isGmpRequest: Boolean = false)
 {
@@ -91,7 +91,7 @@ fun ImageView.loadImage(
     }
 
     Glide.with(this.context)
-        .load(url)
+        .load(url ?: "")
         .placeholder(placeholder)
         .error(placeholder)
         .into(this)

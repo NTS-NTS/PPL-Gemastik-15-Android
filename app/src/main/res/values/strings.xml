@@ -328,4 +328,5 @@
     <string name="reviews">Reviews</string>
     <string name="see_all_reviews">See all (%d) reviews</string>
     <string name="no_reviews">No reviews yet</string>
+    <string name="report_review">Report review</string>
 </resources>
