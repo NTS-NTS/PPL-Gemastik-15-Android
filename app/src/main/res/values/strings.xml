@@ -330,4 +330,14 @@
     <string name="reviews">Reviews</string>
     <string name="see_all_reviews">See all (%d) reviews</string>
     <string name="no_reviews">No reviews yet</string>
+
+    <string name="not_a_moderator">You don\'t have permission to access this</string>
+    <string name="user_is_banned">Your account has been banned</string>
+
+    <string name="reported_user">User: %1$s</string>
+    <string name="reported_place">Place: %1$s</string>
+    <string name="report_count">Report Count: %1$d</string>
+
+    <string name="reported_name">Name: %1$s</string>
+    <string name="reported_username">Username: %1$s</string>
 </resources>

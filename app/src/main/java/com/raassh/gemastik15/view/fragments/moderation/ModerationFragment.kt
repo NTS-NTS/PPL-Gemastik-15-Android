@@ -10,6 +10,7 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ModerationPagerAdapter
 import com.raassh.gemastik15.databinding.FragmentModerationBinding
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ModerationFragment : Fragment() {
@@ -27,7 +28,10 @@ class ModerationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding?.apply {
+            root.applyInsetter { type(statusBars = true) { padding() } }
+
             viewPager.adapter = ModerationPagerAdapter(this@ModerationFragment)
 
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->

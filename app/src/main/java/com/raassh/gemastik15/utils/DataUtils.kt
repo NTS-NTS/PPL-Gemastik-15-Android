@@ -307,6 +307,8 @@ fun Context.translateErrorMessage(message: String?): String {
         "Invalid token" -> getString(R.string.invalid_token)
         "Username already exists" -> getString(R.string.username_already_exists)
         "User is not verified" -> getString(R.string.user_is_not_verified)
+        "not a moderator" -> getString(R.string.not_a_moderator)
+        "User is banned" -> getString(R.string.user_is_banned)
         else -> getString(R.string.unknown_error)
     }
 }

@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import com.raassh.gemastik15.adapter.ContributionReportsAdapter
 import com.raassh.gemastik15.databinding.FragmentContributionReportBinding
 import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.checkAuthError
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateErrorMessage
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ContributionReportFragment : Fragment() {
@@ -25,18 +30,51 @@ class ContributionReportFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val adapter = ContributionReportsAdapter().apply {
+            onItemClickListener = { contribution ->
+                Log.d("TAG", "onViewCreated: $contribution")
+            }
+        }
+
+        binding?.apply {
+            DividerItemDecoration(context, DividerItemDecoration.VERTICAL).let {
+                rvReports.addItemDecoration(it)
+            }
+
+            rvReports.adapter = adapter
+        }
+
         moderationViewModel.contributionsReport.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
-                    Log.d("TAG", "Loading")
+                    showLoading(true)
                 }
                 is Resource.Success -> {
-                    Log.d("TAG", "Success")
-                    Log.d("TAG", "onViewCreated: ${it.data}")
+                    showLoading(false)
+
+                    adapter.submitList(it.data?.contributions)
                 }
                 is Resource.Error -> {
-                    Log.d("TAG", "Error")
+                    showLoading(false)
+
+                    binding?.root?.showSnackbar(
+                        requireContext().translateErrorMessage(it.message)
+                    )
+
+                    requireActivity().checkAuthError(it.message)
                 }
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding?.apply {
+            if (isLoading) {
+                pbLoading.visibility = View.VISIBLE
+                rvReports.visibility = View.GONE
+            } else {
+                pbLoading.visibility = View.GONE
+                rvReports.visibility = View.VISIBLE
             }
         }
     }

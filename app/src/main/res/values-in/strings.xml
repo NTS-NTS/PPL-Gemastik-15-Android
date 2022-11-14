@@ -318,4 +318,14 @@
     <string name="reviews">Ulasan</string>
     <string name="see_all_reviews">Lihat semua (%d) ulasan</string>
     <string name="no_reviews">Belum ada ulasan</string>
+
+    <string name="not_a_moderator">Anda tidak punya izin untuk mengakses halaman ini</string>
+    <string name="user_is_banned">Akun anda telah di-banned</string>
+
+    <string name="reported_user">Pengguna: %1$s</string>
+    <string name="reported_place">Tempat: %1$s</string>
+    <string name="report_count">Jumlah Laporan: %1$d</string>
+
+    <string name="reported_name">Nama: %1$s</string>
+    <string name="reported_username">Nama Pengguna: %1$s</string>
 </resources>
