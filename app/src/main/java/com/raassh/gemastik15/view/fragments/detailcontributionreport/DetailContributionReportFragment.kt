@@ -147,7 +147,7 @@ class DetailContributionReportFragment : Fragment() {
             tvReportReason.text =
                 ctx.getString(R.string.report_reason, reason)
             tvReportReview.text =
-                ctx.getString(R.string.report_review, data.review)
+                ctx.getString(R.string.report_reviews, data.review)
             rvReportedFacilities.adapter = SingleReviewFacilitiesAdapter().apply {
                 submitList(data.facilities)
             }

@@ -345,7 +345,7 @@
     <string name="verification_email_sent">Verification email has been sent</string>
 
     <string name="report_reason">Report reason:  %1$s</string>
-    <string name="report_review">Review: %1$s</string>
+    <string name="report_reviews">Review: %1$s</string>
     <string name="moderate_contribution">Delete Contribution</string>
     <string name="dismiss">Dismiss</string>
     <string name="moderate_contribution_reason">Choose reason</string>
