@@ -1,19 +1,16 @@
 package com.raassh.gemastik15.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.ReviewData
-import com.raassh.gemastik15.databinding.FacilityReviewItemBinding
 import com.raassh.gemastik15.databinding.ReviewCompactItemBinding
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
+import com.raassh.gemastik15.utils.loadImage
 
 class ReviewAdapter : ListAdapter<ReviewData, ReviewAdapter.ReviewViewHolder>(DIFF_CALLBACK) {
 
@@ -36,7 +33,7 @@ class ReviewAdapter : ListAdapter<ReviewData, ReviewAdapter.ReviewViewHolder>(DI
 
         fun bind(review: ReviewData) {
             binding.apply {
-                imgReviewProfile.loadImage(review.user.photo)
+                imgReviewProfile.loadImage(review.user.profilePicture)
                 tvReviewName.text = review.user.name
                 tvReviewText.text = review.review
                 rvReviewFacilities.adapter = ReviewFacilitiesAdapter().apply {
