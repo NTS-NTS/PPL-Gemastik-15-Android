@@ -5,13 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.raassh.gemastik15.R
-import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.local.preferences.SettingPreferences
 import com.raassh.gemastik15.local.preferences.UserPreferences
+import com.raassh.gemastik15.repository.AuthenticationRepository
 import kotlinx.coroutines.launch
 
-class AccountViewModel(val userPreferences: UserPreferences, val settingPreferences: SettingPreferences) : ViewModel() {
+class AccountViewModel(
+    val userPreferences: UserPreferences,
+    val settingPreferences: SettingPreferences,
+    val authenticationRepository: AuthenticationRepository
+) : ViewModel() {
     private val _arrayAdapter = MutableLiveData<ArrayAdapter<String>>()
     var arrayAdapter: MutableLiveData<ArrayAdapter<String>> = _arrayAdapter
 
@@ -21,13 +24,12 @@ class AccountViewModel(val userPreferences: UserPreferences, val settingPreferen
         }
     }
 
-    fun getToken() = userPreferences.getToken().asLiveData()
-
     fun setTheme(theme: String) = viewModelScope.launch {
         settingPreferences.setTheme(theme)
     }
 
     fun getTheme() = settingPreferences.getTheme().asLiveData()
 
-
+    fun resendVerification(email: String) =
+        authenticationRepository.resendVerification(email).asLiveData()
 }

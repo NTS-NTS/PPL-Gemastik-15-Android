@@ -313,7 +313,30 @@
     <string name="read">Baca</string>
     <string name="guideline">Pedoman</string>
     <string name="moderation_page">Halaman Moderasi</string>
+    <string name="contribution_report">Laporan Kontribusi</string>
+    <string name="user_report">Laporan Pengguna</string>
     <string name="reviews">Ulasan</string>
     <string name="see_all_reviews">Lihat semua (%d) ulasan</string>
     <string name="no_reviews">Belum ada ulasan</string>
+
+    <string name="not_a_moderator">Anda tidak punya izin untuk mengakses halaman ini</string>
+    <string name="user_is_banned">Akun anda telah di-banned</string>
+
+    <string name="reported_user">Pengguna: %1$s</string>
+    <string name="reported_place">Tempat: %1$s</string>
+    <string name="report_count">Jumlah Laporan: %1$d</string>
+
+    <string name="reported_name">Nama: %1$s</string>
+    <string name="reported_username">Nama Pengguna: %1$s</string>
+
+    <string name="resend_verification">Kirim Ulang Verifikasi</string>
+    <string name="verification_email_sent">Email verifikasi telah terkirim</string>
+
+    <string name="report_reason">Alasan laporan:  %1$s</string>
+    <string name="report_review">Ulasan: %1$s</string>
+    <string name="moderate_contribution">Hapus Kontribusi</string>
+    <string name="dismiss">Batalkan</string>
+    <string name="moderate_contribution_reason">Pilih alasan</string>
+    <string name="reported_email">Email: %1$s</string>
+    <string name="ban_user">Ban pengguna</string>
 </resources>

@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.adapter.ViewPagerAdapter
+import com.raassh.gemastik15.adapter.ReadPagerAdapter
 import com.raassh.gemastik15.databinding.FragmentReadBinding
-import com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailFragmentArgs
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,7 +33,7 @@ class ReadFragment : Fragment() {
         binding?.apply {
             root.applyInsetter { type(statusBars = true) { padding() } }
 
-            viewPager.adapter = ViewPagerAdapter(this@ReadFragment)
+            viewPager.adapter = ReadPagerAdapter(this@ReadFragment)
 
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 when (position) {

@@ -7,6 +7,8 @@ import com.raassh.gemastik15.view.fragments.account.AccountViewModel
 import com.raassh.gemastik15.view.fragments.addcontribution.AddContributionViewModel
 import com.raassh.gemastik15.view.fragments.changepassword.ChangePasswordViewModel
 import com.raassh.gemastik15.view.fragments.contribution.ContributionViewModel
+import com.raassh.gemastik15.view.fragments.detailcontributionreport.DetailContributionReportViewModel
+import com.raassh.gemastik15.view.fragments.detailuserreport.DetailUserReportViewModel
 import com.raassh.gemastik15.view.fragments.discover.DiscoverViewModel
 import com.raassh.gemastik15.view.fragments.editprofile.EditProfileViewModel
 import com.raassh.gemastik15.view.fragments.landing.LandingViewModel
@@ -71,7 +73,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        AccountViewModel(get(), get())
+        AccountViewModel(get(), get(), get())
     }
 
     viewModel {
@@ -92,5 +94,13 @@ val viewModelModule = module {
 
     viewModel {
         ModerationViewModel(get())
+    }
+
+    viewModel {
+        DetailContributionReportViewModel(get())
+    }
+
+    viewModel {
+        DetailUserReportViewModel(get())
     }
 }

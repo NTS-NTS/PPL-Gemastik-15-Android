@@ -325,8 +325,30 @@
     <string name="open_in_browser">Open in browser</string>
     <string name="share">Share</string>
     <string name="moderation_page">Moderation Page</string>
+    <string name="contribution_report">Contributions Report</string>
+    <string name="user_report">User Reports</string>
     <string name="reviews">Reviews</string>
     <string name="see_all_reviews">See all (%d) reviews</string>
     <string name="no_reviews">No reviews yet</string>
     <string name="report_review">Report review</string>
+
+    <string name="not_a_moderator">You don\'t have permission to access this</string>
+    <string name="user_is_banned">Your account has been banned</string>
+
+    <string name="reported_user">User: %1$s</string>
+    <string name="reported_place">Place: %1$s</string>
+    <string name="report_count">Report Count: %1$d</string>
+
+    <string name="reported_name">Name: %1$s</string>
+    <string name="reported_username">Username: %1$s</string>
+    <string name="resend_verification">Resend Verification</string>
+    <string name="verification_email_sent">Verification email has been sent</string>
+
+    <string name="report_reason">Report reason:  %1$s</string>
+    <string name="report_review">Review: %1$s</string>
+    <string name="moderate_contribution">Delete Contribution</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="moderate_contribution_reason">Choose reason</string>
+    <string name="reported_email">Email: %1$s</string>
+    <string name="ban_user">Ban user</string>
 </resources>

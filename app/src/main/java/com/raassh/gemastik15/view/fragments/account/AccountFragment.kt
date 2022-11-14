@@ -11,7 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentAccountBinding
+import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateErrorMessage
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -96,7 +98,9 @@ class AccountFragment : Fragment() {
                     }
                 }
             }
+        }
 
+        sharedViewModel.apply {
             getToken().observe(viewLifecycleOwner) {
                 if (!it.isNullOrEmpty()) {
                     val jwt = JWT(it)
@@ -105,15 +109,44 @@ class AccountFragment : Fragment() {
 
                     binding?.tvName?.text = name
                     binding?.tvEmail?.text = email
+                    binding?.btnResendVerification?.setOnClickListener {
+                        if (email != null) {
+                            viewModel.resendVerification(email).observe(viewLifecycleOwner) { response ->
+                                when (response) {
+                                    is Resource.Success -> {
+                                        binding?.btnResendVerification?.isEnabled = true
+                                        binding?.root?.showSnackbar(getString(R.string.verification_email_sent))
+                                    }
+                                    is Resource.Error -> {
+                                        binding?.btnResendVerification?.isEnabled = true
+                                        binding?.root?.showSnackbar(
+                                            requireContext().translateErrorMessage(response.message)
+                                        )
+                                    }
+                                    is Resource.Loading -> {
+                                        binding?.btnResendVerification?.isEnabled = false
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-        }
 
-        sharedViewModel.getIsModerator().observe(viewLifecycleOwner) {
-            if (it == true) {
-                binding?.btnModeration?.visibility = View.VISIBLE
-            } else {
-                binding?.btnModeration?.visibility = View.GONE
+            getIsModerator().observe(viewLifecycleOwner) {
+                if (it == true) {
+                    binding?.btnModeration?.visibility = View.VISIBLE
+                } else {
+                    binding?.btnModeration?.visibility = View.GONE
+                }
+            }
+
+            getIsVerified().observe(viewLifecycleOwner) {
+                if (it == true) {
+                    binding?.btnResendVerification?.visibility = View.GONE
+                } else {
+                    binding?.btnResendVerification?.visibility = View.VISIBLE
+                }
             }
         }
     }

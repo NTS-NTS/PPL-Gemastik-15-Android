@@ -8,16 +8,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.FacilityQualityItem
 import com.raassh.gemastik15.api.response.ReviewData
-import com.raassh.gemastik15.databinding.FacilityReviewItemBinding
 import com.raassh.gemastik15.databinding.ReviewCompactItemBinding
 import com.raassh.gemastik15.databinding.ReviewItemBinding
 import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
+import com.raassh.gemastik15.utils.loadImage
 
 class ReviewAdapter(private val isCompact: Boolean = false) : ListAdapter<ReviewData, ReviewAdapter.ReviewViewHolder>(DIFF_CALLBACK) {
     var onItemClickListener: ((ReviewData) -> Unit)? = null

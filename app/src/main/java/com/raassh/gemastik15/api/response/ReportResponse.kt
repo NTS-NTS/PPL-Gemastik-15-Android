@@ -1,6 +1,8 @@
 package com.raassh.gemastik15.api.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class ListReportContributionResponse(
     @field:SerializedName("data")
@@ -18,6 +20,7 @@ data class DataReportContributionResponse(
     val contributions: List<ItemReportContributionResponse>
 )
 
+@Parcelize
 data class ItemReportContributionResponse(
     @field:SerializedName("place_id")
     val placeId: String,
@@ -33,7 +36,7 @@ data class ItemReportContributionResponse(
 
     @field:SerializedName("report_count")
     val reportCount: Int
-)
+) : Parcelable
 
 data class DetailReportContributionResponse(
     @field:SerializedName("data")
@@ -57,15 +60,7 @@ data class DataDetailReportContributionResponse(
     val reportReason: List<String>,
 
     @field:SerializedName("facilities")
-    val facilities: List<ReportFacilitiesItem>,
-)
-
-data class ReportFacilitiesItem(
-    @field:SerializedName("facility")
-    val name: String,
-
-    @field:SerializedName("quality")
-    val quality: Double
+    val facilities: List<FacilityQualityItem>,
 )
 
 data class ListReportUserResponse(
@@ -84,6 +79,7 @@ data class DataReportUserResponse(
     val users: List<ItemReportUserResponse>
 )
 
+@Parcelize
 data class ItemReportUserResponse(
     @field:SerializedName("user_id")
     val userId: String,
@@ -96,7 +92,7 @@ data class ItemReportUserResponse(
 
     @field:SerializedName("report_count")
     val reportCount: Int
-)
+) : Parcelable
 
 data class DetailReportUserResponse(
     @field:SerializedName("data")
