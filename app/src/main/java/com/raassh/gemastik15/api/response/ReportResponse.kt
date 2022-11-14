@@ -60,15 +60,7 @@ data class DataDetailReportContributionResponse(
     val reportReason: List<String>,
 
     @field:SerializedName("facilities")
-    val facilities: List<ReportFacilitiesItem>,
-)
-
-data class ReportFacilitiesItem(
-    @field:SerializedName("facility")
-    val name: String,
-
-    @field:SerializedName("quality")
-    val quality: Double
+    val facilities: List<FacilityQualityItem>,
 )
 
 data class ListReportUserResponse(

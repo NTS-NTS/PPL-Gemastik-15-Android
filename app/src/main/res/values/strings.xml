@@ -342,4 +342,10 @@
     <string name="reported_username">Username: %1$s</string>
     <string name="resend_verification">Resend Verification</string>
     <string name="verification_email_sent">Verification email has been sent</string>
+
+    <string name="report_reason">Report reason:  %1$s</string>
+    <string name="report_review">Review: %1$s</string>
+    <string name="moderate_contribution">Delete Contribution</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="moderate_contribution_reason">Choose reason</string>
 </resources>

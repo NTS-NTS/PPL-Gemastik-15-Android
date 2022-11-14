@@ -25,7 +25,6 @@ class ReviewAdapter : ListAdapter<ReviewData, ReviewAdapter.ReviewViewHolder>(DI
 
     inner class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ReviewCompactItemBinding.bind(itemView)
-        private val context = itemView.context
 
         init {
             binding.rvReviewFacilities.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
@@ -36,7 +35,7 @@ class ReviewAdapter : ListAdapter<ReviewData, ReviewAdapter.ReviewViewHolder>(DI
                 imgReviewProfile.loadImage(review.user.profilePicture)
                 tvReviewName.text = review.user.name
                 tvReviewText.text = review.review
-                rvReviewFacilities.adapter = ReviewFacilitiesAdapter().apply {
+                rvReviewFacilities.adapter = SingleReviewFacilitiesAdapter().apply {
                     submitList(review.facilities.take(5))
                 }
             }

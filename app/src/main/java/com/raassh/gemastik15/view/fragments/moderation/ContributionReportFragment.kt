@@ -1,11 +1,11 @@
 package com.raassh.gemastik15.view.fragments.moderation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.raassh.gemastik15.adapter.ContributionReportsAdapter
 import com.raassh.gemastik15.databinding.FragmentContributionReportBinding
@@ -32,7 +32,11 @@ class ContributionReportFragment : Fragment() {
 
         val adapter = ContributionReportsAdapter().apply {
             onItemClickListener = { contribution ->
-                Log.d("TAG", "onViewCreated: $contribution")
+                findNavController().navigate(
+                    ModerationFragmentDirections.actionModerationFragmentToDetailContributionReportFragment(
+                        contribution
+                    )
+                )
             }
         }
 

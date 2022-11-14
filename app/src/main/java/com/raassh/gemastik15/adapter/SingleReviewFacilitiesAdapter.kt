@@ -8,12 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.FacilityQualityItem
-import com.raassh.gemastik15.api.response.ReviewData
 import com.raassh.gemastik15.databinding.FacilityReviewSmallItemBinding
-import com.raassh.gemastik15.databinding.ReviewCompactItemBinding
 import com.raassh.gemastik15.utils.*
 
-class ReviewFacilitiesAdapter : ListAdapter<FacilityQualityItem, ReviewFacilitiesAdapter.ReviewFacilitiesViewHolder>(DIFF_CALLBACK) {
+class SingleReviewFacilitiesAdapter : ListAdapter<FacilityQualityItem, SingleReviewFacilitiesAdapter.ReviewFacilitiesViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ReviewFacilitiesViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.facility_review_small_item, parent, false)

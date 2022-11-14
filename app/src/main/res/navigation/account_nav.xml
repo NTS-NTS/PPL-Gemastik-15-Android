@@ -35,5 +35,18 @@
         android:id="@+id/moderationFragment"
         android:name="com.raassh.gemastik15.view.fragments.moderation.ModerationFragment"
         android:label="fragment_moderation"
-        tools:layout="@layout/fragment_moderation" />
+        tools:layout="@layout/fragment_moderation" >
+        <action
+            android:id="@+id/action_moderationFragment_to_detailContributionReportFragment"
+            app:destination="@id/detailContributionReportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailContributionReportFragment"
+        android:name="com.raassh.gemastik15.view.fragments.detailcontributionreport.DetailContributionReportFragment"
+        android:label="fragment_detail_contribution_report"
+        tools:layout="@layout/fragment_detail_contribution_report" >
+        <argument
+            android:name="reported"
+            app:argType="com.raassh.gemastik15.api.response.ItemReportContributionResponse" />
+    </fragment>
 </navigation>
