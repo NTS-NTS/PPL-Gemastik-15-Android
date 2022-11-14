@@ -328,4 +328,7 @@
 
     <string name="reported_name">Nama: %1$s</string>
     <string name="reported_username">Nama Pengguna: %1$s</string>
+
+    <string name="resend_verification">Kirim Ulang Verifikasi</string>
+    <string name="verification_email_sent">Email verifikasi telah terkirim</string>
 </resources>
