@@ -7,17 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.google.android.material.tabs.TabLayoutMediator
-import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ArticleAdapter
-import com.raassh.gemastik15.adapter.ViewPagerAdapter
 import com.raassh.gemastik15.databinding.FragmentNewsBinding
-import com.raassh.gemastik15.databinding.FragmentReadBinding
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
-import com.raassh.gemastik15.view.fragments.searchresult.SearchResultFragmentDirections
-import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsFragment : Fragment() {

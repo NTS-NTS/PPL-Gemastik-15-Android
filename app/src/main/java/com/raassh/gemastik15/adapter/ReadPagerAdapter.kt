@@ -8,7 +8,7 @@ import com.raassh.gemastik15.view.fragments.read.NewsFragment
 
 private const val NUM_TABS = 3
 
-class ViewPagerAdapter(fragment: Fragment) :
+class ReadPagerAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = NUM_TABS

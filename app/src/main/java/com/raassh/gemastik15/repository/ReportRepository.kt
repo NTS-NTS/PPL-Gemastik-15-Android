@@ -8,7 +8,7 @@ import com.raassh.gemastik15.api.request.ReportUserRequest
 import com.raassh.gemastik15.utils.callApi
 
 class ReportRepository(private val apiService: ApiService) {
-    suspend fun reportContribution(token: String, placeId: String, userId: String, reason: String) =
+    fun reportContribution(token: String, placeId: String, userId: String, reason: String) =
         callApi {
             val req = ReportContributionRequest(
                 userId = userId,
@@ -19,16 +19,16 @@ class ReportRepository(private val apiService: ApiService) {
             apiService.reportContribution("Bearer $token", req)
         }
 
-    suspend fun getAllContributionReport(token: String) = callApi {
+    fun getAllContributionReport(token: String) = callApi {
         apiService.getContributionReports("Bearer $token").data
     }
 
-    suspend fun getContributionReportDetails(token: String, placeId: String, userId: String) =
+    fun getContributionReportDetails(token: String, placeId: String, userId: String) =
         callApi {
             apiService.getContributionReportDetails("Bearer $token", placeId, userId).data
         }
 
-    suspend fun dismissContributionReport(
+    fun dismissContributionReport(
         token: String,
         placeId: String,
         userId: String
@@ -41,7 +41,7 @@ class ReportRepository(private val apiService: ApiService) {
         apiService.dismissContributionReport("Bearer $token", req)
     }
 
-    suspend fun moderateContributionReport(
+    fun moderateContributionReport(
         token: String,
         placeId: String,
         userId: String,
@@ -56,7 +56,7 @@ class ReportRepository(private val apiService: ApiService) {
         apiService.moderateContributionReport("Bearer $token", req)
     }
 
-    suspend fun reportUser(token: String, userId: String, reason: String) = callApi {
+    fun reportUser(token: String, userId: String, reason: String) = callApi {
         val req = ReportUserRequest(
             userId = userId,
             reason = reason
@@ -65,15 +65,15 @@ class ReportRepository(private val apiService: ApiService) {
         apiService.reportUser("Bearer $token", req)
     }
 
-    suspend fun getAllUserReport(token: String) = callApi {
+    fun getAllUserReport(token: String) = callApi {
         apiService.getUserReports("Bearer $token").data
     }
 
-    suspend fun getUserReportDetails(token: String, userId: String) = callApi {
+    fun getUserReportDetails(token: String, userId: String) = callApi {
         apiService.getUserReportDetails("Bearer $token", userId).data
     }
 
-    suspend fun dismissUserReport(token: String, userId: String) = callApi {
+    fun dismissUserReport(token: String, userId: String) = callApi {
         val req = DismissUserReportRequest(
             userId = userId
         )
@@ -81,7 +81,7 @@ class ReportRepository(private val apiService: ApiService) {
         apiService.dismissUserReport("Bearer $token", req)
     }
 
-    suspend fun moderateUserReport(token: String, userId: String, reason: String) = callApi {
+    fun moderateUserReport(token: String, userId: String, reason: String) = callApi {
         val req = ReportUserRequest(
             userId = userId,
             reason = reason

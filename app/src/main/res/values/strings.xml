@@ -325,4 +325,6 @@
     <string name="open_in_browser">Open in browser</string>
     <string name="share">Share</string>
     <string name="moderation_page">Moderation Page</string>
+    <string name="contribution_report">Contributions Report</string>
+    <string name="user_report">User Reports</string>
 </resources>

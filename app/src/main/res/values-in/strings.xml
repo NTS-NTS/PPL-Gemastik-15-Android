@@ -313,4 +313,6 @@
     <string name="read">Baca</string>
     <string name="guideline">Pedoman</string>
     <string name="moderation_page">Halaman Moderasi</string>
+    <string name="contribution_report">Laporan Kontribusi</string>
+    <string name="user_report">Laporan Pengguna</string>
 </resources>

@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
+import com.raassh.gemastik15.R
+import com.raassh.gemastik15.adapter.ModerationPagerAdapter
 import com.raassh.gemastik15.databinding.FragmentModerationBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ModerationFragment : Fragment() {
-    private val viewModel by viewModel<ModerationViewModel>()
+    private val moderationViewModel by sharedViewModel<ModerationViewModel>()
+    private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var binding: FragmentModerationBinding? = null
 
     override fun onCreateView(
@@ -23,12 +28,26 @@ class ModerationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.apply {
-            //
+            viewPager.adapter = ModerationPagerAdapter(this@ModerationFragment)
+
+            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                when (position) {
+                    0 -> {
+                        tab.text = getString(R.string.contribution_report)
+                    }
+                    1 -> {
+                        tab.text = getString(R.string.user_report)
+                    }
+                }
+            }.attach()
         }
 
-        viewModel.apply {
-            //
+        sharedViewModel.getToken().observe(viewLifecycleOwner) {
+            if (!it.isNullOrBlank()) {
+                moderationViewModel.setToken(it)
+            }
         }
+
     }
 
     override fun onDestroy() {
