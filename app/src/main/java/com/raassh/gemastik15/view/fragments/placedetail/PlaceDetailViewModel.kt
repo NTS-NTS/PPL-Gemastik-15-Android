@@ -3,11 +3,15 @@ package com.raassh.gemastik15.view.fragments.placedetail
 import androidx.lifecycle.*
 import com.raassh.gemastik15.api.request.PlaceDetailQuery
 import com.raassh.gemastik15.local.db.PlaceEntity
+import com.raassh.gemastik15.repository.ContributionRepository
 import com.raassh.gemastik15.repository.PlaceRepository
 import kotlinx.coroutines.launch
 import java.util.*
 
-class PlaceDetailViewModel(val placeRepository: PlaceRepository) : ViewModel() {
+class PlaceDetailViewModel(
+    private val placeRepository: PlaceRepository,
+    private val contributionRepository: ContributionRepository
+    ) : ViewModel() {
     private val query = MutableLiveData<PlaceDetailQuery>()
 
     val detail = Transformations.switchMap(query) {
@@ -22,4 +26,6 @@ class PlaceDetailViewModel(val placeRepository: PlaceRepository) : ViewModel() {
             placeRepository.insertPlacesToDB(listOf(place))
         }
     }
+
+    fun getReviews(placeId: String) = contributionRepository.getContributionsofPlace(placeId).asLiveData()
 }

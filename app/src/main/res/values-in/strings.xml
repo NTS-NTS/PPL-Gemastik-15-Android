@@ -315,4 +315,7 @@
     <string name="moderation_page">Halaman Moderasi</string>
     <string name="contribution_report">Laporan Kontribusi</string>
     <string name="user_report">Laporan Pengguna</string>
+    <string name="reviews">Ulasan</string>
+    <string name="see_all_reviews">Lihat semua (%d) ulasan</string>
+    <string name="no_reviews">Belum ada ulasan</string>
 </resources>

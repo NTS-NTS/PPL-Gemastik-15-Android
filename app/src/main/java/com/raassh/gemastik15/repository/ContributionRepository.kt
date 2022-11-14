@@ -17,4 +17,8 @@ class ContributionRepository(private val apiService: ApiService) {
     fun getContributionCount(token: String) = callApi {
         apiService.getContributionCount("Bearer $token").data
     }
+    
+    fun getContributionsofPlace(placeId: String) = callApi {
+        apiService.getContributionsofPlace(placeId).data
+    }
 }

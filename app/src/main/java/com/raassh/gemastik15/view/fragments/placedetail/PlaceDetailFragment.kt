@@ -19,8 +19,10 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.FacilityReviewAdapter
 import com.raassh.gemastik15.adapter.PlacePhotoAdapter
+import com.raassh.gemastik15.adapter.ReviewAdapter
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlaceDetailData
+import com.raassh.gemastik15.api.response.ReviewData
 import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
@@ -28,11 +30,14 @@ import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+private val REVIEW_LIMIT = 7
+
 class PlaceDetailFragment : Fragment() {
     private val viewModel by viewModel<PlaceDetailViewModel>()
     private var binding: FragmentPlaceDetailBinding? = null
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var map: GoogleMap? = null
+    private var reviews: List<ReviewData>? = null
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
@@ -85,22 +90,45 @@ class PlaceDetailFragment : Fragment() {
             }
         }
 
-        viewModel.detail.observe(viewLifecycleOwner) {
-            if (it != null) {
-                when (it) {
-                    is Resource.Loading -> {
-                        showLoading(true)
-                    }
-                    is Resource.Success -> {
-                        showLoading(false)
-                        setPlaceDetail(it.data)
-                    }
-                    is Resource.Error -> {
-                        binding?.root?.showSnackbar(
-                            requireContext().translateErrorMessage(it.message)
-                        )
+        viewModel.apply {
+            detail.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it) {
+                        is Resource.Loading -> {
+                            showLoading(true)
+                        }
+                        is Resource.Success -> {
+                            showLoading(false)
+                            setPlaceDetail(it.data)
+                        }
+                        is Resource.Error -> {
+                            binding?.root?.showSnackbar(
+                                requireContext().translateErrorMessage(it.message)
+                            )
 
-                        findNavController().navigateUp()
+                            findNavController().navigateUp()
+                        }
+                    }
+                }
+            }
+
+            getReviews(place.id).observe(viewLifecycleOwner) {
+                if (it != null) {
+                    when (it) {
+                        is Resource.Loading -> {
+                            setLoadingReviews(true)
+                        }
+                        is Resource.Success -> {
+                            setLoadingReviews(false)
+                            setReviews(it.data)
+                        }
+                        is Resource.Error -> {
+                            setLoadingReviews(false)
+                            showEmptyReviews()
+                            binding?.root?.showSnackbar(
+                                requireContext().translateErrorMessage(it.message)
+                            )
+                        }
                     }
                 }
             }
@@ -171,6 +199,59 @@ class PlaceDetailFragment : Fragment() {
         } else {
             rvReviews.visibility = View.GONE
             tvEmpty.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setReviews(reviews: List<ReviewData>?) {
+//        TODO: Filter reviews from the logged in user
+//        this.reviews = reviews?.filter { it.user.id != sharedViewModel.user.value?.id }
+        this.reviews = reviews
+
+        if (this.reviews == null) {
+            showEmptyReviews()
+            return
+        }
+
+        if (this.reviews?.size!! <= REVIEW_LIMIT) {
+            binding?.apply {
+                btnSeeAllReviews.visibility = View.GONE
+            }
+        } else {
+            binding?.apply {
+                btnSeeAllReviews.visibility = View.VISIBLE
+                btnSeeAllReviews.text = getString(R.string.see_all_reviews, this@PlaceDetailFragment.reviews?.size)
+            }
+        }
+
+        binding?.rvReviews?.apply {
+            adapter = ReviewAdapter().apply {
+                submitList(this@PlaceDetailFragment.reviews!!.take(REVIEW_LIMIT))
+            }
+            addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+        }
+    }
+
+    private fun setLoadingReviews(loading: Boolean) {
+        binding?.apply {
+            if (loading) {
+                pbLoadingReview.visibility = View.VISIBLE
+                rvReviews.visibility = View.GONE
+                tvReviewsEmpty.visibility = View.GONE
+                btnSeeAllReviews.visibility = View.GONE
+            } else {
+                pbLoadingReview.visibility = View.GONE
+                rvReviews.visibility = View.VISIBLE
+                tvReviewsEmpty.visibility = View.GONE
+                btnSeeAllReviews.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showEmptyReviews() {
+        binding?.apply {
+            rvReviews.visibility = View.GONE
+            tvReviewsEmpty.visibility = View.VISIBLE
+            btnSeeAllReviews.visibility = View.GONE
         }
     }
 
