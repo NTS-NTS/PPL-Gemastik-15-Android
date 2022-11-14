@@ -31,7 +31,7 @@ class ReviewAdapter(private val isCompact: Boolean = false) : ListAdapter<Review
             )
         } else {
             view.layoutParams = ViewGroup.LayoutParams(
-                convertDpToPixel(360, parent.context).toInt(),
+                convertDpToPixel(350, parent.context).toInt(),
                 convertDpToPixel(212, parent.context).toInt()
             )
         }
@@ -49,6 +49,9 @@ class ReviewAdapter(private val isCompact: Boolean = false) : ListAdapter<Review
 
         init {
             binding.rvReviewFacilities.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+            binding.btnReviewReport.setOnClickListener {
+                onItemClickListener?.invoke(getItem(adapterPosition))
+            }
         }
 
         fun bind(review: ReviewData) {
@@ -63,9 +66,6 @@ class ReviewAdapter(private val isCompact: Boolean = false) : ListAdapter<Review
                 else {
                     btnReviewReport.visibility = View.VISIBLE
                     facilities = review.facilities
-                    btnReviewReport.setOnClickListener {
-                        onItemClickListener?.invoke(getItem(adapterPosition))
-                    }
                 }
 
                 imgReviewProfile.loadImage(review.user.profilePicture)

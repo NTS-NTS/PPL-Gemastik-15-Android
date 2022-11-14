@@ -342,4 +342,22 @@
     <string name="ban_user">Ban pengguna</string>
     <string name="edit_review">Ubah Ulasan</string>
     <string name="moderated_warning_message">Ulasan Anda melanggar peraturan layanan kami dan sementara tidak ditampilkan. Ubah ulasan Anda untuk membalikkan ini!</string>
+    <string name="reason_spam">Spam</string>
+    <string name="reason_spam_description">Ulasan ditulis oleh bot, akun palsu, atau berisi iklan atau promosi</string>
+    <string name="reason_off_topic">Di luar topik</string>
+    <string name="reason_conflict_of_interest">Konflik kepentingan</string>
+    <string name="reason_inappropriate">Kata-kata tidak sopan</string>
+    <string name="reason_harassment">Penindasan atau pelecehan</string>
+    <string name="reason_hate_speech">Diskriminasi atau ujaran kebencian</string>
+    <string name="reason_private_information">Informasi pribadi</string>
+    <string name="reason_not_helpful">Tidak membantu</string>
+    <string name="reason_off_topic_description">Ulasan tidak berhubungan dengan pengalaman atau kualitas tempat ini</string>
+    <string name="reason_conflict_of_interest_description">Ulasan ditulis oleh seseorang yang berhubungan dengan tempat ini atau tempat pesaing</string>
+    <string name="reason_inappropriate_description">Ulasan berisi kata-kata umpatan, kata-kata vulgar, atau menggambarkan kekerasan</string>
+    <string name="reason_harassment_description">Ulasan berisi ancaman, ejekan, atau serangan secara pribadi</string>
+    <string name="reason_hate_speech_description">Ulasan berisi kata-kata yang mengancam seseorang atau suatu kelompok berdasarkan identitas mereka</string>
+    <string name="reason_private_information_description">Ulasan berisi informasi pribadi seperti nomor telepon, alamat, dan email</string>
+    <string name="reason_not_helpful_description">Ulasan tidak membantu bagi pengguna lain</string>
+    <string name="report_review_confirmation">Apakah kamu yakin ingin melaporkan ulasan ini karena %s?</string>
+    <string name="report_submitted">Laporan dikirim</string>
 </resources>

@@ -353,4 +353,23 @@
     <string name="ban_user">Ban user</string>
     <string name="edit_review">Edit Review</string>
     <string name="moderated_warning_message">Your review violates our service rules and currently is not publicly available. Edit your review to reverse this!</string>
+
+    <string name="reason_spam">Spam</string>
+    <string name="reason_spam_description">Review is written by bot, fake account, or contains ads and promotion</string>
+    <string name="reason_off_topic">Off topic</string>
+    <string name="reason_off_topic_description">Review is not related to the experience or quality of this place</string>
+    <string name="reason_conflict_of_interest">Conflict of interest</string>
+    <string name="reason_conflict_of_interest_description">Review is written by the someone affiliated this place or its competitor</string>
+    <string name="reason_inappropriate">Inappropriate words</string>
+    <string name="reason_inappropriate_description">Review contains curse words, vulgar words, or describing violence</string>
+    <string name="reason_harassment">Oppression or harassment</string>
+    <string name="reason_harassment_description">Review contains threats, insults, or personal attacks</string>
+    <string name="reason_hate_speech">Discrimination or hate speech</string>
+    <string name="reason_hate_speech_description">Review contains words that threaten someone or some group based on their identity</string>
+    <string name="reason_private_information">Personal information</string>
+    <string name="reason_private_information_description">Review contains private information such as phone number, address, or email</string>
+    <string name="reason_not_helpful">Not helpful</string>
+    <string name="reason_not_helpful_description">Review is not helpful for other users</string>
+    <string name="report_review_confirmation">Are you sure you want to report this review because of %s?</string>
+    <string name="report_submitted">Report submitted</string>
 </resources>

@@ -339,6 +339,30 @@ fun Context.translateDisabilityFromView(disabilityType: String) = when(disabilit
     else -> disabilityType
 }
 
+fun Context.getReviewReason(reason: String) = when(reason) {
+    "spam" -> getString(R.string.reason_spam)
+    "off_topic" -> getString(R.string.reason_off_topic)
+    "conflict_of_interest" -> getString(R.string.reason_conflict_of_interest)
+    "inappropriate" -> getString(R.string.reason_inappropriate)
+    "harassment" -> getString(R.string.reason_harassment)
+    "hate_speech" -> getString(R.string.reason_hate_speech)
+    "private_information" -> getString(R.string.reason_private_information)
+    "not_helpful" -> getString(R.string.reason_not_helpful)
+    else -> reason
+}
+
+fun Context.getReviewReasonDescription(reason: String) = when(reason) {
+    "spam" -> getString(R.string.reason_spam_description)
+    "off_topic" -> getString(R.string.reason_off_topic_description)
+    "conflict_of_interest" -> getString(R.string.reason_conflict_of_interest_description)
+    "inappropriate" -> getString(R.string.reason_inappropriate_description)
+    "harassment" -> getString(R.string.reason_harassment_description)
+    "hate_speech" -> getString(R.string.reason_hate_speech_description)
+    "private_information" -> getString(R.string.reason_private_information_description)
+    "not_helpful" -> getString(R.string.reason_not_helpful_description)
+    else -> reason
+}
+
 fun Context.translateArticleTypeFromDB(articleType: String) = when(articleType) {
     "news" -> getString(R.string.news).uppercase()
     "article" -> getString(R.string.article).uppercase()

@@ -17,6 +17,7 @@ import com.raassh.gemastik15.view.fragments.moderation.ModerationViewModel
 import com.raassh.gemastik15.view.fragments.placedetail.PlaceDetailViewModel
 import com.raassh.gemastik15.view.fragments.read.ReadViewModel
 import com.raassh.gemastik15.view.fragments.register.RegisterViewModel
+import com.raassh.gemastik15.view.fragments.reportreview.ReportReviewViewModel
 import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityViewModel
 import com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionViewModel
 import com.raassh.gemastik15.view.fragments.searchresult.SearchResultViewModel
@@ -102,5 +103,9 @@ val viewModelModule = module {
 
     viewModel {
         DetailUserReportViewModel(get())
+    }
+
+    viewModel {
+        ReportReviewViewModel(get())
     }
 }
