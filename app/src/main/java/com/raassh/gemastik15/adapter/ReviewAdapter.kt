@@ -71,7 +71,7 @@ class ReviewAdapter(private val isCompact: Boolean = false) : ListAdapter<Review
                 imgReviewProfile.loadImage(review.user.profilePicture)
                 tvReviewName.text = review.user.name
                 tvReviewText.text = review.review
-                rvReviewFacilities.adapter = ReviewFacilitiesAdapter().apply {
+                rvReviewFacilities.adapter = SingleReviewFacilitiesAdapter().apply {
                     submitList(facilities)
                 }
             }

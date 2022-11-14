@@ -21,4 +21,8 @@ class ContributionRepository(private val apiService: ApiService) {
     fun getContributionsofPlace(placeId: String) = callApi {
         apiService.getContributionsofPlace(placeId).data
     }
+
+    fun getContributionsofPlacebyUser(placeId: String, userId: String) = callApi {
+        apiService.getContributionsofPlacebyUser(placeId, userId).data
+    }
 }

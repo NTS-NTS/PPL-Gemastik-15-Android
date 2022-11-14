@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.auth0.android.jwt.JWT
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,6 +21,8 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.FacilityReviewAdapter
 import com.raassh.gemastik15.adapter.PlacePhotoAdapter
 import com.raassh.gemastik15.adapter.ReviewAdapter
+import com.raassh.gemastik15.adapter.SingleReviewFacilitiesAdapter
+import com.raassh.gemastik15.api.response.ContributionUserPlaceData
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlaceDetailData
 import com.raassh.gemastik15.api.response.ReviewData
@@ -37,7 +40,6 @@ class PlaceDetailFragment : Fragment() {
     private var binding: FragmentPlaceDetailBinding? = null
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var map: GoogleMap? = null
-    private var reviews: List<ReviewData>? = null
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
@@ -62,6 +64,8 @@ class PlaceDetailFragment : Fragment() {
 
         val place = PlaceDetailFragmentArgs.fromBundle(requireArguments()).place
         showLoading(true)
+        showEmptyReviews()
+        showEmptyUserReview()
 
         binding?.apply {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
@@ -120,7 +124,7 @@ class PlaceDetailFragment : Fragment() {
                         }
                         is Resource.Success -> {
                             setLoadingReviews(false)
-                            setReviews(it.data)
+                            setReviews(it.data!!)
                         }
                         is Resource.Error -> {
                             setLoadingReviews(false)
@@ -132,10 +136,46 @@ class PlaceDetailFragment : Fragment() {
                     }
                 }
             }
+
+            userId.observe(viewLifecycleOwner) { userId ->
+                if (userId != null) {
+                    getUserReview(place.id, userId).observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            when (it) {
+                                is Resource.Loading -> {
+
+                                }
+                                is Resource.Success -> {
+                                    setUserReview(it.data!!)
+                                }
+                                is Resource.Error -> {
+                                    showEmptyUserReview()
+                                    binding?.root?.showSnackbar(
+                                        requireContext().translateErrorMessage(it.message)
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        sharedViewModel.location.observe(viewLifecycleOwner) {
-            viewModel.getDetail(place, it?.latitude, it?.longitude)
+        sharedViewModel.apply {
+            getToken().observe(viewLifecycleOwner) {
+                if (!it.isNullOrEmpty()) {
+                    val jwt = JWT(it)
+                    val userId = jwt.getClaim("id").asString()
+
+                    if (userId != null) {
+                        viewModel.setUserId(userId)
+                    }
+                }
+            }
+
+            location.observe(viewLifecycleOwner) {
+                viewModel.getDetail(place, it?.latitude, it?.longitude)
+            }
         }
     }
 
@@ -202,14 +242,19 @@ class PlaceDetailFragment : Fragment() {
         }
     }
 
-    private fun setReviews(reviews: List<ReviewData>?) {
+    private fun setReviews(reviews: List<ReviewData>) {
 //        TODO: Filter reviews from the logged in user
 //        this.reviews = reviews?.filter { it.user.id != sharedViewModel.user.value?.id }
-        this.reviews = reviews
 
-        if (reviews == null) {
+        if (reviews.isEmpty()) {
             showEmptyReviews()
             return
+        }
+
+        binding?.apply {
+            rvReviews.visibility = View.VISIBLE
+            tvReviewsEmpty.visibility = View.GONE
+            btnSeeAllReviews.visibility = View.VISIBLE
         }
 
         binding?.btnSeeAllReviews?.setOnClickListener {
@@ -217,11 +262,11 @@ class PlaceDetailFragment : Fragment() {
                 reviews.toTypedArray()
             ))
         }
-        binding?.btnSeeAllReviews?.text = getString(R.string.see_all_reviews, this@PlaceDetailFragment.reviews?.size)
+        binding?.btnSeeAllReviews?.text = getString(R.string.see_all_reviews, reviews.size)
 
         binding?.rvReviews?.apply {
             adapter = ReviewAdapter(true).apply {
-                submitList(this@PlaceDetailFragment.reviews!!.take(REVIEW_LIMIT))
+                submitList(reviews.take(REVIEW_LIMIT))
             }
             addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
         }
@@ -248,6 +293,38 @@ class PlaceDetailFragment : Fragment() {
             rvReviews.visibility = View.GONE
             tvReviewsEmpty.visibility = View.VISIBLE
             btnSeeAllReviews.visibility = View.GONE
+        }
+    }
+
+    private fun setUserReview(review: ContributionUserPlaceData) {
+        if (review.review.isNullOrEmpty() && review.facilities.isEmpty()) {
+            showEmptyUserReview()
+            return
+        }
+
+        binding?.apply {
+            llYourReview.visibility = View.VISIBLE
+            btnAddReview.visibility = View.GONE
+            tvYourReview.text = review.review
+            if (review.review.isNullOrEmpty()) tvYourReview.visibility = View.GONE
+            rvYourReviewFacilities.apply {
+                adapter = SingleReviewFacilitiesAdapter().apply {
+                    submitList(review.facilities)
+                }
+                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+            }
+            if (review.is_moderated) cdModeratedWarning.visibility = View.VISIBLE
+            else cdModeratedWarning.visibility = View.GONE
+            btnEditReview.setOnClickListener {
+//                TODO: navigate to edit review
+            }
+        }
+    }
+
+    private fun showEmptyUserReview() {
+        binding?.apply {
+            llYourReview.visibility = View.GONE
+            btnAddReview.visibility = View.VISIBLE
         }
     }
 

@@ -6,4 +6,5 @@
     <attr name="colorOnGreenContainer" format="color" />
     <attr name="harmonizeGreen" format="boolean" />
     <attr name="colorOrange" format="color"/>
+    <attr name="colorOrangeContainer" format="color"/>
 </resources>

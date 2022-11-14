@@ -64,6 +64,12 @@ interface ApiService {
         @Path("place_id") placeId: String
     ): ContributionsPlaceResponse
 
+    @GET("contributions/{place_id}/users/{user_id}")
+    suspend fun getContributionsofPlacebyUser(
+        @Path("place_id") placeId: String,
+        @Path("user_id") userId: String
+    ): ContributionUserPlaceResponse
+
     @POST("auth/disabilities")
     suspend fun setDisabilities(
         @Header("Authorization") authorization: String,

@@ -351,4 +351,6 @@
     <string name="moderate_contribution_reason">Choose reason</string>
     <string name="reported_email">Email: %1$s</string>
     <string name="ban_user">Ban user</string>
+    <string name="edit_review">Edit Review</string>
+    <string name="moderated_warning_message">Your review violates our service rules and currently is not publicly available. Edit your review to reverse this!</string>
 </resources>

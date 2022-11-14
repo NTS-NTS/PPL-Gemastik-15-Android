@@ -61,8 +61,10 @@
     <color name="md_theme_dark_surfaceTintColor">#CEBDFF</color>
 
     <color name="Green">#00DD80</color>
-    <color name="orange_light">#CC9018</color>
+    <color name="orange_light">#A87102</color>
     <color name="orange_dark">#FFC248</color>
+    <color name="orange_container_light">#FFF0D1</color>
+    <color name="orange_container_dark">#FFC248</color>
 
     <color name="md_ref_primary10">#21005E</color>
     <color name="md_ref_primary20">#390094</color>

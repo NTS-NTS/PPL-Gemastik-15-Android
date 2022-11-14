@@ -35,6 +35,7 @@
         <item name="harmonizeGreen">false</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
         <item name="colorOrange">@color/orange_dark</item>
+        <item name="colorOrangeContainer">@color/orange_container_dark</item>
 
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>

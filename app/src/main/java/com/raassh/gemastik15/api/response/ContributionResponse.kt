@@ -85,3 +85,33 @@ data class FacilityQualityItem(
     @field:SerializedName("quality")
     val quality: Int,
 ) : Parcelable
+
+data class ContributionUserPlaceResponse(
+
+    @field:SerializedName("data")
+    val data: ContributionUserPlaceData,
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class ContributionUserPlaceData(
+
+    @field:SerializedName("user_id")
+    val user_id: String,
+
+    @field:SerializedName("place_id")
+    val place_id: String,
+
+    @field:SerializedName("facilities")
+    val facilities: List<FacilityQualityItem>,
+
+    @field:SerializedName("review")
+    val review: String?,
+
+    @field:SerializedName("is_moderated")
+    val is_moderated: Boolean
+)
