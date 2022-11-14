@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_accountFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_moderationFragment"
+            app:destination="@id/moderationFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
@@ -28,4 +31,9 @@
         android:name="com.raassh.gemastik15.view.fragments.editprofile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/moderationFragment"
+        android:name="com.raassh.gemastik15.view.fragments.moderation.ModerationFragment"
+        android:label="fragment_moderation"
+        tools:layout="@layout/fragment_moderation" />
 </navigation>

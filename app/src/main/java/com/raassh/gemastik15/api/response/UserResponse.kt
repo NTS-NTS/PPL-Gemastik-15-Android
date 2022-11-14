@@ -30,6 +30,6 @@ data class UserData(
 	@field:SerializedName("email")
 	val email: String,
 
-	@field:SerializedName("profile_pic")
-	val photo: String
+	@field:SerializedName("profile_picture")
+	val profilePicture: String
 ) : Parcelable

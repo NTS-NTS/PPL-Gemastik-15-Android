@@ -34,8 +34,63 @@ class UserPreferences(private val dataStore: DataStore<Preferences>) {
         }
     }
 
+    fun getName() = dataStore.data.map { preferences ->
+        preferences[NAME_KEY]
+    }
+
+    suspend fun setName(name: String) {
+        dataStore.edit { preferences ->
+            preferences[NAME_KEY] = name
+        }
+    }
+
+    fun getUserName() = dataStore.data.map { preferences ->
+        preferences[USERNAME_KEY]
+    }
+
+    suspend fun setUserName(userName: String) {
+        dataStore.edit { preferences ->
+            preferences[USERNAME_KEY] = userName
+        }
+    }
+
+    fun getIsModerator() = dataStore.data.map { preferences ->
+        preferences[IS_MODERATOR_KEY]
+    }
+
+    suspend fun setIsModerator(isModerator: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[IS_MODERATOR_KEY] = isModerator
+        }
+    }
+
+    fun getIsBanned() = dataStore.data.map { preferences ->
+        preferences[IS_BANNED_KEY]
+    }
+
+    suspend fun setIsBanned(isBanned: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[IS_BANNED_KEY] = isBanned
+        }
+    }
+
+    fun getIsVerified() = dataStore.data.map { preferences ->
+        preferences[IS_VERIFIED_KEY]
+    }
+
+    suspend fun setIsVerified(isVerified: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[IS_VERIFIED_KEY] = isVerified
+        }
+    }
+
     companion object {
         val TOKEN_KEY = stringPreferencesKey("token")
         val HAS_DISABILITY_TYPES_KEY = booleanPreferencesKey("has_disability_types")
+        val NAME_KEY = stringPreferencesKey("name")
+        val USERNAME_KEY = stringPreferencesKey("username")
+        val IS_MODERATOR_KEY = booleanPreferencesKey("is_moderator")
+        val IS_BANNED_KEY = booleanPreferencesKey("is_banned")
+        val IS_VERIFIED_KEY = booleanPreferencesKey("is_verified")
     }
 }

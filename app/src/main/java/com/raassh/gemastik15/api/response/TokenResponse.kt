@@ -36,4 +36,7 @@ data class TokenData(
 
 	@field:SerializedName("is_verified")
 	val isVerified: Boolean,
+
+	@field:SerializedName("is_banned")
+	val isBanned: Boolean,
 )

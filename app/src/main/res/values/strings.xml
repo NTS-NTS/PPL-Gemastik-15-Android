@@ -324,4 +324,5 @@
     <string name="days_ago">%d days ago</string>
     <string name="open_in_browser">Open in browser</string>
     <string name="share">Share</string>
+    <string name="moderation_page">Moderation Page</string>
 </resources>
