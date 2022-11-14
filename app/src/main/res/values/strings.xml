@@ -348,4 +348,6 @@
     <string name="moderate_contribution">Delete Contribution</string>
     <string name="dismiss">Dismiss</string>
     <string name="moderate_contribution_reason">Choose reason</string>
+    <string name="reported_email">Email: %1$s</string>
+    <string name="ban_user">Ban user</string>
 </resources>
