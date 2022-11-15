@@ -10,6 +10,7 @@ import com.raassh.gemastik15.view.fragments.contribution.ContributionViewModel
 import com.raassh.gemastik15.view.fragments.detailcontributionreport.DetailContributionReportViewModel
 import com.raassh.gemastik15.view.fragments.detailuserreport.DetailUserReportViewModel
 import com.raassh.gemastik15.view.fragments.discover.DiscoverViewModel
+import com.raassh.gemastik15.view.fragments.editcontribution.EditContributionViewModel
 import com.raassh.gemastik15.view.fragments.editprofile.EditProfileViewModel
 import com.raassh.gemastik15.view.fragments.landing.LandingViewModel
 import com.raassh.gemastik15.view.fragments.login.LoginViewModel
@@ -107,5 +108,9 @@ val viewModelModule = module {
 
     viewModel {
         ReportReviewViewModel(get())
+    }
+
+    viewModel {
+        EditContributionViewModel(get())
     }
 }

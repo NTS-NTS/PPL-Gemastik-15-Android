@@ -83,6 +83,9 @@
         <action
             android:id="@+id/action_placeDetailFragment_to_reviewsFragment"
             app:destination="@id/reviewsFragment" />
+        <action
+            android:id="@+id/action_placeDetailFragment_to_editContributionFragment"
+            app:destination="@id/editContributionFragment" />
     </fragment>
     <fragment
         android:id="@+id/addContributionFragment"
@@ -110,6 +113,15 @@
         android:name="com.raassh.gemastik15.view.fragments.reportreview.ReportReviewFragment"
         android:label="ReportReviewFragment"
         tools:layout="@layout/fragment_report_review">
+        <argument
+            android:name="review"
+            app:argType="com.raassh.gemastik15.api.response.ReviewData" />
+    </fragment>
+    <fragment
+        android:id="@+id/editContributionFragment"
+        android:name="com.raassh.gemastik15.view.fragments.editcontribution.EditContributionFragment"
+        android:label="fragment_edit_contribution"
+        tools:layout="@layout/fragment_edit_contribution">
         <argument
             android:name="review"
             app:argType="com.raassh.gemastik15.api.response.ReviewData" />

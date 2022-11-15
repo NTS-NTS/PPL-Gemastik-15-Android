@@ -55,7 +55,6 @@ class AddContributionViewModel(
             quality = quality
         )
         _reviewFacilities.value = reviewFacilities.value?.plus(facilityQualityItem)
-        Log.d("reviewFacilitiesvm", reviewFacilities.value.toString())
         nextFacility()
     }
 

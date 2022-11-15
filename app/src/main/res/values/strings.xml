@@ -377,4 +377,5 @@
     <string name="facility_review_done">Facility review done!</string>
     <string name="sending_review">Sending review...</string>
     <string name="review_sent">Review sent</string>
+    <string name="edit_contribution">Edit Contribution</string>
 </resources>

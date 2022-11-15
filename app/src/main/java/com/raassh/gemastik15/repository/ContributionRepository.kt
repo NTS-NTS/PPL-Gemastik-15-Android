@@ -15,6 +15,15 @@ class ContributionRepository(private val apiService: ApiService) {
         apiService.addReview("Bearer $token", req)
     }
 
+    fun editReview(token: String, placeId: String, review: String, facilityReviews: List<FacilityQualityItem>) = callApi {
+        val req = ReviewRequest(
+            placeId = placeId,
+            review = review,
+            facilityReviews = facilityReviews,
+        )
+        apiService.changeReview("Bearer $token", req)
+    }
+
     fun getContributionCount(token: String) = callApi {
         apiService.getContributionCount("Bearer $token").data
     }
