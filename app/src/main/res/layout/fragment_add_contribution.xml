@@ -46,11 +46,25 @@
                 android:id="@+id/tv_add_contribution_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:text="@string/add_contribution"
+                android:maxLines="1"
+                android:ellipsize="end"
                 app:layout_constraintStart_toEndOf="@id/btn_back"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_send_contribution"
                 app:layout_constraintTop_toTopOf="@id/btn_back"
                 app:layout_constraintBottom_toBottomOf="@id/btn_back"/>
+
+            <Button
+                style="@style/Theme.Gemastik15.Button"
+                android:id="@+id/btn_send_contribution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="@string/send"
+                app:layout_constraintTop_toTopOf="@id/btn_back"
+                app:layout_constraintBottom_toBottomOf="@id/btn_back"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <LinearLayout
                 android:id="@+id/ll_place_title"
@@ -202,220 +216,300 @@
                 app:layout_constraintTop_toBottomOf="@id/cl_address"/>
 
             <LinearLayout
-                android:id="@+id/ll_facilities"
+                android:id="@+id/ll_review_full"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="20dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/divider_2"
-                tools:visibility="gone">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <LinearLayout
-                    android:id="@+id/ll_facility_review_title"
+                    android:id="@+id/ll_facilities"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="16dp"
-                    android:accessibilityHeading="true"
-                    android:focusable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@id/ll_review"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_2"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:visibility="visible">
 
-                    <TextView
-                        android:id="@+id/facility_review_title"
-                        style="@style/TextAppearance.Material3.TitleMedium"
+                    <LinearLayout
+                        android:id="@+id/ll_facility_review_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:text="@string/review_title" />
+                        android:layout_marginBottom="16dp"
+                        android:accessibilityHeading="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_facility_counter"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        tools:text="Fasilitas 10 dari 15" />
-
-                </LinearLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_facility_review"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:elevation="2dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cl_facility_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <LinearLayout
-                            android:id="@+id/ll_facility_description"
+                        <TextView
+                            android:id="@+id/facility_review_title"
+                            style="@style/TextAppearance.Material3.TitleMedium"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="true"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:visibility="visible">
+                            android:focusable="false"
+                            android:text="@string/review_title" />
 
-                            <ImageView
-                                android:id="@+id/img_facility_icon"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:contentDescription="@null"
-                                android:focusable="false"
-                                android:importantForAccessibility="no"
-                                tools:src="@drawable/accessible_furniture" />
-
-                            <TextView
-                                android:id="@+id/tv_facility_name"
-                                style="@style/TextAppearance.Material3.TitleMedium"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:focusable="false"
-                                tools:text="Accessible Furniture" />
-
-                            <TextView
-                                android:id="@+id/tv_facility_description"
-                                style="@style/TextAppearance.Material3.BodyMedium"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:focusable="false"
-                                android:gravity="center"
-                                tools:text="Furnitures are easily accessible by wheelchair users and those with impaired mobility" />
-
-                        </LinearLayout>
-
-                        <com.google.android.material.progressindicator.CircularProgressIndicator
-                            android:id="@+id/spn_facility_review"
-                            style="@style/Widget.Material3.CircularProgressIndicator.Medium"
+                        <TextView
+                            android:id="@+id/tv_facility_counter"
+                            style="@style/TextAppearance.Material3.BodyMedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:indeterminate="true"
-                            android:visibility="invisible"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:focusable="false"
+                            tools:text="Fasilitas 10 dari 15" />
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_facility_review"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="2dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_facility_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:visibility="visible" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:id="@+id/ll_facility_description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="true"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:visibility="visible">
+
+                                <ImageView
+                                    android:id="@+id/img_facility_icon"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:contentDescription="@null"
+                                    android:focusable="false"
+                                    android:importantForAccessibility="no"
+                                    tools:src="@drawable/accessible_furniture" />
+
+                                <TextView
+                                    android:id="@+id/tv_facility_name"
+                                    style="@style/TextAppearance.Material3.TitleMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    tools:text="Accessible Furniture" />
+
+                                <TextView
+                                    android:id="@+id/tv_facility_description"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:gravity="center"
+                                    tools:text="Furnitures are easily accessible by wheelchair users and those with impaired mobility" />
+
+                            </LinearLayout>
+
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/spn_facility_review"
+                                style="@style/Widget.Material3.CircularProgressIndicator.Medium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:indeterminate="true"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:visibility="visible" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <Button
+                            android:id="@+id/btn_facility_review_good"
+                            style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="8dp"
+                            android:contentDescription="@string/review_good_cta"
+                            android:paddingLeft="6dp"
+                            android:paddingRight="6dp"
+                            android:text="@string/good"
+                            app:icon="@drawable/ic_outline_thumb_up_20"
+                            app:layout_constraintBottom_toBottomOf="@id/btn_facility_review_none"
+                            app:layout_constraintEnd_toStartOf="@id/btn_facility_review_bad"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/btn_facility_review_none" />
+
+                        <Button
+                            android:id="@+id/btn_facility_review_bad"
+                            style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="8dp"
+                            android:contentDescription="@string/review_bad_cta"
+                            android:paddingLeft="6dp"
+                            android:paddingRight="6dp"
+                            android:text="@string/bad"
+                            app:icon="@drawable/ic_outline_thumb_down_20"
+                            app:layout_constraintBottom_toBottomOf="@id/btn_facility_review_none"
+                            app:layout_constraintEnd_toStartOf="@id/btn_facility_review_none"
+                            app:layout_constraintStart_toEndOf="@id/btn_facility_review_good"
+                            app:layout_constraintTop_toTopOf="@id/btn_facility_review_none" />
+
+                        <Button
+                            android:id="@+id/btn_facility_review_none"
+                            style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:contentDescription="@string/review_not_exist_cta"
+                            android:paddingLeft="6dp"
+                            android:paddingRight="6dp"
+                            android:text="@string/not_exist"
+                            app:icon="@drawable/ic_baseline_not_exist_20"
+                            app:layout_constraintBottom_toTopOf="@id/btn_facility_review_dont_know"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/btn_facility_review_bad"
+                            app:layout_constraintTop_toBottomOf="@id/cl_facility_description" />
+
+                        <Button
+                            android:id="@+id/btn_facility_review_dont_know"
+                            style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/review_dont_know_cta"
+                            android:text="@string/don_t_know"
+                            app:icon="@drawable/ic_baseline_remove_circle_outline_24"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/btn_facility_review_none" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/divider_facility_review"
+                            style="@style/Theme.Gemastik15.Divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/btn_facility_review_dont_know" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                </LinearLayout>
 
-                    <Button
-                        android:id="@+id/btn_facility_review_good"
-                        style="@style/Theme.Gemastik15.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginEnd="8dp"
-                        android:contentDescription="@string/review_good_cta"
-                        android:paddingLeft="6dp"
-                        android:paddingRight="6dp"
-                        android:text="@string/good"
-                        app:icon="@drawable/ic_outline_thumb_up_20"
-                        app:layout_constraintBottom_toBottomOf="@id/btn_facility_review_none"
-                        app:layout_constraintEnd_toStartOf="@id/btn_facility_review_bad"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/btn_facility_review_none" />
+                <LinearLayout
+                    android:id="@+id/ll_facility_review_done"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/ll_review"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_2"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:visibility="visible">
 
-                    <Button
-                        android:id="@+id/btn_facility_review_bad"
-                        style="@style/Theme.Gemastik15.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginEnd="8dp"
-                        android:contentDescription="@string/review_bad_cta"
-                        android:paddingLeft="6dp"
-                        android:paddingRight="6dp"
-                        android:text="@string/bad"
-                        app:icon="@drawable/ic_outline_thumb_down_20"
-                        app:layout_constraintBottom_toBottomOf="@id/btn_facility_review_none"
-                        app:layout_constraintEnd_toStartOf="@id/btn_facility_review_none"
-                        app:layout_constraintStart_toEndOf="@id/btn_facility_review_good"
-                        app:layout_constraintTop_toTopOf="@id/btn_facility_review_none" />
-
-                    <Button
-                        android:id="@+id/btn_facility_review_none"
-                        style="@style/Theme.Gemastik15.Button.OutlinedButton"
-                        android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/tv_facility_review_done"
+                        style="@style/TextAppearance.Material3.TitleMedium"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:contentDescription="@string/review_not_exist_cta"
-                        android:paddingLeft="6dp"
-                        android:paddingRight="6dp"
-                        android:text="@string/not_exist"
-                        app:icon="@drawable/ic_baseline_not_exist_20"
-                        app:layout_constraintBottom_toTopOf="@id/btn_facility_review_dont_know"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btn_facility_review_bad"
-                        app:layout_constraintTop_toBottomOf="@id/cl_facility_description" />
-
-                    <Button
-                        android:id="@+id/btn_facility_review_dont_know"
-                        style="@style/Theme.Gemastik15.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="@string/review_dont_know_cta"
-                        android:text="@string/don_t_know"
-                        app:icon="@drawable/ic_baseline_not_exist_20"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/facility_review_done"
+                        app:layout_constraintBottom_toBottomOf="@id/parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/btn_facility_review_none" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_review"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_facilities">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Theme.Gemastik15.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="16dp"
+                        app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_review"
+                            style="@style/Theme.Gemastik15.TextInputEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="64dp"
+                            android:padding="12dp"
+                            android:gravity="top"
+                            android:hint="@string/write_your_review"
+                            android:inputType="text"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_your_review_facilities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="20dp"
+                        tools:listitem="@layout/facility_review_small_item"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_facility_review_done"
+                android:id="@+id/ll_review_sending"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider_2"
-                app:layout_constraintVertical_bias="0.0"
-                tools:visibility="visible">
+                android:gravity="center"
+                android:visibility="gone">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    style="@style/Widget.Material3.CircularProgressIndicator"
+                    android:layout_width="wrap_content"
+                    android:indeterminate="true"
+                    android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/tv_facility_review_done"
-                    style="@style/TextAppearance.Material3.TitleMedium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/review_done_message"
-                    app:layout_constraintBottom_toTopOf="@id/btn_facility_review_done"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/btn_facility_review_done"
-                    style="@style/Theme.Gemastik15.Button"
+                    style="@style/TextAppearance.Material3.BodyLarge"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/close_contribution_page"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_facility_review_done" />
+                    android:text="@string/sending_review"/>
 
             </LinearLayout>
 

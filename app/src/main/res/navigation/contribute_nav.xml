@@ -58,7 +58,7 @@
             android:name="reviews"
             app:argType="com.raassh.gemastik15.api.response.ReviewData[]"/>
         <action
-            android:id="@+id/action_reviewsFragment_to_reportReviewFragment2"
+            android:id="@+id/action_reviewsFragment_to_reportReviewFragment"
             app:destination="@id/reportReviewFragment" />
     </fragment>
     <fragment

@@ -1,17 +1,18 @@
 package com.raassh.gemastik15.repository
 
 import com.raassh.gemastik15.api.ApiService
-import com.raassh.gemastik15.api.request.ContributionRequest
+import com.raassh.gemastik15.api.request.ReviewRequest
+import com.raassh.gemastik15.api.response.FacilityQualityItem
 import com.raassh.gemastik15.utils.callApi
 
 class ContributionRepository(private val apiService: ApiService) {
-    fun addContribution(token: String, placeId: String, facility: String, quality: Int) = callApi {
-        val req = ContributionRequest(
+    fun addReview(token: String, placeId: String, review: String, facilityReviews: List<FacilityQualityItem>) = callApi {
+        val req = ReviewRequest(
             placeId=placeId,
-            facility=facility,
-            quality=quality
+            review=review,
+            facilityReviews=facilityReviews,
         )
-        apiService.addContribution("Bearer $token", req)
+        apiService.addReview("Bearer $token", req)
     }
 
     fun getContributionCount(token: String) = callApi {

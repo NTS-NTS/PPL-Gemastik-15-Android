@@ -21,7 +21,7 @@ val networkModule = module {
                     }
                 )
             )
-            .callTimeout(60, TimeUnit.SECONDS)
+            .callTimeout(120, TimeUnit.SECONDS)
             .build()
     }
 

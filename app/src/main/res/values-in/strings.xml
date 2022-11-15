@@ -360,4 +360,9 @@
     <string name="reason_not_helpful_description">Ulasan tidak membantu bagi pengguna lain</string>
     <string name="report_review_confirmation">Apakah kamu yakin ingin melaporkan ulasan ini karena %s?</string>
     <string name="report_submitted">Laporan dikirim</string>
+    <string name="write_your_review">Tulis ulasanmu disini</string>
+    <string name="send">Kirim</string>
+    <string name="facility_review_done">Ulasan fasilitas selesai!</string>
+    <string name="sending_review">Mengirim ulasan...</string>
+    <string name="review_sent">Ulasan terkirim</string>
 </resources>

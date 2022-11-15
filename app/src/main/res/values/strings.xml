@@ -372,4 +372,9 @@
     <string name="reason_not_helpful_description">Review is not helpful for other users</string>
     <string name="report_review_confirmation">Are you sure you want to report this review because of %s?</string>
     <string name="report_submitted">Report submitted</string>
+    <string name="write_your_review">Write your review here</string>
+    <string name="send">Send</string>
+    <string name="facility_review_done">Facility review done!</string>
+    <string name="sending_review">Sending review...</string>
+    <string name="review_sent">Review sent</string>
 </resources>

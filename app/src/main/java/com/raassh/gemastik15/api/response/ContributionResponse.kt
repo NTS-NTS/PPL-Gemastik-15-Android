@@ -29,6 +29,28 @@ data class ContributionData(
     val quality: Int
 )
 
+data class ReviewResponse(
+    @field:SerializedName("data")
+    val data: ReviewResponseData,
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+    )
+
+data class ReviewResponseData(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("place_id")
+    val place_id: String,
+
+    @field:SerializedName("review")
+    val text: String
+)
+
 data class ContributionCountResponse(
 
     @field:SerializedName("data")

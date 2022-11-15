@@ -1,6 +1,9 @@
 package com.raassh.gemastik15.view.fragments.addcontribution
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +11,7 @@ import android.view.accessibility.AccessibilityNodeInfo
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -15,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.adapter.SingleReviewFacilitiesAdapter
 import com.raassh.gemastik15.api.response.PlaceDetailData
 import com.raassh.gemastik15.databinding.FragmentAddContributionBinding
 import com.raassh.gemastik15.local.db.Facility
@@ -77,25 +82,41 @@ class AddContributionFragment : Fragment() {
                 findNavController().navigateUp()
             }
 
-            btnFacilityReviewDone.setOnClickListener {
-                findNavController().navigateUp()
-            }
-
             btnFacilityReviewGood.setOnClickListener {
-                trySubmitContribution(token, place.id, 2)
+                addFacilityReview(2)
             }
 
             btnFacilityReviewBad.setOnClickListener {
-                trySubmitContribution(token, place.id, 1)
+                addFacilityReview(1)
             }
 
             btnFacilityReviewNone.setOnClickListener {
-                trySubmitContribution(token, place.id, 0)
+                addFacilityReview(0)
             }
 
             btnFacilityReviewDontKnow.setOnClickListener {
                 viewModel.nextFacility()
             }
+
+            etReview.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    btnSendContribution.isEnabled = p0?.isNotEmpty() ?: false
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                }
+            })
+
+            btnSendContribution.isEnabled = false
+
+            btnSendContribution.setOnClickListener {
+                trySubmitContribution(token, place.id, etReview.text.toString())
+            }
+
+            rvYourReviewFacilities.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
         }
 
         viewModel.apply {
@@ -137,6 +158,18 @@ class AddContributionFragment : Fragment() {
                     }
                 }
             }
+
+            reviewFacilities.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    Log.d("reviewFacilities", it.toString())
+                    binding?.rvYourReviewFacilities?.apply {
+                        adapter = SingleReviewFacilitiesAdapter().apply {
+                            submitList(it)
+                            notifyDataSetChanged()
+                        }
+                    }
+                }
+            }
         }
 
         sharedViewModel.apply {
@@ -149,41 +182,42 @@ class AddContributionFragment : Fragment() {
         }
     }
 
-    private fun trySubmitContribution(token: String?, placeId: String, rating: Int) {
+    private fun addFacilityReview(rating: Int) {
+        viewModel.addFacilityReview(rating)
+
+        if (viewModel.index.value!! < viewModel.facilities.value!!.size) {
+            binding?.llFacilityReviewTitle?.performAccessibilityAction(
+                AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS,
+                null
+            )
+        }
+    }
+
+    private fun trySubmitContribution(token: String?, placeId: String, review: String) {
         if (token.isNullOrEmpty()) {
             return
         }
 
-        viewModel.submitContribution(token, placeId, rating)
-            .observe(viewLifecycleOwner) { response ->
-                if (response != null) {
-                    when (response) {
-                        is Resource.Loading -> {
-                            showReviewLoading(true)
-                        }
-                        is Resource.Success -> {
-                            showReviewLoading(false)
-                            viewModel.nextFacility()
-
-                            if (viewModel.index.value!! < viewModel.facilities.value!!.size) {
-                                binding?.llFacilityReviewTitle?.performAccessibilityAction(
-                                    AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS,
-                                    null
-                                )
-                            }
-                        }
-                        is Resource.Error -> {
-                            showReviewLoading(false)
-
-                            binding?.root?.showSnackbar(
-                                requireContext().translateErrorMessage(response.message)
-                            )
-
-                            requireActivity().checkAuthError(response.message)
-                        }
+        viewModel.submitReview(token, placeId, review).observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it) {
+                    is Resource.Success -> {
+                        showSendLoading(false)
+                        binding?.root?.showSnackbar(getString(R.string.review_sent))
+                        findNavController().navigateUp()
+                    }
+                    is Resource.Error -> {
+                        showSendLoading(false)
+                        binding?.root?.showSnackbar(
+                            requireContext().translateErrorMessage(it.message)
+                        )
+                    }
+                    is Resource.Loading -> {
+                        showSendLoading(true)
                     }
                 }
             }
+        }
     }
 
     private fun showReviewLoading(isLoading: Boolean) {
@@ -222,6 +256,20 @@ class AddContributionFragment : Fragment() {
         } catch (e: Exception) {
             e.printStackTrace()
             -1
+        }
+    }
+
+    private fun showSendLoading(isLoading: Boolean) {
+        binding?.apply {
+            if (isLoading) {
+                btnSendContribution.isEnabled = false
+                llReviewFull.visibility = View.GONE
+                llReviewSending.visibility = View.VISIBLE
+            } else {
+                btnSendContribution.isEnabled = true
+                llReviewFull.visibility = View.VISIBLE
+                llReviewSending.visibility = View.GONE
+            }
         }
     }
 

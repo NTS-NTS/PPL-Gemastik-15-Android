@@ -42,17 +42,23 @@ interface ApiService {
         @Query("long") long: Double,
     ): PlaceSearchResponse
 
-    @POST("contributions/")
-    suspend fun addContribution(
-        @Header("Authorization") authorization: String,
-        @Body body: ContributionRequest
-    ): ContributionResponse
+//    @POST("contributions/")
+//    suspend fun addContribution(
+//        @Header("Authorization") authorization: String,
+//        @Body body: ContributionRequest
+//    ): ContributionResponse
 
-    @POST("contributions/change")
-    suspend fun changeContribution(
+    @POST("contributions/review")
+    suspend fun addReview(
         @Header("Authorization") authorization: String,
-        @Body body: ContributionRequest
-    ): ContributionResponse
+        @Body body: ReviewRequest
+    ): ReviewResponse
+
+    @PUT("contributions/change")
+    suspend fun changeReview(
+        @Header("Authorization") authorization: String,
+        @Body body: ReviewRequest
+    ): ReviewResponse
 
     @GET("contributions/count")
     suspend fun getContributionCount(
