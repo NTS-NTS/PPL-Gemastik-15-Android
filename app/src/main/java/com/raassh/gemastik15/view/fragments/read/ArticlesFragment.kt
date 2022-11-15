@@ -56,10 +56,12 @@ class ArticlesFragment : Fragment() {
                     is Resource.Success -> {
                         showLoading(false)
 
-                        articlesAdapter.submitList(it.data)
+                        if (it.data?.isNotEmpty() == true) articlesAdapter.submitList(it.data)
+                        else showEmpty()
                     }
                     is Resource.Error -> {
                         showLoading(false, error = true)
+                        showEmpty()
 
                         binding?.root?.showSnackbar(
                             requireContext().translateErrorMessage(it.message)
@@ -79,6 +81,14 @@ class ArticlesFragment : Fragment() {
                 pbLoading.visibility = View.GONE
                 rvArticles.visibility = View.VISIBLE
             }
+        }
+    }
+
+    private fun showEmpty() {
+        binding?.apply {
+            pbLoading.visibility = View.GONE
+            rvArticles.visibility = View.GONE
+            tvNoArticles.visibility = View.VISIBLE
         }
     }
 }

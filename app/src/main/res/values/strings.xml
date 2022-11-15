@@ -379,4 +379,7 @@
     <string name="review_sent">Review sent</string>
     <string name="edit_contribution">Edit Contribution</string>
     <string name="your_review">Your Review</string>
+    <string name="no_guidelines">No guidelines available</string>
+    <string name="no_articles">No articles available</string>
+    <string name="no_news">No news available</string>
 </resources>

@@ -13,7 +13,7 @@ import com.raassh.gemastik15.utils.getElapsedTime
 import com.raassh.gemastik15.utils.loadImage
 import com.raassh.gemastik15.utils.translateArticleTypeFromDB
 
-class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(DIFF_CALLBACK) {
+class ArticleAdapter() : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(DIFF_CALLBACK) {
     var onItemClickListener: ((Article) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ArticleViewHolder (
@@ -39,7 +39,8 @@ class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(DI
 
         fun bind(article: Article) {
             binding.apply {
-                imgArticleImage.loadImage(article.imageUrl)
+                if (article.type != "guideline") imgArticleImage.loadImage(article.imageUrl)
+                else imgArticleImage.visibility = View.GONE
                 tvArticleType.text = context.translateArticleTypeFromDB(article.type)
                 tvArticleTitle.text = article.title
                 tvArticleDate.text = context.getElapsedTime(article.publishTime)

@@ -5,56 +5,92 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.adapter.ArticleAdapter
+import com.raassh.gemastik15.databinding.FragmentArticlesBinding
+import com.raassh.gemastik15.databinding.FragmentGuidelinesBinding
+import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateErrorMessage
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [GuidelinesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class GuidelinesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val viewModel by viewModel<ReadViewModel>()
+    private var binding: FragmentGuidelinesBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_guidelines, container, false)
+        binding = FragmentGuidelinesBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GuidelinesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GuidelinesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val articlesAdapter = ArticleAdapter().apply {
+            onItemClickListener = { article ->
+                val action =
+                    ReadFragmentDirections.actionNavigationReadToWebViewerFragment(
+                        article.url
+                    )
+                findNavController().navigate(action)
+            }
+        }
+
+        binding?.apply {
+            DividerItemDecoration(context, DividerItemDecoration.VERTICAL).let {
+                rvGuidelines.addItemDecoration(it)
+            }
+
+            rvGuidelines.adapter = articlesAdapter
+        }
+
+        viewModel.articles.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it) {
+                    is Resource.Loading -> {
+                        showLoading(true)
+                    }
+                    is Resource.Success -> {
+                        showLoading(false)
+
+                        if (it.data?.isNotEmpty() == true) articlesAdapter.submitList(it.data)
+                        else showEmpty()
+                    }
+                    is Resource.Error -> {
+                        showLoading(false, error = true)
+                        showEmpty()
+
+                        binding?.root?.showSnackbar(
+                            requireContext().translateErrorMessage(it.message)
+                        )
+                    }
                 }
             }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean, error: Boolean = false) {
+        binding?.apply {
+            if (isLoading) {
+                pbLoading.visibility = View.VISIBLE
+                rvGuidelines.visibility = View.GONE
+            } else {
+                pbLoading.visibility = View.GONE
+                rvGuidelines.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showEmpty() {
+        binding?.apply {
+            pbLoading.visibility = View.GONE
+            rvGuidelines.visibility = View.GONE
+            tvNoGuidelines.visibility = View.VISIBLE
+        }
     }
 }

@@ -367,4 +367,7 @@
     <string name="review_sent">Ulasan terkirim</string>
     <string name="edit_contribution">Ubah Kontribusi</string>
     <string name="your_review">Ulasanmu</string>
+    <string name="no_guidelines">Tidak ada pedoman yang tersedia</string>
+    <string name="no_articles">Tidak ada artikel yang tersedia</string>
+    <string name="no_news">Tidak ada berita yang tersedia</string>
 </resources>
