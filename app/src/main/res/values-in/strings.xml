@@ -365,4 +365,5 @@
     <string name="facility_review_done">Ulasan fasilitas selesai!</string>
     <string name="sending_review">Mengirim ulasan...</string>
     <string name="review_sent">Ulasan terkirim</string>
+    <string name="edit_contribution">Ubah Kontribusi</string>
 </resources>
