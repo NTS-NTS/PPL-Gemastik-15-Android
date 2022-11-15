@@ -19,7 +19,10 @@ import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
 import com.raassh.gemastik15.utils.loadImage
 
-class ReviewAdapter(private val isCompact: Boolean = false) : ListAdapter<ReviewData, ReviewAdapter.ReviewViewHolder>(DIFF_CALLBACK) {
+class ReviewAdapter(
+    private val isCompact: Boolean = false,
+    private val isSingle: Boolean = false
+) : ListAdapter<ReviewData, ReviewAdapter.ReviewViewHolder>(DIFF_CALLBACK) {
     var onItemClickListener: ((ReviewData) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ReviewViewHolder{
@@ -31,7 +34,8 @@ class ReviewAdapter(private val isCompact: Boolean = false) : ListAdapter<Review
             )
         } else {
             view.layoutParams = ViewGroup.LayoutParams(
-                convertDpToPixel(350, parent.context).toInt(),
+                if (isSingle) ViewGroup.LayoutParams.MATCH_PARENT
+                else convertDpToPixel(340, parent.context).toInt(),
                 convertDpToPixel(212, parent.context).toInt()
             )
         }

@@ -128,6 +128,7 @@ class GridSpaceItemDecoration(
 class LinearSpaceItemDecoration(
     private val spacingInDp: Int,
     private val orientation: Int,
+    private val isFull: Boolean = false
 ) : ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
@@ -153,7 +154,13 @@ class LinearSpaceItemDecoration(
                 }
                 if (position == state.itemCount - 1) outRect.right = screenMargin
             }
-            VERTICAL -> if (position > 0) outRect.top = spacing
+            VERTICAL -> {
+                if (!isFull && position > 0) outRect.top = spacing
+                else {
+                    if (position == 0) outRect.top = spacing
+                    outRect.bottom = spacing
+                }
+            }
         }
     }
 }

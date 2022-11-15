@@ -118,29 +118,29 @@ class PlaceDetailFragment : Fragment() {
                 }
             }
 
-            getReviews(place.id).observe(viewLifecycleOwner) {
-                if (it != null) {
-                    when (it) {
-                        is Resource.Loading -> {
-                            setLoadingReviews(true)
-                        }
-                        is Resource.Success -> {
-                            setLoadingReviews(false)
-                            setReviews(it.data!!)
-                        }
-                        is Resource.Error -> {
-                            setLoadingReviews(false)
-                            showEmptyReviews()
-                            binding?.root?.showSnackbar(
-                                requireContext().translateErrorMessage(it.message)
-                            )
-                        }
-                    }
-                }
-            }
-
             userId.observe(viewLifecycleOwner) { userId ->
                 if (userId != null) {
+                    getReviews(place.id).observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            when (it) {
+                                is Resource.Loading -> {
+                                    setLoadingReviews(true)
+                                }
+                                is Resource.Success -> {
+                                    setLoadingReviews(false)
+                                    setReviews(it.data!!, userId)
+                                }
+                                is Resource.Error -> {
+                                    setLoadingReviews(false)
+                                    showEmptyReviews()
+                                    binding?.root?.showSnackbar(
+                                        requireContext().translateErrorMessage(it.message)
+                                    )
+                                }
+                            }
+                        }
+                    }
+
                     getUserReview(place.id, userId).observe(viewLifecycleOwner) {
                         if (it != null) {
                             when (it) {
@@ -244,9 +244,8 @@ class PlaceDetailFragment : Fragment() {
         }
     }
 
-    private fun setReviews(reviews: List<ReviewData>) {
-//        TODO: Filter reviews from the logged in user
-//        this.reviews = reviews?.filter { it.user.id != sharedViewModel.user.value?.id }
+    private fun setReviews(_reviews: List<ReviewData>, userId: String) {
+        val reviews = _reviews.filter { it.user.id != userId }
 
         if (reviews.isEmpty()) {
             showEmptyReviews()

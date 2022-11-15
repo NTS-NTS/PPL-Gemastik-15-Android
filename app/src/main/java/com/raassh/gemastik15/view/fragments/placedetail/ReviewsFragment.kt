@@ -40,7 +40,7 @@ class ReviewsFragment : Fragment() {
                         findNavController().navigate(ReviewsFragmentDirections.actionReviewsFragmentToReportReviewFragment(review))
                     }
                 }
-                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.VERTICAL))
+                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.VERTICAL, true))
             }
 
             btnBack.setOnClickListener {
