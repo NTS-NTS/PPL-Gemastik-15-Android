@@ -18,7 +18,7 @@
             android:scaleType="centerCrop"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
-            app:shapeAppearance="@style/ShapeAppearance.Gemastik15.ProfilePhoto"
+            app:shapeAppearance="@style/ShapeAppearance.Gemastik15.ProfilePhoto.Small"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:contentDescription="@null"

@@ -382,4 +382,7 @@
     <string name="no_guidelines">No guidelines available</string>
     <string name="no_articles">No articles available</string>
     <string name="no_news">No news available</string>
+    <string name="verified">Verified</string>
+    <string name="updating_profile">Updating profile</string>
+    <string name="changing_password">Changing password</string>
 </resources>

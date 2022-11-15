@@ -41,5 +41,8 @@ data class UserProfile(
 	val isVerified: Boolean,
 
 	@field:SerializedName("is_banned")
-	val isBanned: Boolean
+	val isBanned: Boolean,
+
+	@field:SerializedName("disability_types")
+	val disabilityTypes: List<String>
 )

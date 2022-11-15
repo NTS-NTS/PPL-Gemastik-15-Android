@@ -370,4 +370,7 @@
     <string name="no_guidelines">Tidak ada pedoman yang tersedia</string>
     <string name="no_articles">Tidak ada artikel yang tersedia</string>
     <string name="no_news">Tidak ada berita yang tersedia</string>
+    <string name="verified">Terverifikasi</string>
+    <string name="updating_profile">Memperbarui profil</string>
+    <string name="changing_password">Mengubah kata sandi</string>
 </resources>

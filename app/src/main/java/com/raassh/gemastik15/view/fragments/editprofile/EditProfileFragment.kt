@@ -1,11 +1,13 @@
 package com.raassh.gemastik15.view.fragments.editprofile
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.graphics.scale
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
@@ -13,6 +15,7 @@ import com.raassh.gemastik15.api.response.UserProfile
 import com.raassh.gemastik15.databinding.FragmentEditProfileBinding
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,7 +27,14 @@ class EditProfileFragment : Fragment() {
 
     private val launcherImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
         it?.let { uri ->
-            val bitmap = requireContext().uriToBitmap(uri)
+            var bitmap = requireContext().uriToBitmap(uri)
+            bitmap = Bitmap.createBitmap(
+                bitmap,
+                bitmap.width / 2 - bitmap.height / 2,
+                0,
+                bitmap.height,
+                bitmap.height
+            )
             binding?.ivProfilePicture?.setImageBitmap(bitmap)
             viewModel.setSelectedPicture(bitmap)
         }
@@ -46,6 +56,7 @@ class EditProfileFragment : Fragment() {
         cities = requireContext().getCities()
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
             tvCity.apply {
                 setAdapter(ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, cities))
                 threshold = 1
@@ -57,6 +68,10 @@ class EditProfileFragment : Fragment() {
 
             btnChangeProfilePicture.setOnClickListener {
                 launcherImage.launch("image/*")
+            }
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
 
@@ -107,9 +122,13 @@ class EditProfileFragment : Fragment() {
                 tvCity.text.toString()
             ).observe(viewLifecycleOwner) {
                 when (it) {
-                    is Resource.Loading -> btnEditProfile.isEnabled = false
+                    is Resource.Loading -> {
+                        btnEditProfile.isEnabled = false
+                        btnEditProfile.text = getString(R.string.updating_profile)
+                    }
                     is Resource.Success -> {
                         btnEditProfile.isEnabled = true
+                        btnEditProfile.text = getString(R.string.edit_profile)
 
                         binding?.root?.showSnackbar(getString(R.string.profile_updated))
 
@@ -117,6 +136,7 @@ class EditProfileFragment : Fragment() {
                     }
                     is Resource.Error -> {
                         btnEditProfile.isEnabled = true
+                        btnEditProfile.text = getString(R.string.edit_profile)
 
                         binding?.root?.showSnackbar(
                             requireContext().translateErrorMessage(it.message)

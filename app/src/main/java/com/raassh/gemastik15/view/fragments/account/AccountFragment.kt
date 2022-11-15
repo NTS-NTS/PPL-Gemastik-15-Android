@@ -10,8 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.adapter.DisabilityTypeAdapter
 import com.raassh.gemastik15.databinding.FragmentAccountBinding
 import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.loadImage
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
@@ -104,11 +106,43 @@ class AccountFragment : Fragment() {
             getToken().observe(viewLifecycleOwner) {
                 if (!it.isNullOrEmpty()) {
                     val jwt = JWT(it)
-                    val name = jwt.getClaim("name").asString()
                     val email = jwt.getClaim("email").asString()
+                    viewModel.setToken(it)
 
-                    binding?.tvName?.text = name
-                    binding?.tvEmail?.text = email
+                    viewModel.getProfile().observe(viewLifecycleOwner) { user ->
+                        when (user) {
+                            is Resource.Loading -> {
+                            }
+                            is Resource.Success -> {
+                                binding?.apply {
+                                    tvName.text = user.data?.name
+                                    tvEmail.text = user.data?.email
+                                    imgUser.loadImage(user.data?.profilePicture)
+
+                                    if (!user.data?.city.isNullOrEmpty()) {
+                                        tvCity.text = user.data?.city
+                                        tvCity.visibility = View.VISIBLE
+                                    }
+
+                                    if (user.data?.disabilityTypes?.isNotEmpty() == true) {
+                                        imgDisability.visibility = View.VISIBLE
+                                        rvDisability.apply {
+                                            adapter = DisabilityTypeAdapter().apply {
+                                                submitList(user.data.disabilityTypes)
+                                            }
+                                        }
+                                        rvDisability.visibility = View.VISIBLE
+                                    }
+                                }
+                            }
+                            is Resource.Error -> {
+                                binding?.root?.showSnackbar(
+                                    requireContext().translateErrorMessage(user.message)
+                                )
+                            }
+                        }
+                    }
+
                     binding?.btnResendVerification?.setOnClickListener {
                         if (email != null) {
                             viewModel.resendVerification(email).observe(viewLifecycleOwner) { response ->
@@ -144,8 +178,10 @@ class AccountFragment : Fragment() {
             getIsVerified().observe(viewLifecycleOwner) {
                 if (it == true) {
                     binding?.btnResendVerification?.visibility = View.GONE
+                    binding?.verifiedTag?.visibility = View.VISIBLE
                 } else {
                     binding?.btnResendVerification?.visibility = View.VISIBLE
+                    binding?.verifiedTag?.visibility = View.GONE
                 }
             }
         }

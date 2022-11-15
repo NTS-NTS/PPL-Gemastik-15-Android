@@ -10,6 +10,7 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentChangePasswordBinding
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,8 +31,13 @@ class ChangePasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
             btnChangePassword.setOnClickListener {
                 tryChangePassword()
+            }
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
 
@@ -57,11 +63,14 @@ class ChangePasswordFragment : Fragment() {
                 when (it) {
                     is Resource.Success -> {
                         root.showSnackbar(getString(R.string.password_changed))
+                        btnChangePassword.isEnabled = true
+                        btnChangePassword.text = getString(R.string.change_password)
 
                         findNavController().navigateUp()
                     }
                     is Resource.Error -> {
                         btnChangePassword.isEnabled = true
+                        btnChangePassword.text = getString(R.string.change_password)
 
                         root.showSnackbar(
                             requireContext().translateErrorMessage(it.message)
@@ -71,6 +80,7 @@ class ChangePasswordFragment : Fragment() {
                     }
                     is Resource.Loading -> {
                         btnChangePassword.isEnabled = false
+                        btnChangePassword.text = getString(R.string.changing_password)
                     }
                 }
             }

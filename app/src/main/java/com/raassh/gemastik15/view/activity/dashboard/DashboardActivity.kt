@@ -118,7 +118,9 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.webViewerFragment,
                 R.id.reviewsFragment,
                 R.id.reportReviewFragment,
-                R.id.editContributionFragment-> {
+                R.id.editContributionFragment,
+                R.id.changePasswordFragment,
+                R.id.editProfileFragment-> {
                     binding.bottomNavView.visibility = View.GONE
                 }
                 R.id.accountFragment,

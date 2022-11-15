@@ -18,10 +18,16 @@ class AccountViewModel(
     private val _arrayAdapter = MutableLiveData<ArrayAdapter<String>>()
     var arrayAdapter: MutableLiveData<ArrayAdapter<String>> = _arrayAdapter
 
+    private var token = ""
+
     fun logout() {
         viewModelScope.launch {
             userPreferences.clearToken()
         }
+    }
+
+    fun setToken(token: String) {
+        this.token = token
     }
 
     fun setTheme(theme: String) = viewModelScope.launch {
@@ -32,4 +38,6 @@ class AccountViewModel(
 
     fun resendVerification(email: String) =
         authenticationRepository.resendVerification(email).asLiveData()
+
+    fun getProfile() = authenticationRepository.getUserDetail(token).asLiveData()
 }

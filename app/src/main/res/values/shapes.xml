@@ -12,14 +12,19 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <style name="ShapeAppearance.Gemastik15.ProfilePhoto" parent="">
+    <style name="ShapeAppearance.Gemastik15.ProfilePhoto.Small" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">20dp</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Gemastik15.ProfilePhoto.Medium" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">26dp</item>
     </style>
 
     <style name="ShapeAppearance.Gemastik15.ProfilePhoto.Large" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50dp</item>
+        <item name="cornerSize">46dp</item>
     </style>
 
 </resources>

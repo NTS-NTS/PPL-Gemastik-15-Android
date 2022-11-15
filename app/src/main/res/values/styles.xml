@@ -83,6 +83,13 @@
         <item name="android:paddingBottom">0dp</item>
     </style>
 
+    <style name="Theme.Gemastik15.AutoCompleteTextView" parent="Widget.Material3.AutoCompleteTextView.FilledBox">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColorHint">?attr/colorOnSurfaceVariant</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+
     <style name="Theme.Gemastik15.Divider" parent="@style/Widget.Material3.MaterialDivider">
         <item name="dividerColor">?attr/colorSurfaceVariant</item>
     </style>
