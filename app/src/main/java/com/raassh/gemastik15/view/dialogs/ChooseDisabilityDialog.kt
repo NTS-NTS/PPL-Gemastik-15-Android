@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ProgressBar
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentChooseDisabilityDialogBinding
 import com.raassh.gemastik15.utils.Resource
@@ -23,7 +24,7 @@ class ChooseDisabilityDialog() : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = FragmentChooseDisabilityDialogBinding.inflate(layoutInflater, null, false)
 
-        val dialog = AlertDialog.Builder(requireContext())
+        val dialog = MaterialAlertDialogBuilder(requireContext())
             .setView(binding?.root)
             .setTitle(R.string.set_disability_types)
             .setPositiveButton(R.string.save) { _, _ ->

@@ -70,6 +70,10 @@ class EditProfileFragment : Fragment() {
                 launcherImage.launch("image/*")
             }
 
+            btnChangePassword.setOnClickListener {
+                findNavController().navigate(R.id.action_editProfileFragment_to_changePasswordFragment)
+            }
+
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }

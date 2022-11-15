@@ -283,8 +283,8 @@
     <string name="invalid_token">There was a problem with your session. Please login again.</string>
     <string name="username_already_exists">This username already exists, please choose another one</string>
 
-    <string name="set_disability_types">Choose your disability</string>
-    <string name="set_disability_types_message">We ask this for bla bla</string>
+    <string name="set_disability_types">Choose disabilities</string>
+    <string name="set_disability_types_message">This will help you get place recommendation. You can leave this empty.</string>
     <string name="save">Save</string>
 
     <string name="wheelchair_user">Wheelchair user</string>
@@ -385,4 +385,5 @@
     <string name="verified">Verified</string>
     <string name="updating_profile">Updating profile</string>
     <string name="changing_password">Changing password</string>
+    <string name="account_settings_title">Account Settings</string>
 </resources>

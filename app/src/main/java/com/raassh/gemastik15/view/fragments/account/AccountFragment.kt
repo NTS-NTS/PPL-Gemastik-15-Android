@@ -6,9 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.jwt.JWT
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxItemDecoration
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.DisabilityTypeAdapter
 import com.raassh.gemastik15.databinding.FragmentAccountBinding
@@ -48,22 +53,24 @@ class AccountFragment : Fragment() {
             etDarkMode.apply {
                 setOnItemClickListener { parent, _, position, _ ->
                     val theme = parent.getItemAtPosition(position).toString()
-                    showSnackbar(getString(R.string.theme_changed_message, theme))
+                    showSnackbar(
+                        message = getString(R.string.theme_changed_message, theme),
+                        anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
+                    )
                     viewModel.setTheme(getThemeKey(theme))
                 }
             }
 
             btnLogout.setOnClickListener {
-                root.showSnackbar(getString(R.string.logging_out))
+                root.showSnackbar(
+                    message = getString(R.string.logging_out),
+                    anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
+                )
                 viewModel.logout()
             }
 
             btnEditProfile.setOnClickListener {
                 findNavController().navigate(R.id.action_accountFragment_to_editProfileFragment)
-            }
-
-            btnChangePassword.setOnClickListener {
-                findNavController().navigate(R.id.action_accountFragment_to_changePasswordFragment)
             }
 
             btnModeration.setOnClickListener {
@@ -130,6 +137,17 @@ class AccountFragment : Fragment() {
                                             adapter = DisabilityTypeAdapter().apply {
                                                 submitList(user.data.disabilityTypes)
                                             }
+                                            layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                                                flexDirection = FlexDirection.ROW
+                                                justifyContent = JustifyContent.FLEX_START
+                                            }
+
+                                            if (itemDecorationCount == 0) {
+                                                addItemDecoration(FlexboxItemDecoration(requireContext()).apply {
+                                                    setDrawable(AppCompatResources.getDrawable(context, R.drawable.divider))
+                                                    setOrientation(FlexboxItemDecoration.BOTH)
+                                                })
+                                            }
                                         }
                                         rvDisability.visibility = View.VISIBLE
                                     }
@@ -137,7 +155,8 @@ class AccountFragment : Fragment() {
                             }
                             is Resource.Error -> {
                                 binding?.root?.showSnackbar(
-                                    requireContext().translateErrorMessage(user.message)
+                                    message = requireContext().translateErrorMessage(user.message),
+                                    anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
                                 )
                             }
                         }
@@ -149,12 +168,16 @@ class AccountFragment : Fragment() {
                                 when (response) {
                                     is Resource.Success -> {
                                         binding?.btnResendVerification?.isEnabled = true
-                                        binding?.root?.showSnackbar(getString(R.string.verification_email_sent))
+                                        binding?.root?.showSnackbar(
+                                            message = getString(R.string.verification_email_sent),
+                                            anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
+                                        )
                                     }
                                     is Resource.Error -> {
                                         binding?.btnResendVerification?.isEnabled = true
                                         binding?.root?.showSnackbar(
-                                            requireContext().translateErrorMessage(response.message)
+                                            message = requireContext().translateErrorMessage(response.message),
+                                            anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
                                         )
                                     }
                                     is Resource.Loading -> {

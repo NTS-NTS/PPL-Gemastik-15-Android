@@ -1,6 +1,5 @@
 package com.raassh.gemastik15.adapter
 
-import android.graphics.Color
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +8,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.FacilityQualityItem
 import com.raassh.gemastik15.api.response.ReviewData
-import com.raassh.gemastik15.databinding.ReviewCompactItemBinding
 import com.raassh.gemastik15.databinding.ReviewItemBinding
-import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
 import com.raassh.gemastik15.utils.loadImage
@@ -49,7 +45,6 @@ class ReviewAdapter(
 
     inner class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ReviewItemBinding.bind(itemView)
-        private val context = itemView.context
 
         init {
             binding.rvReviewFacilities.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))

@@ -8,7 +8,7 @@
     app:cardBackgroundColor="?attr/colorSecondaryContainer">
 
     <TextView
-        style="@style/TextAppearance.Material3.LabelMedium"
+        style="@style/TextAppearance.Material3.LabelSmall"
         android:text="?attr/colorOnSecondaryContainer"
         android:id="@+id/tv_disability"
         android:layout_width="wrap_content"

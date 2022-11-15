@@ -105,7 +105,9 @@ class SearchByFacilityFragment : Fragment() {
                         .append(facilityConDesc)
                         .toString()
 
-                addItemDecoration(LinearSpaceItemDecoration(8, RecyclerView.HORIZONTAL))
+                if (itemDecorationCount == 0) {
+                    addItemDecoration(LinearSpaceItemDecoration(8, RecyclerView.HORIZONTAL))
+                }
             }
         }
 

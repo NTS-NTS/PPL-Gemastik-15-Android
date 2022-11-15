@@ -48,6 +48,15 @@
         <item name="iconSize">20dp</item>
     </style>
 
+    <style name="Theme.Gemastik15.Button.Setting" parent="Theme.Gemastik15.Button.OutlinedButton">
+        <item name="iconTint">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="iconSize">24dp</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">0dp</item>
+    </style>
+
     <style name="Theme.Gemastik15.Button.OutlinedButton.Error" parent="Theme.Gemastik15.Button.OutlinedButton">
         <item name="backgroundTint">?attr/colorErrorContainer</item>
         <item name="android:textColor">?attr/colorOnErrorContainer</item>

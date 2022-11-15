@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ArticleAdapter
 import com.raassh.gemastik15.databinding.FragmentArticlesBinding
 import com.raassh.gemastik15.utils.Resource
@@ -64,7 +65,8 @@ class ArticlesFragment : Fragment() {
                         showEmpty()
 
                         binding?.root?.showSnackbar(
-                            requireContext().translateErrorMessage(it.message)
+                            message = requireContext().translateErrorMessage(it.message),
+                            anchor = binding?.root?.rootView?.rootView?.findViewById(R.id.bottom_nav_view)
                         )
                     }
                 }

@@ -23,8 +23,10 @@ class OptionTagAdapter(private val size: Int) : ListAdapter<String, OptionTagAda
 
         if (position < 7) {
             holder.bind(tag)
+            holder.itemView.visibility = View.VISIBLE
         } else if (position == 7) {
             holder.bind("others")
+            holder.itemView.visibility = View.VISIBLE
         } else {
             holder.itemView.visibility = View.GONE
         }
@@ -47,6 +49,7 @@ class OptionTagAdapter(private val size: Int) : ListAdapter<String, OptionTagAda
                     val restCount = size - 7
                     tvOptionName.text = context.getString(R.string.overflow_count, restCount)
                 } else {
+                    ivOptionIcon.visibility = View.VISIBLE
                     ivOptionIcon.setImageDrawable(context.getFacilityDrawable(name))
                     tvOptionName.text = context.translateFacilitytoView(name)
                 }

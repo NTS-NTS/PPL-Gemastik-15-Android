@@ -218,7 +218,9 @@ class PlaceDetailFragment : Fragment() {
                 adapter = PlacePhotoAdapter().apply {
                     submitList(detail.photos)
                 }
-                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+                if (itemDecorationCount == 0) {
+                    addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+                }
             }
         }
 
@@ -269,7 +271,9 @@ class PlaceDetailFragment : Fragment() {
             adapter = ReviewAdapter(true).apply {
                 submitList(reviews.take(REVIEW_LIMIT))
             }
-            addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+            if (itemDecorationCount == 0) {
+                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+            }
         }
     }
 
@@ -312,7 +316,9 @@ class PlaceDetailFragment : Fragment() {
                 adapter = SingleReviewFacilitiesAdapter().apply {
                     submitList(review.facilities)
                 }
-                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+                if (itemDecorationCount == 0) {
+                    addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+                }
             }
             if (review.is_moderated) cdModeratedWarning.visibility = View.VISIBLE
             else cdModeratedWarning.visibility = View.GONE

@@ -46,7 +46,10 @@ class DiscoverFragment : Fragment() {
                 getCheckedFacilities(glFacilities, facilities)
 
                 if (facilities.isEmpty()) {
-                    root.showSnackbar(getString(R.string.no_facilities_chosen))
+                    root.showSnackbar(
+                        message = getString(R.string.no_facilities_chosen),
+                        anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
+                    )
                     return@setOnClickListener
                 }
 

@@ -5,10 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
     tools:context=".view.dialogs.ChooseDisabilityDialog">
 
     <TextView
+        style="@style/TextAppearance.Material3.BodyLarge"
         android:id="@+id/tv_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,6 +22,7 @@
         android:id="@+id/sv_disabilities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_disabilities"
             android:layout_width="match_parent"
@@ -34,7 +39,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:visibility="gone"/>
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_wheelchair_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +48,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_limited_walking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,49 +56,49 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cb_wheelchair_user" />
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_limited_hand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/limited_hand"
                 app:layout_constraintTop_toBottomOf="@id/cb_limited_walking"/>
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_limited_physical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/limited_physical"
                 app:layout_constraintTop_toBottomOf="@+id/cb_limited_hand" />
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_blindness"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/blindness"
                 app:layout_constraintTop_toBottomOf="@+id/cb_limited_physical" />
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_low_vision"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/low_vision"
                 app:layout_constraintTop_toBottomOf="@id/cb_blindness" />
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_deafness"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/deafness"
                 app:layout_constraintTop_toBottomOf="@+id/cb_low_vision" />
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_hard_hearing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/hard_hearing"
                 app:layout_constraintTop_toBottomOf="@id/cb_deafness" />
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cb_speech_impairment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

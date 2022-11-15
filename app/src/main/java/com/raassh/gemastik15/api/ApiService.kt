@@ -42,12 +42,6 @@ interface ApiService {
         @Query("long") long: Double,
     ): PlaceSearchResponse
 
-//    @POST("contributions/")
-//    suspend fun addContribution(
-//        @Header("Authorization") authorization: String,
-//        @Body body: ContributionRequest
-//    ): ContributionResponse
-
     @POST("contributions/review")
     suspend fun addReview(
         @Header("Authorization") authorization: String,

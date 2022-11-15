@@ -66,7 +66,8 @@ class GuidelinesFragment : Fragment() {
                         showEmpty()
 
                         binding?.root?.showSnackbar(
-                            requireContext().translateErrorMessage(it.message)
+                            message = requireContext().translateErrorMessage(it.message),
+                            anchor = binding?.root?.rootView?.rootView?.findViewById(R.id.bottom_nav_view)
                         )
                     }
                 }

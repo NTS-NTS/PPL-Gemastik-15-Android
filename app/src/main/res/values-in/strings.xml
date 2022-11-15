@@ -273,7 +273,7 @@
     <string name="username_already_exists">Nama pengguna ini sudah ada, silahkan pilih nama pengguna lain</string>
 
     <string name="set_disability_types">Pilih disabilitas</string>
-    <string name="set_disability_types_message">Kami tanya untuk ...</string>
+    <string name="set_disability_types_message">Ini akan membantumu mendapatkan rekomendasi tempat. Kamu bisa mengosongkan ini.</string>
     <string name="save">Simpan</string>
 
     <string name="wheelchair_user">Wheelchair user</string>
@@ -373,4 +373,5 @@
     <string name="verified">Terverifikasi</string>
     <string name="updating_profile">Memperbarui profil</string>
     <string name="changing_password">Mengubah kata sandi</string>
+    <string name="account_settings_title">Pengaturan Akun</string>
 </resources>

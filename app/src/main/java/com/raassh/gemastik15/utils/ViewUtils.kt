@@ -29,8 +29,13 @@ import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.BuildConfig
 import com.raassh.gemastik15.R
 
-fun View.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT) {
-    Snackbar.make(this, message, length).show()
+fun View.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT, anchor: View? = null) {
+    Snackbar.make(this, message, length).apply {
+        if (anchor != null) {
+            anchorView = anchor
+        }
+        show()
+    }
 }
 
 fun TextInputLayout.validate(

@@ -174,11 +174,15 @@ class ContributionFragment : Fragment() {
                 when (it) {
                     is Resource.Error -> {
                         binding?.root?.showSnackbar(
-                            requireContext().translateErrorMessage(it.message)
+                            message = requireContext().translateErrorMessage(it.message),
+                            anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
                         )
                     }
                     is Resource.Loading -> {
-                        binding?.root?.showSnackbar(getString(R.string.loading))
+                        binding?.root?.showSnackbar(
+                            message = getString(R.string.loading),
+                            anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
+                        )
                     }
                     is Resource.Success -> {
                         val action =
