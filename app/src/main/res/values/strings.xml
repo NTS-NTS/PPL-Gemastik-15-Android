@@ -375,7 +375,8 @@
     <string name="write_your_review">Write your review here</string>
     <string name="send">Send</string>
     <string name="facility_review_done">Facility review done!</string>
-    <string name="sending_review">Sending review...</string>
+    <string name="sending_review">Sending review…</string>
     <string name="review_sent">Review sent</string>
     <string name="edit_contribution">Edit Contribution</string>
+    <string name="your_review">Your Review</string>
 </resources>

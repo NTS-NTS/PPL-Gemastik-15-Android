@@ -92,6 +92,8 @@ class PlaceDetailFragment : Fragment() {
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
+
+
         }
 
         viewModel.apply {
@@ -316,7 +318,8 @@ class PlaceDetailFragment : Fragment() {
             if (review.is_moderated) cdModeratedWarning.visibility = View.VISIBLE
             else cdModeratedWarning.visibility = View.GONE
             btnEditReview.setOnClickListener {
-//                TODO: navigate to edit review
+                val action = PlaceDetailFragmentDirections.actionPlaceDetailFragmentToEditContributionFragment(review)
+                findNavController().navigate(action)
             }
         }
     }

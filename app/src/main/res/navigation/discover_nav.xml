@@ -124,6 +124,6 @@
         tools:layout="@layout/fragment_edit_contribution">
         <argument
             android:name="review"
-            app:argType="com.raassh.gemastik15.api.response.ReviewData" />
+            app:argType="com.raassh.gemastik15.api.response.ContributionUserPlaceData" />
     </fragment>
 </navigation>

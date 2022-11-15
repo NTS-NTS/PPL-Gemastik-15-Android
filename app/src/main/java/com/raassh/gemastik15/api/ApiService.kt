@@ -54,7 +54,7 @@ interface ApiService {
         @Body body: ReviewRequest
     ): ReviewResponse
 
-    @PUT("contributions/change")
+    @PUT("contributions/review")
     suspend fun changeReview(
         @Header("Authorization") authorization: String,
         @Body body: ReviewRequest

@@ -51,16 +51,6 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/btn_facility_review_dont_know"
-            style="@style/Theme.Gemastik15.Button.OutlinedButton.Icon"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            app:iconPadding="0dp"
-            android:contentDescription="@string/review_dont_know_cta"
-            app:icon="@drawable/ic_baseline_remove_circle_outline_24"
-            />
-
-        <Button
             android:id="@+id/btn_facility_review_good"
             style="@style/Theme.Gemastik15.Button.OutlinedButton.Icon"
             android:layout_width="36dp"

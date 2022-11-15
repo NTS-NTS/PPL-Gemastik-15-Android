@@ -363,7 +363,8 @@
     <string name="write_your_review">Tulis ulasanmu disini</string>
     <string name="send">Kirim</string>
     <string name="facility_review_done">Ulasan fasilitas selesai!</string>
-    <string name="sending_review">Mengirim ulasan...</string>
+    <string name="sending_review">Mengirim ulasan…</string>
     <string name="review_sent">Ulasan terkirim</string>
     <string name="edit_contribution">Ubah Kontribusi</string>
+    <string name="your_review">Ulasanmu</string>
 </resources>

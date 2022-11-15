@@ -52,7 +52,6 @@ class EditReviewFacilitiesAdapter(private val reviewFacilities: List<FacilityQua
                         0 -> check(R.id.btn_facility_review_none)
                         1 -> check(R.id.btn_facility_review_bad)
                         2 -> check(R.id.btn_facility_review_good)
-                        else -> check(R.id.btn_facility_review_dont_know)
                     }
                 }
             }

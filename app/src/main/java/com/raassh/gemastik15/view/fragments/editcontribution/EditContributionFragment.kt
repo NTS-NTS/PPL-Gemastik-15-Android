@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.EditReviewFacilitiesAdapter
+import com.raassh.gemastik15.api.response.ContributionUserPlaceData
 import com.raassh.gemastik15.databinding.FragmentDiscoverBinding
 import com.raassh.gemastik15.databinding.FragmentEditContributionBinding
 import com.raassh.gemastik15.local.db.Facility
@@ -44,6 +46,8 @@ class EditContributionFragment : Fragment() {
         val review = EditContributionFragmentArgs.fromBundle(requireArguments()).review
         val istream = resources.openRawResource(R.raw.facility_data)
         val facilities: List<Facility> = FacilityDataXmlParser().parse(istream)
+        viewModel.setInitialReview(review)
+        showWaitingTokenLoading(true)
 
         binding?.apply {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
@@ -53,7 +57,7 @@ class EditContributionFragment : Fragment() {
             }
 
             rvYourReviewFacilities.apply {
-                adapter = EditReviewFacilitiesAdapter(review.facilities).apply {
+                adapter = EditReviewFacilitiesAdapter(getOriginalReview().facilities).apply {
                     submitList(facilities)
 
                     onButtonCheckedListener = { facility, checkedId, isChecked ->
@@ -65,11 +69,14 @@ class EditContributionFragment : Fragment() {
                                 R.id.btn_facility_review_bad -> {
                                     viewModel.addFacilityReview(facility.name, 1)
                                 }
-                                R.id.btn_facility_review_dont_know -> {
+                                R.id.btn_facility_review_none -> {
                                     viewModel.addFacilityReview(facility.name, 0)
                                 }
                             }
-                            viewModel.updateChange(review, etReview.text.toString())
+                            viewModel.updateChange(getOriginalReview(), etReview.text.toString())
+                        } else {
+                            viewModel.removeFacilityReview(facility.name)
+                            viewModel.updateChange(getOriginalReview(), etReview.text.toString())
                         }
                     }
                 }
@@ -82,7 +89,7 @@ class EditContributionFragment : Fragment() {
                 }
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    viewModel.updateChange(review, p0.toString())
+                    viewModel.updateChange(getOriginalReview(), p0.toString())
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -118,7 +125,9 @@ class EditContributionFragment : Fragment() {
             }
 
             viewModel.isChanged.observe(viewLifecycleOwner) {
-                btnSendContribution.isEnabled = it
+                if (it != null) {
+                    btnSendContribution.isEnabled = it
+                }
             }
         }
 
@@ -126,17 +135,38 @@ class EditContributionFragment : Fragment() {
             getToken().observe(viewLifecycleOwner) {
                 if (!it.isNullOrEmpty()) {
                     token = it
+                    showWaitingTokenLoading(false)
                 }
             }
         }
     }
 
-    private fun showSendLoading(isLoading: Boolean) {
+    fun getOriginalReview(): ContributionUserPlaceData {
+        return EditContributionFragmentArgs.fromBundle(requireArguments()).review
+    }
+
+    private fun showWaitingTokenLoading(isLoading: Boolean) {
         binding?.apply {
             if (isLoading) {
                 btnSendContribution.isEnabled = false
                 llReview.visibility = View.GONE
                 llReviewSending.visibility = View.VISIBLE
+                tvLoading.visibility = View.GONE
+            } else {
+                llReview.visibility = View.VISIBLE
+                llReviewSending.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun showSendLoading(isLoading: Boolean) {
+
+        binding?.apply {
+            if (isLoading) {
+                btnSendContribution.isEnabled = false
+                llReview.visibility = View.GONE
+                llReviewSending.visibility = View.VISIBLE
+                tvLoading.visibility = View.VISIBLE
             } else {
                 btnSendContribution.isEnabled = true
                 llReview.visibility = View.VISIBLE

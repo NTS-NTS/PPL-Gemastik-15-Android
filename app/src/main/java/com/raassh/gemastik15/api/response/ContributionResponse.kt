@@ -105,7 +105,7 @@ data class FacilityQualityItem(
     val facility: String,
 
     @field:SerializedName("quality")
-    val quality: Int,
+    var quality: Int,
 ) : Parcelable
 
 data class ContributionUserPlaceResponse(
@@ -120,6 +120,7 @@ data class ContributionUserPlaceResponse(
     val message: String
 )
 
+@Parcelize
 data class ContributionUserPlaceData(
 
     @field:SerializedName("user_id")
@@ -136,4 +137,4 @@ data class ContributionUserPlaceData(
 
     @field:SerializedName("is_moderated")
     val is_moderated: Boolean
-)
+) : Parcelable
