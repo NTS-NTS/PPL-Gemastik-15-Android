@@ -1,15 +1,14 @@
 package com.raassh.gemastik15.view.fragments.read
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ArticleAdapter
-import com.raassh.gemastik15.databinding.FragmentArticlesBinding
 import com.raassh.gemastik15.databinding.FragmentGuidelinesBinding
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
@@ -93,5 +92,10 @@ class GuidelinesFragment : Fragment() {
             rvGuidelines.visibility = View.GONE
             tvNoGuidelines.visibility = View.VISIBLE
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

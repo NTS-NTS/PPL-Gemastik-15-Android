@@ -401,4 +401,7 @@
     <string name="reports">Reports</string>
     <string name="no_user_reports">No user reports</string>
     <string name="no_contribution_reports">No contribution reports</string>
+    <string name="search_user">Search User</string>
+    <string name="community">Community</string>
+    <string name="empty_query">Please provide a query</string>
 </resources>

@@ -98,6 +98,11 @@ interface ApiService {
         @Body body: ResendVerificationRequest
     ): GeneralResponse
 
+    @GET("auth/search")
+    suspend fun searchUserByUsername(
+        @Query("username") username: String
+    ): SearchUserResponse
+
     @GET("readings/news")
     suspend fun getNews(
         @Query("limit") limit: Int

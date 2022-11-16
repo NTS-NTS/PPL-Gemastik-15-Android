@@ -389,4 +389,8 @@
     <string name="reports">Laporan</string>
     <string name="no_user_reports">Tidak ada laporan pengguna</string>
     <string name="no_contribution_reports">Tidak ada laporan kontribusi</string>
+
+    <string name="search_user">Cari Pengguna</string>
+    <string name="community">Komunitas</string>
+    <string name="empty_query">Harap isi kueri</string>
 </resources>
