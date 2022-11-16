@@ -2,20 +2,19 @@ package com.raassh.gemastik15.view.fragments.detailcontributionreport
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.SingleReviewFacilitiesAdapter
 import com.raassh.gemastik15.api.response.DataDetailReportContributionResponse
 import com.raassh.gemastik15.databinding.FragmentDetailContributionReportBinding
-import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.utils.checkAuthError
-import com.raassh.gemastik15.utils.showSnackbar
-import com.raassh.gemastik15.utils.translateErrorMessage
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -41,14 +40,20 @@ class DetailContributionReportFragment : Fragment() {
         val ctx = requireContext()
 
         // TODO: change this
-        val reasonList = arrayOf("test1", "test2", "test3")
+        val reasonList = arrayOf(
+            "spam", "off_topic", "conflict_of_interest", "inappropriate", "harassment", "hate_speech", "private_information", "not_helpful"
+        )
 
         binding?.apply {
-            root.applyInsetter { type(statusBars = true) { padding() } }
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
 
-            tvPlace.text = ctx.getString(R.string.reported_place, reported.place)
-            tvUser.text = ctx.getString(R.string.reported_user, reported.user)
-            tvReportCount.text = ctx.getString(R.string.report_count, reported.reportCount)
+            tvPlace.text = reported.place
+            tvUser.text = reported.user
+            tvReportCount.text = reported.reportCount.toString()
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
 
             btnDismiss.setOnClickListener {
                 viewModel.dismiss().observe(viewLifecycleOwner) { response ->
@@ -73,9 +78,11 @@ class DetailContributionReportFragment : Fragment() {
             }
 
             btnModerate.setOnClickListener {
-                AlertDialog.Builder(ctx)
+                MaterialAlertDialogBuilder(ctx)
                     .setTitle(R.string.moderate_contribution_reason)
-                    .setSingleChoiceItems(reasonList, -1) { _, which ->
+                    .setSingleChoiceItems(
+                        reasonList.map { context?.getReviewReason(it) }.toTypedArray(),
+                        -1) { _, which ->
                        viewModel.setReason(reasonList[which])
                     }
                     .setPositiveButton(R.string.yes) { dialog, _ ->
@@ -140,16 +147,24 @@ class DetailContributionReportFragment : Fragment() {
             return
         }
 
-        val reason =
-            data.reportReason.distinct().joinToString(", ")
+        Log.d("DetailContribution", data.reportReason.distinct().toString())
+        Log.d("DetailContribution", data.reportReason.distinct().map { ctx.getReviewReason(it) }.toString())
+
+        val reason = data.reportReason.distinct().joinToString(", ") {
+            ctx.getReviewReason(it)
+        }
 
         binding?.apply {
-            tvReportReason.text =
-                ctx.getString(R.string.report_reason, reason)
-            tvReportReview.text =
-                ctx.getString(R.string.report_reviews, data.review)
-            rvReportedFacilities.adapter = SingleReviewFacilitiesAdapter().apply {
-                submitList(data.facilities)
+            tvReportReason.text = reason
+            tvReportReview.text = data.review
+            rvReportedFacilities.apply {
+                adapter = SingleReviewFacilitiesAdapter().apply {
+                    submitList(data.facilities)
+                }
+
+                if (itemDecorationCount == 0) {
+                    addItemDecoration(GridSpaceItemDecoration(6, 8))
+                }
             }
         }
 

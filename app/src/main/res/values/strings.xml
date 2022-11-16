@@ -352,7 +352,7 @@
     <string name="reported_email">Email: %1$s</string>
     <string name="ban_user">Ban user</string>
     <string name="edit_review">Edit Review</string>
-    <string name="moderated_warning_message">Your review violates our service rules and currently is not publicly available. Edit your review to reverse this!</string>
+    <string name="moderated_warning_message">Your review violates our service rules because it contains <b>%1$s</b> and currently is not publicly available. Edit your review to reverse this!</string>
 
     <string name="reason_spam">Spam</string>
     <string name="reason_spam_description">Review is written by bot, fake account, or contains ads and promotion</string>
@@ -386,4 +386,19 @@
     <string name="updating_profile">Updating profile</string>
     <string name="changing_password">Changing password</string>
     <string name="account_settings_title">Account Settings</string>
+    <string name="moderator">Moderator</string>
+    <string name="user">User</string>
+    <string name="place">Place</string>
+    <string name="username_title">Username:</string>
+    <string name="name_title">Name:</string>
+    <string name="contribution_report_detail">Contribution Report Detail</string>
+    <string name="user_title">User:</string>
+    <string name="place_title">Place:</string>
+    <string name="report_count_title">Report count</string>
+    <string name="report_reason_title">Report reason(s)</string>
+    <string name="review">Review</string>
+    <string name="user_report_detail">User Report Detail</string>
+    <string name="reports">Reports</string>
+    <string name="no_user_reports">No user reports</string>
+    <string name="no_contribution_reports">No contribution reports</string>
 </resources>

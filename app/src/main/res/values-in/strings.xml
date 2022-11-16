@@ -341,7 +341,7 @@
     <string name="reported_email">Email: %1$s</string>
     <string name="ban_user">Ban pengguna</string>
     <string name="edit_review">Ubah Ulasan</string>
-    <string name="moderated_warning_message">Ulasan Anda melanggar peraturan layanan kami dan sementara tidak ditampilkan. Ubah ulasan Anda untuk membalikkan ini!</string>
+    <string name="moderated_warning_message">Ulasan Anda melanggar peraturan layanan kami karena mengandung <b>%1$s</b> dan sementara tidak ditampilkan. Ubah ulasan Anda untuk membalikkan ini!</string>
     <string name="reason_spam">Spam</string>
     <string name="reason_spam_description">Ulasan ditulis oleh bot, akun palsu, atau berisi iklan atau promosi</string>
     <string name="reason_off_topic">Di luar topik</string>
@@ -374,4 +374,19 @@
     <string name="updating_profile">Memperbarui profil</string>
     <string name="changing_password">Mengubah kata sandi</string>
     <string name="account_settings_title">Pengaturan Akun</string>
+    <string name="moderator">Moderator</string>
+    <string name="user">Pengguna</string>
+    <string name="place">Tempat</string>
+    <string name="username_title">Nama Pengguna:</string>
+    <string name="name_title">Nama:</string>
+    <string name="contribution_report_detail">Detail Laporan Kontribusi</string>
+    <string name="user_title">Pengguna:</string>
+    <string name="place_title">Tempat:</string>
+    <string name="report_count_title">Jumlah laporan</string>
+    <string name="report_reason_title">Alasan laporan</string>
+    <string name="review">Ulasan</string>
+    <string name="user_report_detail">Detail Laporan Pengguna</string>
+    <string name="reports">Laporan</string>
+    <string name="no_user_reports">Tidak ada laporan pengguna</string>
+    <string name="no_contribution_reports">Tidak ada laporan kontribusi</string>
 </resources>

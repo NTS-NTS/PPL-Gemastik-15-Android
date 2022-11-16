@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ModerationPagerAdapter
@@ -30,9 +31,13 @@ class ModerationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
-            root.applyInsetter { type(statusBars = true) { padding() } }
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
 
             viewPager.adapter = ModerationPagerAdapter(this@ModerationFragment)
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
 
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 when (position) {

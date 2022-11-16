@@ -1,6 +1,7 @@
 package com.raassh.gemastik15.view.fragments.moderation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class ContributionReportFragment : Fragment() {
 
         val adapter = ContributionReportsAdapter().apply {
             onItemClickListener = { contribution ->
+                Log.d("ContributionReport", "onViewCreated: $contribution")
                 findNavController().navigate(
                     ModerationFragmentDirections.actionModerationFragmentToDetailContributionReportFragment(
                         contribution
@@ -56,10 +58,16 @@ class ContributionReportFragment : Fragment() {
                 is Resource.Success -> {
                     showLoading(false)
 
-                    adapter.submitList(it.data?.contributions)
+                    if (it.data?.contributions?.isNotEmpty() == true) {
+                        adapter.submitList(it.data.contributions)
+                        showEmpty(false)
+                    } else {
+                        showEmpty(true)
+                    }
                 }
                 is Resource.Error -> {
                     showLoading(false)
+                    showEmpty(true)
 
                     binding?.root?.showSnackbar(
                         requireContext().translateErrorMessage(it.message)
@@ -78,6 +86,18 @@ class ContributionReportFragment : Fragment() {
                 rvReports.visibility = View.GONE
             } else {
                 pbLoading.visibility = View.GONE
+                rvReports.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showEmpty(isEmpty: Boolean) {
+        binding?.apply {
+            if (isEmpty) {
+                tvNoReport.visibility = View.VISIBLE
+                rvReports.visibility = View.GONE
+            } else {
+                tvNoReport.visibility = View.GONE
                 rvReports.visibility = View.VISIBLE
             }
         }

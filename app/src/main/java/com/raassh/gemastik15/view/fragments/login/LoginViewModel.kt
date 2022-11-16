@@ -1,5 +1,6 @@
 package com.raassh.gemastik15.view.fragments.login
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -17,12 +18,12 @@ class LoginViewModel(private val authenticationRepository: AuthenticationReposit
             return@launch
         }
 
-        pref.setToken(tokenData.token)
         pref.setName(tokenData.name)
         pref.setUserName(tokenData.username)
         pref.setHasDisabilityTypes(tokenData.hasDisabilityTypes)
         pref.setIsVerified(tokenData.isVerified)
         pref.setIsModerator(tokenData.isModerator)
         pref.setIsBanned(tokenData.isBanned)
+        pref.setToken(tokenData.token)
     }
 }

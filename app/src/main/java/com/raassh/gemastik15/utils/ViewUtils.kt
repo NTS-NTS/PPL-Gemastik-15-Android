@@ -161,7 +161,7 @@ class LinearSpaceItemDecoration(
             }
             VERTICAL -> {
                 if (!isFull && position > 0) outRect.top = spacing
-                else {
+                else if (isFull) {
                     if (position == 0) outRect.top = spacing
                     outRect.bottom = spacing
                 }

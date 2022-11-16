@@ -495,12 +495,13 @@
                             app:tint="?attr/colorOrange" />
 
                         <TextView
+                            android:id="@+id/tv_moderated_message"
                             style="@style/TextAppearance.Material3.LabelLarge"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:textColor="?attr/colorOrange"
-                            android:text="@string/moderated_warning_message"/>
+                            tools:text="@string/moderated_warning_message"/>
 
                     </LinearLayout>
 

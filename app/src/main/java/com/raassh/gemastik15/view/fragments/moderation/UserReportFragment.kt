@@ -56,10 +56,15 @@ class UserReportFragment : Fragment() {
                 is Resource.Success -> {
                     showLoading(false)
 
-                    adapter.submitList(it.data?.users)
+                    if (it.data?.users?.isNotEmpty() == true) {
+                        adapter.submitList(it.data.users)
+                        showEmpty(false)
+                    }
+                    else showEmpty(true)
                 }
                 is Resource.Error -> {
                     showLoading(false)
+                    showEmpty(true)
 
                     binding?.root?.showSnackbar(
                         requireContext().translateErrorMessage(it.message)
@@ -78,6 +83,18 @@ class UserReportFragment : Fragment() {
                 rvReports.visibility = View.GONE
             } else {
                 pbLoading.visibility = View.GONE
+                rvReports.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showEmpty(isEmpty: Boolean) {
+        binding?.apply {
+            if (isEmpty) {
+                tvNoReport.visibility = View.VISIBLE
+                rvReports.visibility = View.GONE
+            } else {
+                tvNoReport.visibility = View.GONE
                 rvReports.visibility = View.VISIBLE
             }
         }

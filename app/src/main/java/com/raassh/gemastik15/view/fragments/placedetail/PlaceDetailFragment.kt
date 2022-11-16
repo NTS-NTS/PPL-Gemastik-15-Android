@@ -3,6 +3,7 @@ package com.raassh.gemastik15.view.fragments.placedetail
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -325,7 +326,10 @@ class PlaceDetailFragment : Fragment() {
                     addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
                 }
             }
-            if (review.is_moderated) cdModeratedWarning.visibility = View.VISIBLE
+            if (review.is_moderated) {
+                cdModeratedWarning.visibility = View.VISIBLE
+                tvModeratedMessage.text = Html.fromHtml(getString(R.string.moderated_warning_message, review.moderation_reason))
+            }
             else cdModeratedWarning.visibility = View.GONE
             btnEditReview.setOnClickListener {
                 val action = PlaceDetailFragmentDirections.actionPlaceDetailFragmentToEditContributionFragment(review)

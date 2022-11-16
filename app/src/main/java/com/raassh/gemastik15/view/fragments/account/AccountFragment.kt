@@ -1,6 +1,7 @@
 package com.raassh.gemastik15.view.fragments.account
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -193,12 +194,15 @@ class AccountFragment : Fragment() {
             getIsModerator().observe(viewLifecycleOwner) {
                 if (it == true) {
                     binding?.btnModeration?.visibility = View.VISIBLE
+                    binding?.moderatorTag?.visibility = View.VISIBLE
                 } else {
                     binding?.btnModeration?.visibility = View.GONE
+                    binding?.moderatorTag?.visibility = View.GONE
                 }
             }
 
             getIsVerified().observe(viewLifecycleOwner) {
+                Log.d("AccountFragment", "getIsVerified: $it")
                 if (it == true) {
                     binding?.btnResendVerification?.visibility = View.GONE
                     binding?.verifiedTag?.visibility = View.VISIBLE

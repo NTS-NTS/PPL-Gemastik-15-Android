@@ -33,8 +33,8 @@ class UserReportsAdapter :
 
         fun bind(report: ItemReportUserResponse) {
             binding.apply {
-                tvName.text = context.getString(R.string.reported_name, report.name)
-                tvUsername.text = context.getString(R.string.reported_username, report.username)
+                tvName.text = report.name
+                tvUsername.text = report.username
                 tvReportCount.text = context.getString(R.string.report_count, report.reportCount)
                 root.setOnClickListener {
                     onItemClickListener?.invoke(report)

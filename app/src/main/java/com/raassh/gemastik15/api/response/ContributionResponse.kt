@@ -136,5 +136,8 @@ data class ContributionUserPlaceData(
     val review: String?,
 
     @field:SerializedName("is_moderated")
-    val is_moderated: Boolean
+    val is_moderated: Boolean,
+
+    @field:SerializedName("moderation_reason")
+    val moderation_reason: String?
 ) : Parcelable

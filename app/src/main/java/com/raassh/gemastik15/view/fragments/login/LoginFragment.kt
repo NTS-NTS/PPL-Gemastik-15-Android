@@ -1,6 +1,7 @@
 package com.raassh.gemastik15.view.fragments.login
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,7 +69,6 @@ class LoginFragment : Fragment() {
                         }
                         is Resource.Success -> {
                             btnLogin.isEnabled = true
-
                             viewModel.saveUserData(response.data)
                         }
                         is Resource.Error -> {

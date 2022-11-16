@@ -44,11 +44,15 @@ class DetailUserReportFragment : Fragment() {
         val reasonList = arrayOf("test1", "test2", "test3")
 
         binding?.apply {
-            root.applyInsetter { type(statusBars = true) { padding() } }
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
 
-            tvName.text = ctx.getString(R.string.reported_name, reported.name)
-            tvUsername.text = ctx.getString(R.string.reported_username, reported.username)
-            tvReportCount.text = ctx.getString(R.string.report_count, reported.reportCount)
+            tvName.text = reported.name
+            tvUsername.text = reported.username
+            tvReportCount.text =reported.reportCount.toString()
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
 
             btnDismiss.setOnClickListener {
                 viewModel.dismiss().observe(viewLifecycleOwner) { response ->
@@ -146,9 +150,8 @@ class DetailUserReportFragment : Fragment() {
             data.reportReason.distinct().joinToString(", ")
 
         binding?.apply {
-            tvReportReason.text =
-                ctx.getString(R.string.report_reason, reason)
-            tvEmail.text = ctx.getString(R.string.reported_email, data.email)
+            tvReportReason.text = reason
+            tvEmail.text = data.email
         }
 
     }
