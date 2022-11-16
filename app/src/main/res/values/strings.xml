@@ -288,13 +288,13 @@
     <string name="save">Save</string>
 
     <string name="wheelchair_user">Wheelchair user</string>
-    <string name="limited_walking">Limited walking</string>
-    <string name="limited_hand">Limited hand</string>
-    <string name="limited_physical">Limited physical</string>
+    <string name="limited_walking">Limited walking ability</string>
+    <string name="limited_hand">Limited hand ability</string>
+    <string name="limited_physical">Limited movement ability</string>
     <string name="blindness">Blindness</string>
     <string name="low_vision">Low vision</string>
     <string name="deafness">Deafness</string>
-    <string name="hard_hearing">Hard hearing</string>
+    <string name="hard_hearing">Hard of hearing</string>
     <string name="speech_impairment">Speech impairment</string>
     <string name="change_password">Change Password</string>
     <string name="old_password">Old Password</string>

@@ -28,7 +28,20 @@
                 android:layout_height="32dp"
                 android:layout_margin="4dp"
                 android:contentDescription="@null"
-                tools:src="@drawable/audio_wayfinder"/>
+                tools:src="@drawable/audio_wayfinder"
+                tools:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_rest_count"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:gravity="center"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:text="+7"/>
 
         </LinearLayout>
 
@@ -43,7 +56,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeWidth="0dp">
+        app:strokeWidth="0dp"
+        tools:visibility="gone">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_facility_review"

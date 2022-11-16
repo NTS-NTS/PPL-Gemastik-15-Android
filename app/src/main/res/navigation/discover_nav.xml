@@ -104,6 +104,9 @@
         <argument
             android:name="reviews"
             app:argType="com.raassh.gemastik15.api.response.ReviewData[]" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
         <action
             android:id="@+id/action_reviewsFragment_to_reportReviewFragment"
             app:destination="@id/reportReviewFragment" />

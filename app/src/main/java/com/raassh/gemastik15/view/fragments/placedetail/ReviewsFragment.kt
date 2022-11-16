@@ -28,6 +28,7 @@ class ReviewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val reviews = ReviewsFragmentArgs.fromBundle(requireArguments()).reviews.toList()
+        val position = ReviewsFragmentArgs.fromBundle(requireArguments()).position
 
         binding?.apply {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
@@ -41,6 +42,7 @@ class ReviewsFragment : Fragment() {
                     }
                 }
                 addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.VERTICAL, true))
+                scrollToPosition(position)
             }
 
             btnBack.setOnClickListener {

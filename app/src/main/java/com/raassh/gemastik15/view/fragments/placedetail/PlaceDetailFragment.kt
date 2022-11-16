@@ -262,7 +262,7 @@ class PlaceDetailFragment : Fragment() {
 
         binding?.btnSeeAllReviews?.setOnClickListener {
             findNavController().navigate(PlaceDetailFragmentDirections.actionPlaceDetailFragmentToReviewsFragment(
-                reviews.toTypedArray()
+                reviews.toTypedArray(), 0
             ))
         }
         binding?.btnSeeAllReviews?.text = getString(R.string.see_all_reviews, reviews.size)
@@ -270,6 +270,11 @@ class PlaceDetailFragment : Fragment() {
         binding?.rvReviews?.apply {
             adapter = ReviewAdapter(true).apply {
                 submitList(reviews.take(REVIEW_LIMIT))
+                onCardClickListener = { position ->
+                    findNavController().navigate(PlaceDetailFragmentDirections.actionPlaceDetailFragmentToReviewsFragment(
+                        reviews.toTypedArray(), position
+                    ))
+                }
             }
             if (itemDecorationCount == 0) {
                 addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))

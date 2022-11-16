@@ -108,6 +108,11 @@ interface ApiService {
         @Query("limit") limit: Int
     ): ArticleResponse
 
+    @GET("readings/guidelines")
+    suspend fun getGuidelines(
+        @Query("limit") limit: Int
+    ): ArticleResponse
+
     @POST("reports/contributions")
     suspend fun reportContribution(
         @Header("Authorization") authorization: String,

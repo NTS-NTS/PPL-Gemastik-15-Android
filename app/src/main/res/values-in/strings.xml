@@ -276,15 +276,15 @@
     <string name="set_disability_types_message">Ini akan membantumu mendapatkan rekomendasi tempat. Kamu bisa mengosongkan ini.</string>
     <string name="save">Simpan</string>
 
-    <string name="wheelchair_user">Wheelchair user</string>
-    <string name="limited_walking">Limited walking</string>
-    <string name="limited_hand">Limited hand</string>
-    <string name="limited_physical">Limited physical</string>
-    <string name="blindness">Blindness</string>
-    <string name="low_vision">Low vision</string>
-    <string name="deafness">Deafness</string>
-    <string name="hard_hearing">Hard hearing</string>
-    <string name="speech_impairment">Speech impairment</string>
+    <string name="wheelchair_user">Pengguna kursi roda</string>
+    <string name="limited_walking">Kemampuan jalan terbatas</string>
+    <string name="limited_hand">Kemampuan tangan terbatas</string>
+    <string name="limited_physical">Kemampuan gerak terbatas</string>
+    <string name="blindness">Buta</string>
+    <string name="low_vision">Penglihatan terbatas</string>
+    <string name="deafness">Tuli</string>
+    <string name="hard_hearing">Kesulitan mendengar</string>
+    <string name="speech_impairment">Gangguan bicara</string>
     <string name="change_password">Ubah Kata Sandi</string>
     <string name="old_password">Kata Sandi Lama</string>
     <string name="new_password">Kata Sandi Baru</string>

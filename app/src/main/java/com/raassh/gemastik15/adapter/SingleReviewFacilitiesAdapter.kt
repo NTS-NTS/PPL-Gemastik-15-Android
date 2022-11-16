@@ -11,7 +11,9 @@ import com.raassh.gemastik15.api.response.FacilityQualityItem
 import com.raassh.gemastik15.databinding.FacilityReviewSmallItemBinding
 import com.raassh.gemastik15.utils.*
 
-class SingleReviewFacilitiesAdapter : ListAdapter<FacilityQualityItem, SingleReviewFacilitiesAdapter.ReviewFacilitiesViewHolder>(DIFF_CALLBACK) {
+class SingleReviewFacilitiesAdapter(
+    private val size: Int? = null
+) : ListAdapter<FacilityQualityItem, SingleReviewFacilitiesAdapter.ReviewFacilitiesViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ReviewFacilitiesViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.facility_review_small_item, parent, false)
@@ -19,19 +21,45 @@ class SingleReviewFacilitiesAdapter : ListAdapter<FacilityQualityItem, SingleRev
 
     override fun onBindViewHolder(holder: ReviewFacilitiesViewHolder, position: Int) {
         val facility = getItem(position)
-        holder.bind(facility)
+
+        if (size != null) {
+            if (position < 4) {
+                holder.bind(facility)
+                holder.itemView.visibility = View.VISIBLE
+            } else if (position == 4) {
+                holder.bind(null)
+                holder.itemView.visibility = View.VISIBLE
+            } else {
+                holder.itemView.visibility = View.GONE
+            }
+        } else {
+            holder.bind(facility)
+        }
     }
 
     inner class ReviewFacilitiesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = FacilityReviewSmallItemBinding.bind(itemView)
         private val context = itemView.context
 
-        fun bind(facility: FacilityQualityItem) {
+        fun bind(facility: FacilityQualityItem?) {
             binding.apply {
-                imgFacilityIcon.setImageDrawable(context.getFacilityDrawable(context.translateFacilitytoView(facility.facility)))
+                if (facility != null) {
+                    tvRestCount.visibility = View.GONE
+                    imgFacilityIcon.visibility = View.VISIBLE
+                    cdFacilityReview.visibility = View.VISIBLE
 
-                imgFacilityReview.setImageDrawable(context.getFacilityReviewDrawable(facility.quality, false))
-                cdFacilityReview.setCardBackgroundColor(context.getFacilityReviewColor(facility.quality))
+                    imgFacilityIcon.setImageDrawable(context.getFacilityDrawable(context.translateFacilitytoView(facility.facility)))
+
+                    imgFacilityReview.setImageDrawable(context.getFacilityReviewDrawable(facility.quality, false))
+                    cdFacilityReview.setCardBackgroundColor(context.getFacilityReviewColor(facility.quality))
+                } else {
+                    val restCount = size!! - 4
+                    tvRestCount.text = StringBuilder().append("+").append(restCount)
+
+                    tvRestCount.visibility = View.VISIBLE
+                    imgFacilityIcon.visibility = View.GONE
+                    cdFacilityReview.visibility = View.GONE
+                }
             }
         }
     }

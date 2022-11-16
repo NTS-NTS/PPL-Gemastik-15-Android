@@ -49,7 +49,7 @@ class GuidelinesFragment : Fragment() {
             rvGuidelines.adapter = articlesAdapter
         }
 
-        viewModel.articles.observe(viewLifecycleOwner) {
+        viewModel.guidelines.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it) {
                     is Resource.Loading -> {
