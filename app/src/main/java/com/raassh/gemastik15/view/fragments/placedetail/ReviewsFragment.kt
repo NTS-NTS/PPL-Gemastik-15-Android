@@ -41,7 +41,9 @@ class ReviewsFragment : Fragment() {
                         findNavController().navigate(ReviewsFragmentDirections.actionReviewsFragmentToReportReviewFragment(review))
                     }
                 }
-                addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.VERTICAL, true))
+                if (itemDecorationCount == 0) {
+                    addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.VERTICAL, true))
+                }
                 scrollToPosition(position)
             }
 

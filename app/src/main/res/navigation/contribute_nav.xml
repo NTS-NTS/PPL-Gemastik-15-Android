@@ -23,6 +23,12 @@
                 android:name="tabIndex"
                 app:argType="integer" />
         </action>
+        <action
+            android:id="@+id/action_navigation_contribute_to_editContributionFragment"
+            app:destination="@id/editContributionFragment" />
+        <action
+            android:id="@+id/action_navigation_contribute_to_reviewHistoryFragment"
+            app:destination="@id/reviewHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/placeDetailFragment"
@@ -84,5 +90,23 @@
         <argument
             android:name="review"
             app:argType="com.raassh.gemastik15.api.response.ContributionUserPlaceData" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewHistoryFragment"
+        android:name="com.raassh.gemastik15.view.fragments.reviewhistory.ReviewHistoryFragment"
+        android:label="fragment_review_history"
+        tools:layout="@layout/fragment_review_history" >
+        <argument
+            android:name="reviews"
+            app:argType="com.raassh.gemastik15.api.response.ContributionUserData[]"/>
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_reviewHistoryFragment_to_placeDetailFragment"
+            app:destination="@id/placeDetailFragment" />
+        <action
+            android:id="@+id/action_reviewHistoryFragment_to_editContributionFragment"
+            app:destination="@id/editContributionFragment" />
     </fragment>
 </navigation>

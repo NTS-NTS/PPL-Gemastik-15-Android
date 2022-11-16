@@ -401,4 +401,13 @@
     <string name="reports">Reports</string>
     <string name="no_user_reports">No user reports</string>
     <string name="no_contribution_reports">No contribution reports</string>
+    <string name="review_history_title">Your review history</string>
+    <string name="option">Option</string>
+    <string name="delete_contribution">Delete Contribution</string>
+    <string name="review_history_count_message">You have reviewed %d places!</string>
+    <string name="see_all_your_reviews">See all your (%d) reviews</string>
+    <string name="review_recommendation_title">Review new places!</string>
+    <string name="review_history">Review History</string>
+    <string name="review_deleted">Review deleted</string>
+    <string name="delete_review">Delete Review</string>
 </resources>

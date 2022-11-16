@@ -170,6 +170,8 @@ class PlaceDetailFragment : Fragment() {
                     val jwt = JWT(it)
                     val userId = jwt.getClaim("id").asString()
 
+                    viewModel.setToken(it)
+
                     if (userId != null) {
                         viewModel.setUserId(userId)
                     }
@@ -331,9 +333,48 @@ class PlaceDetailFragment : Fragment() {
                 tvModeratedMessage.text = Html.fromHtml(getString(R.string.moderated_warning_message, review.moderation_reason))
             }
             else cdModeratedWarning.visibility = View.GONE
+
             btnEditReview.setOnClickListener {
                 val action = PlaceDetailFragmentDirections.actionPlaceDetailFragmentToEditContributionFragment(review)
                 findNavController().navigate(action)
+            }
+
+            btnDeleteReview.setOnClickListener {
+                viewModel.deleteReview(review.place_id).observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        when (it) {
+                            is Resource.Error -> {
+                                binding?.root?.showSnackbar(
+                                    message = requireContext().translateErrorMessage(it.message),
+                                    anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
+                                )
+
+                                binding?.apply {
+                                    btnDeleteReview.isEnabled = true
+                                    btnEditReview.isEnabled = true
+                                }
+                            }
+                            is Resource.Loading -> {
+                                binding?.apply {
+                                    btnDeleteReview.isEnabled = false
+                                    btnEditReview.isEnabled = false
+                                }
+                            }
+                            is Resource.Success -> {
+                                binding?.root?.showSnackbar(
+                                    message = getString(R.string.review_deleted),
+                                )
+
+                                binding?.apply {
+                                    btnDeleteReview.isEnabled = true
+                                    btnEditReview.isEnabled = true
+                                    llYourReview.visibility = View.GONE
+                                    btnAddReview.visibility = View.VISIBLE
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

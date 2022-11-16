@@ -74,7 +74,7 @@
                 android:accessibilityHeading="true"/>
 
             <TextView
-                style="@style/TextAppearance.Material3.BodySmall"
+                style="@style/TextAppearance.Material3.BodyMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -215,78 +215,160 @@
             android:layout_marginBottom="16dp" />
 
         <LinearLayout
-            android:id="@+id/ll_recently_visited"
+            android:id="@+id/ll_review_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_recently_visited_title"
-                style="@style/TextAppearance.Material3.TitleMedium"
+                android:id="@+id/tv_review_history_title"
+                style="@style/TextAppearance.Material3.TitleLarge"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:accessibilityHeading="true"
+                android:text="@string/review_history_title" />
+
+            <TextView
+                style="@style/TextAppearance.Material3.BodyMedium"
+                android:id="@+id/tv_review_history_count"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:accessibilityHeading="true"
-                android:text="@string/recently_viewed" />
+                tools:text="@string/review_history_count_message"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_recently_visited"
+                android:id="@+id/rv_review_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/place_item" />
+                tools:listitem="@layout/review_history_item" />
 
-            <TextView
-                style="@style/TextAppearance.Material3.BodyMedium"
-                android:id="@+id/tv_recent_empty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Button
+                style="@style/Theme.Gemastik15.Button.OutlinedButton"
+                android:id="@+id/btn_see_all_reviews"
+                android:layout_marginTop="16dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="@string/empty_recent"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Lihat semua (123) ulasanmu"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/Theme.Gemastik15.Divider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_nearby"
+            android:id="@+id/ll_review_recommendation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_nearby_title"
-                style="@style/TextAppearance.Material3.TitleMedium"
+                android:id="@+id/tv_review_recommendation_title"
+                style="@style/TextAppearance.Material3.TitleLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/nearby_title"
-                android:accessibilityHeading="true"/>
+                android:accessibilityHeading="true"
+                android:text="@string/review_recommendation_title" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_nearby"
+            <LinearLayout
+                android:id="@+id/ll_recently_visited"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/place_item" />
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
 
-            <TextView
-                style="@style/TextAppearance.Material3.BodyMedium"
-                android:id="@+id/tv_nearby_empty"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/tv_recently_visited_title"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:accessibilityHeading="true"
+                    android:text="@string/recently_viewed" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_recently_visited"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/place_item" />
+
+                <TextView
+                    style="@style/TextAppearance.Material3.BodyMedium"
+                    android:id="@+id/tv_recent_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/empty_recent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_nearby"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/no_nearby"/>
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_nearby_title"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/nearby_title"
+                    android:accessibilityHeading="true"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_nearby"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/place_item" />
+
+                <TextView
+                    style="@style/TextAppearance.Material3.BodyMedium"
+                    android:id="@+id/tv_nearby_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/no_nearby"/>
+
+            </LinearLayout>
 
         </LinearLayout>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            style="@style/Widget.Material3.CircularProgressIndicator"
+            android:id="@+id/pb_loading"
+            android:indeterminate="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

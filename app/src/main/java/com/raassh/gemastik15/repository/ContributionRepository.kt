@@ -24,6 +24,10 @@ class ContributionRepository(private val apiService: ApiService) {
         apiService.changeReview("Bearer $token", req)
     }
 
+    fun deleteReview(token: String, placeId: String) = callApi {
+        apiService.deleteContribution("Bearer $token", placeId)
+    }
+
     fun getContributionCount(token: String) = callApi {
         apiService.getContributionCount("Bearer $token").data
     }
@@ -35,4 +39,9 @@ class ContributionRepository(private val apiService: ApiService) {
     fun getContributionsofPlacebyUser(placeId: String, userId: String) = callApi {
         apiService.getContributionsofPlacebyUser(placeId, userId).data
     }
+
+    fun getContributionsofUser(userId: String, lat: Double, long: Double) = callApi {
+        apiService.getContributionsofUser(userId, lat, long).data
+    }
+
 }

@@ -389,4 +389,13 @@
     <string name="reports">Laporan</string>
     <string name="no_user_reports">Tidak ada laporan pengguna</string>
     <string name="no_contribution_reports">Tidak ada laporan kontribusi</string>
+    <string name="review_history_title">Riwayat ulasanmu</string>
+    <string name="option">Pilihan</string>
+    <string name="delete_contribution">Hapus Kontribusi</string>
+    <string name="review_history_count_message">Kamu telah mengulas %d tempat!</string>
+    <string name="see_all_your_reviews">Lihat semua (%d) ulasanmu</string>
+    <string name="review_recommendation_title">Ulas tempat baru!</string>
+    <string name="review_history">Riwayat Ulasan</string>
+    <string name="review_deleted">Ulasan dihapus</string>
+    <string name="delete_review">Hapus Ulasan</string>
 </resources>

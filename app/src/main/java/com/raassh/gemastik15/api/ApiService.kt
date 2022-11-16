@@ -70,6 +70,19 @@ interface ApiService {
         @Path("user_id") userId: String
     ): ContributionUserPlaceResponse
 
+    @GET("contributions/users/{user_id}")
+    suspend fun getContributionsofUser(
+        @Path("user_id") userId: String,
+        @Query("lat") lat: Double,
+        @Query("long") long: Double,
+    ): ContributionUserResponse
+
+    @DELETE("contributions/delete/{place_id}")
+    suspend fun deleteContribution(
+        @Header("Authorization") authorization: String,
+        @Path("place_id") placeId: String
+    ): GeneralResponse
+
     @POST("auth/disabilities")
     suspend fun setDisabilities(
         @Header("Authorization") authorization: String,

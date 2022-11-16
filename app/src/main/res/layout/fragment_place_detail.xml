@@ -515,6 +515,18 @@
                     android:layout_height="wrap_content"
                     android:text="@string/edit_review" />
 
+                <Button
+                    android:id="@+id/btn_delete_review"
+                    style="@style/Theme.Gemastik15.Button.TonalButton"
+                    android:backgroundTint="?attr/colorErrorContainer"
+                    android:textColor="?attr/colorOnErrorContainer"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="16dp"
+                    app:icon="@drawable/ic_baseline_delete_outline_24"
+                    app:iconTint="?attr/colorOnErrorContainer"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_review" />
+
             </LinearLayout>
 
             <Button

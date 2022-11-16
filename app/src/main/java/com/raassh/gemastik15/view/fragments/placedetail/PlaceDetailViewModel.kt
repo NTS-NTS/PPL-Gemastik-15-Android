@@ -17,6 +17,12 @@ class PlaceDetailViewModel(
     private val placeRepository: PlaceRepository,
     private val contributionRepository: ContributionRepository
     ) : ViewModel() {
+    private val token = MutableLiveData<String>()
+
+    fun setToken(token: String) {
+        this.token.value = token
+    }
+
     private val query = MutableLiveData<PlaceDetailQuery>()
     val userId = MutableLiveData<String>()
 
@@ -42,4 +48,6 @@ class PlaceDetailViewModel(
     fun getUserReview(placeId: String, userId: String) : LiveData<Resource<ContributionUserPlaceData>> {
         return contributionRepository.getContributionsofPlacebyUser(placeId, userId).asLiveData()
     }
+
+    fun deleteReview(placeId: String) = contributionRepository.deleteReview(token.value!!, placeId).asLiveData()
 }

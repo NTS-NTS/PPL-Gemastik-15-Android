@@ -2,6 +2,7 @@ package com.raassh.gemastik15.api.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.raassh.gemastik15.local.db.PlaceEntity
 import kotlinx.parcelize.Parcelize
 
 data class ContributionResponse(
@@ -128,6 +129,41 @@ data class ContributionUserPlaceData(
 
     @field:SerializedName("place_id")
     val place_id: String,
+
+    @field:SerializedName("facilities")
+    val facilities: List<FacilityQualityItem>,
+
+    @field:SerializedName("review")
+    val review: String?,
+
+    @field:SerializedName("is_moderated")
+    val is_moderated: Boolean,
+
+    @field:SerializedName("moderation_reason")
+    val moderation_reason: String?
+) : Parcelable
+
+
+data class ContributionUserResponse(
+
+    @field:SerializedName("data")
+    val data: List<ContributionUserData>,
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+@Parcelize
+data class ContributionUserData(
+
+    @field:SerializedName("user_id")
+    val user_id: String,
+
+    @field:SerializedName("place")
+    val place: PlacesItem,
 
     @field:SerializedName("facilities")
     val facilities: List<FacilityQualityItem>,

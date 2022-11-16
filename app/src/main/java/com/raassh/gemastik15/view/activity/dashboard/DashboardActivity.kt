@@ -117,6 +117,7 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.addContributionFragment,
                 R.id.webViewerFragment,
                 R.id.reviewsFragment,
+                R.id.reviewHistoryFragment,
                 R.id.reportReviewFragment,
                 R.id.editContributionFragment,
                 R.id.changePasswordFragment,

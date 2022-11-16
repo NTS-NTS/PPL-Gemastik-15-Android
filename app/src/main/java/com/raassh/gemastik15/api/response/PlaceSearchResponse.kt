@@ -1,6 +1,8 @@
 package com.raassh.gemastik15.api.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class PlaceSearchResponse(
 
@@ -14,6 +16,7 @@ data class PlaceSearchResponse(
 	val message: String
 )
 
+@Parcelize
 data class PlacesItem(
 
 	@field:SerializedName("image")
@@ -39,4 +42,4 @@ data class PlacesItem(
 
 	@field:SerializedName("facilities")
 	val facilities: List<FacilitiesItem>
-)
+) : Parcelable

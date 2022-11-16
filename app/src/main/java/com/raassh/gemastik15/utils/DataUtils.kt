@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
+import com.raassh.gemastik15.api.response.ContributionUserData
+import com.raassh.gemastik15.api.response.ContributionUserPlaceData
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlacesItem
 import com.raassh.gemastik15.local.db.PlaceEntity
@@ -19,12 +21,23 @@ fun placeItemToEntity(placesItem: PlacesItem): PlaceEntity {
         placesItem.kind,
         placesItem.image,
         placesItem.distance,
-        placesItem.facilities.joinToString(",") {
+        placesItem.facilities.take(3).joinToString(",") {
             StringBuilder().append(it.name).append(":").append(it.quality.toInt()).toString()
         },
         placesItem.latitude,
         placesItem.longitude,
         Calendar.getInstance().timeInMillis
+    )
+}
+
+fun contributionUserToUserPlace(contributionUser: ContributionUserData): ContributionUserPlaceData {
+    return ContributionUserPlaceData(
+        contributionUser.user_id,
+        contributionUser.place.id,
+        contributionUser.facilities,
+        contributionUser.review,
+        contributionUser.is_moderated,
+        contributionUser.moderation_reason
     )
 }
 
