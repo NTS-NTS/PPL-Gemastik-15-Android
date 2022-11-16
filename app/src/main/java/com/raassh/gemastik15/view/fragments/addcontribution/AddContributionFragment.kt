@@ -8,10 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxItemDecoration
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -61,6 +67,8 @@ class AddContributionFragment : Fragment() {
             importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
             isFocusable = false
         }
+
+        val adapter = SingleReviewFacilitiesAdapter()
 
         showReviewLoading(true)
         prepareFacilityReviewData()
@@ -116,7 +124,20 @@ class AddContributionFragment : Fragment() {
                 trySubmitContribution(token, place.id, etReview.text.toString())
             }
 
-            rvYourReviewFacilities.addItemDecoration(LinearSpaceItemDecoration(16, RecyclerView.HORIZONTAL))
+            binding?.rvYourReviewFacilities?.apply {
+                this.adapter = adapter
+                layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                    flexDirection = FlexDirection.ROW
+                    justifyContent = JustifyContent.FLEX_START
+                }
+
+                if (itemDecorationCount == 0) {
+                    addItemDecoration(FlexboxItemDecoration(requireContext()).apply {
+                        setDrawable(AppCompatResources.getDrawable(context, R.drawable.divider))
+                        setOrientation(FlexboxItemDecoration.BOTH)
+                    })
+                }
+            }
         }
 
         viewModel.apply {
@@ -161,13 +182,7 @@ class AddContributionFragment : Fragment() {
 
             reviewFacilities.observe(viewLifecycleOwner) {
                 if (it != null) {
-                    Log.d("reviewFacilities", it.toString())
-                    binding?.rvYourReviewFacilities?.apply {
-                        adapter = SingleReviewFacilitiesAdapter().apply {
-                            submitList(it)
-                            notifyDataSetChanged()
-                        }
-                    }
+                    adapter.submitList(it.toList())
                 }
             }
         }

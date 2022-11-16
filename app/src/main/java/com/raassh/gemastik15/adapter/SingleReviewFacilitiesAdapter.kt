@@ -67,11 +67,11 @@ class SingleReviewFacilitiesAdapter(
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FacilityQualityItem>() {
             override fun areItemsTheSame(oldItem: FacilityQualityItem, newItem: FacilityQualityItem): Boolean {
-                return oldItem == newItem
+                return oldItem.facility == newItem.facility
             }
 
             override fun areContentsTheSame(oldItem: FacilityQualityItem, newItem: FacilityQualityItem): Boolean {
-                return oldItem == newItem
+                return oldItem.facility == newItem.facility
             }
         }
     }

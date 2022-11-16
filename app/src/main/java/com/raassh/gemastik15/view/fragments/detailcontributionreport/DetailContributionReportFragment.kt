@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxItemDecoration
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.SingleReviewFacilitiesAdapter
@@ -162,8 +167,16 @@ class DetailContributionReportFragment : Fragment() {
                     submitList(data.facilities)
                 }
 
+                layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                    flexDirection = FlexDirection.ROW
+                    justifyContent = JustifyContent.FLEX_START
+                }
+
                 if (itemDecorationCount == 0) {
-                    addItemDecoration(GridSpaceItemDecoration(6, 8))
+                    addItemDecoration(FlexboxItemDecoration(requireContext()).apply {
+                        setDrawable(AppCompatResources.getDrawable(context, R.drawable.divider))
+                        setOrientation(FlexboxItemDecoration.BOTH)
+                    })
                 }
             }
         }

@@ -174,6 +174,17 @@ fun convertDpToPixel(dp: Int, context: Context): Float {
     return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
 }
 
+fun convertPixelsToDp(px: Float, context: Context): Float {
+    return px / (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+}
+
+fun getDisplayDp(context: Context): Pair<Int, Int> {
+    val displayMetrics = context.resources.displayMetrics
+    val widthDp = displayMetrics.widthPixels / displayMetrics.density
+    val heightDp = displayMetrics.heightPixels / displayMetrics.density
+    return Pair(widthDp.toInt(), heightDp.toInt())
+}
+
 fun Context.uriToBitmap(uri: Uri): Bitmap {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
         val source = ImageDecoder.createSource(contentResolver, uri)
