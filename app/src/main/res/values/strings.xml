@@ -419,4 +419,5 @@
     <string name="success_change_disability">Disability edited</string>
 
     <string name="single_facility_review_description">%1$s facility has %2$s quality</string>
+    <string name="moderated_warning_message_compact">This review is not publicly available because it contains %1$s</string>
 </resources>

@@ -11,10 +11,7 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.ContributionUserData
 import com.raassh.gemastik15.api.response.PlacesItem
 import com.raassh.gemastik15.databinding.ReviewHistoryItemBinding
-import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
-import com.raassh.gemastik15.utils.convertDpToPixel
-import com.raassh.gemastik15.utils.rounded
-import com.raassh.gemastik15.utils.translatePlaceTypeNameToView
+import com.raassh.gemastik15.utils.*
 
 class ReviewHistoryAdapter(
     private val isCompact: Boolean = false,
@@ -34,7 +31,7 @@ class ReviewHistoryAdapter(
         } else {
             view.layoutParams = ViewGroup.LayoutParams(
                 if (isSingle) ViewGroup.LayoutParams.MATCH_PARENT
-                else convertDpToPixel(340, parent.context).toInt(),
+                else convertDpToPixel(360, parent.context).toInt(),
                 convertDpToPixel(212, parent.context).toInt()
             )
         }
@@ -78,9 +75,24 @@ class ReviewHistoryAdapter(
                 }
                 else {
                     root.isClickable = false
+                    if (review.is_moderated && review.moderation_reason != null) {
+                        cdModeratedWarning.visibility = View.VISIBLE
+                        tvModeratedMessage.text = context.getString(
+                            R.string.moderated_warning_message_compact,
+                            context.getReviewReason(review.moderation_reason)
+                        )
+                    } else {
+                        cdModeratedWarning.visibility = View.GONE
+                    }
                 }
                 tvPlaceName.text = review.place.name
                 tvPlaceType.text = context.translatePlaceTypeNameToView(review.place.kind)
+                if (review.modified_at != null) {
+                    tvReviewDate.text = context.getElapsedTime(review.modified_at)
+                    tvReviewDate.visibility = View.VISIBLE
+                } else {
+                    tvReviewDate.visibility = View.GONE
+                }
                 if (review.place.distance == -1.0) {
                     tvPlaceDistance.visibility = View.INVISIBLE
                     ivDot.visibility = View.INVISIBLE

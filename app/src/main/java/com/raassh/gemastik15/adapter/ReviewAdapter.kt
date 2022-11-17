@@ -12,6 +12,7 @@ import com.raassh.gemastik15.api.response.ReviewData
 import com.raassh.gemastik15.databinding.ReviewItemBinding
 import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
 import com.raassh.gemastik15.utils.convertDpToPixel
+import com.raassh.gemastik15.utils.getElapsedTime
 import com.raassh.gemastik15.utils.loadImage
 
 class ReviewAdapter(
@@ -45,6 +46,7 @@ class ReviewAdapter(
 
     inner class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ReviewItemBinding.bind(itemView)
+        private val context = itemView.context
 
         init {
             binding.rvReviewFacilities.apply {
@@ -76,6 +78,7 @@ class ReviewAdapter(
                 imgReviewProfile.loadImage(review.user.profilePicture)
                 tvReviewName.text = review.user.name
                 tvReviewText.text = review.review
+                if (review.modified_at != null) tvReviewDate.text = context.getElapsedTime(review.modified_at)
                 if (review.review?.isEmpty() == true) {
                     tvReviewText.visibility = View.GONE
                 } else {

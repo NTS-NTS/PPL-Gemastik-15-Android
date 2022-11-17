@@ -406,4 +406,5 @@
     <string name="edit_disability">Edit Disabilitas</string>
     <string name="success_change_disability">Disabilitas diedit</string>
     <string name="single_facility_review_description">Fasilitas %1$s memiliki kualitas %2$s</string>
+    <string name="moderated_warning_message_compact">Ulasan ini tidak dapat dilihat publik karena mengandung %1$s</string>
 </resources>

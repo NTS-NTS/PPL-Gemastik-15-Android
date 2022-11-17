@@ -94,7 +94,10 @@ data class ReviewData(
     val facilities: List<FacilityQualityItem>,
 
     @field:SerializedName("review")
-    val review: String?
+    val review: String?,
+
+    @field:SerializedName("modified_at")
+    val modified_at: String?
 ) : Parcelable
 
 
@@ -139,7 +142,10 @@ data class ContributionUserPlaceData(
     val is_moderated: Boolean,
 
     @field:SerializedName("moderation_reason")
-    val moderation_reason: String?
+    val moderation_reason: String?,
+
+    @field:SerializedName("modified_at")
+    val modified_at: String?
 ) : Parcelable
 
 
@@ -174,5 +180,8 @@ data class ContributionUserData(
     val is_moderated: Boolean,
 
     @field:SerializedName("moderation_reason")
-    val moderation_reason: String?
+    val moderation_reason: String?,
+
+    @field:SerializedName("modified_at")
+    val modified_at: String?
 ) : Parcelable

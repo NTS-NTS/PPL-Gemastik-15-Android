@@ -281,8 +281,6 @@ class PlaceDetailFragment : Fragment() {
 
     private fun setReviews(_reviews: List<ReviewData>, userId: String) {
         val reviews = _reviews.filter { it.user.id != userId }
-        Log.d("PlaceDetailFragment", "review: $userId $reviews")
-        Log.d("PlaceDetailFragment", "_review: $userId")
 
         if (reviews.isEmpty()) {
             showEmptyReviews()
@@ -351,6 +349,9 @@ class PlaceDetailFragment : Fragment() {
             llYourReview.visibility = View.VISIBLE
             btnAddReview.visibility = View.GONE
             tvYourReview.text = review.review
+            review.modified_at?. let {
+                tvYourReviewDate.text = context?.getElapsedTime(review.modified_at)
+            }
             if (review.review.isNullOrEmpty()) tvYourReview.visibility = View.GONE
             rvYourReviewFacilities.apply {
                 adapter = SingleReviewFacilitiesAdapter().apply {

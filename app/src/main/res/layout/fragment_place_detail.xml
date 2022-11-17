@@ -464,6 +464,15 @@
                         android:layout_marginBottom="16dp">
 
                         <TextView
+                            style="@style/TextAppearance.Material3.LabelLarge"
+                            android:id="@+id/tv_your_review_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            tools:text="8 Desember 2020"/>
+
+                        <TextView
                             style="@style/TextAppearance.Material3.BodyMedium"
                             android:id="@+id/tv_your_review"
                             android:layout_width="match_parent"

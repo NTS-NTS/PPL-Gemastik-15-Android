@@ -104,6 +104,62 @@
             android:layout_marginStart="16dp"
             app:layout_constraintTop_toBottomOf="@id/ll_place"/>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cd_moderated_warning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="?attr/colorOrangeContainer"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_warning_20"
+                    android:layout_gravity="center"
+                    app:tint="?attr/colorOrange" />
+
+                <TextView
+                    android:id="@+id/tv_moderated_message"
+                    style="@style/TextAppearance.Material3.LabelLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="?attr/colorOrange"
+                    tools:text="@string/moderated_warning_message_compact"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tv_review_date"
+            style="@style/TextAppearance.Material3.LabelLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cd_moderated_warning"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="8 Desember 2020"
+            tools:visibility="visible"/>
+
         <TextView
             android:id="@+id/tv_review_text"
             style="@style/TextAppearance.Material3.BodyMedium"
@@ -114,20 +170,21 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="?attr/textAppearanceBody2"
-            app:layout_constraintBottom_toTopOf="@id/rv_review_facilities"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/tv_review_date"
             app:layout_constraintVertical_bias="1.0"
-            tools:text="Sebuah review" />
+            tools:text="Sebuah review"
+            tools:visibility="visible"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_review_facilities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_review_text"
             app:layout_constraintStart_toStartOf="parent"
             tools:listitem="@layout/facility_review_small_item"/>
 
