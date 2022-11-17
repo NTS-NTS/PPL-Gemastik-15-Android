@@ -5,9 +5,9 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import com.raassh.gemastik15.BuildConfig
-import com.raassh.gemastik15.local.db.ChatDao
 import com.raassh.gemastik15.local.db.ChatEntity
 import com.raassh.gemastik15.local.db.MessageEntity
+import com.raassh.gemastik15.repository.ChatRepository
 import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
@@ -27,24 +27,29 @@ class ChatService : Service(), KoinComponent {
 
     private var mSocket: Socket? = null
 
-    private val chatDao by inject<ChatDao>()
+    private val chatRepository by inject<ChatRepository>()
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        val extras = intent?.extras
+        val username = extras?.getString(USERNAME)
+
         val options = IO.Options.builder()
             .setExtraHeaders(mapOf(
-                "x-username" to listOf("dua"),
+                "x-username" to listOf(username),
             ))
             .build()
 
         mSocket = IO.socket(BuildConfig.BASE_URL, options)
-        mSocket?.connect()
 
-        mSocket?.on("connected", OnConnected)
-        mSocket?.on("chat_list_response", onChatListResponse)
-        mSocket?.on("new_chat", onNewChat)
-        mSocket?.on("new_message", onNewMessage)
+        mSocket?.apply {
+            connect()
+            on("connected", OnConnected)
+            on("chat_list_response", onChatListResponse)
+            on("new_chat", onNewChat)
+            on("new_message", onNewMessage)
+        }
 
-        return START_STICKY
+        return START_REDELIVER_INTENT
     }
 
     private val OnConnected = Emitter.Listener {
@@ -97,8 +102,8 @@ class ChatService : Service(), KoinComponent {
             }
 
             CoroutineScope(Dispatchers.IO).launch {
-                chatDao.insertChats(chats)
-                chatDao.insertMessages(messages)
+                chatRepository.insertChats(chats)
+                chatRepository.insertMessages(messages)
             }
         } catch (e: Exception) {
             Log.e("ChatService", "onChatListResponse: ${e.message}")
@@ -138,12 +143,12 @@ class ChatService : Service(), KoinComponent {
             }
 
             CoroutineScope(Dispatchers.IO).launch {
-                chatDao.insertChat(ChatEntity(
+                chatRepository.insertChat(ChatEntity(
                     id = chatId,
                     users = stringBuilder.toString()
                 ))
 
-                chatDao.insertMessages(messages)
+                chatRepository.insertMessages(messages)
             }
         } catch (e: Exception) {
             Log.e("ChatService", "onNewChat: ${e.message}")
@@ -159,7 +164,7 @@ class ChatService : Service(), KoinComponent {
             val timestamp = message.getLong("timestamp")
 
             CoroutineScope(Dispatchers.IO).launch {
-                chatDao.insertMessage(MessageEntity(
+                chatRepository.insertMessage(MessageEntity(
                     id = "$chatId-$sender-$timestamp",
                     chatId = chatId,
                     sender = sender,
@@ -178,5 +183,9 @@ class ChatService : Service(), KoinComponent {
         mSocket?.disconnect()
 
         Log.d("ChatService", "socket stopped")
+    }
+
+    companion object {
+        const val USERNAME = "username"
     }
 }

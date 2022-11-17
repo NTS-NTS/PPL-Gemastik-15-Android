@@ -20,4 +20,6 @@ class DashboardViewModel(private val pref: UserPreferences) : ViewModel() {
     fun getIsModerator() = pref.getIsModerator().asLiveData()
 
     fun getIsVerified() = pref.getIsVerified().asLiveData()
+
+    fun getUsername() = pref.getUserName().asLiveData()
 }

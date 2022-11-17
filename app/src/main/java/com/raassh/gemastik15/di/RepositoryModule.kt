@@ -23,4 +23,8 @@ val repositoryModule = module {
     single {
         ReportRepository(get())
     }
+
+    single {
+        ChatRepository(get(), get())
+    }
 }

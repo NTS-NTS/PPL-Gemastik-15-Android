@@ -147,13 +147,26 @@ class DashboardActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.getToken().observe(this) {
-            if (it == null) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+        viewModel.apply {
+            getToken().observe(this@DashboardActivity) {
+                if (it == null) {
+                    val intent = Intent(this@DashboardActivity, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+
+            getUsername().observe(this@DashboardActivity) {
+                if (!it.isNullOrBlank()) {
+                    val intent = Intent(this@DashboardActivity, ChatService::class.java)
+                    intent.putExtra(ChatService.USERNAME, it)
+                    startService(intent)
+                }
             }
         }
+
+
+
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getMyLastLocation()
@@ -178,7 +191,6 @@ class DashboardActivity : AppCompatActivity() {
             }
         }
 
-        startService(Intent(this, ChatService::class.java))
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {

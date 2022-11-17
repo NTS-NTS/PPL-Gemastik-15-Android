@@ -8,7 +8,7 @@ import com.raassh.gemastik15.local.db.ChatEntity
 import com.raassh.gemastik15.local.db.MessageEntity
 import com.raassh.gemastik15.utils.callApi
 
-class chatRepository(private val apiService: ApiService, private val chatDao: ChatDao) {
+class ChatRepository(private val apiService: ApiService, private val chatDao: ChatDao) {
 
     suspend fun insertChats(chats: List<ChatEntity>) = chatDao.insertChats(chats)
 
