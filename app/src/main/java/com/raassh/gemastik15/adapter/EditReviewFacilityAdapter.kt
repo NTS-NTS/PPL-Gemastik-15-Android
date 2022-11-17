@@ -7,15 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.api.response.Article
 import com.raassh.gemastik15.api.response.FacilityQualityItem
 import com.raassh.gemastik15.databinding.EditFacilityReviewItemBinding
-import com.raassh.gemastik15.databinding.FacilityReviewSmallItemBinding
 import com.raassh.gemastik15.local.db.Facility
-import com.raassh.gemastik15.utils.getFacilityDrawable
-import com.raassh.gemastik15.utils.getFacilityReviewColor
-import com.raassh.gemastik15.utils.getFacilityReviewDrawable
-import com.raassh.gemastik15.utils.translateFacilitytoView
 import java.lang.reflect.Field
 
 class EditReviewFacilitiesAdapter(private val reviewFacilities: List<FacilityQualityItem>)

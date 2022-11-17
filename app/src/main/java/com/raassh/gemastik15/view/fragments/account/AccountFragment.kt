@@ -18,10 +18,7 @@ import com.google.android.flexbox.JustifyContent
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.DisabilityTypeAdapter
 import com.raassh.gemastik15.databinding.FragmentAccountBinding
-import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.utils.loadImage
-import com.raassh.gemastik15.utils.showSnackbar
-import com.raassh.gemastik15.utils.translateErrorMessage
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -159,6 +156,8 @@ class AccountFragment : Fragment() {
                                     message = requireContext().translateErrorMessage(user.message),
                                     anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
                                 )
+
+                                requireActivity().checkAuthError(user.message)
                             }
                         }
                     }

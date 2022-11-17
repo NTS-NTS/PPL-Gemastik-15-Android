@@ -1,16 +1,15 @@
 package com.raassh.gemastik15.view.fragments.placedetail
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.adapter.ReviewAdapter
 import com.raassh.gemastik15.databinding.FragmentReviewsBinding
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
 import dev.chrisbanes.insetter.applyInsetter
 
 class ReviewsFragment : Fragment() {

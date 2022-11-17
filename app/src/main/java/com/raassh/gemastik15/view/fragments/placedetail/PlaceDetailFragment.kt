@@ -1,11 +1,9 @@
 package com.raassh.gemastik15.view.fragments.placedetail
 
 import android.content.Intent
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.Html
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +19,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.FacilityReviewAdapter
 import com.raassh.gemastik15.adapter.PlacePhotoAdapter

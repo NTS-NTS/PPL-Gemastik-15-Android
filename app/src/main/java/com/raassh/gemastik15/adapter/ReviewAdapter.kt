@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.api.response.FacilityQualityItem
 import com.raassh.gemastik15.api.response.ReviewData
 import com.raassh.gemastik15.databinding.ReviewItemBinding
-import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.utils.LinearSpaceItemDecoration
+import com.raassh.gemastik15.utils.convertDpToPixel
 import com.raassh.gemastik15.utils.loadImage
 
 class ReviewAdapter(

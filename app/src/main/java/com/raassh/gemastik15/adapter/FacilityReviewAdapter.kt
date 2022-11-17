@@ -11,7 +11,10 @@ import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.databinding.FacilityReviewItemBinding
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.getFacilityReviewDescription
+import com.raassh.gemastik15.utils.getFacilityReviewDrawable
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateFacilitytoView
 
 class FacilityReviewAdapter : ListAdapter<FacilitiesItem, FacilityReviewAdapter.FacilityReviewViewHolder>(DIFF_CALLBACK) {
     var onItemClickListener: ((FacilitiesItem) -> Unit)? = null

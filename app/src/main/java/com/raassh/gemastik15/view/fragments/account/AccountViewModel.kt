@@ -22,6 +22,7 @@ class AccountViewModel(
 
     fun logout() {
         viewModelScope.launch {
+            authenticationRepository.logout(token)
             userPreferences.clearToken()
         }
     }

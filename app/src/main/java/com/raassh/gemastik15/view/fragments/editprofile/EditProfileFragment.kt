@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.graphics.scale
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R

@@ -2,7 +2,6 @@ package com.raassh.gemastik15.api.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.raassh.gemastik15.local.db.PlaceEntity
 import kotlinx.parcelize.Parcelize
 
 data class ContributionResponse(
