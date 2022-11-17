@@ -1,0 +1,33 @@
+package com.raassh.gemastik15.local.db
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+
+
+@Dao
+interface ChatDao {
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertChats(chats: List<ChatEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertMessages(messages: List<MessageEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertChat(chat: ChatEntity)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertMessage(message: MessageEntity)
+
+    @Query("SELECT * FROM chats")
+    fun getChats(): Flow<List<ChatEntity>>
+
+    @Query("SELECT * FROM messages WHERE chatId = :chatId")
+    fun getMessages(chatId: String): Flow<List<MessageEntity>>
+
+    @Query("SELECT * FROM messages WHERE chatId = :chatId ORDER BY timestamp DESC LIMIT 1")
+    fun getLastMessage(chatId: String): Flow<MessageEntity>
+
+}

@@ -176,4 +176,14 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Body body: ReportUserRequest
     ): GeneralResponse
+
+    @POST("chat/start")
+    suspend fun startChat(
+        @Body body: StartChatRequest
+    ): StartChatResponse
+
+    @POST("chat/send")
+    suspend fun sendChatMessage(
+        @Body body: SendChatRequest
+    ): SendChatResponse
 }
