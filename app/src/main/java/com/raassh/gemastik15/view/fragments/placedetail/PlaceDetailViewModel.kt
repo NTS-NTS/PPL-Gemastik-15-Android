@@ -18,6 +18,7 @@ class PlaceDetailViewModel(
     private val contributionRepository: ContributionRepository
     ) : ViewModel() {
     private val token = MutableLiveData<String>()
+    val isFavorite = MutableLiveData<Boolean>()
 
     fun setToken(token: String) {
         this.token.value = token
@@ -50,4 +51,10 @@ class PlaceDetailViewModel(
     }
 
     fun deleteReview(placeId: String) = contributionRepository.deleteReview(token.value!!, placeId).asLiveData()
+
+    fun addFavoritePlace(placeId: String) = placeRepository.addFavoritePlace(token.value!!, placeId).asLiveData()
+
+    fun deleteFavoritePlace(placeId: String) = placeRepository.deleteFavoritePlace(token.value!!, placeId).asLiveData()
+
+    fun getFavoritePlaces() = placeRepository.getFavoritePlaces(token.value!!).asLiveData()
 }

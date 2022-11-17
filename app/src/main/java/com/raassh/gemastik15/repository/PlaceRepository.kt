@@ -25,4 +25,20 @@ class PlaceRepository(private val apiService: ApiService, private val placeDao: 
     fun getRecentPlaces() = placeDao.getRecentPlaces()
 
     suspend fun insertPlacesToDB(places: List<PlaceEntity>) = placeDao.insertPlaces(places)
+
+    fun getFavoritePlaces(token: String) = callApi {
+        apiService.getFavoritePlaces("Bearer $token").data
+    }
+
+    fun addFavoritePlace(token: String, placeId: String) = callApi {
+        apiService.addFavoritePlace("Bearer $token", placeId)
+    }
+
+    fun deleteFavoritePlace(token: String, placeId: String) = callApi {
+        apiService.deleteFavoritePlace("Bearer $token", placeId)
+    }
+
+    fun getRecommendedPlaces(token: String, lat: Double, long: Double) = callApi {
+        apiService.getRecommendationPlaces("Bearer $token", lat, long).data
+    }
 }

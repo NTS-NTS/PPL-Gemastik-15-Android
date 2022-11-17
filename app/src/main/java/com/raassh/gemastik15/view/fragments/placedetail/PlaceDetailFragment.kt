@@ -1,13 +1,16 @@
 package com.raassh.gemastik15.view.fragments.placedetail
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.Html
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.FacilityReviewAdapter
 import com.raassh.gemastik15.adapter.PlacePhotoAdapter
@@ -28,6 +32,7 @@ import com.raassh.gemastik15.api.response.FacilitiesItem
 import com.raassh.gemastik15.api.response.PlaceDetailData
 import com.raassh.gemastik15.api.response.ReviewData
 import com.raassh.gemastik15.databinding.FragmentPlaceDetailBinding
+import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import dev.chrisbanes.insetter.applyInsetter
@@ -41,6 +46,7 @@ class PlaceDetailFragment : Fragment() {
     private var binding: FragmentPlaceDetailBinding? = null
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var map: GoogleMap? = null
+    private lateinit var place: PlaceEntity
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
@@ -63,14 +69,14 @@ class PlaceDetailFragment : Fragment() {
             isFocusable = false
         }
 
-        val place = PlaceDetailFragmentArgs.fromBundle(requireArguments()).place
+        place = PlaceDetailFragmentArgs.fromBundle(requireArguments()).place
         showLoading(true)
         showEmptyReviews()
         showEmptyUserReview()
 
         binding?.apply {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
-
+            btnFavorite.isEnabled = false
             tvPlaceName.text = place.name
             tvPlaceType.text = requireContext().translatePlaceTypeNameToView(place.type)
 
@@ -98,6 +104,10 @@ class PlaceDetailFragment : Fragment() {
         }
 
         viewModel.apply {
+            isFavorite.observe(viewLifecycleOwner) {
+                setFavorite(it)
+            }
+
             detail.observe(viewLifecycleOwner) {
                 if (it != null) {
                     when (it) {
@@ -165,7 +175,7 @@ class PlaceDetailFragment : Fragment() {
         }
 
         sharedViewModel.apply {
-            getToken().observe(viewLifecycleOwner) {
+            getToken().observe(viewLifecycleOwner) { it ->
                 if (!it.isNullOrEmpty()) {
                     val jwt = JWT(it)
                     val userId = jwt.getClaim("id").asString()
@@ -174,6 +184,28 @@ class PlaceDetailFragment : Fragment() {
 
                     if (userId != null) {
                         viewModel.setUserId(userId)
+                    }
+
+                    viewModel.getFavoritePlaces().observe(viewLifecycleOwner) { places ->
+                        if (places != null) {
+                            when (places) {
+                                is Resource.Loading -> {
+                                    binding?.btnFavorite?.isEnabled = false
+                                }
+                                is Resource.Success -> {
+                                    val isFavorite = places.data?.find { favoritePlace ->
+                                        favoritePlace.id == place.id
+                                    } != null
+                                    binding?.btnFavorite?.isEnabled = true
+                                    viewModel.isFavorite.value = isFavorite
+                                }
+                                is Resource.Error -> {
+                                    binding?.root?.showSnackbar(
+                                        requireContext().translateErrorMessage(places.message)
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -370,6 +402,62 @@ class PlaceDetailFragment : Fragment() {
                                     btnEditReview.isEnabled = true
                                     llYourReview.visibility = View.GONE
                                     btnAddReview.visibility = View.VISIBLE
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setFavorite(favorite: Boolean) {
+        binding?.apply {
+            if (favorite) {
+                btnFavorite.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_bookmark_24)
+                btnFavorite.contentDescription = getString(R.string.remove_from_favorite)
+
+                btnFavorite.setOnClickListener {
+                    viewModel.deleteFavoritePlace(place.id).observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            when (it) {
+                                is Resource.Error -> {
+                                    binding?.root?.showSnackbar(
+                                        message = requireContext().translateErrorMessage(it.message),
+                                    )
+                                    binding?.btnFavorite?.isEnabled = true
+                                }
+                                is Resource.Loading -> {
+                                    binding?.btnFavorite?.isEnabled = false
+                                }
+                                is Resource.Success -> {
+                                    binding?.btnFavorite?.isEnabled = true
+                                    setFavorite(false)
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                btnFavorite.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_bookmark_border_24)
+                btnFavorite.contentDescription = getString(R.string.add_to_favorite)
+
+                btnFavorite.setOnClickListener {
+                    viewModel.addFavoritePlace(place.id).observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            when (it) {
+                                is Resource.Error -> {
+                                    binding?.root?.showSnackbar(
+                                        message = requireContext().translateErrorMessage(it.message),
+                                    )
+                                    binding?.btnFavorite?.isEnabled = true
+                                }
+                                is Resource.Loading -> {
+                                    binding?.btnFavorite?.isEnabled = false
+                                }
+                                is Resource.Success -> {
+                                    binding?.btnFavorite?.isEnabled = true
+                                    setFavorite(true)
                                 }
                             }
                         }

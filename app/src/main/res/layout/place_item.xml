@@ -19,6 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:layout_constraintVertical_chainStyle="spread_inside">
 
             <ImageView
@@ -26,11 +27,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="96dp"
                 android:contentDescription="@string/image_of_place"
+                android:importantForAccessibility="no"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:importantForAccessibility="no"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
@@ -93,8 +94,8 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="8dp"
-                app:flexDirection="row"
                 android:importantForAccessibility="no"
+                app:flexDirection="row"
                 app:flexWrap="wrap"
                 app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -398,4 +398,8 @@
     <string name="review_history">Riwayat Ulasan</string>
     <string name="review_deleted">Ulasan dihapus</string>
     <string name="delete_review">Hapus Ulasan</string>
+    <string name="remove_from_favorite">Hapus dari favorit</string>
+    <string name="add_to_favorite">Tambah ke favorit</string>
+    <string name="favorite_places_title">Tempat yang kamu simpan</string>
+    <string name="recommended_places_title">Rekomendasi tempat</string>
 </resources>

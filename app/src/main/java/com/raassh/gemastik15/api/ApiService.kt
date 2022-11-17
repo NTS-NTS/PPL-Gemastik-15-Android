@@ -83,6 +83,30 @@ interface ApiService {
         @Path("place_id") placeId: String
     ): GeneralResponse
 
+    @GET("places/favorites")
+    suspend fun getFavoritePlaces(
+        @Header("Authorization") authorization: String
+    ): PlaceSearchResponse
+
+    @POST("places/favorites/{place_id}")
+    suspend fun addFavoritePlace(
+        @Header("Authorization") authorization: String,
+        @Path("place_id") placeId: String
+    ): GeneralResponse
+
+    @DELETE("places/favorites/{place_id}")
+    suspend fun deleteFavoritePlace(
+        @Header("Authorization") authorization: String,
+        @Path("place_id") placeId: String
+    ): GeneralResponse
+
+    @GET("places/recommendation")
+    suspend fun getRecommendationPlaces(
+        @Header("Authorization") authorization: String,
+        @Query("lat") lat: Double,
+        @Query("long") long: Double,
+    ): PlaceSearchResponse
+
     @POST("auth/disabilities")
     suspend fun setDisabilities(
         @Header("Authorization") authorization: String,

@@ -33,7 +33,8 @@ class PlaceAdapter(
         } else {
             view.layoutParams = ViewGroup.LayoutParams(
                 convertDpToPixel(330, parent.context).toInt(),
-                convertDpToPixel(280, parent.context).toInt()
+                if (inContribution) convertDpToPixel(280, parent.context).toInt()
+                else convertDpToPixel(200, parent.context).toInt()
             )
         }
         return PlaceViewHolder(view)
