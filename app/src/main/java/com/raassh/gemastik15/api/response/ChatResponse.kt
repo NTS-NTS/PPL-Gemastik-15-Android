@@ -19,6 +19,9 @@ data class StartChatResponseData(
 
     @field:SerializedName("users")
     val users: List<String>,
+
+    @field:SerializedName("messages")
+    val messages: List<SendChatResponseData>
 )
 
 data class SendChatResponse(
@@ -33,6 +36,9 @@ data class SendChatResponse(
 )
 
 data class SendChatResponseData(
+    @field:SerializedName("chat_id")
+    val chatId: String,
+
     @field:SerializedName("sender")
     val sender: String,
 

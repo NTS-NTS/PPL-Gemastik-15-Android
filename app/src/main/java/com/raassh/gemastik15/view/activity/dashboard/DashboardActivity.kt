@@ -28,6 +28,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.ActivityDashboardBinding
+import com.raassh.gemastik15.services.ChatService
 import com.raassh.gemastik15.utils.checkPermission
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.view.activity.main.MainActivity
@@ -176,6 +177,8 @@ class DashboardActivity : AppCompatActivity() {
                 return super.onRequestSendAccessibilityEvent(host, child, event)
             }
         }
+
+        startService(Intent(this, ChatService::class.java))
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
