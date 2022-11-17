@@ -134,6 +134,9 @@ class EditProfileFragment : Fragment() {
                         btnEditProfile.text = getString(R.string.edit_profile)
 
                         binding?.root?.showSnackbar(getString(R.string.profile_updated))
+                        if (it.data != null) {
+                            viewModel.setUserData(it.data.name, it.data.username)
+                        }
 
                         findNavController().navigateUp()
                     }

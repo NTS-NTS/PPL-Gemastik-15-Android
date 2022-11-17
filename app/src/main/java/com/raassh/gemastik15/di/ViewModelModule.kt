@@ -89,7 +89,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        EditProfileViewModel(get())
+        EditProfileViewModel(get(), get())
     }
 
     viewModel {

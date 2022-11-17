@@ -76,6 +76,11 @@ class ReviewAdapter(
                 imgReviewProfile.loadImage(review.user.profilePicture)
                 tvReviewName.text = review.user.name
                 tvReviewText.text = review.review
+                if (review.review?.isEmpty() == true) {
+                    tvReviewText.visibility = View.GONE
+                } else {
+                    tvReviewText.visibility = View.VISIBLE
+                }
                 rvReviewFacilities.adapter = SingleReviewFacilitiesAdapter(
                     if (isCompact) review.facilities.size else null
                 ).apply {
