@@ -62,7 +62,7 @@ class ReviewAdapter(
             binding.apply {
                 if (isCompact) {
                     btnReviewReport.visibility = View.GONE
-                    tvReviewText.maxLines = 4
+                    tvReviewText.maxLines = 3
                     tvReviewText.ellipsize = TextUtils.TruncateAt.END
                     root.isClickable = true
                     root.setOnClickListener {

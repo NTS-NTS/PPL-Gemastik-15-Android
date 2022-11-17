@@ -52,50 +52,6 @@ class AddContributionViewModel(
         nextFacility()
     }
 
-//    fun submitFullReview(token: String, placeId: String, review: String) {
-//        isFinished.value = false
-//        viewModelScope.launch {
-//            coroutineScope {
-//                reviewFacilities.value?.forEach {
-//                    launch {
-//                        val response = contributionRepository.addContribution(
-//                            token = token,
-//                            placeId = placeId,
-//                            facility = it.facility,
-//                            quality = it.quality
-//                        ).asLiveData().value
-//                        when (response) {
-//                            is Resource.Success -> {
-//                                Log.d("addContribution", it.facility + "success")
-//                            }
-//                            is Resource.Error -> {
-//                                Log.d("addContribution", it.facility + "error")
-//                                isError.value = true
-//                            }
-//                            else -> {}
-//                        }
-//                    }
-//                }
-//                launch {
-//                    val response = contributionRepository.addReview(
-//                        token = token,
-//                        placeId = placeId,
-//                        review = review
-//                    ).asLiveData().value
-//                    when (response) {
-//                        is Resource.Success -> {
-//                            isFinished.value = true
-//                        }
-//                        is Resource.Error -> {
-//                            isError.value = true
-//                        }
-//                        else -> {}
-//                    }
-//                }
-//            }
-//        }
-//    }
-
     fun submitReview(token: String, placeId: String, review: String) =
         contributionRepository.addReview(
             token = token,

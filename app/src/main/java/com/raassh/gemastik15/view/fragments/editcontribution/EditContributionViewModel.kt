@@ -1,5 +1,6 @@
 package com.raassh.gemastik15.view.fragments.editcontribution
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -23,6 +24,10 @@ class EditContributionViewModel(private val contributionRepository: Contribution
     }
 
     fun updateChange(oldReview: ContributionUserPlaceData, review: String) {
+        if (reviewFacilities.value?.isEmpty() == true) {
+            _isChanged.value = false
+            return
+        }
         val isReviewChanged = oldReview.review != review
         val isFacilityChanged = oldReview.facilities != reviewFacilities.value?.sortedBy { it.facility }
         _isChanged.value = isReviewChanged || isFacilityChanged

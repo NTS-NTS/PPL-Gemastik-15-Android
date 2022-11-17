@@ -108,7 +108,7 @@ class AddContributionFragment : Fragment() {
                 }
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    btnSendContribution.isEnabled = p0?.isNotEmpty() ?: false
+
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -181,6 +181,7 @@ class AddContributionFragment : Fragment() {
                 if (it != null) {
                     adapter.submitList(it.toList())
                 }
+                binding?.btnSendContribution?.isEnabled = !it.isNullOrEmpty()
             }
         }
 
