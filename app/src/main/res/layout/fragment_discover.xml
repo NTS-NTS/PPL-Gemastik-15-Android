@@ -312,17 +312,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_recent"
-                tools:listitem="@layout/place_item" />
+                tools:listitem="@layout/place_item"
+                tools:visibility="gone"/>
 
             <TextView
                 android:id="@+id/tv_recent_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/empty_recent"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/rv_recent"
-                app:layout_constraintEnd_toEndOf="@+id/rv_recent"
-                app:layout_constraintStart_toStartOf="@+id/rv_recent"
+                android:visibility="visible"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tv_recent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_recent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

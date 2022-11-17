@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentLoginBinding
+import com.raassh.gemastik15.local.db.PlaceDatabase
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
@@ -69,6 +70,7 @@ class LoginFragment : Fragment() {
                         }
                         is Resource.Success -> {
                             btnLogin.isEnabled = true
+                            PlaceDatabase.getInstance(requireContext()).clearAllTables()
                             viewModel.saveUserData(response.data)
                         }
                         is Resource.Error -> {

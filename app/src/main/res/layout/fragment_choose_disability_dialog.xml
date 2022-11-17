@@ -12,7 +12,7 @@
     tools:context=".view.dialogs.ChooseDisabilityDialog">
 
     <TextView
-        style="@style/TextAppearance.Material3.BodyLarge"
+        style="@style/TextAppearance.Material3.BodyMedium"
         android:id="@+id/tv_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +21,8 @@
     <ScrollView
         android:id="@+id/sv_disabilities"
         android:layout_width="match_parent"
+
+        android:layout_marginTop="8dp"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -2,6 +2,7 @@ package com.raassh.gemastik15.repository
 
 import com.raassh.gemastik15.api.ApiService
 import com.raassh.gemastik15.local.db.PlaceDao
+import com.raassh.gemastik15.local.db.PlaceDatabase
 import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.utils.callApi
 

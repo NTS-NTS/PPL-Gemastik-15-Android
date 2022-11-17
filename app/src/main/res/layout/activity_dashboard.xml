@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/dashboard_nav" />
+        app:navGraph="@navigation/dashboard_nav"/>
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

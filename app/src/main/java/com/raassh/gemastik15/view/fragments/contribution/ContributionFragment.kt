@@ -85,7 +85,7 @@ class ContributionFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
             }
         }
 
-
+        showLoading(true)
 
         binding?.apply {
             root.applyInsetter { type(statusBars = true) { padding() } }
@@ -146,52 +146,48 @@ class ContributionFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
             }
 
             reviewedPlacesId.observe(viewLifecycleOwner) { reviewedPlacesId ->
-                if (reviewedPlacesId != null) {
-                    recent.observe(viewLifecycleOwner) {
-                        val unreviewedPlaces = it.filter { place ->
-                            !reviewedPlacesId.contains(place.id)
-                        }
-                        if (unreviewedPlaces.isEmpty()) {
-                            binding?.tvRecentEmpty?.visibility = View.VISIBLE
-                            binding?.rvRecentlyVisited?.visibility = View.GONE
-                        } else {
-                            binding?.tvRecentEmpty?.visibility = View.GONE
-                            binding?.rvRecentlyVisited?.visibility = View.VISIBLE
-                            recentAdapter.submitList(unreviewedPlaces)
-                        }
+                recent.observe(viewLifecycleOwner) {
+                    val unreviewedPlaces = it.filter { place ->
+                        !reviewedPlacesId.contains(place.id)
                     }
-
-                    nearby.observe(viewLifecycleOwner) {
-                        if (it != null) {
-                            when (it) {
-                                is Resource.Error, is Resource.Loading -> {
-                                    binding?.tvNearbyEmpty?.visibility = View.VISIBLE
-                                    binding?.rvNearby?.visibility = View.GONE
+                    showRecentLoading(false)
+                    if (unreviewedPlaces.isEmpty()) {
+                        showRecentEmpty(true)
+                    } else {
+                        showRecentEmpty(false)
+                        recentAdapter.submitList(unreviewedPlaces)
+                    }
+                }
+                nearby.observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        when (it) {
+                            is Resource.Error, is Resource.Loading -> {
+                                showNearbyLoading(true)
+                            }
+                            is Resource.Success -> {
+                                Log.d("Nearby", it.data.toString())
+                                Log.d("Reviewed", reviewedPlacesId.toString())
+                                showNearbyLoading(false)
+                                val unreviewedPlaces = it.data?.filter { place ->
+                                    !reviewedPlacesId.contains(place.id)
                                 }
-                                is Resource.Success -> {
-                                    val unreviewedPlaces = it.data?.filter { place ->
-                                        !reviewedPlacesId.contains(place.id)
-                                    }
-                                    if (unreviewedPlaces.isNullOrEmpty()) {
-                                        binding?.tvNearbyEmpty?.visibility = View.VISIBLE
-                                        binding?.rvNearby?.visibility = View.GONE
-                                    } else {
-                                        binding?.tvNearbyEmpty?.visibility = View.GONE
-                                        binding?.rvNearby?.visibility = View.VISIBLE
-                                        nearbyAdapter.submitList(unreviewedPlaces.map { item ->
-                                            placeItemToEntity(item)
-                                        })
-                                    }
+                                Log.d("Unreviewed", unreviewedPlaces.toString())
+                                if (unreviewedPlaces.isNullOrEmpty()) {
+                                    showNearbyEmpty(true)
+                                } else {
+                                    showNearbyEmpty(false)
+                                    nearbyAdapter.submitList(unreviewedPlaces.map { item ->
+                                        placeItemToEntity(item)
+                                    })
                                 }
                             }
-                        } else {
-                            binding?.tvNearbyEmpty?.visibility = View.VISIBLE
-                            binding?.rvNearby?.visibility = View.GONE
                         }
+                    } else {
+                        showNearbyLoading(false)
+                        showNearbyEmpty(true)
                     }
                 }
             }
-
         }
 
         sharedViewModel.apply {
@@ -225,13 +221,10 @@ class ContributionFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
                 when (review) {
                     is Resource.Error -> {
                         binding?.apply {
-                            llReviewHistory.visibility = View.GONE
-                            llReviewRecommendation.visibility = View.VISIBLE
-                            tvNearbyEmpty.visibility = View.VISIBLE
-                            tvRecentEmpty.visibility = View.VISIBLE
-                            rvRecentlyVisited.visibility = View.GONE
-                            rvNearby.visibility = View.GONE
-                            pbLoading.visibility = View.GONE
+                            showLoading(false)
+                            showReviewHistoryEmpty(true)
+                            showNearbyEmpty(true)
+                            showRecentEmpty(true)
                             root.showSnackbar(
                                 message = requireContext().translateErrorMessage(review.message),
                                 anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
@@ -239,19 +232,19 @@ class ContributionFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
                         }
                     }
                     is Resource.Loading -> {
-                        binding?.llReviewHistory?.visibility = View.GONE
-                        binding?.llReviewRecommendation?.visibility = View.GONE
-                        binding?.pbLoading?.visibility = View.VISIBLE
+                        showLoading(true)
                     }
                     is Resource.Success -> {
-                        binding?.llReviewRecommendation?.visibility = View.VISIBLE
-                        binding?.pbLoading?.visibility = View.GONE
+                        showLoading(false)
+                        showReviewHistoryLoading(false)
+                        showRecentLoading(true)
+                        showNearbyLoading(true)
                         if (review.data.isNullOrEmpty()) {
-                            binding?.llReviewHistory?.visibility = View.GONE
+                            showReviewHistoryEmpty(true)
                         } else {
                             Log.d("ReviewHistory", review.data.toString())
+                            showReviewHistoryEmpty(false)
                             binding?.apply {
-                                llReviewHistory.visibility = View.VISIBLE
                                 tvReviewHistoryCount.text =
                                     getString(R.string.review_history_count_message, review.data.size)
 
@@ -280,8 +273,9 @@ class ContributionFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
                     }
                 }
             } else {
-                binding?.tvNearbyEmpty?.visibility = View.VISIBLE
-                binding?.rvNearby?.visibility = View.GONE
+                showLoading(false)
+                showReviewHistoryEmpty(true)
+                viewModel.setReviewedPlacesId(listOf())
             }
         }
     }
@@ -375,6 +369,92 @@ class ContributionFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
                 true
             }
             else -> false
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding?.apply {
+            if (isLoading) {
+                pbLoading.visibility = View.VISIBLE
+                showReviewHistoryLoading(true)
+                showNearbyLoading(true)
+                showRecentLoading(true)
+            } else {
+                pbLoading.visibility = View.GONE
+                showReviewHistoryLoading(false)
+                showNearbyLoading(false)
+                showRecentLoading(false)
+            }
+        }
+    }
+
+    private fun showReviewHistoryLoading(isLoading: Boolean) {
+        binding?.apply {
+            if (isLoading) {
+                pbLoading.visibility = View.VISIBLE
+                llReviewHistory.visibility = View.GONE
+            } else {
+                pbLoading.visibility = View.GONE
+                llReviewHistory.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showReviewHistoryEmpty(isEmpty: Boolean) {
+        binding?.apply {
+            if (isEmpty) {
+                llReviewHistory.visibility = View.GONE
+            } else {
+                llReviewHistory.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showNearbyEmpty(isEmpty: Boolean) {
+        binding?.apply {
+            if (isEmpty) {
+                rvNearby.visibility = View.GONE
+                tvNearbyEmpty.visibility = View.VISIBLE
+                tvNearbyTitle.visibility = View.VISIBLE
+            } else {
+                rvNearby.visibility = View.VISIBLE
+                tvNearbyEmpty.visibility = View.GONE
+                tvNearbyTitle.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showNearbyLoading(isLoading: Boolean) {
+        binding?.apply {
+            if (isLoading) {
+                llNearby.visibility = View.GONE
+            } else {
+                llNearby.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showRecentEmpty(isEmpty: Boolean) {
+        binding?.apply {
+            if (isEmpty) {
+                rvRecentlyVisited.visibility = View.GONE
+                tvRecentEmpty.visibility = View.VISIBLE
+                tvRecentlyVisitedTitle.visibility = View.VISIBLE
+            } else {
+                rvRecentlyVisited.visibility = View.VISIBLE
+                tvRecentEmpty.visibility = View.GONE
+                tvRecentlyVisitedTitle.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showRecentLoading(isLoading: Boolean) {
+        binding?.apply {
+            if (isLoading) {
+                llRecentlyVisited.visibility = View.GONE
+            } else {
+                llRecentlyVisited.visibility = View.VISIBLE
+            }
         }
     }
 
