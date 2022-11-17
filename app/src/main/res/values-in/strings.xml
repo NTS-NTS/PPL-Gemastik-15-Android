@@ -402,4 +402,7 @@
     <string name="add_to_favorite">Tambah ke favorit</string>
     <string name="favorite_places_title">Tempat yang kamu simpan</string>
     <string name="recommended_places_title">Rekomendasi tempat</string>
+    <string name="change_disability">Ubah Disabilitas</string>
+    <string name="edit_disability">Edit Disabilitas</string>
+    <string name="success_change_disability">Disabilitas diedit</string>
 </resources>

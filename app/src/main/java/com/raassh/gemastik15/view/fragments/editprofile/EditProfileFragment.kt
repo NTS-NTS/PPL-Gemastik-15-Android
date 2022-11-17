@@ -162,6 +162,11 @@ class EditProfileFragment : Fragment() {
             etUsername.setText(userDetail.username)
             tvCity.setText(userDetail.city)
             ivProfilePicture.loadImage(userDetail.profilePicture)
+
+            btnChangeDisability.setOnClickListener {
+                val action = EditProfileFragmentDirections.actionEditProfileFragmentToChangeDisabilityFragment(userDetail.disabilityTypes.toTypedArray())
+                findNavController().navigate(action)
+            }
         }
     }
 

@@ -124,7 +124,8 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.editProfileFragment,
                 R.id.moderationFragment,
                 R.id.detailContributionReportFragment,
-                R.id.detailUserReportFragment -> {
+                R.id.detailUserReportFragment,
+                R.id.changeDisabilityFragment-> {
                     binding.bottomNavView.visibility = View.GONE
                 }
                 R.id.accountFragment,

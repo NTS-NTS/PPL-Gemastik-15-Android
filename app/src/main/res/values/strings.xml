@@ -414,4 +414,7 @@
     <string name="add_to_favorite">Add to favorite</string>
     <string name="favorite_places_title">Places you\'ve saved</string>
     <string name="recommended_places_title">Recommended places</string>
+    <string name="change_disability">Change Disability</string>
+    <string name="edit_disability">Edit Disability</string>
+    <string name="success_change_disability">Disability edited</string>
 </resources>

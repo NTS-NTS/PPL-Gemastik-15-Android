@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_editProfileFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_changeDisabilityFragment"
+            app:destination="@id/changeDisabilityFragment" />
     </fragment>
     <fragment
         android:id="@+id/moderationFragment"
@@ -61,5 +64,14 @@
         <argument
             android:name="reported"
             app:argType="com.raassh.gemastik15.api.response.ItemReportUserResponse" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeDisabilityFragment"
+        android:name="com.raassh.gemastik15.view.fragments.changedisability.ChangeDisabilityFragment"
+        android:label="fragment_change_disability"
+        tools:layout="@layout/fragment_change_disability" >
+        <argument
+            android:name="disabilities"
+            app:argType="string[]" />
     </fragment>
 </navigation>
