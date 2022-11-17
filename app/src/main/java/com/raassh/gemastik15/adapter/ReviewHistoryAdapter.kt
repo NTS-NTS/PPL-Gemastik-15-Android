@@ -69,7 +69,7 @@ class ReviewHistoryAdapter(
         fun bind(review: ContributionUserData) {
             binding.apply {
                 if (isCompact) {
-                    tvReviewText.maxLines = 4
+                    tvReviewText.maxLines = 3
                     tvReviewText.ellipsize = TextUtils.TruncateAt.END
                     root.isClickable = true
                     root.setOnClickListener {

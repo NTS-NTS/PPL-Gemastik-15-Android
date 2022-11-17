@@ -405,4 +405,5 @@
     <string name="change_disability">Ubah Disabilitas</string>
     <string name="edit_disability">Edit Disabilitas</string>
     <string name="success_change_disability">Disabilitas diedit</string>
+    <string name="single_facility_review_description">Fasilitas %1$s memiliki kualitas %2$s</string>
 </resources>

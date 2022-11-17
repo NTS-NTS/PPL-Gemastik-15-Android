@@ -209,6 +209,15 @@ fun Context.getFacilityReviewDescription(quality: Int) : String {
     }
 }
 
+fun Context.getFacilityQuality(quality: Int) : String {
+    return when (quality) {
+        0 -> getString(R.string.not_exist)
+        1 -> getString(R.string.bad)
+        2 -> getString(R.string.good)
+        else -> ""
+    }
+}
+
 fun Context.translatePlaceTypeNameToView(type: String) : String {
     return when (type) {
         "accounting" -> getString(R.string.accounting)

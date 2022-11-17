@@ -158,12 +158,13 @@ class DiscoverFragment : Fragment() {
                 if (token != null) viewModel.setToken(token)
 
                 getFavoritePlaces()
-                getRecommendedPlaces()
             }
 
             location.observe(viewLifecycleOwner) {
                 Log.d("DiscoverFragment", "Location: $it")
                 viewModel.setLocation(it)
+
+                getRecommendedPlaces()
             }
         }
     }

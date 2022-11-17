@@ -417,4 +417,6 @@
     <string name="change_disability">Change Disability</string>
     <string name="edit_disability">Edit Disability</string>
     <string name="success_change_disability">Disability edited</string>
+
+    <string name="single_facility_review_description">%1$s facility has %2$s quality</string>
 </resources>

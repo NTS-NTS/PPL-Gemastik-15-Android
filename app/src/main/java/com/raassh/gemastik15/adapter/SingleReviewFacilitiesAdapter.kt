@@ -52,6 +52,13 @@ class SingleReviewFacilitiesAdapter(
 
                     imgFacilityReview.setImageDrawable(context.getFacilityReviewDrawable(facility.quality, false))
                     cdFacilityReview.setCardBackgroundColor(context.getFacilityReviewColor(facility.quality))
+
+                    root.setOnClickListener{
+                        root.showSnackbar(context.getString(
+                            R.string.single_facility_review_description,
+                            context.translateFacilitytoView(facility.facility),
+                            context.getFacilityQuality(facility.quality)))
+                    }
                 } else {
                     val restCount = size!! - 4
                     tvRestCount.text = StringBuilder().append("+").append(restCount)
@@ -59,6 +66,8 @@ class SingleReviewFacilitiesAdapter(
                     tvRestCount.visibility = View.VISIBLE
                     imgFacilityIcon.visibility = View.GONE
                     cdFacilityReview.visibility = View.GONE
+
+                    root.setOnClickListener(null)
                 }
             }
         }

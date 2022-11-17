@@ -1,5 +1,6 @@
 package com.raassh.gemastik15.view.activity.dashboard
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,7 @@ class DashboardViewModel(private val pref: UserPreferences) : ViewModel() {
 
     fun setLocation(latLng: LatLng?) {
         _location.value = latLng
+        Log.d("DashboardViewModel", "setLocation: ${location.value}")
     }
 
     fun getToken() = pref.getToken().asLiveData()

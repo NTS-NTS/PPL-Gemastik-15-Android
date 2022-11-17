@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.Article
 import com.raassh.gemastik15.api.response.FacilityQualityItem
@@ -20,7 +21,7 @@ import java.lang.reflect.Field
 
 class EditReviewFacilitiesAdapter(private val reviewFacilities: List<FacilityQualityItem>)
     : ListAdapter<Facility, EditReviewFacilitiesAdapter.EditReviewFacilitiesViewHolder>(DIFF_CALLBACK) {
-    var onButtonCheckedListener: ((Facility, Int, Boolean) -> Unit)? = null
+    var onButtonCheckedListener: ((Facility, Int, Boolean, MaterialButtonToggleGroup) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = EditReviewFacilitiesViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.edit_facility_review_item, parent, false)
@@ -36,8 +37,8 @@ class EditReviewFacilitiesAdapter(private val reviewFacilities: List<FacilityQua
         private val context = itemView.context
 
         init {
-            binding.toggleGroupFacility.addOnButtonCheckedListener() { _, checkedId, isChecked ->
-                onButtonCheckedListener?.invoke(getItem(adapterPosition), checkedId, isChecked)
+            binding.toggleGroupFacility.addOnButtonCheckedListener() { group, checkedId, isChecked ->
+                onButtonCheckedListener?.invoke(getItem(adapterPosition), checkedId, isChecked, group)
             }
         }
 

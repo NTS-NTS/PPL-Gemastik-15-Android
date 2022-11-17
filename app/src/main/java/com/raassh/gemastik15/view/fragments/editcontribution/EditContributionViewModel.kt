@@ -26,7 +26,7 @@ class EditContributionViewModel(private val contributionRepository: Contribution
 
     fun updateChange(oldReview: ContributionUserPlaceData, review: String) {
         val isReviewChanged = oldReview.review != review
-        val isFacilityChanged = oldReview.facilities != reviewFacilities.value
+        val isFacilityChanged = oldReview.facilities != reviewFacilities.value?.sortedBy { it.facility }
         _isChanged.value = isReviewChanged || isFacilityChanged
     }
 

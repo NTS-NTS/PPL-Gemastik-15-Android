@@ -60,7 +60,7 @@ class EditContributionFragment : Fragment() {
                 adapter = EditReviewFacilitiesAdapter(getOriginalReview().facilities).apply {
                     submitList(facilities)
 
-                    onButtonCheckedListener = { facility, checkedId, isChecked ->
+                    onButtonCheckedListener = { facility, checkedId, isChecked, group ->
                         if (isChecked) {
                             when (checkedId) {
                                 R.id.btn_facility_review_good -> {
@@ -74,7 +74,7 @@ class EditContributionFragment : Fragment() {
                                 }
                             }
                             viewModel.updateChange(getOriginalReview(), etReview.text.toString())
-                        } else {
+                        } else if (group.checkedButtonId == View.NO_ID) {
                             viewModel.removeFacilityReview(facility.name)
                             viewModel.updateChange(getOriginalReview(), etReview.text.toString())
                         }

@@ -9,6 +9,7 @@ import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -81,13 +82,16 @@ class DashboardActivity : AppCompatActivity() {
         ) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 if (location != null) {
+                    Log.d("Location", "Location: ${location.latitude}, ${location.longitude}")
                     viewModel.setLocation(LatLng(location.latitude, location.longitude))
                 } else {
+                    Log.d("Location", "Location: null")
                     viewModel.setLocation(null)
                     binding.root.showSnackbar(getString(R.string.location_not_found))
                 }
             }
         } else {
+            Log.d("DashboardActivity", "Permission not granted")
             requestPermissionLauncher.launch(
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -102,6 +106,8 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getMyLastLocation()
 
         val navView = binding.bottomNavView
         val navHostFragment =
@@ -157,9 +163,6 @@ class DashboardActivity : AppCompatActivity() {
                 finish()
             }
         }
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        getMyLastLocation()
 
         // might contain bugs, need to test more later
         binding.root.accessibilityDelegate = object : View.AccessibilityDelegate() {
