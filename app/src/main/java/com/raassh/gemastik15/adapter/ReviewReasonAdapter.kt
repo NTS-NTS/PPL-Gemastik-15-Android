@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.ReviewReasonItemBinding
-import com.raassh.gemastik15.local.db.PlaceEntity
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.getReviewReason
+import com.raassh.gemastik15.utils.getReviewReasonDescription
 
 class ReviewReasonAdapter : ListAdapter<String, ReviewReasonAdapter.ReviewReasonViewHolder>(DIFF_CALLBACK) {
     var onItemClickListener: ((String) -> Unit)? = null

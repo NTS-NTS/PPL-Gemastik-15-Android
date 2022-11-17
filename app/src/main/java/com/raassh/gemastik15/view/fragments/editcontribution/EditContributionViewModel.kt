@@ -1,12 +1,10 @@
 package com.raassh.gemastik15.view.fragments.editcontribution
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.raassh.gemastik15.api.response.ContributionUserPlaceData
 import com.raassh.gemastik15.api.response.FacilityQualityItem
-import com.raassh.gemastik15.api.response.ReviewData
 import com.raassh.gemastik15.repository.ContributionRepository
 
 class EditContributionViewModel(private val contributionRepository: ContributionRepository) : ViewModel() {

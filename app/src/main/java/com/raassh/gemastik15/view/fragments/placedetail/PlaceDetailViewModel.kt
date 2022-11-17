@@ -1,15 +1,12 @@
 package com.raassh.gemastik15.view.fragments.placedetail
 
 import androidx.lifecycle.*
-import com.auth0.android.jwt.JWT
-import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.request.PlaceDetailQuery
 import com.raassh.gemastik15.api.response.ContributionUserPlaceData
 import com.raassh.gemastik15.local.db.PlaceEntity
 import com.raassh.gemastik15.repository.ContributionRepository
 import com.raassh.gemastik15.repository.PlaceRepository
 import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import kotlinx.coroutines.launch
 import java.util.*
 

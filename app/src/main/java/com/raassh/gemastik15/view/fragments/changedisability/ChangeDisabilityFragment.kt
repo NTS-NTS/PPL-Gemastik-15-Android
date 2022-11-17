@@ -1,19 +1,19 @@
 package com.raassh.gemastik15.view.fragments.changedisability
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.FragmentChangeDisabilityBinding
-import com.raassh.gemastik15.databinding.FragmentChangePasswordBinding
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateDisabilityFromView
+import com.raassh.gemastik15.utils.translateErrorMessage
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
-import com.raassh.gemastik15.view.fragments.changepassword.ChangePasswordViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

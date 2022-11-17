@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.FacilityQualityItem
 import com.raassh.gemastik15.databinding.FacilityReviewSmallItemBinding
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.getFacilityDrawable
+import com.raassh.gemastik15.utils.getFacilityReviewColor
+import com.raassh.gemastik15.utils.getFacilityReviewDrawable
+import com.raassh.gemastik15.utils.translateFacilitytoView
 
 class SingleReviewFacilitiesAdapter(
     private val size: Int? = null

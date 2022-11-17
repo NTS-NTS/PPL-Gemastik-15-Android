@@ -27,6 +27,14 @@ class AuthenticationRepository(private val apiService: ApiService) {
         apiService.login(req).data
     }
 
+    suspend fun logout(token: String) {
+        val req = LogoutRequest(
+            token = token
+        )
+
+        apiService.logout(req)
+    }
+
     fun setDisabilities(token: String, disabilities: List<String>) = callApi {
         val req = AddDisabilitiesRequest(
             disabilities = disabilities

@@ -198,6 +198,8 @@ class DiscoverFragment : Fragment() {
                         message = places.message ?: getString(R.string.unknown_error),
                         anchor = binding?.root?.rootView?.findViewById(R.id.bottom_nav_view)
                     )
+
+                    requireActivity().checkAuthError(places.message)
                 }
                 is Resource.Loading -> {
                 }

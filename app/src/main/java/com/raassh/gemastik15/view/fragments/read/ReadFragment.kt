@@ -1,11 +1,11 @@
 package com.raassh.gemastik15.view.fragments.read
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ReadPagerAdapter

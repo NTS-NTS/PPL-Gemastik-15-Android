@@ -6,18 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Orientation
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayoutManager
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.databinding.PlaceItemBinding
 import com.raassh.gemastik15.databinding.PlacePhotoItemBinding
-import com.raassh.gemastik15.local.db.PlaceEntity
-import com.raassh.gemastik15.utils.convertDpToPixel
 import com.raassh.gemastik15.utils.loadImage
-import com.raassh.gemastik15.utils.rounded
-import com.raassh.gemastik15.utils.splitWithEmptyList
 
 class PlacePhotoAdapter : ListAdapter<String, PlacePhotoAdapter.PlacePhotoViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PlacePhotoViewHolder (

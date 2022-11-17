@@ -1,15 +1,14 @@
 package com.raassh.gemastik15.view.fragments.reviewhistory
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ReviewHistoryAdapter
 import com.raassh.gemastik15.api.response.ContributionUserData
@@ -17,8 +16,6 @@ import com.raassh.gemastik15.api.response.ContributionUserPlaceData
 import com.raassh.gemastik15.databinding.FragmentReviewHistoryBinding
 import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
-import com.raassh.gemastik15.view.fragments.contribution.ContributionFragmentDirections
-import com.raassh.gemastik15.view.fragments.contribution.ContributionViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -5,12 +5,10 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.graphics.Rect
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
@@ -20,10 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.*
-import com.bumptech.glide.request.target.Target
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.BuildConfig

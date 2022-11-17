@@ -15,6 +15,11 @@ interface ApiService {
         @Body body: LoginRequest
     ): TokenResponse
 
+    @POST("auth/logout")
+    suspend fun logout(
+        @Body body: LogoutRequest
+    ): GeneralResponse
+
     @GET("places/detail/{id}")
     suspend fun getPlaceDetail(
         @Path("id") id: String,

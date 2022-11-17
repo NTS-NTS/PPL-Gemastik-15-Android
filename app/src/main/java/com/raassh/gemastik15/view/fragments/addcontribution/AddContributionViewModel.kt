@@ -4,15 +4,9 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
 import com.raassh.gemastik15.api.response.FacilityQualityItem
 import com.raassh.gemastik15.local.db.Facility
 import com.raassh.gemastik15.repository.ContributionRepository
-import com.raassh.gemastik15.utils.Resource
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AddContributionViewModel(
     private val contributionRepository: ContributionRepository
