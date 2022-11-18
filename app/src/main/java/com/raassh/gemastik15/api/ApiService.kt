@@ -228,4 +228,14 @@ interface ApiService {
     suspend fun sendChatMessage(
         @Body body: SendChatRequest
     ): SendChatResponse
+
+    @GET("auth/users/{user_id}")
+    suspend fun getUserDetailbyId(
+        @Path("user_id") userId: String
+    ): DetailUserResponse
+
+    @GET("auth/pictures/{username}")
+    suspend fun getUserPicture(
+        @Path("username") username: String
+    ): UserPictureResponse
 }

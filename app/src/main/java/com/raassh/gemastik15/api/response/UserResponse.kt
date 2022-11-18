@@ -34,6 +34,51 @@ data class UserData(
 	val profilePicture: String
 ) : Parcelable
 
+data class DetailUserResponse(
+
+	@field:SerializedName("data")
+	val data: DetailUserResponseData,
+
+	@field:SerializedName("error")
+	val error: Boolean,
+
+	@field:SerializedName("message")
+	val message: String
+)
+
+data class DetailUserResponseData(
+
+	@field:SerializedName("city")
+	val city: Any,
+
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("disability_types")
+	val disabilityTypes: List<String>,
+
+	@field:SerializedName("profile_picture")
+	val profilePicture: String,
+
+	@field:SerializedName("id")
+	val id: String,
+
+	@field:SerializedName("username")
+	val username: String
+)
+
+data class UserPictureResponse(
+
+	@field:SerializedName("data")
+	val data: String,
+
+	@field:SerializedName("error")
+	val error: Boolean,
+
+	@field:SerializedName("message")
+	val message: String
+)
+
 
 data class SearchUserResponse(
 

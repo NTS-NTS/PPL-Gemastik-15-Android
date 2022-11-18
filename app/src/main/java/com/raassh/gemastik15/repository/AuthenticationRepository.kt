@@ -84,4 +84,12 @@ class AuthenticationRepository(private val apiService: ApiService) {
     fun searchUser(username: String) = callApi {
         apiService.searchUserByUsername(username).data
     }
+
+    fun getUserDetailbyId(userId: String) = callApi {
+        apiService.getUserDetailbyId(userId).data
+    }
+
+    fun getUserPicture(username: String) = callApi {
+        apiService.getUserPicture(username).data
+    }
 }
