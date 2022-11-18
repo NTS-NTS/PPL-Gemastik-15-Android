@@ -4,7 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class StartChatRequest(
     @field:SerializedName("users")
-    val users: List<String>
+    val users: List<String>,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("user")
+    val user: String
 )
 
 data class SendChatRequest(

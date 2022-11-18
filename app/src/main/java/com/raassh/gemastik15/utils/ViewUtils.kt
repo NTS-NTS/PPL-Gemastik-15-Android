@@ -23,6 +23,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.BuildConfig
 import com.raassh.gemastik15.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun View.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT, anchor: View? = null) {
     Snackbar.make(this, message, length).apply {
@@ -188,4 +190,10 @@ fun Context.uriToBitmap(uri: Uri): Bitmap {
         @Suppress("DEPRECATION")
         return MediaStore.Images.Media.getBitmap(contentResolver, uri)
     }
+}
+
+fun Long.toDateText(): String {
+    val date = Date(this * 1000)
+    val format = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+    return format.format(date)
 }

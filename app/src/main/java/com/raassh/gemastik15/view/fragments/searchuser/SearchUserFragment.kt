@@ -36,13 +36,17 @@ class SearchUserFragment : Fragment() {
 
         val chatAdapter = ChatListAdapter(viewModel as IChatListViewModel).apply {
             onItemClickListener = {
-                Log.d("TAG", "onViewCreated: $it")
+                val action = SearchUserFragmentDirections.actionSearchUserFragmentToChatFragment()
+                action.chat = it
+                findNavController().navigate(action)
             }
         }
 
         val userAdapter = UserListAdapter().apply {
             onItemClickListener = {
-                Log.d("TAG", "onViewCreated: $it")
+                val action = SearchUserFragmentDirections.actionSearchUserFragmentToChatFragment()
+                action.receiver = it.username
+                findNavController().navigate(action)
             }
         }
 
@@ -88,5 +92,10 @@ class SearchUserFragment : Fragment() {
                 chatAdapter.submitList(it)
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }

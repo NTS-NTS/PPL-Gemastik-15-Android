@@ -1,7 +1,6 @@
 package com.raassh.gemastik15.view.fragments.chatlist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ChatListAdapter
 import com.raassh.gemastik15.databinding.FragmentChatListBinding
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.on
+import com.raassh.gemastik15.utils.showSnackbar
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,7 +32,9 @@ class ChatListFragment : Fragment() {
 
         val adapter = ChatListAdapter(viewModel as IChatListViewModel).apply {
             onItemClickListener = {
-                Log.d("TAG", "onViewCreated: $it")
+                val action = ChatListFragmentDirections.actionChatListFragmentToChatFragment()
+                action.chat = it
+                findNavController().navigate(action)
             }
         }
 
@@ -61,4 +63,8 @@ class ChatListFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }

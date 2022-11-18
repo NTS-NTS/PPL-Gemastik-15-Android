@@ -36,5 +36,16 @@
         android:id="@+id/chatFragment"
         android:name="com.raassh.gemastik15.view.fragments.chat.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="chat"
+            app:argType="com.raassh.gemastik15.local.db.ChatEntity"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="receiver"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+    </fragment>
 </navigation>
