@@ -415,5 +415,9 @@
     <string name="chat_result_title">Hasil pencarian pesan</string>
     <string name="user_result_title">Hasil pencarian pengguna</string>
     <string name="avatar_desc">Gambar %1$s</string>
+    <string name="search_chat_or_user">Cari pesan atau pengguna</string>
+    <string name="no_message_found">Tidak ditemukan pesan</string>
+    <string name="message">Pesan</string>
+    <string name="no_user_found">Tidak ditemukan pengguna</string>
 
 </resources>

@@ -13,7 +13,7 @@ class SearchUserViewModel(
     private val chatRepository: ChatRepository
 ) : ViewModel(),
     IChatListViewModel {
-    private val query = MutableLiveData<String>()
+    val query = MutableLiveData<String>()
 
     fun setQuery(query: String) {
         this.query.value = query

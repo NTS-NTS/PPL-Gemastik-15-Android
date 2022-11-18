@@ -133,7 +133,8 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.moderationFragment,
                 R.id.detailContributionReportFragment,
                 R.id.detailUserReportFragment,
-                R.id.changeDisabilityFragment-> {
+                R.id.changeDisabilityFragment,
+                R.id.searchUserFragment-> {
                     binding.bottomNavView.visibility = View.GONE
                 }
                 R.id.accountFragment,
