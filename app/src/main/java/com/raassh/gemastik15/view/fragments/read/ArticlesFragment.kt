@@ -13,10 +13,10 @@ import com.raassh.gemastik15.databinding.FragmentArticlesBinding
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ArticlesFragment : Fragment() {
-    private val viewModel by viewModel<ReadViewModel>()
+    private val viewModel by sharedViewModel<ReadViewModel>()
     private var binding: FragmentArticlesBinding? = null
 
     override fun onCreateView(

@@ -13,10 +13,11 @@ import com.raassh.gemastik15.databinding.FragmentGuidelinesBinding
 import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GuidelinesFragment : Fragment() {
-    private val viewModel by viewModel<ReadViewModel>()
+    private val viewModel by sharedViewModel<ReadViewModel>()
     private var binding: FragmentGuidelinesBinding? = null
 
     override fun onCreateView(

@@ -17,13 +17,6 @@
             android:id="@+id/action_navigation_contribute_to_addContributionFragment"
             app:destination="@id/addContributionFragment" />
         <action
-            android:id="@+id/action_navigation_contribute_to_read_nav"
-            app:destination="@id/read_nav">
-            <argument
-                android:name="tabIndex"
-                app:argType="integer" />
-        </action>
-        <action
             android:id="@+id/action_navigation_contribute_to_editContributionFragment"
             app:destination="@id/editContributionFragment" />
         <action
@@ -57,7 +50,6 @@
             android:name="place"
             app:argType="com.raassh.gemastik15.api.response.PlaceDetailData" />
     </fragment>
-    <include app:graph="@navigation/read_nav" />
     <fragment
         android:id="@+id/reviewsFragment"
         android:name="com.raassh.gemastik15.view.fragments.placedetail.ReviewsFragment"
