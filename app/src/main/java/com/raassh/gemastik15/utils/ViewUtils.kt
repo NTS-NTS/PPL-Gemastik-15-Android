@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
@@ -23,6 +24,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.raassh.gemastik15.BuildConfig
 import com.raassh.gemastik15.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun View.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT, anchor: View? = null) {
     Snackbar.make(this, message, length).apply {
@@ -187,5 +190,31 @@ fun Context.uriToBitmap(uri: Uri): Bitmap {
     } else {
         @Suppress("DEPRECATION")
         return MediaStore.Images.Media.getBitmap(contentResolver, uri)
+    }
+}
+
+fun Long.toDateText(): String {
+    val date = Date(this * 1000)
+    val format = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+    return format.format(date)
+}
+
+fun setTheme(theme: String) {
+    when(theme) {
+        "MODE_NIGHT_FOLLOW_SYSTEM" -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+        "MODE_NIGHT_NO" -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        "MODE_NIGHT_YES" -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        "MODE_NIGHT_AUTO_BATTERY" -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+        }
+        else -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
     }
 }

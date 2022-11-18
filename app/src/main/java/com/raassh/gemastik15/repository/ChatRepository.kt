@@ -26,13 +26,17 @@ class ChatRepository(private val apiService: ApiService, private val chatDao: Ch
 
     fun searchChat(query: String) = chatDao.searchChat(query)
 
-    fun startChat(users: List<String>) = callApi {
-        val req = StartChatRequest(users)
+    fun startChat(users: List<String>, user: String, message: String) = callApi {
+        val req = StartChatRequest(
+            users = users,
+            user = user,
+            message = message
+        )
 
         apiService.startChat(req).data
     }
 
-    fun sendChatMessage(chatId: String, user: String, message: String, ) = callApi {
+    fun sendChatMessage(chatId: String, user: String, message: String) = callApi {
         val req = SendChatRequest(
             chatId = chatId,
             user = user,

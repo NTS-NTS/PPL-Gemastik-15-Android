@@ -64,7 +64,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        DashboardViewModel(get())
+        DashboardViewModel(get(), get())
     }
 
     viewModel {

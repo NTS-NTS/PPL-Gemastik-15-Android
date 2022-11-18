@@ -6,9 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.google.android.gms.maps.model.LatLng
+import com.raassh.gemastik15.local.preferences.SettingPreferences
 import com.raassh.gemastik15.local.preferences.UserPreferences
 
-class DashboardViewModel(private val pref: UserPreferences) : ViewModel() {
+class DashboardViewModel(private val pref: UserPreferences, settingPref: SettingPreferences) : ViewModel() {
     private val _location = MutableLiveData<LatLng?>(null)
     val location: LiveData<LatLng?> = _location
 
@@ -24,4 +25,6 @@ class DashboardViewModel(private val pref: UserPreferences) : ViewModel() {
     fun getIsVerified() = pref.getIsVerified().asLiveData()
 
     fun getUsername() = pref.getUserName().asLiveData()
+
+    val theme = settingPref.getTheme().asLiveData()
 }

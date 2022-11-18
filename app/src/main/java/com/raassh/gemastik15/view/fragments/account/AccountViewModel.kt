@@ -35,8 +35,6 @@ class AccountViewModel(
         settingPreferences.setTheme(theme)
     }
 
-    fun getTheme() = settingPreferences.getTheme().asLiveData()
-
     fun resendVerification(email: String) =
         authenticationRepository.resendVerification(email).asLiveData()
 

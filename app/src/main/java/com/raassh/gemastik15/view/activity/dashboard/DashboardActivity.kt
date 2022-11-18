@@ -173,6 +173,12 @@ class DashboardActivity : AppCompatActivity() {
                     startService(intent)
                 }
             }
+
+            theme.observe(this@DashboardActivity) {
+                if (it != null) {
+                    com.raassh.gemastik15.utils.setTheme(it)
+                }
+            }
         }
 
 
