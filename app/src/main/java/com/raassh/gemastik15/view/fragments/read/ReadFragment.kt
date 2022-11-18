@@ -11,10 +11,10 @@ import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ReadPagerAdapter
 import com.raassh.gemastik15.databinding.FragmentReadBinding
 import dev.chrisbanes.insetter.applyInsetter
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ReadFragment : Fragment() {
-    private val viewModel by viewModel<ReadViewModel>()
+    private val viewModel by sharedViewModel<ReadViewModel>()
     private var binding: FragmentReadBinding? = null
 
     override fun onCreateView(
