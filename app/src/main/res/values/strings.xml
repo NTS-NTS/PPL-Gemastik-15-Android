@@ -423,4 +423,7 @@
     <string name="search_user">Search User</string>
     <string name="community">Community</string>
     <string name="empty_query">Please provide a query</string>
+    <string name="chat_result_title">Chat Results</string>
+    <string name="user_result_title">User Results</string>
+    <string name="avatar_desc">%1$s\'s picture</string>
 </resources>

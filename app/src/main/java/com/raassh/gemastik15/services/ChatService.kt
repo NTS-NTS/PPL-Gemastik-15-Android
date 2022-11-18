@@ -26,12 +26,14 @@ class ChatService : Service(), KoinComponent {
     }
 
     private var mSocket: Socket? = null
-
+    private var username = ""
     private val chatRepository by inject<ChatRepository>()
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val extras = intent?.extras
-        val username = extras?.getString(USERNAME)
+        username = extras?.getString(USERNAME) ?: ""
+
+        Log.d("ChatService", "onStartCommand: $username")
 
         val options = IO.Options.builder()
             .setExtraHeaders(mapOf(
@@ -54,9 +56,9 @@ class ChatService : Service(), KoinComponent {
 
     private val OnConnected = Emitter.Listener {
         it.forEach { test ->
-            Log.d("TAG", "connected: $test")
+            Log.d("ChatService", "connected: $test")
         }
-        mSocket?.emit("get_chat_list", "dua")
+        mSocket?.emit("get_chat_list", username)
     }
 
     private val onChatListResponse = Emitter.Listener {

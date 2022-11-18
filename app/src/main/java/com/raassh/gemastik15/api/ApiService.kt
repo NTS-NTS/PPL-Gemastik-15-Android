@@ -141,8 +141,8 @@ interface ApiService {
     ): GeneralResponse
 
     @GET("auth/search")
-    suspend fun searchUserByUsername(
-        @Query("username") username: String
+    suspend fun searchUserByUsernameOrName(
+        @Query("query") username: String
     ): SearchUserResponse
 
     @GET("readings/news")

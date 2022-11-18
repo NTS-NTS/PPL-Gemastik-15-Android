@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ChatListAdapter
 import com.raassh.gemastik15.databinding.FragmentChatListBinding
@@ -29,7 +30,7 @@ class ChatListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ChatListAdapter().apply {
+        val adapter = ChatListAdapter(viewModel as IChatListViewModel).apply {
             onItemClickListener = {
                 Log.d("TAG", "onViewCreated: $it")
             }
@@ -50,25 +51,13 @@ class ChatListFragment : Fragment() {
                     return@on
                 }
 
-                viewModel.searchUser(username).observe(viewLifecycleOwner) { response ->
-                    when (response) {
-                        is Resource.Success -> {
-                            val users = response.data
-                            adapter.submitList(users)
-                        }
-                        is Resource.Error -> {
-                            binding?.root?.showSnackbar(
-                                requireContext().translateErrorMessage(response.message)
-                            )
-
-                            requireActivity().checkAuthError(response.message)
-                        }
-                        is Resource.Loading -> {
-                            Log.d("TAG", "onViewCreated: Loading")
-                        }
-                    }
-                }
+                val action = ChatListFragmentDirections.actionChatListFragmentToSearchUserFragment(username)
+                findNavController().navigate(action)
             }
+        }
+
+        viewModel.chats.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
         }
     }
 

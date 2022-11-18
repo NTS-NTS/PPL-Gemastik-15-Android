@@ -411,4 +411,9 @@
     <string name="search_user">Cari Pengguna</string>
     <string name="community">Komunitas</string>
     <string name="empty_query">Harap isi kueri</string>
+
+    <string name="chat_result_title">Hasil pencarian pesan</string>
+    <string name="user_result_title">Hasil pencarian pengguna</string>
+    <string name="avatar_desc">Gambar %1$s</string>
+
 </resources>

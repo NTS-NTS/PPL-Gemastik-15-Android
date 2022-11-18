@@ -7,6 +7,7 @@ import com.raassh.gemastik15.view.fragments.account.AccountViewModel
 import com.raassh.gemastik15.view.fragments.addcontribution.AddContributionViewModel
 import com.raassh.gemastik15.view.fragments.changedisability.ChangeDisabilityViewModel
 import com.raassh.gemastik15.view.fragments.changepassword.ChangePasswordViewModel
+import com.raassh.gemastik15.view.fragments.chat.ChatViewModel
 import com.raassh.gemastik15.view.fragments.chatlist.ChatListViewModel
 import com.raassh.gemastik15.view.fragments.contribution.ContributionViewModel
 import com.raassh.gemastik15.view.fragments.detailcontributionreport.DetailContributionReportViewModel
@@ -25,6 +26,7 @@ import com.raassh.gemastik15.view.fragments.reviewhistory.ReviewHistoryViewModel
 import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityViewModel
 import com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionViewModel
 import com.raassh.gemastik15.view.fragments.searchresult.SearchResultViewModel
+import com.raassh.gemastik15.view.fragments.searchuser.SearchUserViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -126,6 +128,14 @@ val viewModelModule = module {
     }
 
     viewModel {
-        ChatListViewModel(get())
+        ChatListViewModel(get(), get())
+    }
+
+    viewModel {
+        SearchUserViewModel(get(), get())
+    }
+
+    viewModel {
+        ChatViewModel(get(), get())
     }
 }

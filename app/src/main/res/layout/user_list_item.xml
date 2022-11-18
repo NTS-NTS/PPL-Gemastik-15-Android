@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp">
 
@@ -23,10 +23,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_last_message"
+        android:id="@+id/tv_name"
         android:layout_width="59dp"
         android:layout_height="16dp"
         tools:text="@string/placeholder"
         app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
         app:layout_constraintStart_toEndOf="@+id/iv_avatar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,5 +9,32 @@
         android:id="@+id/chatListFragment"
         android:name="com.raassh.gemastik15.view.fragments.chatlist.ChatListFragment"
         android:label="fragment_chat_list"
-        tools:layout="@layout/fragment_chat_list" />
+        tools:layout="@layout/fragment_chat_list" >
+        <action
+            android:id="@+id/action_chatListFragment_to_searchUserFragment"
+            app:destination="@id/searchUserFragment" />
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchUserFragment"
+        android:name="com.raassh.gemastik15.view.fragments.searchuser.SearchUserFragment"
+        android:label="fragment_search_user"
+        tools:layout="@layout/fragment_search_user" >
+        <argument
+            android:name="query"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_searchUserFragment_self"
+            app:destination="@id/searchUserFragment" />
+        <action
+            android:id="@+id/action_searchUserFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.raassh.gemastik15.view.fragments.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>
