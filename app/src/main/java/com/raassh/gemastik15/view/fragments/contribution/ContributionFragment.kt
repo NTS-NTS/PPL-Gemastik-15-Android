@@ -107,20 +107,20 @@ class ContributionFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
                 }
             }
 
-            cdGuidelines.setOnClickListener {
-                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(2)
-                findNavController().navigate(action)
-            }
-
-            cdArticles.setOnClickListener {
-                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(1)
-                findNavController().navigate(action)
-            }
-
-            cdNews.setOnClickListener {
-                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(0)
-                findNavController().navigate(action)
-            }
+//            cdGuidelines.setOnClickListener {
+//                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(2)
+//                findNavController().navigate(action)
+//            }
+//
+//            cdArticles.setOnClickListener {
+//                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(1)
+//                findNavController().navigate(action)
+//            }
+//
+//            cdNews.setOnClickListener {
+//                val action = ContributionFragmentDirections.actionNavigationContributeToReadNav(0)
+//                findNavController().navigate(action)
+//            }
         }
 
         viewModel.apply {

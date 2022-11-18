@@ -37,7 +37,8 @@ fun contributionUserToUserPlace(contributionUser: ContributionUserData): Contrib
         contributionUser.facilities,
         contributionUser.review,
         contributionUser.is_moderated,
-        contributionUser.moderation_reason
+        contributionUser.moderation_reason,
+        contributionUser.modified_at
     )
 }
 

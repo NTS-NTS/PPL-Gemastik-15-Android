@@ -19,6 +19,7 @@ class LoginViewModel(private val authenticationRepository: AuthenticationReposit
             return@launch
         }
 
+//        TODO: clear all tables not working as intended
         placeDatabase.clearAllTables()
         pref.setName(tokenData.name)
         pref.setUserName(tokenData.username)

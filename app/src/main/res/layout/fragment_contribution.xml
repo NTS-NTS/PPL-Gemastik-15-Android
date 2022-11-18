@@ -20,11 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toTopOf="@id/ll_articles"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginEnd="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,158 +50,158 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <LinearLayout
-            android:id="@+id/ll_articles"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@id/cd_user"
-            app:layout_constraintStart_toStartOf="@id/cd_user"
-            app:layout_constraintTop_toBottomOf="@id/cd_user">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll_articles"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/cd_user"-->
+<!--            app:layout_constraintStart_toStartOf="@id/cd_user"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/cd_user">-->
 
-            <TextView
-                style="@style/TextAppearance.Material3.TitleMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/better_contribution_title"
-                android:accessibilityHeading="true"/>
+<!--            <TextView-->
+<!--                style="@style/TextAppearance.Material3.TitleMedium"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/better_contribution_title"-->
+<!--                android:accessibilityHeading="true"/>-->
 
-            <TextView
-                style="@style/TextAppearance.Material3.BodyMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="@string/better_contribution_subtitle" />
+<!--            <TextView-->
+<!--                style="@style/TextAppearance.Material3.BodyMedium"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:text="@string/better_contribution_subtitle" />-->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd_guidelines"
-                    style="@style/Widget.Material3.CardView.Outlined"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/cd_news"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:id="@+id/cd_guidelines"-->
+<!--                    style="@style/Widget.Material3.CardView.Outlined"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/cd_news"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="8dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:focusable="false"
-                            android:contentDescription="@null"
-                            app:tint="?attr/colorOnSurface"
-                            android:src="@drawable/ic_outline_guideline_28" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="4dp"-->
+<!--                            android:focusable="false"-->
+<!--                            android:contentDescription="@null"-->
+<!--                            app:tint="?attr/colorOnSurface"-->
+<!--                            android:src="@drawable/ic_outline_guideline_28" />-->
 
-                        <TextView
-                            android:id="@+id/tv_guidelines"
-                            style="@style/TextAppearance.Material3.TitleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/guidelines"
-                            android:contentDescription="@string/read_guidelines"/>
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_guidelines"-->
+<!--                            style="@style/TextAppearance.Material3.TitleSmall"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/guidelines"-->
+<!--                            android:contentDescription="@string/read_guidelines"/>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                </com.google.android.material.card.MaterialCardView>
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd_news"
-                    style="@style/Widget.Material3.CardView.Outlined"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="16dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:layout_constraintBottom_toBottomOf="@id/cd_guidelines"
-                    app:layout_constraintEnd_toStartOf="@id/cd_articles"
-                    app:layout_constraintStart_toEndOf="@id/cd_guidelines"
-                    app:layout_constraintTop_toTopOf="@id/cd_guidelines">
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:id="@+id/cd_news"-->
+<!--                    style="@style/Widget.Material3.CardView.Outlined"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/cd_guidelines"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/cd_articles"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/cd_guidelines"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/cd_guidelines">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="8dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:focusable="false"
-                            android:contentDescription="@null"
-                            app:tint="?attr/colorOnSurface"
-                            android:src="@drawable/ic_baseline_news_28" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="4dp"-->
+<!--                            android:focusable="false"-->
+<!--                            android:contentDescription="@null"-->
+<!--                            app:tint="?attr/colorOnSurface"-->
+<!--                            android:src="@drawable/ic_baseline_news_28" />-->
 
-                        <TextView
-                            android:id="@+id/tv_news"
-                            style="@style/TextAppearance.Material3.TitleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/news"
-                            android:contentDescription="@string/read_news"/>
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_news"-->
+<!--                            style="@style/TextAppearance.Material3.TitleSmall"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/news"-->
+<!--                            android:contentDescription="@string/read_news"/>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                </com.google.android.material.card.MaterialCardView>
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd_articles"
-                    style="@style/Widget.Material3.CardView.Outlined"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:layout_constraintBottom_toBottomOf="@id/cd_guidelines"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/cd_news"
-                    app:layout_constraintTop_toTopOf="@id/cd_guidelines">
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:id="@+id/cd_articles"-->
+<!--                    style="@style/Widget.Material3.CardView.Outlined"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/cd_guidelines"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/cd_news"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/cd_guidelines">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="8dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:focusable="false"
-                            android:contentDescription="@null"
-                            app:tint="?attr/colorOnSurface"
-                            android:src="@drawable/ic_outline_article_28" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="4dp"-->
+<!--                            android:focusable="false"-->
+<!--                            android:contentDescription="@null"-->
+<!--                            app:tint="?attr/colorOnSurface"-->
+<!--                            android:src="@drawable/ic_outline_article_28" />-->
 
-                        <TextView
-                            android:id="@+id/tv_articles"
-                            style="@style/TextAppearance.Material3.TitleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/articles"
-                            android:contentDescription="@string/read_articles"/>
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_articles"-->
+<!--                            style="@style/TextAppearance.Material3.TitleSmall"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/articles"-->
+<!--                            android:contentDescription="@string/read_articles"/>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                </com.google.android.material.card.MaterialCardView>
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
         <com.google.android.material.divider.MaterialDivider
             style="@style/Theme.Gemastik15.Divider"
