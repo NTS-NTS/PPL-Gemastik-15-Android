@@ -1,13 +1,22 @@
 package com.raassh.gemastik15.services
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.Service
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import androidx.core.app.NotificationCompat
+import androidx.core.os.bundleOf
+import androidx.navigation.NavDeepLinkBuilder
 import com.raassh.gemastik15.BuildConfig
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.local.db.ChatEntity
 import com.raassh.gemastik15.local.db.MessageEntity
 import com.raassh.gemastik15.repository.ChatRepository
+import com.raassh.gemastik15.view.activity.dashboard.DashboardActivity
 import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
@@ -142,6 +151,10 @@ class ChatService : Service(), KoinComponent {
                     content = content,
                     timestamp = timestamp
                 ))
+
+                if (sender != username) {
+                    showNotification(content, sender, chatId)
+                }
             }
 
             CoroutineScope(Dispatchers.IO).launch {
@@ -165,6 +178,7 @@ class ChatService : Service(), KoinComponent {
             val content = message.getString("content")
             val timestamp = message.getLong("timestamp")
 
+//            TODO: generate message id
             CoroutineScope(Dispatchers.IO).launch {
                 chatRepository.insertMessage(MessageEntity(
                     id = "$chatId-$sender-$timestamp",
@@ -173,10 +187,52 @@ class ChatService : Service(), KoinComponent {
                     content = content,
                     timestamp = timestamp
                 ))
+
+                if (sender != username) {
+                    showNotification(content, sender, chatId)
+                }
             }
         } catch (e: Exception) {
             Log.e("ChatService", "onNewMessage: ${e.message}")
         }
+    }
+
+    private fun showNotification(message: String, sender: String, chatId: String) {
+        val pendingIntent = NavDeepLinkBuilder(this)
+            .setComponentName(DashboardActivity::class.java)
+            .setGraph(R.navigation.dashboard_nav)
+            .setDestination(R.id.chatFragment)
+            .setArguments(bundleOf(
+                "chat" to ChatEntity(
+                    id = chatId,
+                    users = sender
+                )
+            ))
+            .createPendingIntent()
+
+        val notifManager = applicationContext
+            .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        val notifBuilder = NotificationCompat
+            .Builder(applicationContext, "Chat")
+            .setSmallIcon(R.drawable.ic_baseline_chat_24)
+            .setContentTitle(sender)
+            .setContentText(message)
+            .setContentIntent(pendingIntent)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel =
+                NotificationChannel("Chat", "Chat", NotificationManager.IMPORTANCE_DEFAULT)
+                    .apply {
+                        description = "Chat"
+                    }
+
+            notifBuilder.setChannelId("Chat")
+            notifManager.createNotificationChannel(channel)
+        }
+
+        val notif = notifBuilder.build()
+        notifManager.notify(1, notif)
     }
 
     override fun onDestroy() {

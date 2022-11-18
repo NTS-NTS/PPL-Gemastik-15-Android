@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -80,30 +79,6 @@ class AccountFragment : Fragment() {
 
             arrayAdapter.observe(viewLifecycleOwner) {
                 binding?.etDarkMode?.setAdapter(it)
-            }
-
-            getTheme().observe(viewLifecycleOwner) {
-                if (it != null) {
-                    binding?.etDarkMode?.setText(getThemeString(it), false)
-
-                    when (it) {
-                        "MODE_NIGHT_YES" -> {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        }
-                        "MODE_NIGHT_NO" -> {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                        }
-                        "MODE_NIGHT_FOLLOW_SYSTEM" -> {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                        }
-                        "MODE_NIGHT_AUTO_BATTERY" -> {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
-                        }
-                        else -> {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                        }
-                    }
-                }
             }
         }
 
@@ -208,6 +183,12 @@ class AccountFragment : Fragment() {
                 } else {
                     binding?.btnResendVerification?.visibility = View.VISIBLE
                     binding?.verifiedTag?.visibility = View.GONE
+                }
+            }
+
+            theme.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    binding?.etDarkMode?.setText(getThemeString(it), false)
                 }
             }
         }
