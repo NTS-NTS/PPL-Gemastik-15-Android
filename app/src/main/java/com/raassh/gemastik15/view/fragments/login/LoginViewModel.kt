@@ -19,7 +19,6 @@ class LoginViewModel(private val authenticationRepository: AuthenticationReposit
             return@launch
         }
 
-//        TODO: clear all tables not working as intended
         kiadDatabase.clearAllTables()
         pref.setName(tokenData.name)
         pref.setUserName(tokenData.username)

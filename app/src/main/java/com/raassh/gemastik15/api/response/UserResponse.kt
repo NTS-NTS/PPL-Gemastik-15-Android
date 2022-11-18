@@ -49,7 +49,7 @@ data class DetailUserResponse(
 data class DetailUserResponseData(
 
 	@field:SerializedName("city")
-	val city: Any,
+	val city: String? = null,
 
 	@field:SerializedName("name")
 	val name: String,

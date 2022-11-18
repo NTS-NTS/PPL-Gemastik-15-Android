@@ -27,6 +27,7 @@ import com.raassh.gemastik15.view.fragments.searchbyfacility.SearchByFacilityVie
 import com.raassh.gemastik15.view.fragments.searchfacilityoption.SearchFacilityOptionViewModel
 import com.raassh.gemastik15.view.fragments.searchresult.SearchResultViewModel
 import com.raassh.gemastik15.view.fragments.searchuser.SearchUserViewModel
+import com.raassh.gemastik15.view.fragments.userprofile.UserProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -137,5 +138,9 @@ val viewModelModule = module {
 
     viewModel {
         ChatViewModel(get(), get())
+    }
+
+    viewModel {
+        UserProfileViewModel(get(), get())
     }
 }

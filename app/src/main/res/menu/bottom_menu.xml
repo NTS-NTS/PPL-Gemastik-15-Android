@@ -14,7 +14,7 @@
         android:title="@string/read" />
     <item
         android:id="@+id/community_nav"
-        android:icon="@drawable/ic_outline_person_24"
+        android:icon="@drawable/ic_outline_people_alt_24"
         android:title="@string/community" />
     <item
         android:id="@+id/account_nav"

@@ -421,5 +421,6 @@
     <string name="no_message_found">Tidak ditemukan pesan</string>
     <string name="message">Pesan</string>
     <string name="no_user_found">Tidak ditemukan pengguna</string>
-
+    <string name="chat_user">Kirim Pesan</string>
+    <string name="report_user">Laporkan Pengguna</string>
 </resources>
