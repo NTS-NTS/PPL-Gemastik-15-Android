@@ -5,7 +5,15 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
 
     <application
         android:name=".MyApplication"
@@ -19,7 +27,10 @@
         android:theme="@style/Theme.Gemastik15"
         android:usesCleartextTraffic="true"
         tools:targetApi="30">
-
+        <service
+            android:name=".services.ChatService"
+            android:enabled="true"
+            android:exported="true"></service>
         <!--
              To get one, follow the directions here:
 
@@ -52,10 +63,4 @@
         </activity>
     </application>
 
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.GET_CONTENT" />
-            <data android:mimeType="image/*"/>
-        </intent>
-    </queries>
 </manifest>

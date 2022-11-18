@@ -93,4 +93,9 @@ class ArticlesFragment : Fragment() {
             tvNoArticles.visibility = View.VISIBLE
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }

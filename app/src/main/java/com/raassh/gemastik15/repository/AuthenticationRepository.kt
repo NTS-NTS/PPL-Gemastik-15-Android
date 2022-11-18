@@ -80,4 +80,8 @@ class AuthenticationRepository(private val apiService: ApiService) {
 
         apiService.resendVerification(req)
     }
+
+    fun searchUser(username: String) = callApi {
+        apiService.searchUserByUsername(username).data
+    }
 }

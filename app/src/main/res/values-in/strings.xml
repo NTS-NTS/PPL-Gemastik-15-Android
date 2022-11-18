@@ -407,4 +407,8 @@
     <string name="success_change_disability">Disabilitas diedit</string>
     <string name="single_facility_review_description">Fasilitas %1$s memiliki kualitas %2$s</string>
     <string name="moderated_warning_message_compact">Ulasan ini tidak dapat dilihat publik karena mengandung %1$s</string>
+
+    <string name="search_user">Cari Pengguna</string>
+    <string name="community">Komunitas</string>
+    <string name="empty_query">Harap isi kueri</string>
 </resources>

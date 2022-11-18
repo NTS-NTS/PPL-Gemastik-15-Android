@@ -55,4 +55,9 @@ class ReadFragment : Fragment() {
             viewPager.currentItem = tabIndex
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }

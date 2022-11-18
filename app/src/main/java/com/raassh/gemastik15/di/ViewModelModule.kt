@@ -7,6 +7,7 @@ import com.raassh.gemastik15.view.fragments.account.AccountViewModel
 import com.raassh.gemastik15.view.fragments.addcontribution.AddContributionViewModel
 import com.raassh.gemastik15.view.fragments.changedisability.ChangeDisabilityViewModel
 import com.raassh.gemastik15.view.fragments.changepassword.ChangePasswordViewModel
+import com.raassh.gemastik15.view.fragments.chatlist.ChatListViewModel
 import com.raassh.gemastik15.view.fragments.contribution.ContributionViewModel
 import com.raassh.gemastik15.view.fragments.detailcontributionreport.DetailContributionReportViewModel
 import com.raassh.gemastik15.view.fragments.detailuserreport.DetailUserReportViewModel
@@ -122,5 +123,9 @@ val viewModelModule = module {
 
     viewModel {
         ChangeDisabilityViewModel(get(), get())
+    }
+
+    viewModel {
+        ChatListViewModel(get())
     }
 }

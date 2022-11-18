@@ -94,4 +94,9 @@ class GuidelinesFragment : Fragment() {
             tvNoGuidelines.visibility = View.VISIBLE
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }

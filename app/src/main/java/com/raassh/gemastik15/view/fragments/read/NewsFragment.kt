@@ -93,4 +93,9 @@ class NewsFragment : Fragment() {
             tvNoNews.visibility = View.VISIBLE
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }
