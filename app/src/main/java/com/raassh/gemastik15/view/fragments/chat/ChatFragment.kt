@@ -1,13 +1,18 @@
 package com.raassh.gemastik15.view.fragments.chat
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ChatAdapter
 import com.raassh.gemastik15.databinding.FragmentChatBinding
 import com.raassh.gemastik15.utils.Resource
@@ -18,7 +23,7 @@ import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ChatFragment : Fragment() {
+class ChatFragment : Fragment(), PopupMenu.OnMenuItemClickListener{
     private val viewModel by viewModel<ChatViewModel>()
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private var binding: FragmentChatBinding? = null
@@ -53,6 +58,15 @@ class ChatFragment : Fragment() {
 
             btnBack.setOnClickListener {
                 findNavController().navigateUp()
+            }
+
+            btnMenu.setOnClickListener {
+                showMenu(it)
+            }
+
+            tvUsername.setOnClickListener {
+                val action = ChatFragmentDirections.actionChatFragmentToUserProfileFragment(chat?.id)
+                findNavController().navigate(action)
             }
 
             etMessage.addTextChangedListener(object : TextWatcher {
@@ -119,7 +133,40 @@ class ChatFragment : Fragment() {
 
             messages.observe(viewLifecycleOwner) {
                 adapter.submitList(it)
+                binding?.rvChat?.scrollToPosition(it.size - 1)
             }
+        }
+    }
+
+    private fun showMenu(v: View) {
+        PopupMenu(context, v).apply {
+            setOnMenuItemClickListener(this@ChatFragment)
+            inflate(R.menu.chat_menu)
+            try {
+                val field = PopupMenu::class.java.getDeclaredField("mPopup")
+                field.isAccessible = true
+                val menuHelper = field.get(this)
+                val classPopupHelper = Class.forName(menuHelper.javaClass.name)
+                val setForceIcons = classPopupHelper.getMethod("setForceShowIcon", Boolean::class.java)
+                setForceIcons.invoke(menuHelper, true)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                show()
+            }
+        }
+    }
+
+    override fun onMenuItemClick(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.report_user -> {
+                val action = ChatFragmentDirections.actionChatFragmentToReportUserFragment(
+//                    TODO: user id
+                )
+                findNavController().navigate(action)
+                true
+            }
+            else -> false
         }
     }
 

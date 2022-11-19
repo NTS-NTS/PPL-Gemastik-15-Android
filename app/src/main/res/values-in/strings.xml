@@ -423,4 +423,19 @@
     <string name="no_user_found">Tidak ditemukan pengguna</string>
     <string name="chat_user">Kirim Pesan</string>
     <string name="report_user">Laporkan Pengguna</string>
+    <string name="report_user_confirmation">Apakah kamu yakin ingin melaporkan pengguna ini karena %1$s?</string>
+    <string name="reason_user_spam">Spam</string>
+    <string name="reason_user_spam_description">Pengguna mengirim pesan spam</string>
+    <string name="reason_user_self_harm">Menyakiti diri</string>
+    <string name="reason_user_impersonation_description">Pengguna berpura-pura menjadi orang lain</string>
+    <string name="reason_user_impersonation">Meniru orang lain</string>
+    <string name="reason_user_harassment">Penindasan atau pelecehan</string>
+    <string name="reason_user_harassment_description">Pengguna mengirim pesan berisi ancaman, ejekan, atau serangan secara pribadi</string>
+    <string name="reason_user_hate_speech">Diskriminasi atau ujaran kebencian</string>
+    <string name="reason_user_hate_speech_description">Pengguna mengirim pesan berisi kata-kata yang mengancam seseorang atau suatu kelompok berdasarkan identitas mereka</string>
+    <string name="reason_user_inappropriate">Kata-kata tidak sopan</string>
+    <string name="reason_user_inappropriate_description">Pengguna mengirim pesan berisi kata-kata umpatan, kata-kata vulgar, atau menggambarkan kekerasan</string>
+    <string name="reason_user_self_harm_description">Pengguna mengirim pesan yang menandakan aktivitas menyakiti diri sendiri</string>
+    <string name="reason_user_not_like">Tidak menyukai pengguna</string>
+    <string name="reason_user_not_like_description">Pengguna mengirim pesan yang saya tidak senangi</string>
 </resources>

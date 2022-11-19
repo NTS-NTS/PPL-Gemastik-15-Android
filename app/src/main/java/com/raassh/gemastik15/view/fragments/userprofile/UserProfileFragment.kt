@@ -1,10 +1,14 @@
 package com.raassh.gemastik15.view.fragments.userprofile
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -47,6 +51,10 @@ class UserProfileFragment : Fragment() {
                 val action = UserProfileFragmentDirections.actionUserProfileFragmentToChatFragment()
                 action.receiver = userId
                 findNavController().navigate(action)
+            }
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
 
@@ -120,10 +128,8 @@ class UserProfileFragment : Fragment() {
             }
 
             btnReport.setOnClickListener {
-                // TODO: change this and ask reason
-                viewModel.reportUser(data.id, "test").observe(viewLifecycleOwner) {
-                    Log.d("TAG", "setDetail: $it")
-                }
+                val action = UserProfileFragmentDirections.actionUserProfileFragmentToReportUserFragment(data.id)
+                findNavController().navigate(action)
             }
         }
     }

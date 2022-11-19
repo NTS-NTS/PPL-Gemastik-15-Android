@@ -386,6 +386,28 @@ fun Context.getReviewReasonDescription(reason: String) = when(reason) {
     else -> reason
 }
 
+fun Context.getUserReason(reason: String) = when(reason) {
+    "spam" -> getString(R.string.reason_user_spam)
+    "self_harm" -> getString(R.string.reason_user_self_harm)
+    "impersonation" -> getString(R.string.reason_user_impersonation)
+    "inappropriate" -> getString(R.string.reason_user_inappropriate)
+    "harassment" -> getString(R.string.reason_user_harassment)
+    "hate_speech" -> getString(R.string.reason_user_hate_speech)
+    "not_like" -> getString(R.string.reason_user_not_like)
+    else -> reason
+}
+
+fun Context.getUserReasonDescription(reason: String) = when(reason) {
+    "spam" -> getString(R.string.reason_user_spam_description)
+    "self_harm" -> getString(R.string.reason_user_self_harm_description)
+    "impersonation" -> getString(R.string.reason_user_impersonation_description)
+    "inappropriate" -> getString(R.string.reason_user_inappropriate_description)
+    "harassment" -> getString(R.string.reason_user_harassment_description)
+    "hate_speech" -> getString(R.string.reason_user_hate_speech_description)
+    "not_like" -> getString(R.string.reason_user_not_like_description)
+    else -> reason
+}
+
 fun Context.translateArticleTypeFromDB(articleType: String) = when(articleType) {
     "news" -> getString(R.string.news).uppercase()
     "article" -> getString(R.string.article).uppercase()

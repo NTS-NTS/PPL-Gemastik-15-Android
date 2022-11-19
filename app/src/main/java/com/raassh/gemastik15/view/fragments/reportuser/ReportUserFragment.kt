@@ -1,42 +1,36 @@
-package com.raassh.gemastik15.view.fragments.reportreview
+package com.raassh.gemastik15.view.fragments.reportuser
 
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ReasonAdapter
-import com.raassh.gemastik15.api.response.ReviewData
-import com.raassh.gemastik15.databinding.FragmentReportReviewBinding
-import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.utils.getReviewReason
-import com.raassh.gemastik15.utils.showSnackbar
-import com.raassh.gemastik15.utils.translateErrorMessage
+import com.raassh.gemastik15.databinding.FragmentReportUserBinding
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-class ReportReviewFragment : Fragment() {
-    private var binding: FragmentReportReviewBinding? = null
-    private val viewModel by viewModel<ReportReviewViewModel>()
+class ReportUserFragment : Fragment() {
+    private var binding: FragmentReportUserBinding? = null
+    private val viewModel by viewModel<ReportUserViewModel>()
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
-    private lateinit var review: ReviewData
+    private lateinit var userId: String
     private val reasons = listOf(
-        "spam", "off_topic", "conflict_of_interest", "inappropriate", "harassment", "hate_speech", "private_information", "not_helpful"
+        "spam", "self_harm", "impersonation", "inappropriate", "harassment", "hate_speech", "private_information", "not_like"
     )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentReportReviewBinding.inflate(inflater, container, false)
+        binding = FragmentReportUserBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -45,16 +39,16 @@ class ReportReviewFragment : Fragment() {
 
         binding?.root?.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
 
-        review = ReportReviewFragmentArgs.fromBundle(requireArguments()).review
-        Log.d("review", review.toString())
+        userId = ReportUserFragmentArgs.fromBundle(requireArguments()).userId
+
         binding?.rvReasons?.apply {
-            adapter = ReasonAdapter().apply {
+            adapter = ReasonAdapter(true).apply {
                 submitList(reasons)
                 onItemClickListener = { reason ->
-                    val reasonString = context.getReviewReason(reason).lowercase()
+                    val reasonString = context.getUserReason(reason).lowercase()
                     MaterialAlertDialogBuilder(requireContext())
-                        .setTitle(getString(R.string.report_review))
-                        .setMessage(getString(R.string.report_review_confirmation, reasonString))
+                        .setTitle(getString(R.string.report_user))
+                        .setMessage(getString(R.string.report_user_confirmation, reasonString))
                         .setPositiveButton(getString(R.string.yes)) { dialog, which ->
                             sendReport(reason)
                             dialog.dismiss()
@@ -86,17 +80,17 @@ class ReportReviewFragment : Fragment() {
 
         viewModel.token.observe(viewLifecycleOwner) {
             if (!it.isNullOrEmpty()) {
-                trySubmitReport(it, review.place_id, review.user.id, reason)
+                trySubmitReport(it, userId, reason)
             }
         }
     }
 
-    private fun trySubmitReport(token: String?, placeId: String, userId: String, reason: String) {
+    private fun trySubmitReport(token: String?, userId: String, reason: String) {
         if (token.isNullOrEmpty()) {
             return
         }
 
-        viewModel.submitReport(token, placeId, userId, reason)
+        viewModel.reportUser(token, userId, reason)
             .observe(viewLifecycleOwner) { response ->
                 if (response != null) {
                     when (response) {

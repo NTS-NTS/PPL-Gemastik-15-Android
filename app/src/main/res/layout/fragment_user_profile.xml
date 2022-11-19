@@ -6,6 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".view.fragments.userprofile.UserProfileFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="?attr/colorSurface">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_back"
+                style="@style/Theme.Gemastik15.Button.OutlinedButton.Icon"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:contentDescription="@string/go_back"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_baseline_arrow_back_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:id="@+id/tv_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:accessibilityHeading="true"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+                app:layout_constraintStart_toEndOf="@+id/btn_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="@+id/btn_back" />
+
+
+            <com.google.android.material.divider.MaterialDivider
+                style="@style/Theme.Gemastik15.Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_username"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cd_user"
         style="@style/Widget.Material3.CardView.Elevated"
@@ -16,7 +77,7 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/toolbar_main">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:padding="16dp"
@@ -49,7 +110,7 @@
                 tools:text="Daanii Kusnanta"/>
 
             <TextView
-                android:id="@+id/tv_username"
+                android:id="@+id/tv_email"
                 style="@style/TextAppearance.Material3.BodyMedium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

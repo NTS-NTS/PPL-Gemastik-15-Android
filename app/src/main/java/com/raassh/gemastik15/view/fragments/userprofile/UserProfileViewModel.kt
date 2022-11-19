@@ -12,6 +12,4 @@ class UserProfileViewModel(
     var token = ""
 
     fun getUser(userId: String) = authenticationRepository.getUserDetailbyId(userId).asLiveData()
-
-    fun reportUser(userId: String, reason: String) = reportRepository.reportUser(token, userId, reason).asLiveData()
 }
