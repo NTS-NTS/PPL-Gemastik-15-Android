@@ -24,7 +24,7 @@ interface ChatDao {
     @Query("SELECT * FROM chats")
     fun getChats(): Flow<List<ChatEntity>>
 
-    @Query("SELECT * FROM messages WHERE chatId = :chatId")
+    @Query("SELECT * FROM messages WHERE chatId = :chatId ORDER BY timestamp ASC")
     fun getMessages(chatId: String): Flow<List<MessageEntity>>
 
     @Query("SELECT * FROM messages WHERE chatId = :chatId ORDER BY timestamp DESC LIMIT 1")

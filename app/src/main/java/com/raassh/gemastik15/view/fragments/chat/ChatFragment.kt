@@ -148,7 +148,13 @@ class ChatFragment : Fragment(), PopupMenu.OnMenuItemClickListener{
             username.observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Success -> {
-                        binding?.tvUsername?.text = it.data
+                        if (!it.data.isNullOrBlank()) {
+                            binding?.tvUsername?.text = if (it.data.length > 15) {
+                                it.data.take(12) + "..."
+                            } else {
+                                it.data
+                            }
+                        }
                     }
                     else -> {
                         // intentionally left blank

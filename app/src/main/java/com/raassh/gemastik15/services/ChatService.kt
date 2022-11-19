@@ -42,7 +42,7 @@ class ChatService : Service(), KoinComponent {
         val extras = intent?.extras
         userId = extras?.getString(USER_ID) ?: ""
 
-        Log.d("ChatService", "onStartCommand: $userId")
+//        Log.d("ChatService", "onStartCommand: $userId")
 
         val options = IO.Options.builder()
             .setExtraHeaders(mapOf(
@@ -64,15 +64,17 @@ class ChatService : Service(), KoinComponent {
     }
 
     private val OnConnected = Emitter.Listener {
-        it.forEach { test ->
-            Log.d("ChatService", "connected: $test")
-        }
+//        it.forEach { test ->
+//            Log.d("ChatService", "connected: $test")
+//        }
         mSocket?.emit("get_chat_list", userId)
     }
 
     private val onChatListResponse = Emitter.Listener {
         try {
             val chatList = it[0] as JSONArray
+
+//            Log.d("ChatService", "onChatListResponse: $chatList")
 
             val chats = mutableListOf<ChatEntity>()
             val messages = mutableListOf<MessageEntity>()
@@ -124,6 +126,9 @@ class ChatService : Service(), KoinComponent {
     private val onNewChat = Emitter.Listener {
         try {
             val chat = it[0] as JSONObject
+
+//            Log.d("ChatService", "onNewChat: $chat")
+
             val chatId = chat.getString("chat_id")
             val users = chat.getJSONArray("users")
             val messagesInChat = chat.getJSONArray("messages")
@@ -174,13 +179,15 @@ class ChatService : Service(), KoinComponent {
     private val onNewMessage = Emitter.Listener {
         try {
             val message = it[0] as JSONObject
+
+//            Log.d("ChatService", "onNewMessage: $message")
+
             val id = message.getString("id")
             val chatId = message.getString("chat_id")
             val sender = message.getString("sender")
             val content = message.getString("content")
             val timestamp = message.getLong("timestamp")
 
-//            TODO: generate message id
             CoroutineScope(Dispatchers.IO).launch {
                 chatRepository.insertMessage(MessageEntity(
                     id = id,
