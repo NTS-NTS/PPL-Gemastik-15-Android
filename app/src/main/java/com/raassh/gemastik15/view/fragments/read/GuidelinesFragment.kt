@@ -14,7 +14,6 @@ import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GuidelinesFragment : Fragment() {
     private val viewModel by sharedViewModel<ReadViewModel>()
@@ -35,7 +34,7 @@ class GuidelinesFragment : Fragment() {
             onItemClickListener = { article ->
                 val action =
                     ReadFragmentDirections.actionNavigationReadToWebViewerFragment(
-                        article.url
+                        "https://docs.google.com/viewerng/viewer?url=${article.url}"
                     )
                 findNavController().navigate(action)
             }
