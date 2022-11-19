@@ -23,7 +23,7 @@ class ReportUserFragment : Fragment() {
     private val sharedViewModel by sharedViewModel<DashboardViewModel>()
     private lateinit var userId: String
     private val reasons = listOf(
-        "spam", "self_harm", "impersonation", "inappropriate", "harassment", "hate_speech", "private_information", "not_like"
+        "spam", "self_harm", "impersonation", "inappropriate", "harassment", "hate_speech", "not_like"
     )
 
     override fun onCreateView(

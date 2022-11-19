@@ -9,13 +9,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.api.response.DataDetailReportUserResponse
 import com.raassh.gemastik15.databinding.FragmentDetailUserReportBinding
-import com.raassh.gemastik15.utils.Resource
-import com.raassh.gemastik15.utils.checkAuthError
-import com.raassh.gemastik15.utils.showSnackbar
-import com.raassh.gemastik15.utils.translateErrorMessage
+import com.raassh.gemastik15.utils.*
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -39,9 +37,9 @@ class DetailUserReportFragment : Fragment() {
 
         val reported = DetailUserReportFragmentArgs.fromBundle(requireArguments()).reported
         val ctx = requireContext()
-
-        // TODO: change this
-        val reasonList = arrayOf("test1", "test2", "test3")
+        val reasonList = arrayOf(
+            "spam", "self_harm", "impersonation", "inappropriate", "harassment", "hate_speech", "not_like"
+        )
 
         binding?.apply {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
@@ -77,9 +75,10 @@ class DetailUserReportFragment : Fragment() {
             }
 
             btnModerate.setOnClickListener {
-                AlertDialog.Builder(ctx)
+                MaterialAlertDialogBuilder(ctx)
                     .setTitle(R.string.moderate_contribution_reason)
-                    .setSingleChoiceItems(reasonList, -1) { _, which ->
+                    .setSingleChoiceItems(reasonList.map { context?.getUserReason(it) }.toTypedArray(),
+                        -1) { _, which ->
                         viewModel.setReason(reasonList[which])
                     }
                     .setPositiveButton(R.string.yes) { dialog, _ ->
@@ -146,14 +145,14 @@ class DetailUserReportFragment : Fragment() {
 
         Log.d("TAG", "showDetail: $data")
 
-        val reason =
-            data.reportReason.distinct().joinToString(", ")
+        val reason = data.reportReason.distinct().joinToString(", ") {
+            ctx.getUserReason(it)
+        }
 
         binding?.apply {
             tvReportReason.text = reason
             tvEmail.text = data.email
         }
-
     }
 
     private fun showLoading(loading: Boolean) {

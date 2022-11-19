@@ -128,6 +128,7 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.reviewsFragment,
                 R.id.reviewHistoryFragment,
                 R.id.reportReviewFragment,
+                R.id.reportUserFragment,
                 R.id.editContributionFragment,
                 R.id.changePasswordFragment,
                 R.id.editProfileFragment,
@@ -136,7 +137,8 @@ class DashboardActivity : AppCompatActivity() {
                 R.id.detailUserReportFragment,
                 R.id.changeDisabilityFragment,
                 R.id.searchUserFragment,
-                R.id.chatFragment-> {
+                R.id.chatFragment,
+                R.id.userProfileFragment -> {
                     binding.bottomNavView.visibility = View.GONE
                 }
                 R.id.accountFragment,

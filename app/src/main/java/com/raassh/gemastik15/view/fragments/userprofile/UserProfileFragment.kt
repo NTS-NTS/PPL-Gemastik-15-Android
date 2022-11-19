@@ -20,6 +20,7 @@ import com.raassh.gemastik15.utils.loadImage
 import com.raassh.gemastik15.utils.showSnackbar
 import com.raassh.gemastik15.utils.translateErrorMessage
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
+import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -42,6 +43,7 @@ class UserProfileFragment : Fragment() {
         val userId = UserProfileFragmentArgs.fromBundle(requireArguments()).userId
 
         binding?.apply {
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
             btnChat.setOnClickListener {
                 val action = UserProfileFragmentDirections.actionUserProfileFragmentToChatFragment()
                 action.receiver = userId
