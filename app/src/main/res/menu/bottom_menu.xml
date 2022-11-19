@@ -14,8 +14,8 @@
         android:title="@string/read" />
     <item
         android:id="@+id/community_nav"
-        android:icon="@drawable/ic_outline_person_24"
-        android:title="@string/community" />
+        android:icon="@drawable/ic_baseline_chat_bubble_outline_24"
+        android:title="@string/message" />
     <item
         android:id="@+id/account_nav"
         android:icon="@drawable/ic_outline_person_24"

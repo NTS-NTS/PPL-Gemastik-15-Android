@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.raassh.gemastik15.adapter.ChatAdapter
 import com.raassh.gemastik15.databinding.FragmentChatBinding
 import com.raassh.gemastik15.utils.Resource
@@ -44,11 +45,15 @@ class ChatFragment : Fragment() {
         }
 
         binding?.apply {
-            root.applyInsetter { type(statusBars = true) { padding() } }
+            root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
 
-            tvUser.text = chat?.users ?: receiver
+            tvUsername.text = chat?.users ?: receiver
 
             rvChat.adapter = adapter
+
+            btnBack.setOnClickListener {
+                findNavController().navigateUp()
+            }
 
             etMessage.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
