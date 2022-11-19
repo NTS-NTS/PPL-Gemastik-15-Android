@@ -1,8 +1,6 @@
 package com.raassh.gemastik15.view.fragments.addcontribution
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -102,18 +100,6 @@ class AddContributionFragment : Fragment() {
             btnFacilityReviewDontKnow.setOnClickListener {
                 viewModel.nextFacility()
             }
-
-            etReview.addTextChangedListener(object: TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                }
-            })
 
             btnSendContribution.isEnabled = false
 
@@ -286,8 +272,8 @@ class AddContributionFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         binding = null
     }
 }

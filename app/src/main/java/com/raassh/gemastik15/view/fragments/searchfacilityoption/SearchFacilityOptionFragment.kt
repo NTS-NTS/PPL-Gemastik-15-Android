@@ -190,8 +190,8 @@ class SearchFacilityOptionFragment : Fragment() {
         return facilities.toTypedArray()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         binding = null
     }
 
