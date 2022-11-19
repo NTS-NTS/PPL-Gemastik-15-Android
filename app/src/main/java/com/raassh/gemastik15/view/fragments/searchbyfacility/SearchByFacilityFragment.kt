@@ -203,9 +203,13 @@ class SearchByFacilityFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        binding = null
         map = null
     }
 }

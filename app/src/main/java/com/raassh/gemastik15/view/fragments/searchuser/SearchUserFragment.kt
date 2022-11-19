@@ -2,25 +2,22 @@ package com.raassh.gemastik15.view.fragments.searchuser
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.raassh.gemastik15.R
-import com.raassh.gemastik15.adapter.ChatListAdapter
-import com.raassh.gemastik15.adapter.ReadPagerAdapter
 import com.raassh.gemastik15.adapter.SearchUserPagerAdapter
-import com.raassh.gemastik15.adapter.UserListAdapter
 import com.raassh.gemastik15.databinding.FragmentSearchUserBinding
-import com.raassh.gemastik15.utils.*
-import com.raassh.gemastik15.view.fragments.chatlist.IChatListViewModel
+import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.on
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateErrorMessage
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchUserFragment : Fragment() {
     private val viewModel by sharedViewModel<SearchUserViewModel>()
@@ -101,8 +98,8 @@ class SearchUserFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         binding = null
     }
 }
