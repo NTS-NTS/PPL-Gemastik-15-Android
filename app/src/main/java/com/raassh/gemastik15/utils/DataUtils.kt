@@ -332,6 +332,7 @@ fun Context.translateErrorMessage(message: String?): String {
         "User is not verified" -> getString(R.string.user_is_not_verified)
         "not a moderator" -> getString(R.string.not_a_moderator)
         "User is banned" -> getString(R.string.user_is_banned)
+        "User banned" -> getString(R.string.user_is_banned)
         else -> getString(R.string.unknown_error)
     }
 }

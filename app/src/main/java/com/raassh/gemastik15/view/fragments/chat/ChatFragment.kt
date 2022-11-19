@@ -108,6 +108,8 @@ class ChatFragment : Fragment(), PopupMenu.OnMenuItemClickListener{
                             }
                             is Resource.Error -> {
                                 root.showSnackbar(requireContext().translateErrorMessage(it.message))
+                                etMessage.isEnabled = true
+                                btnSend.isEnabled = true
                             }
                             is Resource.Loading -> {
                                 // intentionally left blank
@@ -126,6 +128,8 @@ class ChatFragment : Fragment(), PopupMenu.OnMenuItemClickListener{
                             }
                             is Resource.Error -> {
                                 root.showSnackbar(requireContext().translateErrorMessage(it.message))
+                                etMessage.isEnabled = true
+                                btnSend.isEnabled = true
                             }
                             is Resource.Loading -> {
                                 // intentionally left blank
