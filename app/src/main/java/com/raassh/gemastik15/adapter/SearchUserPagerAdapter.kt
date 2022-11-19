@@ -2,9 +2,6 @@ package com.raassh.gemastik15.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.raassh.gemastik15.view.fragments.read.ArticlesFragment
-import com.raassh.gemastik15.view.fragments.read.GuidelinesFragment
-import com.raassh.gemastik15.view.fragments.read.NewsFragment
 import com.raassh.gemastik15.view.fragments.searchuser.MessageSearchResultFragment
 import com.raassh.gemastik15.view.fragments.searchuser.UserSearchResultFragment
 

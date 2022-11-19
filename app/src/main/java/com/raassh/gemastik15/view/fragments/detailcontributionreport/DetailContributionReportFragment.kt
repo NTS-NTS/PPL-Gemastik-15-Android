@@ -43,7 +43,6 @@ class DetailContributionReportFragment : Fragment() {
         val reported = DetailContributionReportFragmentArgs.fromBundle(requireArguments()).reported
         val ctx = requireContext()
 
-        // TODO: change this
         val reasonList = arrayOf(
             "spam", "off_topic", "conflict_of_interest", "inappropriate", "harassment", "hate_speech", "private_information", "not_helpful"
         )

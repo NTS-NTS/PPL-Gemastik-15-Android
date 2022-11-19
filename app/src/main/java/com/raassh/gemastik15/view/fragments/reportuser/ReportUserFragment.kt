@@ -1,17 +1,20 @@
 package com.raassh.gemastik15.view.fragments.reportuser
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ReasonAdapter
 import com.raassh.gemastik15.databinding.FragmentReportUserBinding
-import com.raassh.gemastik15.utils.*
+import com.raassh.gemastik15.utils.Resource
+import com.raassh.gemastik15.utils.getUserReason
+import com.raassh.gemastik15.utils.showSnackbar
+import com.raassh.gemastik15.utils.translateErrorMessage
 import com.raassh.gemastik15.view.activity.dashboard.DashboardViewModel
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
