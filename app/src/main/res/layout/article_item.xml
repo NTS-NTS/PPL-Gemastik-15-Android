@@ -71,6 +71,9 @@
                 android:id="@+id/tv_article_source"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxWidth="180dp"
                 tools:text="Tirto"/>
 
             <TextView

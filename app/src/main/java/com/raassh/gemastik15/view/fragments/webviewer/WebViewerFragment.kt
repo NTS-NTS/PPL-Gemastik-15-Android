@@ -49,6 +49,8 @@ class WebViewerFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
             }
 
             webView.apply {
+                settings.javaScriptEnabled = true
+
                 webChromeClient = object : WebChromeClient() {
                     override fun onProgressChanged(view: WebView, progress: Int)  {
 

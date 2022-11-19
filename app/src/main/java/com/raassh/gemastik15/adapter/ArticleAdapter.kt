@@ -44,7 +44,7 @@ class ArticleAdapter() : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(
                 tvArticleType.text = context.translateArticleTypeFromDB(article.type)
                 tvArticleTitle.text = article.title
                 tvArticleDate.text = context.getElapsedTime(article.publishTime)
-                tvArticleSource.text = if (article.source.length > 32) article.source.take(29) + "..." else article.source
+                tvArticleSource.text = article.source
             }
         }
     }
