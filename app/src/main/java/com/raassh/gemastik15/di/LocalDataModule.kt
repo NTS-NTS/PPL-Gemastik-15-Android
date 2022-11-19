@@ -37,6 +37,7 @@ val localDataModule = module {
     single {
         Room.databaseBuilder(androidContext(), KiadDatabase::class.java, "places.db")
             .fallbackToDestructiveMigration()
+            .allowMainThreadQueries() // not recommended, but i don't know anymore
             .build()
     }
 }

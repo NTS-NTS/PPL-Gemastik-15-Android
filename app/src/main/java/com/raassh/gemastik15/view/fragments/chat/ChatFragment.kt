@@ -1,7 +1,5 @@
 package com.raassh.gemastik15.view.fragments.chat
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.auth0.android.jwt.JWT
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.ChatAdapter
 import com.raassh.gemastik15.databinding.FragmentChatBinding
@@ -39,20 +38,24 @@ class ChatFragment : Fragment(), PopupMenu.OnMenuItemClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val chat = ChatFragmentArgs.fromBundle(requireArguments()).chat
         val receiver = ChatFragmentArgs.fromBundle(requireArguments()).receiver
+
+        val chat = ChatFragmentArgs.fromBundle(requireArguments()).chat ?: viewModel.getChatId(receiver ?: "")
 
         val adapter = ChatAdapter()
 
-        sharedViewModel.getUsername().observe(viewLifecycleOwner) {
-            adapter.username = it ?: ""
-            viewModel.username = it ?: ""
+        sharedViewModel.getToken().observe(viewLifecycleOwner) {
+            if (!it.isNullOrBlank()) {
+                val jwt = JWT(it)
+                val id = jwt.getClaim("id").asString() ?: return@observe
+
+                adapter.user_id = id
+                viewModel.userId = id
+            }
         }
 
         binding?.apply {
             root.applyInsetter { type(statusBars = true, navigationBars = true) { padding() } }
-
-            tvUsername.text = chat?.users ?: receiver
 
             rvChat.adapter = adapter
 
@@ -65,8 +68,13 @@ class ChatFragment : Fragment(), PopupMenu.OnMenuItemClickListener{
             }
 
             tvUsername.setOnClickListener {
-                val action = ChatFragmentDirections.actionChatFragmentToUserProfileFragment(chat?.id)
-                findNavController().navigate(action)
+                if (chat != null) {
+                    val action = ChatFragmentDirections.actionChatFragmentToUserProfileFragment(chat.users)
+                    findNavController().navigate(action)
+                } else {
+                    val action = ChatFragmentDirections.actionChatFragmentToUserProfileFragment(receiver ?: "")
+                    findNavController().navigate(action)
+                }
             }
 
             etMessage.addTextChangedListener(object : TextWatcher {
@@ -130,10 +138,22 @@ class ChatFragment : Fragment(), PopupMenu.OnMenuItemClickListener{
 
         viewModel.apply {
             setChatId(chat?.id ?: "")
+            setReceiver(chat?.users ?: receiver ?: "")
 
             messages.observe(viewLifecycleOwner) {
                 adapter.submitList(it)
                 binding?.rvChat?.scrollToPosition(it.size - 1)
+            }
+
+            username.observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Success -> {
+                        binding?.tvUsername?.text = it.data
+                    }
+                    else -> {
+                        // intentionally left blank
+                    }
+                }
             }
         }
     }
@@ -161,7 +181,7 @@ class ChatFragment : Fragment(), PopupMenu.OnMenuItemClickListener{
         return when (item.itemId) {
             R.id.report_user -> {
                 val action = ChatFragmentDirections.actionChatFragmentToReportUserFragment(
-//                    TODO: user id
+                    viewModel.getReceiver()
                 )
                 findNavController().navigate(action)
                 true

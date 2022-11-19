@@ -30,7 +30,12 @@ interface ChatDao {
     @Query("SELECT * FROM messages WHERE chatId = :chatId ORDER BY timestamp DESC LIMIT 1")
     fun getLastMessage(chatId: String): Flow<MessageEntity>
 
-    @Query("SELECT * FROM chats WHERE users LIKE '%' || :query || '%'")
-    fun searchChat(query: String): Flow<List<ChatEntity>>
+    @Query("SELECT * FROM messages WHERE content LIKE '%' || :query || '%'")
+    fun searchChat(query: String): Flow<List<MessageEntity>>
 
+    @Query("SELECT * FROM chats WHERE id IN (:chatIds)")
+    fun getChatByIds(chatIds: List<String>): List<ChatEntity>
+
+    @Query("SELECT * FROM chats WHERE users = :sender")
+    fun getChatByUserId(sender: String): ChatEntity?
 }

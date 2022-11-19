@@ -1,7 +1,5 @@
 package com.raassh.gemastik15.adapter
 
-import android.graphics.Color
-import android.graphics.Color.WHITE
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +8,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.color.MaterialColors
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.databinding.ChatItemBinding
 import com.raassh.gemastik15.local.db.MessageEntity
@@ -20,7 +17,7 @@ import com.raassh.gemastik15.utils.toDateText
 class ChatAdapter : ListAdapter<MessageEntity, ChatAdapter.ChatViewHolder>(
     DIFF_CALLBACK
 ) {
-    var username = ""
+    var user_id = ""
     var previousChat: MessageEntity? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -43,7 +40,7 @@ class ChatAdapter : ListAdapter<MessageEntity, ChatAdapter.ChatViewHolder>(
                 tvContent.text = chat.content
                 tvTime.text = chat.timestamp.toDateText()
 
-                if (chat.sender == username) {
+                if (chat.sender == user_id) {
                     tvContent.gravity = Gravity.END
                     tvTime.gravity = Gravity.END
                     llChat.gravity = Gravity.END

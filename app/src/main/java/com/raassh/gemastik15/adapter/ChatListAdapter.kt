@@ -38,7 +38,6 @@ class ChatListAdapter(private val chatListViewModel: IChatListViewModel) :
 
         fun bind(chat: ChatEntity) {
             binding.apply {
-                tvUsername.text = chat.users
                 ivAvatar.contentDescription = context.getString(R.string.avatar_desc, chat.users)
                 chatListViewModel.getLastMessage(chat.id).observe(lifecycleOwner) {
                     tvLastMessage.text = it?.content
@@ -48,6 +47,17 @@ class ChatListAdapter(private val chatListViewModel: IChatListViewModel) :
                     when (it) {
                         is Resource.Success -> {
                             ivAvatar.loadImage(it.data)
+                        }
+                        else -> {
+                            // intentionally empty
+                        }
+                    }
+                }
+
+                chatListViewModel.getUsername(chat.users).observe(lifecycleOwner) {
+                    when (it) {
+                        is Resource.Success -> {
+                            tvUsername.text = it.data
                         }
                         else -> {
                             // intentionally empty

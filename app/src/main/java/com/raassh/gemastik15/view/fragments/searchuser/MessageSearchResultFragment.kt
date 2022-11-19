@@ -1,7 +1,6 @@
 package com.raassh.gemastik15.view.fragments.searchuser
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,18 +40,8 @@ class MessageSearchResultFragment : Fragment() {
             rvChats.adapter = chatAdapter
         }
 
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-
         viewModel.apply {
-            Log.d("TAG", "onViewCreated: ")
-            val q = viewModel.query.value
-            Log.d("query", q.toString())
             chats.observe(viewLifecycleOwner) {
-                Log.d("TAG", "onViewCreated: $it")
                 if (it.isEmpty()) {
                     showEmpty(true)
                 } else {
@@ -61,6 +50,12 @@ class MessageSearchResultFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
     }
 
     private fun showEmpty(isEmpty: Boolean) {

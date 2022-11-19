@@ -1,7 +1,6 @@
 package com.raassh.gemastik15.view.fragments.searchuser
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +11,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.adapter.SearchUserPagerAdapter
 import com.raassh.gemastik15.databinding.FragmentSearchUserBinding
-import com.raassh.gemastik15.utils.Resource
 import com.raassh.gemastik15.utils.on
 import com.raassh.gemastik15.utils.showSnackbar
-import com.raassh.gemastik15.utils.translateErrorMessage
 import dev.chrisbanes.insetter.applyInsetter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -56,46 +53,21 @@ class SearchUserFragment : Fragment() {
                 findNavController().navigateUp()
             }
 
-            viewModel.apply {
-                setQuery(query)
+            viewPager.adapter = SearchUserPagerAdapter(this@SearchUserFragment)
 
-
-                users.observe(viewLifecycleOwner) {
-                    Log.d("TAG", "onViewCreated: $it")
-                    when(it) {
-                        is Resource.Loading -> {
-                        }
-                        is Resource.Success -> {
-                            view
-                        }
-                        is Resource.Error -> {
-
-                            binding?.root?.showSnackbar(
-                                message = requireContext().translateErrorMessage(it.message),
-                            )
-                        }
+            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                when (position) {
+                    0 -> {
+                        tab.text = getString(R.string.message)
+                    }
+                    1 -> {
+                        tab.text = getString(R.string.user)
                     }
                 }
-
-                val q = viewModel.query.value
-                Log.d("query", q.toString())
-
-                viewPager.adapter = SearchUserPagerAdapter(this@SearchUserFragment)
-
-                TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                    val q = viewModel.query.value
-                    Log.d("query", q.toString())
-                    when (position) {
-                        0 -> {
-                            tab.text = getString(R.string.message)
-                        }
-                        1 -> {
-                            tab.text = getString(R.string.user)
-                        }
-                    }
-                }.attach()
-            }
+            }.attach()
         }
+
+        viewModel.setQuery(query)
     }
 
     override fun onDestroyView() {

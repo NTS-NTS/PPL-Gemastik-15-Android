@@ -67,7 +67,7 @@ data class DetailUserResponseData(
 	val username: String
 )
 
-data class UserPictureResponse(
+data class SingleUserFieldResponse(
 
 	@field:SerializedName("data")
 	val data: String,

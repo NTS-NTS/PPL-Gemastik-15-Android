@@ -143,6 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:contentDescription="@string/send_message"
+            android:enabled="false"
             app:icon="@drawable/ic_baseline_send_24"
 
             android:insetTop="0dp"

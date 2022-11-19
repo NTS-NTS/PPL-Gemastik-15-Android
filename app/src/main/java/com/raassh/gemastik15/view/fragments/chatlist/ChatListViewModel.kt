@@ -12,5 +12,7 @@ class ChatListViewModel(private val authenticationRepository: AuthenticationRepo
 
     override fun getLastMessage(chatId: String) = chatRepository.getLastMessage(chatId).asLiveData()
 
-    override fun getProfilePicture(username: String) = authenticationRepository.getUserPicture(username).asLiveData()
+    override fun getProfilePicture(userId: String) = authenticationRepository.getUserPicture(userId).asLiveData()
+
+    override fun getUsername(userId: String) = authenticationRepository.getUsername(userId).asLiveData()
 }

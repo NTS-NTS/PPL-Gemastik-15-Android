@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.auth0.android.jwt.JWT
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
@@ -164,15 +165,15 @@ class DashboardActivity : AppCompatActivity() {
                     val intent = Intent(this@DashboardActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
+                    return@observe
                 }
-            }
 
-            getUsername().observe(this@DashboardActivity) {
-                if (!it.isNullOrBlank()) {
-                    val intent = Intent(this@DashboardActivity, ChatService::class.java)
-                    intent.putExtra(ChatService.USERNAME, it)
-                    startService(intent)
-                }
+                val jwt = JWT(it)
+                val id = jwt.getClaim("id").asString()
+
+                val intent = Intent(this@DashboardActivity, ChatService::class.java)
+                intent.putExtra(ChatService.USER_ID, id)
+                startService(intent)
             }
 
             theme.observe(this@DashboardActivity) {

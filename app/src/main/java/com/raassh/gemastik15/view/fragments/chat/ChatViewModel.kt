@@ -9,17 +9,30 @@ import com.raassh.gemastik15.repository.ChatRepository
 
 class ChatViewModel(private val authenticationRepository: AuthenticationRepository, private val chatRepository: ChatRepository) : ViewModel() {
     private val chatId = MutableLiveData<String>()
-    var username = ""
+    var userId = "0"
+    private val receiverLiveData = MutableLiveData(userId)
 
     fun setChatId(chatId: String) {
         this.chatId.value = chatId
     }
 
+    fun setReceiver(receiver: String) {
+        this.receiverLiveData.value = receiver
+    }
+
+    fun getReceiver() = receiverLiveData.value ?: ""
+
     val messages = Transformations.switchMap(chatId) {
         chatRepository.getMessages(it).asLiveData()
     }
 
-    fun sendMessage(message: String) = chatRepository.sendChatMessage(chatId.value ?: "", username, message).asLiveData()
+    fun sendMessage(message: String) = chatRepository.sendChatMessage(chatId.value ?: "", userId, message).asLiveData()
 
-    fun startChat(receiver: String, message: String) = chatRepository.startChat(listOf(username, receiver), username, message).asLiveData()
+    fun startChat(receiver: String, message: String) = chatRepository.startChat(listOf(userId, receiver), userId, message).asLiveData()
+
+    val username = Transformations.switchMap(receiverLiveData) {
+        authenticationRepository.getUsername(it).asLiveData()
+    }
+
+    fun getChatId(userId: String) = chatRepository.getChatByUserId(userId)
 }

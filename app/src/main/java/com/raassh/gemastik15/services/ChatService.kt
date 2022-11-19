@@ -35,18 +35,18 @@ class ChatService : Service(), KoinComponent {
     }
 
     private var mSocket: Socket? = null
-    private var username = ""
+    private var userId = ""
     private val chatRepository by inject<ChatRepository>()
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val extras = intent?.extras
-        username = extras?.getString(USERNAME) ?: ""
+        userId = extras?.getString(USER_ID) ?: ""
 
-        Log.d("ChatService", "onStartCommand: $username")
+        Log.d("ChatService", "onStartCommand: $userId")
 
         val options = IO.Options.builder()
             .setExtraHeaders(mapOf(
-                "x-username" to listOf(username),
+                "x-user-id" to listOf(userId),
             ))
             .build()
 
@@ -67,7 +67,7 @@ class ChatService : Service(), KoinComponent {
         it.forEach { test ->
             Log.d("ChatService", "connected: $test")
         }
-        mSocket?.emit("get_chat_list", username)
+        mSocket?.emit("get_chat_list", userId)
     }
 
     private val onChatListResponse = Emitter.Listener {
@@ -140,19 +140,20 @@ class ChatService : Service(), KoinComponent {
 
             for (j in 0 until messagesInChat.length()) {
                 val message = messagesInChat.getJSONObject(j)
+                val id = message.getString("id")
                 val sender = message.getString("sender")
                 val content = message.getString("content")
                 val timestamp = message.getLong("timestamp")
 
                 messages.add(MessageEntity(
-                    id = "$chatId-$sender-$timestamp",
+                    id = id,
                     chatId = chatId,
                     sender = sender,
                     content = content,
                     timestamp = timestamp
                 ))
 
-                if (sender != username) {
+                if (sender != userId) {
                     showNotification(content, sender, chatId)
                 }
             }
@@ -173,6 +174,7 @@ class ChatService : Service(), KoinComponent {
     private val onNewMessage = Emitter.Listener {
         try {
             val message = it[0] as JSONObject
+            val id = message.getString("id")
             val chatId = message.getString("chat_id")
             val sender = message.getString("sender")
             val content = message.getString("content")
@@ -181,14 +183,14 @@ class ChatService : Service(), KoinComponent {
 //            TODO: generate message id
             CoroutineScope(Dispatchers.IO).launch {
                 chatRepository.insertMessage(MessageEntity(
-                    id = "$chatId-$sender-$timestamp",
+                    id = id,
                     chatId = chatId,
                     sender = sender,
                     content = content,
                     timestamp = timestamp
                 ))
 
-                if (sender != username) {
+                if (sender != userId) {
                     showNotification(content, sender, chatId)
                 }
             }
@@ -244,6 +246,6 @@ class ChatService : Service(), KoinComponent {
     }
 
     companion object {
-        const val USERNAME = "username"
+        const val USER_ID = "user_id"
     }
 }

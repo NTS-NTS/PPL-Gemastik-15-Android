@@ -234,8 +234,13 @@ interface ApiService {
         @Path("user_id") userId: String
     ): DetailUserResponse
 
-    @GET("auth/pictures/{username}")
+    @GET("auth/pictures/{user_id}")
     suspend fun getUserPicture(
-        @Path("username") username: String
-    ): UserPictureResponse
+        @Path("user_id") userId: String
+    ): SingleUserFieldResponse
+
+    @GET("auth/usernames/{user_id}")
+    suspend fun getUsername(
+        @Path("user_id") userId: String
+    ): SingleUserFieldResponse
 }

@@ -1,14 +1,9 @@
 package com.raassh.gemastik15.view.fragments.userprofile
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -123,7 +118,7 @@ class UserProfileFragment : Fragment() {
 
             btnChat.setOnClickListener {
                 val action = UserProfileFragmentDirections.actionUserProfileFragmentToChatFragment()
-                action.receiver = data.username
+                action.receiver = data.id
                 findNavController().navigate(action)
             }
 

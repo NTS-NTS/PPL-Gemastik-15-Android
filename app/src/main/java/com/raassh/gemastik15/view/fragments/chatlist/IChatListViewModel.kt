@@ -6,5 +6,6 @@ import com.raassh.gemastik15.utils.Resource
 
 interface IChatListViewModel {
     fun getLastMessage(chatId: String): LiveData<MessageEntity>
-    fun getProfilePicture(username: String): LiveData<Resource<String>>
+    fun getProfilePicture(userId: String): LiveData<Resource<String>>
+    fun getUsername(userId: String): LiveData<Resource<String>>
 }
