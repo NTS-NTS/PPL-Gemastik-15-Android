@@ -98,6 +98,7 @@ class AccountFragment : Fragment() {
                                     tvName.text = user.data?.name
                                     tvEmail.text = user.data?.email
                                     imgUser.loadImage(user.data?.profilePicture)
+                                    imgUser.contentDescription = getString(R.string.avatar_desc, user.data?.name)
 
                                     if (!user.data?.city.isNullOrEmpty()) {
                                         tvCity.text = user.data?.city

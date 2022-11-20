@@ -4,44 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="16dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_avatar"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:contentDescription="@null"
+        android:src="@drawable/place_photo_placeholder"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="@style/ShapeAppearance.Gemastik15.ProfilePhoto.Medium"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:shapeAppearance="@style/ShapeAppearance.Gemastik15.ProfilePhoto.Medium" />
 
     <TextView
-        style="@style/TextAppearance.Material3.TitleMedium"
         android:id="@+id/tv_username"
+        style="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="@string/placeholder"
-        android:maxLines="1"
-        android:ellipsize="end"
         android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:ellipsize="end"
+        android:maxLines="1"
         app:layout_constraintBottom_toTopOf="@id/tv_last_message"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_avatar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/placeholder" />
 
     <TextView
-        style="@style/TextAppearance.Material3.BodyMedium"
         android:id="@+id/tv_last_message"
+        style="@style/TextAppearance.Material3.BodyMedium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:ellipsize="end"
         android:layout_marginStart="8dp"
-        tools:text="Pesannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+        android:ellipsize="end"
+        android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_avatar"
         app:layout_constraintTop_toBottomOf="@id/tv_username"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        tools:text="Pesannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
