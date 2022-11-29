@@ -15,6 +15,7 @@ import com.raassh.gemastik15.BuildConfig
 import com.raassh.gemastik15.R
 import com.raassh.gemastik15.local.db.ChatEntity
 import com.raassh.gemastik15.local.db.MessageEntity
+import com.raassh.gemastik15.repository.AuthenticationRepository
 import com.raassh.gemastik15.repository.ChatRepository
 import com.raassh.gemastik15.view.activity.dashboard.DashboardActivity
 import io.socket.client.IO
@@ -37,6 +38,9 @@ class ChatService : Service(), KoinComponent {
     private var mSocket: Socket? = null
     private var userId = ""
     private val chatRepository by inject<ChatRepository>()
+    private val authenticationRepository by inject<AuthenticationRepository>()
+    private val scope = CoroutineScope(Dispatchers.IO)
+    private val sendersSet = mutableSetOf<String>()
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val extras = intent?.extras
@@ -159,7 +163,9 @@ class ChatService : Service(), KoinComponent {
                 ))
 
                 if (sender != userId) {
-                    showNotification(content, sender, chatId)
+                    scope.launch {
+                        showNotification(content, sender, chatId)
+                    }
                 }
             }
 
@@ -198,7 +204,9 @@ class ChatService : Service(), KoinComponent {
                 ))
 
                 if (sender != userId) {
-                    showNotification(content, sender, chatId)
+                    scope.launch {
+                        showNotification(content, sender, chatId)
+                    }
                 }
             }
         } catch (e: Exception) {
@@ -206,7 +214,9 @@ class ChatService : Service(), KoinComponent {
         }
     }
 
-    private fun showNotification(message: String, sender: String, chatId: String) {
+    private suspend fun showNotification(message: String, sender: String, chatId: String) {
+        sendersSet.add(sender)
+
         val pendingIntent = NavDeepLinkBuilder(this)
             .setComponentName(DashboardActivity::class.java)
             .setGraph(R.navigation.dashboard_nav)
@@ -222,10 +232,12 @@ class ChatService : Service(), KoinComponent {
         val notifManager = applicationContext
             .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
+        val username = authenticationRepository.suspendGetUsername(sender)
+
         val notifBuilder = NotificationCompat
             .Builder(applicationContext, "Chat")
             .setSmallIcon(R.drawable.ic_baseline_chat_24)
-            .setContentTitle(sender)
+            .setContentTitle(username)
             .setContentText(message)
             .setContentIntent(pendingIntent)
 
@@ -240,8 +252,9 @@ class ChatService : Service(), KoinComponent {
             notifManager.createNotificationChannel(channel)
         }
 
+        val channelId = sendersSet.indexOf(sender)
         val notif = notifBuilder.build()
-        notifManager.notify(1, notif)
+        notifManager.notify(channelId, notif)
     }
 
     override fun onDestroy() {

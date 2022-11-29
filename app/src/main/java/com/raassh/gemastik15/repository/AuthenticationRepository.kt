@@ -96,4 +96,6 @@ class AuthenticationRepository(private val apiService: ApiService) {
     fun getUsername(userId: String) = callApi {
         apiService.getUsername(userId).data
     }
+
+    suspend fun suspendGetUsername(userId: String) = apiService.getUsername(userId).data
 }
